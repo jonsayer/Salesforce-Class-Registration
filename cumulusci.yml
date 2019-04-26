@@ -1,0 +1,7 @@
+project:
+    name: Salesforce-Class-Registration
+    package:
+        name:  Salesforce-Class-Registration
+        api_version: '45.0'
+
+
