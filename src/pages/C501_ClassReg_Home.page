@@ -1,0 +1,20 @@
+<apex:page sidebar="false" showHeader="false" controller="C501_CTRL_ClassReg_Home">
+    
+    <apex:composition template="C501_ClassRegSiteTemplate">
+        <apex:define name="body">
+            <apex:pageMessages />
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="withLine" style="">
+                        Login Attempt
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    Account ID: {! acctID } 
+                </div>
+            </div>
+        </apex:define>
+    </apex:composition>
+</apex:page>

@@ -1,0 +1,60 @@
+<apex:page sidebar="false" showHeader="false" controller="C501_CTRL_ClassReg_Login">
+    
+    <apex:composition template="C501_ClassRegSiteTemplate">
+        <apex:define name="body">
+            <apex:pageMessages />
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="withLine" style="">
+                        Log in
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <apex:outputPanel rendered="{! pageStatus == 'start' || pageStatus == 'lookup-fail'}">
+                        <apex:outputPanel rendered="{! pageStatus == 'start' }">
+                            <p>
+                                Please provide your phone number to log in. TEST EXTRA TEXT MORE EXTRA TEXT
+                            </p>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{! pageStatus == 'lookup-fail' }">
+                            <p>
+                                That account was not found. Please try again. 
+                            </p>
+                        </apex:outputPanel>
+                        <apex:form >
+                            <p>
+                                <apex:inputText styleClass="form-control" value="{!phoneNumber }" required="true" />
+                            </p>
+                            <p>
+                                <apex:commandLink action="{!lookupAccount}" value="Go" />
+                            </p>
+                        </apex:form>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{! pageStatus == 'confirm' || pageStatus == 'confirm-fail'}">
+                        <apex:outputPanel rendered="{! pageStatus == 'confirm' }">
+                            <p>
+                                We just sent you a text. What is the code?
+                            </p>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{! pageStatus == 'confirm-fail' }">
+                            <p>
+                                That doesn't seem to match the one we sent you. Try again?
+                            </p>
+                        </apex:outputPanel>
+                        <apex:form >
+                            <p>
+                                <apex:inputText styleClass="form-control" value="{!confirmation }" required="true" />
+                            </p>
+                            <p>
+                                <apex:commandLink action="{!confirmLogin}" value="Go" />
+                            </p>
+                        </apex:form>
+                    </apex:outputPanel>
+                    
+                </div>
+            </div>
+        </apex:define>
+    </apex:composition>
+</apex:page>
