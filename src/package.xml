@@ -4,6 +4,7 @@
     <types>
         <members>C501_CTRL_ClassReg_Home</members>
         <members>C501_CTRL_ClassReg_Login</members>
+        <members>C501_TESTClassReg_Login</members>
         <members>C501_UTIL_ClassRegUtilities</members>
         <name>ApexClass</name>
     </types>

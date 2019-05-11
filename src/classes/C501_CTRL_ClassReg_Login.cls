@@ -3,12 +3,14 @@ public class C501_CTRL_ClassReg_Login {
     public 	String 	pageStatus		{get;set;}
     public 	String 	phoneNumber		{get;set;}
     public 	String 	confirmation	{get;set;}
+    public  Boolean remember        {get;set;}
     private ID		acctID			= null;
     
     public C501_CTRL_ClassReg_Login(){
         pageStatus		= 'start';
         phoneNumber		= '';
         confirmation	= '';
+        remember        = true;
     }
     
     public PageReference confirmLogin(){
@@ -30,7 +32,13 @@ public class C501_CTRL_ClassReg_Login {
         if(attList.size() > 0 ){
             if(attList[0].Secret_Code__c == cleanedConfirm){
                 // redirect to the account manager page
-            	return C501_UTIL_ClassRegUtilities.generatePageLink('C501_ClassReg_Home','a,s',acctID+','+cleanedConfirm);
+                String remString = '';
+                if(remember){
+                    remString = '1';
+                } else {
+                    remString = '0';
+                }
+            	return C501_UTIL_ClassRegUtilities.generatePageLink('C501_ClassReg_Home','a,s,r',acctID+','+cleanedConfirm+','+remString);
             } else {
                 pageStatus	= 'confirm-fail';
             	return null;
@@ -59,7 +67,7 @@ public class C501_CTRL_ClassReg_Login {
             // set acctID
             acctID	= acctList[0].id;
             // send the sms
-            C501_UTIL_ClassRegUtilities.sendSMS(acctID);
+            C501_UTIL_ClassRegUtilities.sendSMS(acctID,acctList[0].C501_Class_Site_Mobile_Number_Lookup__c);
         	// present user with a code screen
         	pageStatus	= 'confirm';
         	return null;

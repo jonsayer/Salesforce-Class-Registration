@@ -10,6 +10,7 @@ public class C501_CTRL_ClassReg_Home {
         } else {
             String acctPa = ApexPages.currentPage().getParameters().get('a');
             String secret = ApexPages.currentPage().getParameters().get('s');
+            String rember = ApexPages.currentPage().getParameters().get('r');
             if(acctPa != null && secret != null){
                 Datetime 	thirtyMinutesAgo	= Datetime.now().addMinutes(-30);
                 List<Class_Site_Login_Attempt__c> attList = [
@@ -27,7 +28,11 @@ public class C501_CTRL_ClassReg_Home {
                 if(attList.size() > 0 ){
             		if(attList[0].Secret_Code__c == secret){
                         acctID = attList[0].Account__c;
-                        aId = new cookie('AccountIdClassRegSite', acctID, null, -1, false);
+                        Integer remberInt = 86400;
+                        if(rember != null && rember == '1'){
+                            remberInt = -1;
+                        }
+                        aId = new cookie('AccountIdClassRegSite', acctID, null, remberInt, false);
 						ApexPages.currentPage().setCookies(new Cookie[] {aId});
                     } else {
                         acctID = 'fail to validate';

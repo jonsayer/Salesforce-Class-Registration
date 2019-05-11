@@ -48,6 +48,9 @@
                                 <apex:inputText styleClass="form-control" value="{!confirmation }" required="true" />
                             </p>
                             <p>
+                                <apex:inputCheckbox styleClass="form-check-input" value="{!remember}" required="true" /> Remember me on this device.
+                            </p>
+                            <p>
                                 <apex:commandLink action="{!confirmLogin}" value="Go" />
                             </p>
                         </apex:form>

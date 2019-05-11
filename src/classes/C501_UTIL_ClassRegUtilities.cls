@@ -1,17 +1,31 @@
 public class C501_UTIL_ClassRegUtilities {
     
-    public static void sendSMS(ID AcctID){
+    public static void sendSMS(ID AcctID,String phoneNumber){
+        
+        TwilioConfig__c tcon = [SELECT id, AccountSid__c, AuthToken__c,	Default_Send_Number__c FROM TwilioConfig__c WHERE Name = 'default' LIMIT 1];
         
         Class_Site_Login_Attempt__c att	= new Class_Site_Login_Attempt__c(
             Account__c 			= AcctID,
             Login_Attempts__c	= 0,
-            Secret_Code__c		= C501_UTIL_ClassRegUtilities.generateRandomString(6,true,false,false)
+            Secret_Code__c		= C501_UTIL_ClassRegUtilities.generateRandomString(6,true,false,false),
+            SMS_Timestamp__c	= datetime.now()
         );
-        // in the future, fill this up with some API calls to a 3rd party sms generator
-        att.SMS_Timestamp__c	= datetime.now();
+		
+		if (!Test.isRunningTest()){
+            TwilioRestClient client = new TwilioRestClient(tcon.AccountSid__c, tcon.AuthToken__c);
+            
+            Map<String,String> params = new Map<String,String> {
+                    'To'   => '+1'+phoneNumber,
+                    'From' => tcon.Default_Send_Number__c,
+                    'Body' => 'Hello there! Your code is: '+att.Secret_Code__c
+                };
+                    
+            TwilioSMS sms = client.getAccount().getSMSMessages().create(params);
+        }
+
         insert att;
     }
-    
+
     public static String generateRandomString(Integer len, Boolean includeNumbers,Boolean includeUppers,Boolean includeLowers) {
         String chars = '';
         if(includeNumbers){
