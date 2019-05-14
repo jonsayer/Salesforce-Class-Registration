@@ -33,14 +33,12 @@
                         </apex:form>
                     </apex:outputPanel>
                     <apex:outputPanel rendered="{! pageStatus == 'confirm' || pageStatus == 'confirm-fail'}">
-                        <apex:outputPanel rendered="{! pageStatus == 'confirm' }">
-                            <p>
-                                We just sent you a text. What is the code?
-                            </p>
-                        </apex:outputPanel>
+                        <p>
+                            We just sent you a text. What is the code?
+                        </p>
                         <apex:outputPanel rendered="{! pageStatus == 'confirm-fail' }">
-                            <p>
-                                That doesn't seem to match the one we sent you. Try again?
+                            <p class="red">
+                                That doesn't seem to match the code we sent you. Try again?
                             </p>
                         </apex:outputPanel>
                         <apex:form >
@@ -48,11 +46,12 @@
                                 <apex:inputText styleClass="form-control" value="{!confirmation }" required="true" />
                             </p>
                             <p>
-                                <apex:inputCheckbox styleClass="form-check-input" value="{!remember}" required="true" /> Remember me on this device.
+                                <apex:inputCheckbox styleClass="form-check-input" value="{!remember}" required="true" />
+    							<label class="form-check-label" >Remember me on this device.</label>
                             </p>
-                            <p>
+                            <div class="prominent_button">
                                 <apex:commandLink action="{!confirmLogin}" value="Go" />
-                            </p>
+                            </div>
                         </apex:form>
                     </apex:outputPanel>
                     

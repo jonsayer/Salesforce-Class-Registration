@@ -1,0 +1,129 @@
+<apex:page sidebar="false" showHeader="false" controller="C501_CTRL_ClassReg_CreateAcct" >
+    <apex:composition template="C501_ClassRegSiteTemplate">
+        <apex:define name="body">
+            <div class="row">
+                <div class="col-xs-8">
+            		<apex:pageMessages />
+                </div>
+            </div>
+            <apex:outputPanel rendered="{! pageStatus = 'new'}">
+            
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1 class="withLine" style="">
+                            Create an Account
+                        </h1>
+                    </div>
+                    <div class="col-xs-8">
+                        <p>
+                            We need some information about you and your family.
+                        </p>
+                    </div>
+                </div>
+            <apex:form >
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Parent/Guardian First Name </label>
+                            <apex:inputText styleClass="form-control" value="{!parent.FirstName }" required="true" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Parent/Guardian Last Name </label>
+                            <apex:inputText styleClass="form-control" value="{!parent.LastName }" required="true" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Parent/Guardian Email</label>
+                            <apex:inputText styleClass="form-control" value="{!parent.Email }" />
+                            <small class="form-text text-muted">Leave blank if you do not have email an address</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Parent/Guardian Mobile Phone</label>
+                            <apex:inputText styleClass="form-control" value="{!family.C501_Class_Site_Mobile_Number__c }" required="true" />
+                            <small class="form-text text-muted">We will send a text message to confirm your identity next time you log in.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Street Address</label>
+                            <apex:inputText styleClass="form-control" value="{!family.BillingStreet }" required="true" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>City</label>
+                            <apex:inputText styleClass="form-control" value="{!family.BillingCity }" required="true" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>State</label>
+                            <apex:inputText styleClass="form-control" value="{!family.BillingState }" required="true" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Zip Code</label>
+                            <apex:inputText styleClass="form-control" value="{!family.BillingPostalCode }" required="true" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="prominent_button">
+                            <apex:commandLink action="{!createAccount}" value="Create Account" />
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </apex:form>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{! pageStatus == 'confirm' || pageStatus == 'confirm-fail'}">
+                <div class="col-xs-12">
+                    <h1 class="withLine" style="">
+                        Please provide the confirmation code.
+                    </h1>
+                    <p>
+                        Looks like you already have an account. We just sent a text to the mobile phone number you provided. Please provide the confirmation code in the message.
+                    </p>
+                </div>
+                
+                <apex:outputPanel rendered="{! pageStatus == 'confirm-fail' }">
+                    <p class="red">
+                        That doesn't seem to match the code we sent you. Try again?
+                    </p>
+                </apex:outputPanel>
+                <apex:form >
+                    <p>
+                        <apex:inputText styleClass="form-control" value="{!confirmation }" required="true" />
+                    </p>
+                    <p>
+                        <apex:inputCheckbox styleClass="form-check-input" value="{!remember}" required="true" />
+    					<label class="form-check-label" >Remember me on this device.</label>
+                    </p>
+                    
+                    <div class="prominent_button">
+                        <apex:commandLink action="{!confirmLogin}" value="Access My Account" />
+                    </div>
+                </apex:form>
+            </apex:outputPanel>
+            
+            
+            
+        </apex:define>
+    </apex:composition>
+</apex:page>
