@@ -2,6 +2,7 @@ public class C501_CTRL_ClassReg_Login {
     
     public 	String 	pageStatus		{get;set;}
     public 	String 	phoneNumber		{get;set;}
+    public 	String 	identityInput	{get;set;}
     public 	String 	confirmation	{get;set;}
     public  Boolean remember        {get;set;}
     private ID		acctID			= null;
@@ -10,7 +11,18 @@ public class C501_CTRL_ClassReg_Login {
         pageStatus		= 'start';
         phoneNumber		= '';
         confirmation	= '';
+        identityInput	= null;
         remember        = true;
+    }
+    
+    public PageReference confirmLoginBySendToAddress(){
+        PageReference nextPage = C501_UTIL_ClassRegUtilities.confirmLoginByCodeToAddress(confirmation, identityInput , remember );
+        if(nextPage == null){
+            pageStatus = 'confirm-fail';
+            return null;
+        } else {
+            return nextPage;
+        }
     }
     
     public PageReference confirmLogin(){
@@ -22,6 +34,23 @@ public class C501_CTRL_ClassReg_Login {
             return nextPage;
         }
     }
+    
+    public PageReference createAccount(){
+        return C501_UTIL_ClassRegUtilities.generatePageLink('C501_ClassReg_CreateAcct',null,null);
+    }
+    
+    public PageReference sendCodeWOacct(){
+        String identityInput = C501_UTIL_ClassRegUtilities.cleanInputGeneric(identityInput);
+        if(identityInput == null){
+            pageStatus	= 'lookup-fail';
+            return null;
+        } else {
+            pageStatus	= 'confirm';
+            C501_UTIL_ClassRegUtilities.sendConfirmationCodeWOacctID(identityInput);
+            return null;
+        }
+    }
+    
     
     public PageReference lookupAccount(){
         // clean the input
@@ -45,4 +74,5 @@ public class C501_CTRL_ClassReg_Login {
             return null;
         }
     }
+    
 }

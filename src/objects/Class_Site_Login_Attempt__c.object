@@ -49,7 +49,7 @@
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
@@ -67,6 +67,18 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Code_Sent_To__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The Phone Number or Email Address the confirmation code was sent to.</inlineHelpText>
+        <label>Code Sent To</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Login_Attempts__c</fullName>
         <externalId>false</externalId>
         <label>Login Attempts</label>
@@ -76,6 +88,18 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Login_IP_Address__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>IP Address of the Login Attempt</inlineHelpText>
+        <label>Login IP Address</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -99,6 +123,16 @@
         <unique>false</unique>
     </fields>
     <label>Class Site Login Attempt</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Login_IP_Address__c</columns>
+        <columns>Secret_Code__c</columns>
+        <columns>SMS_Timestamp__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
     <nameField>
         <displayFormat>A-{0000}</displayFormat>
         <label>Class Site Login Attempt Name</label>

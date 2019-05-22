@@ -15,26 +15,35 @@
                     <apex:outputPanel rendered="{! pageStatus == 'start' || pageStatus == 'lookup-fail'}">
                         <apex:outputPanel rendered="{! pageStatus == 'start' }">
                             <p>
-                                Please provide your phone number to log in. TEST EXTRA TEXT MORE EXTRA TEXT
+                                Please provide your phone number or email address to log in. 
                             </p>
                         </apex:outputPanel>
                         <apex:outputPanel rendered="{! pageStatus == 'lookup-fail' }">
                             <p>
-                                That account was not found. Please try again. 
+                                That is not a valid email address or phone number. Please try again. 
                             </p>
                         </apex:outputPanel>
                         <apex:form >
                             <p>
-                                <apex:inputText styleClass="form-control" value="{!phoneNumber }" required="true" />
+                                <apex:inputText styleClass="form-control" value="{! identityInput }" required="true" />
                             </p>
+                            
+                            <!--<p>
+                                <apex:inputText styleClass="form-control" value="{!phoneNumber }" required="true" />
+                            </p>-->
+                            <div class="prominent_button">
+                                <apex:commandLink action="{!sendCodeWOacct}" value="Go" />
+                            </div>
+                        </apex:form>
+                        <apex:form >
                             <p>
-                                <apex:commandLink action="{!lookupAccount}" value="Go" />
+                                Don't have an account?  &nbsp;<apex:commandLink action="{!createAccount}" value="Create an Account" />
                             </p>
                         </apex:form>
                     </apex:outputPanel>
                     <apex:outputPanel rendered="{! pageStatus == 'confirm' || pageStatus == 'confirm-fail'}">
                         <p>
-                            We just sent you a text. What is the code?
+                            We just sent you code to the phone number or email address you provided. What is the code?
                         </p>
                         <apex:outputPanel rendered="{! pageStatus == 'confirm-fail' }">
                             <p class="red">
@@ -50,7 +59,8 @@
     							<label class="form-check-label" >Remember me on this device.</label>
                             </p>
                             <div class="prominent_button">
-                                <apex:commandLink action="{!confirmLogin}" value="Go" />
+                                <apex:commandLink action="{!confirmLoginBySendToAddress}" value="Go" />
+                                <!--<apex:commandLink action="{!confirmLogin}" value="Go" />-->
                             </div>
                         </apex:form>
                     </apex:outputPanel>

@@ -24,6 +24,11 @@ public class C501_CTRL_ClassReg_CreateAcct {
             pageStatus = 'confirm-fail';
             return null;
         } else {
+            // Verified login, so update the Account with details provided.
+            insert family;
+            insert parent;
+            //C501_UTIL_ClassRegUtilities.
+            
             return nextPage;
         }
     }
@@ -38,7 +43,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
         if(acctID != null ){
             // send the sms
             C501_UTIL_ClassRegUtilities.sendSMS(acctID,family.C501_Class_Site_Mobile_Number__c);
-            family.Id = acctID;
+            //family.Id = acctID;
             parent.AccountId = acctID;
         	// present user with a code screen
         	pageStatus	= 'confirm';
