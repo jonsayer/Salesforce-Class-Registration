@@ -17,9 +17,29 @@ public class C501_UTIL_ClassRegUtilities {
         }
     }
     
+    public static Boolean confirmLoggedIn(String loginID, Boolean timeCare){
+        Integer timeModify = 0;
+        if(timeCare){
+            timeModify = -30;
+        } else {
+            // minutes in 6 months
+            timeModify = -262980;
+        }
+        Datetime 	cutOffDateTime	= Datetime.now().addMinutes(timeModify);
+        List<Class_Site_Login_Attempt__c> attList = [
+            SELECT 	id,
+            		SMS_Timestamp__c
+            FROM	Class_Site_Login_Attempt__c
+            WHERE	id = :loginID
+             AND	SMS_Timestamp__c > :cutOffDateTime
+            LIMIT 	1
+        ];
+        return attList.size() > 0;
+    }
+    
     public static PageReference confirmLoginByCodeToAddress(String confirmation,String codeToAddress,Boolean remember){
         String pageStatus	= checkVerificationCodeByCodeToAddress(confirmation,codeToAddress);
-        if(pageStatus == 'success'){
+        if(pageStatus != 'confirm-fail'){
             // redirect to the account manager page
             String remString = '';
             if(remember){
@@ -27,7 +47,7 @@ public class C501_UTIL_ClassRegUtilities {
             } else {
                 remString = '0';
             }
-            return C501_UTIL_ClassRegUtilities.generatePageLink('C501_ClassReg_CreateAcct','','');
+            return C501_UTIL_ClassRegUtilities.generatePageLink('C501_ClassReg_CreateAcct','a,r,c',pageStatus+','+remString+','+codeToAddress);
         } else {
             return null;
         }
@@ -44,7 +64,8 @@ public class C501_UTIL_ClassRegUtilities {
             		SMS_Timestamp__c,
             		Login_Attempts__c,
             		Login_IP_Address__c,
-            		Code_Sent_To__c
+            		Code_Sent_To__c,
+            		Verified__c
             FROM	Class_Site_Login_Attempt__c
             WHERE	Code_Sent_To__c = :codeToAddress
              AND	SMS_Timestamp__c > :thirtyMinutesAgo
@@ -53,7 +74,9 @@ public class C501_UTIL_ClassRegUtilities {
         ];
         if(attList.size() > 0 ){
             if(attList[0].Secret_Code__c == cleanedConfirm){
-                return 'success';
+                attList[0].Verified__c = true;
+                update attList[0];
+                return attList[0].Id;
             } else {
                 attList[0].Login_Attempts__c++;
                 update attList;
@@ -228,8 +251,8 @@ public class C501_UTIL_ClassRegUtilities {
     
     public static string cleanInputPhone(String input){
         // to do: clean the string to make sure first number is not '1' and that there are 10 digits.
-        input.replaceAll('[^0-9]', '');
-        return input;
+        String output = input.replaceAll('[^0-9]', '');
+        return output;
     }
     
     public static String generateRandomString(Integer len, Boolean includeNumbers,Boolean includeUppers,Boolean includeLowers) {
@@ -275,14 +298,9 @@ public class C501_UTIL_ClassRegUtilities {
             }
         }
         return page;
-    }
+    }   
     
-    /*public void updateAccount(Account newDuplicate, AccountID masterRecord){
-        
-    }*/
-        
-    
-    public void ObjectsFieldMerge(Account masterObject, List<Account> duplicateObjects){ 
+    /*public void ObjectsFieldMerge(Account masterObject, List<Account> duplicateObjects){ 
         Set<Id> mergeCandidates = new Set<Id> { 
             masterObject.Id 
         };
@@ -310,10 +328,10 @@ public class C501_UTIL_ClassRegUtilities {
 				objectFields.containsKey(UTIL_Namespace.StrTokenNSPrefix(fieldName)))
 
 			{   continue; }
-				*/
+				//
              
             // Only include the fields which are updateable and accessible
-            if (fResult.isUpdateable() && fResult.isAccessible() /*&&!c501MassMerge_SharedCode.isNPSPHiddenField(fieldname)*/) {
+            if (fResult.isUpdateable() && fResult.isAccessible() /*&&!c501MassMerge_SharedCode.isNPSPHiddenField(fieldname) /// ) {
              
              	// If the field is type lookup, then ignore in the merge fields because is handled during the object merge
              	string relName =fResult.getRelationshipName();
@@ -387,9 +405,9 @@ public class C501_UTIL_ClassRegUtilities {
      	} catch (Exception e){ 
             System.debug('***** C501_MassMerge_SharedCode::ObjectsFieldMerge update fields exception: '+String.valueOf(e.getMessage())); 
         }
-    }
+    }*/
     
-    public static String GetUserIPAddress() {
+    /*public static String GetUserIPAddress() {
         // Blatantly stolen from here: https://www.forcetalks.com/salesforce-topic/how-to-get-ip-address-of-user-in-salesforce-apex/
         string ReturnValue ='';
         ReturnValue = ApexPages.currentPage().getHeaders().get('True-Client-IP');
@@ -398,7 +416,7 @@ public class C501_UTIL_ClassRegUtilities {
         } // get IP address when no caching (sandbox, dev, secure urls)
         	system.debug('USER IP ADDRESS: ' + ReturnValue);
         	return ReturnValue;
-    }
+    }*/
     
     
 }

@@ -4,7 +4,7 @@ public class C501_CTRL_ClassReg_Home {
     public C501_CTRL_ClassReg_Home(){
         acctID	= null;
         
-        Cookie aId = ApexPages.currentPage().getCookies().get('AccountIdClassRegSite');
+        /*Cookie aId = ApexPages.currentPage().getCookies().get('AccountIdClassRegSite');
         if (aId != null){
             acctID = 'cookie found';//aId.getValue(); 
         } else {
@@ -43,6 +43,6 @@ public class C501_CTRL_ClassReg_Home {
             } else {
                 acctID = 'no provided variables';
             }
-        }
+        }*/
     }
 }

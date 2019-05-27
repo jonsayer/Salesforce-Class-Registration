@@ -15,6 +15,133 @@ public class C501_TESTClassReg_Login {
         
     }
     
+    /// Below this line, these tests are for testing the verification without confirmation to existing record
+    @isTest static void NoAccountVerify_testSimpleEmailVerify(){
+        PageReference loginPage = Page.C501_ClassReg_Login;
+        Test.setCurrentPage(loginPage);
+        C501_CTRL_ClassReg_Login controller = new C501_CTRL_ClassReg_Login();
+        System.assert( controller.pageStatus == 'start' );
+        
+        controller.identityInput = 'test@email.com';
+        
+        controller.sendCodeWOacct();
+        
+        System.assert( controller.pageStatus == 'confirm' );
+        
+        List<Class_Site_Login_Attempt__c> attList = [
+            SELECT 	id,
+            		Account__c,
+            		Secret_Code__c,
+            		SMS_Timestamp__c,
+            		Login_Attempts__c
+            FROM	Class_Site_Login_Attempt__c
+            ORDER BY SMS_Timestamp__c DESC
+            LIMIT 	1
+        ];
+        
+        controller.confirmation = attList[0].Secret_Code__c;
+        controller.remember     = false;
+        
+        controller.confirmLoginBySendToAddress();
+    }
+    
+    @isTest static void NoAccountVerify_testSimpleSMSVerify(){
+        PageReference loginPage = Page.C501_ClassReg_Login;
+        Test.setCurrentPage(loginPage);
+        C501_CTRL_ClassReg_Login controller = new C501_CTRL_ClassReg_Login();
+        System.assert( controller.pageStatus == 'start' );
+        
+        controller.identityInput = '2067771077';
+        
+        controller.sendCodeWOacct();
+        
+        System.assert( controller.pageStatus == 'confirm' );
+        
+        List<Class_Site_Login_Attempt__c> attList = [
+            SELECT 	id,
+            		Account__c,
+            		Secret_Code__c,
+            		SMS_Timestamp__c,
+            		Login_Attempts__c
+            FROM	Class_Site_Login_Attempt__c
+            ORDER BY SMS_Timestamp__c DESC
+            LIMIT 	1
+        ];
+        
+        controller.confirmation = attList[0].Secret_Code__c;
+        controller.remember     = true;
+        
+        controller.confirmLoginBySendToAddress();
+    }
+    
+    @isTest static void NoAccountVerify_testSimpleEmailVerificationFailure(){
+        PageReference loginPage = Page.C501_ClassReg_Login;
+        Test.setCurrentPage(loginPage);
+        C501_CTRL_ClassReg_Login controller = new C501_CTRL_ClassReg_Login();
+        System.assert( controller.pageStatus == 'start' );
+        
+        controller.identityInput = 'test@email.com';
+        
+        controller.sendCodeWOacct();
+        
+        System.assert( controller.pageStatus == 'confirm' );
+        
+        List<Class_Site_Login_Attempt__c> attList = [
+            SELECT 	id,
+            		Account__c,
+            		Secret_Code__c,
+            		SMS_Timestamp__c,
+            		Login_Attempts__c
+            FROM	Class_Site_Login_Attempt__c
+            ORDER BY SMS_Timestamp__c DESC
+            LIMIT 	1
+        ];
+        
+        controller.confirmation = attList[0].Secret_Code__c;
+        controller.remember     = false;
+        
+        delete attList;
+        
+        controller.confirmLoginBySendToAddress();
+        
+        System.assert( controller.pageStatus == 'confirm-fail' );
+    }
+    
+    @isTest static void NoAccountVerify_testSimpleEmailVerificationFailureBCattListDeleted(){
+        PageReference loginPage = Page.C501_ClassReg_Login;
+        Test.setCurrentPage(loginPage);
+        C501_CTRL_ClassReg_Login controller = new C501_CTRL_ClassReg_Login();
+        System.assert( controller.pageStatus == 'start' );
+        
+        controller.identityInput = 'test@email.com';
+        
+        controller.sendCodeWOacct();
+        
+        System.assert( controller.pageStatus == 'confirm' );
+        
+        controller.confirmation = 'doopdidoop';
+        controller.remember     = false;
+        
+        controller.confirmLoginBySendToAddress();
+        
+        System.assert( controller.pageStatus == 'confirm-fail' );
+    }
+    
+    @isTest static void NoAccountVerify_testEmailInvalid(){
+        PageReference loginPage = Page.C501_ClassReg_Login;
+        Test.setCurrentPage(loginPage);
+        C501_CTRL_ClassReg_Login controller = new C501_CTRL_ClassReg_Login();
+        System.assert( controller.pageStatus == 'start' );
+        
+        controller.identityInput = 'test@emailcom';
+        
+        controller.sendCodeWOacct();
+        
+        System.assert( controller.pageStatus == 'lookup-fail' );
+    }
+    
+    /// Below this line, these tests are for testing the verification without confirmation to existing record
+    
     @isTest static void testSimpleSuccessfulLoginDontRemember(){
         PageReference loginPage = Page.C501_ClassReg_Login;
         Test.setCurrentPage(loginPage);
@@ -71,7 +198,6 @@ public class C501_TESTClassReg_Login {
         
         controller.confirmLogin();
     }
-
 	@isTest static void testSimpleSuccessfulLookupConfirmFail(){
         PageReference loginPage = Page.C501_ClassReg_Login;
         Test.setCurrentPage(loginPage);

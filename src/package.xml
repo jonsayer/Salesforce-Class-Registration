@@ -6,6 +6,7 @@
         <members>C501_CTRL_ClassReg_Home</members>
         <members>C501_CTRL_ClassReg_Login</members>
         <members>C501_TESTClassReg_Login</members>
+        <members>C501_TEST_ClassReg_CreateAcct</members>
         <members>C501_UTIL_ClassRegUtilities</members>
         <name>ApexClass</name>
     </types>
@@ -32,6 +33,10 @@
     <types>
         <members>Class_Site_Login_Attempt__c-Class Site Login Attempt Layout</members>
         <name>Layout</name>
+    </types>
+    <types>
+        <members>ClassRegistration</members>
+        <name>Site</name>
     </types>
     <version>45.0</version>
 </Package>

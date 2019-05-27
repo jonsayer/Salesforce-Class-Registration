@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h1 class="withLine" style="">
-                        Log in
+                        {! $Label.C501_RegSite_Login }
                     </h1>
                 </div>
             </div>
@@ -15,12 +15,12 @@
                     <apex:outputPanel rendered="{! pageStatus == 'start' || pageStatus == 'lookup-fail'}">
                         <apex:outputPanel rendered="{! pageStatus == 'start' }">
                             <p>
-                                Please provide your phone number or email address to log in. 
+                                {! $Label.C501_RegSite_ProvidePhoneEmail }
                             </p>
                         </apex:outputPanel>
                         <apex:outputPanel rendered="{! pageStatus == 'lookup-fail' }">
                             <p>
-                                That is not a valid email address or phone number. Please try again. 
+                                {! $Label.C501_RegSite_InvalidEmailPhone }
                             </p>
                         </apex:outputPanel>
                         <apex:form >
@@ -32,22 +32,22 @@
                                 <apex:inputText styleClass="form-control" value="{!phoneNumber }" required="true" />
                             </p>-->
                             <div class="prominent_button">
-                                <apex:commandLink action="{!sendCodeWOacct}" value="Go" />
+                                <apex:commandLink action="{!sendCodeWOacct}" value="{! $Label.C501_RegSite_Continue }" />
                             </div>
                         </apex:form>
-                        <apex:form >
+                        <!--<apex:form >
                             <p>
                                 Don't have an account?  &nbsp;<apex:commandLink action="{!createAccount}" value="Create an Account" />
                             </p>
-                        </apex:form>
+                        </apex:form>-->
                     </apex:outputPanel>
                     <apex:outputPanel rendered="{! pageStatus == 'confirm' || pageStatus == 'confirm-fail'}">
                         <p>
-                            We just sent you code to the phone number or email address you provided. What is the code?
+                            {! $Label.C501_RegSite_WeSentYouCode }
                         </p>
                         <apex:outputPanel rendered="{! pageStatus == 'confirm-fail' }">
                             <p class="red">
-                                That doesn't seem to match the code we sent you. Try again?
+                                {! $Label.C501_RegSite_CodeMismatch }
                             </p>
                         </apex:outputPanel>
                         <apex:form >
@@ -56,7 +56,7 @@
                             </p>
                             <p>
                                 <apex:inputCheckbox styleClass="form-check-input" value="{!remember}" required="true" />
-    							<label class="form-check-label" >Remember me on this device.</label>
+    							<label class="form-check-label" >{! $Label.C501_RegSite_RememberMeDevice }</label>
                             </p>
                             <div class="prominent_button">
                                 <apex:commandLink action="{!confirmLoginBySendToAddress}" value="Go" />

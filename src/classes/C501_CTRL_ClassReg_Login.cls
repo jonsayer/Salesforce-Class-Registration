@@ -25,6 +25,21 @@ public class C501_CTRL_ClassReg_Login {
         }
     }
     
+    public PageReference sendCodeWOacct(){
+        String identityInput = C501_UTIL_ClassRegUtilities.cleanInputGeneric(identityInput);
+        if(identityInput == null){
+            pageStatus	= 'lookup-fail';
+            return null;
+        } else {
+            pageStatus	= 'confirm';
+            C501_UTIL_ClassRegUtilities.sendConfirmationCodeWOacctID(identityInput);
+            return null;
+        }
+    }
+    
+    // Below this line, code supporting logging in by verifying an existing account
+    // 
+    // 
     public PageReference confirmLogin(){
         PageReference nextPage = C501_UTIL_ClassRegUtilities.confirmLogin(confirmation,acctID,remember);
         if(nextPage == null){
@@ -38,19 +53,6 @@ public class C501_CTRL_ClassReg_Login {
     public PageReference createAccount(){
         return C501_UTIL_ClassRegUtilities.generatePageLink('C501_ClassReg_CreateAcct',null,null);
     }
-    
-    public PageReference sendCodeWOacct(){
-        String identityInput = C501_UTIL_ClassRegUtilities.cleanInputGeneric(identityInput);
-        if(identityInput == null){
-            pageStatus	= 'lookup-fail';
-            return null;
-        } else {
-            pageStatus	= 'confirm';
-            C501_UTIL_ClassRegUtilities.sendConfirmationCodeWOacctID(identityInput);
-            return null;
-        }
-    }
-    
     
     public PageReference lookupAccount(){
         // clean the input
