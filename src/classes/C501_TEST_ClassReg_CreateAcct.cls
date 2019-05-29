@@ -37,7 +37,7 @@ public class C501_TEST_ClassReg_CreateAcct {
         System.assert(controller.pageStatus == 'fail');
     }
     
-    @isTest static void testSuccessfulFamilyInsert(){
+    @isTest static void testSuccessfulGoBack(){
         Class_Site_Login_Attempt__c att = createLoggedInTestUser();
         
         PageReference createAcctPage = Page.C501_ClassReg_CreateAcct;
@@ -47,6 +47,27 @@ public class C501_TEST_ClassReg_CreateAcct {
         C501_CTRL_ClassReg_CreateAcct controller = new C501_CTRL_ClassReg_CreateAcct();
         System.assert(controller.pageStatus == 'new');
         
+        controller.goBack();
+        
+    }
+    
+    @isTest static void testSuccessfulInsert(){
+        Class_Site_Login_Attempt__c att = createLoggedInTestUser();
+        
+        PageReference createAcctPage = Page.C501_ClassReg_CreateAcct;
+        Test.setCurrentPage(createAcctPage);
+        System.currentPageReference().getParameters().put('a', att.id);
+        System.currentPageReference().getParameters().put('r', '1');
+        C501_CTRL_ClassReg_CreateAcct controller = new C501_CTRL_ClassReg_CreateAcct();
+        System.assert(controller.pageStatus == 'new');
+        
+        controller.parent.FirstName	= 'Test';
+        controller.parent.LastName	= 'LastName';
+        controller.family.BillingStreet		= '123 Main St';
+        controller.family.BillingCity		= 'Seattle';
+        controller.family.BillingState		= 'WA';
+        controller.family.BillingPostalCode	= '98101';
+        controller.createAccount();
         
     }
     
