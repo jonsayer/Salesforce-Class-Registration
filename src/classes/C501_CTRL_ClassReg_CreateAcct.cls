@@ -93,8 +93,8 @@ public class C501_CTRL_ClassReg_CreateAcct {
         insert family;
         parent.AccountId 	= family.id;
         insert parent;
-        child.AccountId		= family.id;
-        insert child; 
+        //child.AccountId		= family.id;
+        //insert child; 
         
         return null;
     }
