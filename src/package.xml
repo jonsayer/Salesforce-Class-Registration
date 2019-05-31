@@ -36,6 +36,12 @@
         <name>CustomSetting</name>
     </types>
     <types>
+        <members>Account.C501_Class_Registration_Site_HH_Acct</members>
+        <members>Contact.C501_Class_Registration_Site_Child_Con</members>
+        <members>Contact.C501_Class_Registration_Site_Parent_Con</members>
+        <name>FieldSet</name>
+    </types>
+    <types>
         <members>Class_Site_Login_Attempt__c-Class Site Login Attempt Layout</members>
         <name>Layout</name>
     </types>
