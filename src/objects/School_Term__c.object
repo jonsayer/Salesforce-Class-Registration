@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Annual record of student&apos;s involvement in a techbridge program.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Active_Year__c</fullName>
+        <description>Converts School year picklist into a year to rollup to contact</description>
+        <externalId>false</externalId>
+        <formula>VALUE(RIGHT( TEXT(School_Year__c) , 4))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Active Year</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Authorization_to_treat_minor__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Authorization to treat minor?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Contract__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Contract?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Current_Term__c</fullName>
+        <description>Marks a term as current  (for use by rollups). Rolls over 7/1</description>
+        <externalId>false</externalId>
+        <formula>IF( 
+( MONTH( TODAY()) &lt;=6 &amp;&amp; YEAR(TODAY())=  Active_Year__c  ) || 
+( MONTH( TODAY()) &gt;7 &amp;&amp; YEAR(TODAY())=  Active_Year__c  - 1 ) , 
+
+TRUE, FALSE )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Current Term</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Emergency_Preferred_Medical_Provider__c</fullName>
+        <externalId>false</externalId>
+        <formula>Parent__r.Emergency_Preferred_Medical_Provider__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Specified on the Parent record with other emergency info</inlineHelpText>
+        <label>Emergency Preferred Medical Provider</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Evaluation_Consent__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>STUDENT evaluation consent Check if yes, leave unchecked if no.</inlineHelpText>
+        <label>Evaluation Consent?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Family_Income_Level__c</fullName>
+        <description>Pulls in income level from parent record</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Parent__r.Income__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Family Income Level</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Free_reduced_lunch__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Free/reduced lunch?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Left_Program_Early_Date__c</fullName>
+        <description>Tracks when students drop out.</description>
+        <externalId>false</externalId>
+        <label>Left Program Early Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Left_Program_Early__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Note date student left and reason in &quot;Notes&quot;</inlineHelpText>
+        <label>Left Program Early</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Media_Release__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Media Release?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Notes</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Parent_Email__c</fullName>
+        <externalId>false</externalId>
+        <formula>Parent__r.Email</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>For Form Assembly lookup</inlineHelpText>
+        <label>Parent Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Packet_URL_Unsigned__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Form Assembly record of the electronic parent packet, waiver, etc. This is the unsigned data.</inlineHelpText>
+        <label>Parent Packet URL- Unsigned</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Parent_Packet_URL__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Form Assembly record of the electronic parent packet, waiver, etc. If this is blank, the contract signature has not been verified yet.</inlineHelpText>
+        <label>Parent Packet URL- Signed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Parent_Packet__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Parent Packet</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Parent_Survey__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Did the parent consent for evaluation? Check if yes, leave unchecked if no.</inlineHelpText>
+        <label>Parent Survey?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Parent__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to Contact for tracking parents</description>
+        <externalId>false</externalId>
+        <label>Parent</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Contact.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Parent</value>
+            </filterItems>
+            <infoMessage>Choose a contact of record type Parent</infoMessage>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>School Terms (as Parent)</relationshipLabel>
+        <relationshipName>School_Terms1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Post_Survey__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Post Survey?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pre_Survey__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Pre Survey?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Program_Day__c</fullName>
+        <description>Day of the week the after-school program meets</description>
+        <externalId>false</externalId>
+        <label>Program Day</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Monday</fullName>
+                    <default>false</default>
+                    <label>Monday</label>
+                </value>
+                <value>
+                    <fullName>Tuesday</fullName>
+                    <default>false</default>
+                    <label>Tuesday</label>
+                </value>
+                <value>
+                    <fullName>Wednesday</fullName>
+                    <default>false</default>
+                    <label>Wednesday</label>
+                </value>
+                <value>
+                    <fullName>Thursday</fullName>
+                    <default>false</default>
+                    <label>Thursday</label>
+                </value>
+                <value>
+                    <fullName>Friday</fullName>
+                    <default>false</default>
+                    <label>Friday</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>School_Region__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(School__r.Region__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>School Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>School_Year__c</fullName>
+        <description>School year for the term (September-June)</description>
+        <externalId>false</externalId>
+        <label>School Year</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>2014-2015</fullName>
+                    <default>false</default>
+                    <label>2014-2015</label>
+                </value>
+                <value>
+                    <fullName>2015-2016</fullName>
+                    <default>false</default>
+                    <label>2015-2016</label>
+                </value>
+                <value>
+                    <fullName>2016-2017</fullName>
+                    <default>false</default>
+                    <label>2016-2017</label>
+                </value>
+                <value>
+                    <fullName>2017-2018</fullName>
+                    <default>false</default>
+                    <label>2017-2018</label>
+                </value>
+                <value>
+                    <fullName>2018-2019</fullName>
+                    <default>false</default>
+                    <label>2018-2019</label>
+                </value>
+                <value>
+                    <fullName>2019-2020</fullName>
+                    <default>false</default>
+                    <label>2019-2020</label>
+                </value>
+                <value>
+                    <fullName>2013-2014</fullName>
+                    <default>false</default>
+                    <label>2013-2014</label>
+                </value>
+                <value>
+                    <fullName>2012-2013</fullName>
+                    <default>false</default>
+                    <label>2012-2013</label>
+                </value>
+                <value>
+                    <fullName>2011-2012</fullName>
+                    <default>false</default>
+                    <label>2011-2012</label>
+                </value>
+                <value>
+                    <fullName>2010-2011</fullName>
+                    <default>false</default>
+                    <label>2010-2011</label>
+                </value>
+                <value>
+                    <fullName>2009-2010</fullName>
+                    <default>false</default>
+                    <label>2009-2010</label>
+                </value>
+                <value>
+                    <fullName>2008-2009</fullName>
+                    <default>false</default>
+                    <label>2008-2009</label>
+                </value>
+                <value>
+                    <fullName>2007-2008</fullName>
+                    <default>false</default>
+                    <label>2007-2008</label>
+                </value>
+                <value>
+                    <fullName>2006-2007</fullName>
+                    <default>false</default>
+                    <label>2006-2007</label>
+                </value>
+                <value>
+                    <fullName>2005-2006</fullName>
+                    <default>false</default>
+                    <label>2005-2006</label>
+                </value>
+                <value>
+                    <fullName>2004-2005</fullName>
+                    <default>false</default>
+                    <label>2004-2005</label>
+                </value>
+                <value>
+                    <fullName>2003-2004</fullName>
+                    <default>false</default>
+                    <label>2003-2004</label>
+                </value>
+                <value>
+                    <fullName>2002-2003</fullName>
+                    <default>false</default>
+                    <label>2002-2003</label>
+                </value>
+                <value>
+                    <fullName>2001-2002</fullName>
+                    <default>false</default>
+                    <label>2001-2002</label>
+                </value>
+                <value>
+                    <fullName>2000-2001</fullName>
+                    <default>false</default>
+                    <label>2000-2001</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>School__c</fullName>
+        <description>Master-Detail to Account to track the school</description>
+        <externalId>false</externalId>
+        <label>School</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>School Terms at School</relationshipLabel>
+        <relationshipName>School_Terms</relationshipName>
+        <relationshipOrder>1</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Student_School_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Student School ID</label>
+        <length>15</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Student__c</fullName>
+        <description>Master Detail to Contact for student</description>
+        <externalId>false</externalId>
+        <label>Student</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Contact.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Student, Alumna</value>
+            </filterItems>
+            <infoMessage>Find contact of record type Student</infoMessage>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>School Terms (as Student)</relationshipLabel>
+        <relationshipName>School_Terms</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Waiver__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Waiver?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>School Term</label>
+    <listViews>
+        <fullName>X2016_17_School_Terms</fullName>
+        <columns>NAME</columns>
+        <columns>School__c</columns>
+        <columns>Student__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>School_Year__c</field>
+            <operation>equals</operation>
+            <value>2017-2018</value>
+        </filters>
+        <label>2017-2018 School Terms</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>ST-{00000}</displayFormat>
+        <label>School Term Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>School Terms</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Student__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>School__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>School_Year__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Parent__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Current_Term__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>School__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>School_Year__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Student__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Parent__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Left_Program_Early__c</lookupDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Student__c</searchFilterFields>
+        <searchFilterFields>School__c</searchFilterFields>
+        <searchFilterFields>School_Year__c</searchFilterFields>
+        <searchFilterFields>Parent__c</searchFilterFields>
+        <searchFilterFields>Left_Program_Early__c</searchFilterFields>
+        <searchResultsAdditionalFields>Student__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>School__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>School_Year__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Parent__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Left_Program_Early__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Current_Term__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

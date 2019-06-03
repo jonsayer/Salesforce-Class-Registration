@@ -1,5 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Emergency_Preferred_Medical_Provider__c</fullName>
+        <externalId>false</externalId>
+        <label>Emergency Preferred Medical Provider</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Income__c</fullName>
+        <externalId>false</externalId>
+        <label>Income</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Less than $20,000</fullName>
+                    <default>false</default>
+                    <label>Less than $20,000</label>
+                </value>
+                <value>
+                    <fullName>$20,000-$39,999</fullName>
+                    <default>false</default>
+                    <label>$20,000-$39,999</label>
+                </value>
+                <value>
+                    <fullName>$40,000-$59,999</fullName>
+                    <default>false</default>
+                    <label>$40,000-$59,999</label>
+                </value>
+                <value>
+                    <fullName>$60,000-$79,999</fullName>
+                    <default>false</default>
+                    <label>$60,000-$79,999</label>
+                </value>
+                <value>
+                    <fullName>Over $80,000</fullName>
+                    <default>false</default>
+                    <label>Over $80,000</label>
+                </value>
+                <value>
+                    <fullName>Decline to Answer</fullName>
+                    <default>false</default>
+                    <label>Decline to Answer</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
     <fieldSets>
         <fullName>C501_Class_Registration_Site_Child_Con</fullName>
         <description>Used by the class registration site to define the fields needed for the student/child of a family.</description>
@@ -14,5 +69,5 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <label>Class Registration Site Parent Contact Fields</label>
-    </fieldSets>
+    </fieldSets>    
 </CustomObject>

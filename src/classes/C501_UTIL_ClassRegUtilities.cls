@@ -1,5 +1,46 @@
 public class C501_UTIL_ClassRegUtilities {
     
+    public static List<Account> getListOfActiveSchools(String regionFilter){
+        Id schoolRecordType = [select id from Recordtype where Name='School'].Id;
+        List<Account> schoolList = new List<Account>();
+        
+        if(regionFilter == null){
+            schoolList = [
+                SELECT	id,
+                        Name,
+                        School_District_Lookup__c,
+                        School_District_Lookup__r.Name,
+                        Region__c
+                FROM	Account
+                WHERE	RecordTypeId 	= :schoolRecordType
+            ];
+        } else {
+            schoolList = [
+                SELECT	id,
+                        Name,
+                        School_District_Lookup__c,
+                        School_District_Lookup__r.Name,
+                        Region__c
+                FROM	Account
+                WHERE	RecordTypeId 	= :schoolRecordType
+                 AND	Region__c 		= :regionFilter
+            ];
+        }
+        return schoolList;
+    }
+    
+    public static List<SelectOption> getSelectOptionsActiveSchools(String regionFilter){
+        List<Account> schoolList 			= getListOfActiveSchools(regionFilter);
+        List<SelectOption> schoolOptions 	= new List<SelectOption>();
+        for(Account school : schoolList ){
+            schoolOptions.add(new SelectOption( school.Id, school.School_District_Lookup__r.Name+': '+school.Name ) ); 
+        }
+        if(schoolOptions.size() == 0){
+            schoolOptions.add(new SelectOption( 'heyhey', 'New Yawk City: School of Hard Knocks' ));
+        }
+        return schoolOptions;
+    }
+    
     public static PageReference confirmLogin(String confirmation,ID acctID,Boolean remember){
         String pageStatus	= C501_UTIL_ClassRegUtilities.checkVerificationCode(confirmation,acctID);
         
