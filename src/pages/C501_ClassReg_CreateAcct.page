@@ -71,7 +71,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>{! $Label.C501_ClassReg_ChildSchoolName }</label>
-                                <apex:selectList styleClass="form-control" value="{!schoolName }" required="true" size="1">
+                                <apex:selectList styleClass="form-control" value="{!schoolName }" required="true" size="1" id="schoolNameList">
                                 	<apex:selectOptions value="{!schoolList}"></apex:selectOptions>
                                 </apex:selectList>
                             </div>
@@ -161,7 +161,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>{! $Label.C501_RegSite_State }</label>
-                                <apex:inputText styleClass="form-control" value="{!family.BillingState }" required="true" />
+                                <apex:inputText styleClass="form-control" value="{!family.BillingState }" required="true" onchange="refreshSchools();" />
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -203,6 +203,8 @@
                         </div>
                     </div>
                     
+                    <apex:actionFunction name="refreshSchools" action="{!refreshSchools}" rerender="schoolNameList" ></apex:actionFunction>
+                    
                 </apex:form>
             </apex:outputPanel>
             <!--<apex:outputPanel rendered="{! pageStatus == 'confirm' || pageStatus == 'confirm-fail'}">
@@ -237,6 +239,7 @@
             
             
             
+
         </apex:define>
     </apex:composition>
 </apex:page>

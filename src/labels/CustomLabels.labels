@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>C501_ClassReg_ChildMobilePhone</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_ChildMobilePhone</shortDescription>
+        <value>Student&apos;s Mobile Phone Number (if any)</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_ChildSchoolName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_ChildSchoolName</shortDescription>
+        <value>Student&apos;s School</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_HHhomePhone</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_ParentHomePhone</shortDescription>
+        <value>Parent/Guardian&apos;s Home Phone</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_ParentHomePhone</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_ParentHomePhone</shortDescription>
+        <value>Parent/Guardian Home Phone</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_ParentMobilePhone</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_ParentMobilePhone</shortDescription>
+        <value>Parent/Guardian Mobile Phone</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_ParentWorkPhone</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_ParentWorkPhone</shortDescription>
+        <value>Parent/Guardian Work Phone</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_ChildEmail</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_ChildEmail</shortDescription>
+        <value>Student&apos;s Email Address (if any)</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_ChildFirstName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_ChildFirstName</shortDescription>
+        <value>Student First Name</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_ChildLastName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_ChildLastName</shortDescription>
+        <value>Student Last Name</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_City</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_City</shortDescription>
+        <value>City</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_CodeMismatch</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_CodeMismatch</shortDescription>
+        <value>That doesn&apos;t seem to match the code we sent you. Try again?</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_Continue</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_Continue</shortDescription>
+        <value>Continue</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_FamilyInformation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_FamilyInformation</shortDescription>
+        <value>Family Information</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_FirstName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_ParentFirstName</shortDescription>
+        <value>Parent/Guardian First Name</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_InvalidEmailPhone</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_InvalidEmailPhone</shortDescription>
+        <value>That is not a valid email address or phone number. Please try again.</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_LeaveBlank</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_LeaveBlank</shortDescription>
+        <value>Leave blank if you do not have one.</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_LeaveBlankEmail</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_LeaveBlank</shortDescription>
+        <value>Leave blank if you do not have one.</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_Login</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_Login</shortDescription>
+        <value>Log in</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_ParentEmail</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_ParentEmail</shortDescription>
+        <value>Parent/Guardian Email</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_ParentFirstName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_ParentFirstName</shortDescription>
+        <value>Parent/Guardian First Name</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_ParentLastName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_ParentLastName</shortDescription>
+        <value>Parent/Guardian Last Name</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_ProvidePhoneEmail</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_ProvidePhoneEmail</shortDescription>
+        <value>Please provide your phone number or email address to log in.</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_RememberMeDevice</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_RememberMeDevice</shortDescription>
+        <value>Remember me on this device.</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_SiteRegFormTitle</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_SiteRegFormTitle</shortDescription>
+        <value>Techbridge Girls Class Registration Form</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_State</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_State</shortDescription>
+        <value>State</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_StreetAddress</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_StreetAddress</shortDescription>
+        <value>Street Address</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_StudentInformation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_StudentInformation</shortDescription>
+        <value>Student Information</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_WeSentYouCode</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_WeSentYouCode</shortDescription>
+        <value>We just sent you code to the phone number or email address you provided. What is the code?</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_Youarenotauthenticated</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_Youarenotauthenticated</shortDescription>
+        <value>You are not authenticated</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_ZipCode</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_ZipCode</shortDescription>
+        <value>Zip Code</value>
+    </labels>
+</CustomLabels>

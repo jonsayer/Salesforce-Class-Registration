@@ -76,9 +76,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
     
     public Pagereference refreshSchools(){
         
-        
-        
-        schoolList = C501_UTIL_ClassRegUtilities.getSelectOptionsActiveSchools(null);
+        schoolList = C501_UTIL_ClassRegUtilities.getSelectOptionsActiveSchools( C501_UTIL_ClassRegUtilities.getRegionFromAddy(family.BillingCity,family.BillingState) );
         return null;
     }
     
@@ -119,10 +117,13 @@ public class C501_CTRL_ClassReg_CreateAcct {
         insert parent;
         insert child; 
         
-        School_Term__c term = new School_Term__c(
-			
-        );
+        term.Student__c 	= child.Id;
+        term.School__c 		= schoolName;
         
+        // future version, need to make this dynamic
+        term.School_Year__c	= '2019-2020';
+        
+        insert term;
         
         return null;
     }

@@ -65,6 +65,39 @@
         <name>CustomField</name>
     </types>
     <types>
+        <members>C501_ClassReg_ChildMobilePhone</members>
+        <members>C501_ClassReg_ChildSchoolName</members>
+        <members>C501_ClassReg_HHhomePhone</members>
+        <members>C501_ClassReg_ParentHomePhone</members>
+        <members>C501_ClassReg_ParentMobilePhone</members>
+        <members>C501_ClassReg_ParentWorkPhone</members>
+        <members>C501_RegSite_ChildEmail</members>
+        <members>C501_RegSite_ChildFirstName</members>
+        <members>C501_RegSite_ChildLastName</members>
+        <members>C501_RegSite_City</members>
+        <members>C501_RegSite_CodeMismatch</members>
+        <members>C501_RegSite_Continue</members>
+        <members>C501_RegSite_FamilyInformation</members>
+        <members>C501_RegSite_FirstName</members>
+        <members>C501_RegSite_InvalidEmailPhone</members>
+        <members>C501_RegSite_LeaveBlank</members>
+        <members>C501_RegSite_LeaveBlankEmail</members>
+        <members>C501_RegSite_Login</members>
+        <members>C501_RegSite_ParentEmail</members>
+        <members>C501_RegSite_ParentFirstName</members>
+        <members>C501_RegSite_ParentLastName</members>
+        <members>C501_RegSite_ProvidePhoneEmail</members>
+        <members>C501_RegSite_RememberMeDevice</members>
+        <members>C501_RegSite_SiteRegFormTitle</members>
+        <members>C501_RegSite_State</members>
+        <members>C501_RegSite_StreetAddress</members>
+        <members>C501_RegSite_StudentInformation</members>
+        <members>C501_RegSite_WeSentYouCode</members>
+        <members>C501_RegSite_Youarenotauthenticated</members>
+        <members>C501_RegSite_ZipCode</members>
+        <name>CustomLabel</name>
+    </types>
+    <types>
         <members>Class_Site_Login_Attempt__c</members>
         <members>TwilioConfig__c</members>
         <name>CustomObject</name>
@@ -89,9 +122,5 @@
         <members>techbridgeLogo</members>
         <name>StaticResource</name>
     </types>
-    <types>
-      <members>*</members>
-      <name>CustomLabels</name>
-    </types>    
     <version>45.0</version>
 </Package>

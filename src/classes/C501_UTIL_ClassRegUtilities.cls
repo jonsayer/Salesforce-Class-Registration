@@ -1,5 +1,18 @@
 public class C501_UTIL_ClassRegUtilities {
     
+    public static String getRegionFromAddy(String city,String state){
+        // to do: make this a setting that TBG staff can edit
+        if(state == 'DC' || state == 'MD' || state == 'VA' || state == 'Virginia' || state == 'Maryland'){
+            return 'DC';
+        } else if(state == 'WA' || state == 'Washington'){
+            return 'Seattle';
+        } else if (state == 'CA' || state == 'California'){
+            return 'SF Bay';
+        } else {
+            return null;
+        }
+    }
+    
     public static List<Account> getListOfActiveSchools(String regionFilter){
         Id schoolRecordType = [select id from Recordtype where Name='School'].Id;
         List<Account> schoolList = new List<Account>();
@@ -13,6 +26,21 @@ public class C501_UTIL_ClassRegUtilities {
                         Region__c
                 FROM	Account
                 WHERE	RecordTypeId 	= :schoolRecordType
+                ORDER BY School_District_Lookup__r.Name, Name
+            ];
+        } else if(regionFilter == 'SF Bay'){
+            schoolList = [
+                SELECT	id,
+                        Name,
+                        School_District_Lookup__c,
+                        School_District_Lookup__r.Name,
+                        Region__c
+                FROM	Account
+                WHERE	RecordTypeId 	= :schoolRecordType
+                 AND	(Region__c 		= 'East Bay'
+                 OR      Region__c      = 'South Bay' 
+                         )
+                ORDER BY School_District_Lookup__r.Name, Name
             ];
         } else {
             schoolList = [
@@ -24,6 +52,7 @@ public class C501_UTIL_ClassRegUtilities {
                 FROM	Account
                 WHERE	RecordTypeId 	= :schoolRecordType
                  AND	Region__c 		= :regionFilter
+                ORDER BY School_District_Lookup__r.Name, Name
             ];
         }
         return schoolList;

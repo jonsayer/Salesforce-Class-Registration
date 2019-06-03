@@ -1,58 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionOverrides>
-        <actionName>Accept</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>CancelEdit</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>Clone</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>Delete</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>Edit</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>List</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>New</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>SaveEdit</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>Tab</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <description>Annual record of student&apos;s involvement in a techbridge program.</description>
-    <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Active_Year__c</fullName>
         <description>Converts School year picklist into a year to rollup to contact</description>
@@ -515,7 +462,6 @@ TRUE, FALSE )</formula>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
-    <label>School Term</label>
     <listViews>
         <fullName>X2016_17_School_Terms</fullName>
         <columns>NAME</columns>
@@ -531,37 +477,4 @@ TRUE, FALSE )</formula>
         <label>2017-2018 School Terms</label>
         <language>en_US</language>
     </listViews>
-    <nameField>
-        <displayFormat>ST-{00000}</displayFormat>
-        <label>School Term Name</label>
-        <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
-    </nameField>
-    <pluralLabel>School Terms</pluralLabel>
-    <searchLayouts>
-        <customTabListAdditionalFields>Student__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>School__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>School_Year__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>Parent__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>Current_Term__c</customTabListAdditionalFields>
-        <lookupDialogsAdditionalFields>School__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>School_Year__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Student__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Parent__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Left_Program_Early__c</lookupDialogsAdditionalFields>
-        <searchFilterFields>NAME</searchFilterFields>
-        <searchFilterFields>Student__c</searchFilterFields>
-        <searchFilterFields>School__c</searchFilterFields>
-        <searchFilterFields>School_Year__c</searchFilterFields>
-        <searchFilterFields>Parent__c</searchFilterFields>
-        <searchFilterFields>Left_Program_Early__c</searchFilterFields>
-        <searchResultsAdditionalFields>Student__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>School__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>School_Year__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Parent__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Left_Program_Early__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Current_Term__c</searchResultsAdditionalFields>
-    </searchLayouts>
-    <sharingModel>ControlledByParent</sharingModel>
-    <visibility>Public</visibility>
 </CustomObject>
