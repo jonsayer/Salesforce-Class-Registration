@@ -1,0 +1,193 @@
+<apex:page sidebar="false" showHeader="false" controller="C501_CTRL_ClassReg_CreateAcct" >
+    <apex:composition template="C501_ClassRegSiteTemplate">
+        <apex:define name="body">
+            <div class="row">
+                <div class="col-xs-8">
+            		<apex:pageMessages />
+                </div>
+            </div>
+            <apex:outputPanel rendered="{! pageStatus = 'fail'}">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1 class="withLine" style="">
+                            {! $Label.C501_RegSite_Youarenotauthenticated }
+                        </h1>
+                    </div>
+                    <div class="col-xs-8">
+                        <p>
+                            <apex:form >
+                            	Please <apex:commandLink action="{!goBack}" value="go back" /> and provide a phone number or email to authenticate.
+                            </apex:form>
+                        </p>
+                    </div>
+                </div>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{! pageStatus = 'new'}">
+            	<apex:form >
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1 class="withLine" style="">
+                                {! $Label.C501_RegSite_SiteRegFormTitle }
+                            </h1>
+                        </div>
+                    </div>
+                    <!--<div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="withLine" style="">
+                                {! $Label.C501_RegSite_StudentInformation }
+                            </h2>
+                        </div>
+                    </div>
+                    -->
+                    
+                    
+                	<div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="withLine" style="">
+                                {! $Label.C501_RegSite_FamilyInformation }
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $Label.C501_RegSite_ParentFirstName }</label>
+                                <apex:inputText styleClass="form-control" value="{!parent.FirstName }" required="true" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $Label.C501_RegSite_ParentLastName } </label>
+                                <apex:inputText styleClass="form-control" value="{!parent.LastName }" required="true" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{! $Label.C501_RegSite_ParentEmail }</label>
+                                <apex:inputText styleClass="form-control" value="{!parent.Email }" />
+                                <small class="form-text text-muted">{! $Label.C501_RegSite_LeaveBlank }</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $Label.C501_ClassReg_ParentHomePhone }</label>
+                                <apex:inputText styleClass="form-control" value="{!parent.HomePhone }" />
+                                <small class="form-text text-muted">{! $Label.C501_RegSite_LeaveBlank }</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $Label.C501_ClassReg_ParentMobilePhone }</label>
+                                <apex:inputText styleClass="form-control" value="{!parent.MobilePhone }" />
+                                <small class="form-text text-muted">{! $Label.C501_RegSite_LeaveBlank }</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $Label.C501_ClassReg_ParentWorkPhone }</label>
+                                <apex:inputText styleClass="form-control" value="{!parent.OtherPhone }" />
+                                <small class="form-text text-muted">{! $Label.C501_RegSite_LeaveBlank }</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{! $Label.C501_RegSite_StreetAddress }</label>
+                                <apex:inputText styleClass="form-control" value="{!family.BillingStreet }" required="true" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $Label.C501_RegSite_City }</label>
+                                <apex:inputText styleClass="form-control" value="{!family.BillingCity }" required="true" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $Label.C501_RegSite_State }</label>
+                                <apex:inputText styleClass="form-control" value="{!family.BillingState }" required="true" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $Label.C501_RegSite_ZipCode }</label>
+                                <apex:inputText styleClass="form-control" value="{!family.BillingPostalCode }" required="true" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <apex:repeat value="{!$ObjectType.Account.fieldsets.C501_Class_Registration_Site_HH_Acct}" var="field">
+                 		<div class="row">
+                        	<div class="col-md-6">
+                            	<div class="form-group">
+                                    <apex:outputLabel value="{!field.Label + IF(OR(field.DBRequired, field.Required), '*', '')}" />
+                        			<apex:inputField value="{!family[field]}" required="{!IF(OR(field.DBRequired, field.Required), 'true', 'false')}" styleClass="form-control" />
+                                </div>
+                            </div>
+                        </div>
+             		</apex:repeat>
+                    
+                    <apex:repeat value="{!$ObjectType.Contact.fieldsets.C501_Class_Registration_Site_Parent_Con}" var="field">
+                 		<div class="row">
+                        	<div class="col-md-6">
+                            	<div class="form-group">
+                                    <apex:outputLabel value="Parent/Guardian {!field.Label + IF(OR(field.DBRequired, field.Required), '*', '')}" />
+                        			<apex:inputField value="{!parent[field]}" required="{!IF(OR(field.DBRequired, field.Required), 'true', 'false')}" styleClass="form-control" />
+                                </div>
+                            </div>
+                        </div>
+             		</apex:repeat>
+                    
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="prominent_button">
+                                <apex:commandLink action="{!createAccount}" value="Create Account" />
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </apex:form>
+            </apex:outputPanel>
+            <!--<apex:outputPanel rendered="{! pageStatus == 'confirm' || pageStatus == 'confirm-fail'}">
+                <div class="col-xs-12">
+                    <h1 class="withLine" style="">
+                        Please provide the confirmation code.
+                    </h1>
+                    <p>
+                        Looks like you already have an account. We just sent a text to the mobile phone number you provided. Please provide the confirmation code in the message.
+                    </p>
+                </div>
+                
+                <apex:outputPanel rendered="{! pageStatus == 'confirm-fail' }">
+                    <p class="red">
+                        That doesn't seem to match the code we sent you. Try again?
+                    </p>
+                </apex:outputPanel>
+                <apex:form >
+                    <p>
+                        <apex:inputText styleClass="form-control" value="{!confirmation }" required="true" />
+                    </p>
+                    <p>
+                        <apex:inputCheckbox styleClass="form-check-input" value="{!remember}" required="true" />
+    					<label class="form-check-label" >Remember me on this device.</label>
+                    </p>
+                    
+                    <div class="prominent_button">
+                        <apex:commandLink action="{!confirmLogin}" value="Access My Account" />
+                    </div>
+                </apex:form>
+            </apex:outputPanel>-->
+            
+            
+            
+        </apex:define>
+    </apex:composition>
+</apex:page>

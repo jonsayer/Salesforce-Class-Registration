@@ -1,0 +1,304 @@
+<apex:page showHeader="false" id="SiteTemplate" standardStylesheets="true" cache="false">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Techbridge Girls <apex:insert name="pageTitle" /></title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+    
+    <apex:includeScript value="https://code.jquery.com/jquery-2.2.4.min.js"/>
+    <apex:includeScript value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" />
+    <div class="container">
+        <div id="header" layout="block" styleClass="row">
+            <div class="col-xs-12">
+                <div id="headerImage">
+                    <a href="https://www.techbridgegirls.org/" target="_new"><img src ="http://www.meyersgroup.net/wp-content/uploads/2016/12/dummy-logo-300x140.png" /> </a>
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            <apex:insert name="body" />
+        </div>
+        
+    </div>
+    
+    
+    <div class="container">
+        <div class="row foooter">
+            <div class="col-sm-12 footertext">
+                <p>
+                    © 2019 Techbridge Girls | 
+                    <apex:outputLink value="https://www.techbridgegirls.org/index.php?id=92" >Privacy Policy</apex:outputLink> | 
+                    <apex:outputLink value="https://www.techbridgegirls.org/index.php?id=93" >Terms of Use</apex:outputLink> |
+                    <apex:outputLink value="mailto:info@techbridgegirls.org" >info@techbridgegirls.org</apex:outputLink> |
+                    114 Linden Street, Oakland, CA 94607 |
+                    510.777.9170
+                </p>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    <style type="text/css">
+        body {
+        	font-family: 'Open Sans', sans-serif;
+        }
+        a, a:visited, a.link {
+            color:#c03d27;
+            text-decoration:underline;
+        	cursor: pointer;
+        }
+        a:hover, a:active {
+            color:#c03d27;
+            text-decoration:none;
+        }
+        h1,h2,h3,h4,h5,h6 {
+            display:block;
+        	font-weight:700 !important;
+        }
+        .withLine {
+        border-top:1px dotted #b2382a;
+        width: 100%;
+        padding-top:0.83em;
+        }
+        .inputForm label {
+            font-size:1.1em;
+            font-weight:bold;
+            display:block;
+            float:left;
+            clear:left;
+            
+            margin-right:10px;
+            margin-bottom:0.5em;
+        }
+        .prominent_button {
+            width: 180px;
+            overflow: hidden;
+            margin-bottom:1.5em;
+            text-align: center;
+            background-color:#b2382a;
+            border: 0;
+            border-radius: 5px;
+            font-size:1.5em;
+        }
+        .prominent_button a, 
+        .prominent_button a:visited,
+        input.prominent_button {
+            width:auto;
+            padding: 6px;
+            display: block;
+            color: #fff;
+            cursor: pointer;
+            text-decoration:none;
+        }
+        .prominent_button a:hover, 
+        .prominent_button a:active,
+        input.prominent_button:hover,
+        input.prominent_button:active {
+            background-color: #b94b3f;
+            color: #fff;
+            text-decoration:none;
+        }
+        .mini_prominent {
+            width: auto;
+            font-size:1.1em;
+        }
+        .foooter {
+            background-color: whitesmoke;
+            color: black;
+            font-size: 14px;
+            min-height: 130px;
+            border-top: 1px solid lightgray;
+            margin-top:3em;
+            padding-top:2em;
+        }
+        .customstyle {
+            margin:2em 0;
+            background-color: white;
+        }
+        .customstyle .content {
+            margin-left:0;
+            position:static;
+        }
+        .customstyle .content div.info table td {
+            padding-right: 0.7em;
+        }
+        .customstyle .content div.info input[type=radio] {
+            margin-right: 0.3em;
+        }
+        <!--.leadItems {
+            color: #5E656B;
+            max-width: 408px;
+            margin:0 auto;
+            font-size: 16px;
+        }-->
+        .leadItems .btn {
+            font-size:12px !important;
+        }
+        #addressWrite {
+            display:none;
+        }
+        
+        .maillink, .maillink:hover {
+            color: red;
+            text-decoration: none;
+        }
+        .band {
+            height: 80px;
+            background-color: gray;
+        }
+        .link {
+            font-size:14px;
+        }
+        .noClicky {
+            cursor:wait;
+            pointer-events: none;
+        }
+        .inputForm label {clear:left;float:left;margin-top:1.5em;}
+        
+        .red {
+            color:red;
+        }
+        
+        #oldBrowserAlert {
+        	display: none;
+        	width:100%;
+        	background-color:#b2382a;
+        	color:#ffffff;
+        	padding:3em;
+        }
+        #oldBrowserAlert a, #oldBrowserAlert a:hover, #oldBrowserAlert a:active, #oldBrowserAlert a:visited {
+        	color: #ffffff;
+        }
+        @media only screen and (max-width: 550px) {
+            .customstyle {
+                margin:0;
+                
+            }
+            .customstyle .content {
+                width:90vw;
+                min-width:0px;
+            }
+            .customstyle .content .info td, .customstyle .content div.info{
+                padding-left:1.5em;
+                padding-right:1.5em;
+            }
+            .customstyle .content div.info table td {
+                padding:0;
+                padding-right: 0.7em;
+            }
+            
+            .customstyle .content .ccjs-card {
+                width:100%!important;
+                margin: 0 0 20px 0;
+                border-radius:0;
+            }
+            .customstyle .content .ccjs-card label.ccjs-number {
+                width:11em;
+            }
+            .customstyle .content .ccjs-card label.ccjs-number input {
+                width:8.7em;
+            }
+            .customstyle .content .ccjs-card label.ccjs-csc {
+                width:6em;
+                right:2em;
+            }
+            .customstyle .content .ccjs-card label.ccjs-csc input {
+                right:0.9em;
+            }
+            .customstyle .content .ccjs-card label.ccjs-name input {
+                width:9em;
+            }
+        }
+    </style>
+    
+    
+    <script type="text/javascript">
+    	
+        window.onload = function() {
+            resize();
+            var target = document.getElementById('page:content');
+            var config = { attributes: true, childList: true, characterData: true, subtree: true }
+            var observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    resize();
+                });
+            });
+            observer.observe(target, config);
+        }
+    
+        window.onresize = function(event) {
+            resize();
+        };
+        editDivVisible = false;
+        function toggleAddressEdit() {
+            var noEditDiv = document.getElementById("addressShow");
+            var editDiv = document.getElementById("addressWrite");
+            if (editDivVisible == true){
+                editDiv.style.display = "none";
+                noEditDiv.style.display = "block";
+                editDivVisible = false;
+            } else {
+                editDiv.style.display = "block";
+                noEditDiv.style.display = "none";
+                editDivVisible = true;
+            }
+        }
+        
+    /*function resize() {
+            footer = document.getElementsByClassName("foooter")[0];
+            body = document.body;
+    
+            if (window.innerHeight < body.scrollHeight + footer.scrollHeight) {
+                footer.style.position = "relative";
+            }
+            if (window.innerHeight >= body.scrollHeight) {
+                footer.style.position = "absolute";
+            }
+        }*/
+    
+        $('.commandLink').bind('click', function() {
+            $(this).addClass('noClicky');
+            $(this).html("Processing...");
+        });
+    
+        $(document).ready( function() {
+            $('.customstyle #page').removeAttr('align');
+        });
+            
+        function validateUserInput(selector,emailSelector,emailRequired){
+            var faults = $(selector).filter(function() {
+                // filter input elements to required ones that are empty
+                return $(this).val() === "";
+            }).css("background-color", "red").addClass("errorField").after("<p class='red' style='line-height:20px;text-align:right;margin:0.5em 5em 1em 0;'>^ This field is Required ^</p>");  
+            if(faults.length || validateEmailField(emailSelector, emailRequired)){
+                if (faults.length){
+                    alert("Please complete all fields.");
+                }
+                return false;
+            } else {
+                return true;
+            }
+        }
+    
+        function validateEmailField(element,emailRequired){
+            // Failed validation means a "true" return
+            if(emailRequired == false && $(element).val() == ''){
+                return false;
+            } 
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (regex.test($.trim($(element).val())) == false && $(element).val().length != 0 ){
+                $(element).css("background-color", "red").addClass("errorField").after("<p class='red' style='line-height:20px;text-align:right;margin:0.5em 5em 1em 0;'>^ Invalid Email Address ^</p>");
+                alert('Invalid email address. Please correct it!');
+                return true;
+            } else {
+                return false;
+            }
+        }
+    
+    	
+        
+    </script>
+  
+  	<site:googleAnalyticsTracking />
+  
+</apex:page>

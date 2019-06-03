@@ -1,0 +1,72 @@
+<apex:page sidebar="false" showHeader="false" controller="C501_CTRL_ClassReg_Login">
+    
+    <apex:composition template="C501_ClassRegSiteTemplate">
+        <apex:define name="body">
+            <apex:pageMessages />
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="withLine" style="">
+                        {! $Label.C501_RegSite_Login }
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <apex:outputPanel rendered="{! pageStatus == 'start' || pageStatus == 'lookup-fail'}">
+                        <apex:outputPanel rendered="{! pageStatus == 'start' }">
+                            <p>
+                                {! $Label.C501_RegSite_ProvidePhoneEmail }
+                            </p>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{! pageStatus == 'lookup-fail' }">
+                            <p>
+                                {! $Label.C501_RegSite_InvalidEmailPhone }
+                            </p>
+                        </apex:outputPanel>
+                        <apex:form >
+                            <p>
+                                <apex:inputText styleClass="form-control" value="{! identityInput }" required="true" />
+                            </p>
+                            
+                            <!--<p>
+                                <apex:inputText styleClass="form-control" value="{!phoneNumber }" required="true" />
+                            </p>-->
+                            <div class="prominent_button">
+                                <apex:commandLink action="{!sendCodeWOacct}" value="{! $Label.C501_RegSite_Continue }" />
+                            </div>
+                        </apex:form>
+                        <!--<apex:form >
+                            <p>
+                                Don't have an account?  &nbsp;<apex:commandLink action="{!createAccount}" value="Create an Account" />
+                            </p>
+                        </apex:form>-->
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{! pageStatus == 'confirm' || pageStatus == 'confirm-fail'}">
+                        <p>
+                            {! $Label.C501_RegSite_WeSentYouCode }
+                        </p>
+                        <apex:outputPanel rendered="{! pageStatus == 'confirm-fail' }">
+                            <p class="red">
+                                {! $Label.C501_RegSite_CodeMismatch }
+                            </p>
+                        </apex:outputPanel>
+                        <apex:form >
+                            <p>
+                                <apex:inputText styleClass="form-control" value="{!confirmation }" required="true" />
+                            </p>
+                            <p>
+                                <apex:inputCheckbox styleClass="form-check-input" value="{!remember}" required="true" />
+    							<label class="form-check-label" >{! $Label.C501_RegSite_RememberMeDevice }</label>
+                            </p>
+                            <div class="prominent_button">
+                                <apex:commandLink action="{!confirmLoginBySendToAddress}" value="Go" />
+                                <!--<apex:commandLink action="{!confirmLogin}" value="Go" />-->
+                            </div>
+                        </apex:form>
+                    </apex:outputPanel>
+                    
+                </div>
+            </div>
+        </apex:define>
+    </apex:composition>
+</apex:page>

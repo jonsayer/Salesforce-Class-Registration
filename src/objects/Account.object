@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <fullName>C501_Class_Registration_Site_HH_Acct</fullName>
+        <description>Used by the class registration site to define the fields used on the household account.</description>
+        <displayedFields>
+            <field>Can_we_take_photos_at_the_Field_Trip__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Class Registration Site HH Account Fields</label>
+    </fieldSets>
+    <fields>
+        <fullName>C501_Class_Site_Mobile_Number_Lookup__c</fullName>
+        <externalId>false</externalId>
+        <formula>SUBSTITUTE( 
+SUBSTITUTE( 
+SUBSTITUTE( 
+SUBSTITUTE(C501_Class_Site_Mobile_Number__c, &quot;(&quot;, &quot;&quot;), &quot;)&quot;, &quot;&quot;), &quot; &quot;, &quot;&quot;), &quot;-&quot;, &quot;&quot;)</formula>
+        <inlineHelpText>Used to look up accounts on the class registration site.</inlineHelpText>
+        <label>Class Site Mobile Number Lookup</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>C501_Class_Site_Mobile_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Class Site Mobile Number</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+</CustomObject>
