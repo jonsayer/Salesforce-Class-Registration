@@ -77,6 +77,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public Pagereference refreshSchools(){
         
         schoolList = C501_UTIL_ClassRegUtilities.getSelectOptionsActiveSchools( C501_UTIL_ClassRegUtilities.getRegionFromAddy(family.BillingCity,family.BillingState) );
+        //schoolList = C501_UTIL_ClassRegUtilities.getSelectOptionsActiveSchools( C501_UTIL_ClassRegUtilities.getRegionFromAddy('Renton','WA') );
         return null;
     }
     

@@ -67,16 +67,18 @@
                             <small class="form-text text-muted">{! $Label.C501_RegSite_LeaveBlank }</small>
                         </div>
                     </div>
-					<div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>{! $Label.C501_ClassReg_ChildSchoolName }</label>
-                                <apex:selectList styleClass="form-control" value="{!schoolName }" required="true" size="1" id="schoolNameList">
-                                	<apex:selectOptions value="{!schoolList}"></apex:selectOptions>
-                                </apex:selectList>
+                    <apex:outputPanel id="schoolNameList">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{! $Label.C501_ClassReg_ChildSchoolName }</label>
+                                    <apex:selectList styleClass="form-control" value="{!schoolName }" required="true" size="1" >
+                                        <apex:selectOptions value="{!schoolList}"></apex:selectOptions>
+                                    </apex:selectList>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </apex:outputPanel>
 					
                     
                     <apex:repeat value="{!$ObjectType.Contact.fieldsets.C501_Class_Registration_Site_Child_Con}" var="field">
@@ -161,7 +163,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>{! $Label.C501_RegSite_State }</label>
-                                <apex:inputText styleClass="form-control" value="{!family.BillingState }" required="true" onchange="refreshSchools();" />
+                                <apex:inputText styleClass="form-control" value="{!family.BillingState }" required="true" onchange="refreshTheSchools();" />
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -203,7 +205,7 @@
                         </div>
                     </div>
                     
-                    <apex:actionFunction name="refreshSchools" action="{!refreshSchools}" rerender="schoolNameList" ></apex:actionFunction>
+                    <apex:actionFunction name="refreshTheSchools" action="{!refreshSchools}" rerender="schoolNameList" ></apex:actionFunction>
                     
                 </apex:form>
             </apex:outputPanel>
