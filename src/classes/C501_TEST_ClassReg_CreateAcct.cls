@@ -54,6 +54,9 @@ public class C501_TEST_ClassReg_CreateAcct {
     @isTest static void testSuccessfulInsert(){
         Class_Site_Login_Attempt__c att = createLoggedInTestUser();
         
+        Account	school = new Account(Name='TestSchool',Region__c = 'Seattle');
+        insert school;
+        
         PageReference createAcctPage = Page.C501_ClassReg_CreateAcct;
         Test.setCurrentPage(createAcctPage);
         System.currentPageReference().getParameters().put('a', att.id);
@@ -67,6 +70,11 @@ public class C501_TEST_ClassReg_CreateAcct {
         controller.family.BillingCity		= 'Seattle';
         controller.family.BillingState		= 'WA';
         controller.family.BillingPostalCode	= '98101';
+        
+        controller.child.FirstName	= 'Child';
+        controller.child.LastName	= 'Name';
+        controller.schoolName		= school.Id;
+        
         controller.createAccount();
         
     }

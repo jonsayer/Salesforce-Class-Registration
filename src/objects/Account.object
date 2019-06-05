@@ -33,4 +33,38 @@ SUBSTITUTE(C501_Class_Site_Mobile_Number__c, &quot;(&quot;, &quot;&quot;), &quot
         <trackHistory>false</trackHistory>
         <type>Phone</type>
     </fields>
+    <fields>
+        <fullName>Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Region</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>East Bay</fullName>
+                    <default>false</default>
+                    <label>East Bay</label>
+                </value>
+                <value>
+                    <fullName>South Bay</fullName>
+                    <default>false</default>
+                    <label>South Bay</label>
+                </value>
+                <value>
+                    <fullName>Seattle</fullName>
+                    <default>false</default>
+                    <label>Seattle</label>
+                </value>
+                <value>
+                    <fullName>DC</fullName>
+                    <default>false</default>
+                    <label>DC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
 </CustomObject>
