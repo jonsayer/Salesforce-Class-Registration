@@ -5,6 +5,9 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public Account 	family   		{get; set;}
     public String  	pageStatus   	{get; set;}
     public ID		loginID			{get; set;}
+    public List<SelectOption> schoolList {get;set;}
+    public String	schoolName		{get;set;}
+    public School_Term__c term		{get;set;}
     
     public C501_CTRL_ClassReg_CreateAcct(){
         Boolean loggedIn = false;
@@ -31,7 +34,15 @@ public class C501_CTRL_ClassReg_CreateAcct {
             }
         }
         
-        parent = new Contact();
+        parent 	= new Contact(
+        	RecordTypeId 	= [select id from Recordtype where Name='Parent'].Id
+        );
+        child  	= new Contact(
+        	RecordTypeId 	= [select id from Recordtype where Name='Student'].Id
+        );
+		
+		term	= new School_Term__c();
+        
         String 	confirmMeth 	= ApexPages.currentPage().getParameters().get('c');
         
         family = new Account(
@@ -43,6 +54,9 @@ public class C501_CTRL_ClassReg_CreateAcct {
         } else {
             parent.MobilePhone 	= confirmMeth;
         }
+        
+        schoolList = C501_UTIL_ClassRegUtilities.getSelectOptionsActiveSchools(null);
+        schoolName = '';
     }
     
     /*public PageReference confirmLogin(){
@@ -59,6 +73,13 @@ public class C501_CTRL_ClassReg_CreateAcct {
             return nextPage;
         }
     }*/
+    
+    public Pagereference refreshSchools(){
+        
+        schoolList = C501_UTIL_ClassRegUtilities.getSelectOptionsActiveSchools( C501_UTIL_ClassRegUtilities.getRegionFromAddy(family.BillingCity,family.BillingState) );
+        //schoolList = C501_UTIL_ClassRegUtilities.getSelectOptionsActiveSchools( C501_UTIL_ClassRegUtilities.getRegionFromAddy('Renton','WA') );
+        return null;
+    }
     
     public Pagereference goBack(){
         return C501_UTIL_ClassRegUtilities.generatePageLink('C501_ClassReg_Login',null,null);
@@ -91,10 +112,19 @@ public class C501_CTRL_ClassReg_CreateAcct {
         }*/
         
         insert family;
+        
         parent.AccountId 	= family.id;
+        child.AccountId		= family.id;
         insert parent;
-        //child.AccountId		= family.id;
-        //insert child; 
+        insert child; 
+        
+        term.Student__c 	= child.Id;
+        term.School__c 		= schoolName;
+        
+        // future version, need to make this dynamic
+        term.School_Year__c	= '2019-2020';
+        
+        insert term;
         
         return null;
     }
