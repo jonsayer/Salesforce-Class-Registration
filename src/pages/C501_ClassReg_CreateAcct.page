@@ -81,7 +81,7 @@
                     </apex:outputPanel>
 					
                     
-                    <apex:repeat value="{!$ObjectType.Contact.fieldsets.C501_Class_Registration_Site_Child_Con}" var="field">
+                    <apex:repeat value="{!childFieldSet}" var="field">
                  		<div class="row">
                         	<div class="col-md-6">
                             	<div class="form-group">
@@ -163,9 +163,11 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>{! $Label.C501_RegSite_State }</label>
-                                <apex:inputText styleClass="form-control" value="{!family.BillingState }" required="true" onchange="refreshTheSchools();" />
+                                <apex:inputText styleClass="form-control" value="{!family.BillingState }" required="true">
+                                </apex:inputText>
                             </div>
                         </div>
+                        
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>{! $Label.C501_RegSite_ZipCode }</label>
@@ -174,7 +176,7 @@
                         </div>
                     </div>
                     
-                    <apex:repeat value="{!$ObjectType.Account.fieldsets.C501_Class_Registration_Site_HH_Acct}" var="field">
+                    <apex:repeat value="{!hhFieldSet}" var="field">
                  		<div class="row">
                         	<div class="col-md-6">
                             	<div class="form-group">
@@ -185,7 +187,7 @@
                         </div>
              		</apex:repeat>
                     
-                    <apex:repeat value="{!$ObjectType.Contact.fieldsets.C501_Class_Registration_Site_Parent_Con}" var="field">
+                    <apex:repeat value="{!parentFieldSet}" var="field">
                  		<div class="row">
                         	<div class="col-md-6">
                             	<div class="form-group">
@@ -205,7 +207,7 @@
                         </div>
                     </div>
                     
-                    <apex:actionFunction name="refreshTheSchools" action="{!refreshSchools}" rerender="schoolNameList" ></apex:actionFunction>
+                    <!--<apex:actionFunction name="refreshTheSchools" action="{!refreshSchools}" rerender="schoolNameList" ></apex:actionFunction>-->
                     
                 </apex:form>
             </apex:outputPanel>

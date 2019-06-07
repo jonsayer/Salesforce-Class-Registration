@@ -64,9 +64,6 @@ public class C501_UTIL_ClassRegUtilities {
         for(Account school : schoolList ){
             schoolOptions.add(new SelectOption( school.Id, school.School_District_Lookup__r.Name+': '+school.Name ) ); 
         }
-        if(schoolOptions.size() == 0){
-            schoolOptions.add(new SelectOption( 'heyhey', 'New Yawk City: School of Hard Knocks' ));
-        }
         return schoolOptions;
     }
     

@@ -9,6 +9,10 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public String	schoolName		{get;set;}
     public School_Term__c term		{get;set;}
     
+    public List<Schema.FieldSetMember>	hhFieldSet		{get;set;}
+    public List<Schema.FieldSetMember>	parentFieldSet	{get;set;}
+    public List<Schema.FieldSetMember>	childFieldSet	{get;set;}
+    
     public C501_CTRL_ClassReg_CreateAcct(){
         Boolean loggedIn = false;
         loginID	= null;
@@ -57,6 +61,25 @@ public class C501_CTRL_ClassReg_CreateAcct {
         
         schoolList = C501_UTIL_ClassRegUtilities.getSelectOptionsActiveSchools(null);
         schoolName = '';
+        
+        Map<String, Schema.FieldSet> FsAcctMap = Schema.SObjectType.Account.fieldSets.getMap();
+        Map<String, Schema.FieldSet> FsContMap = Schema.SObjectType.Contact.fieldSets.getMap();
+
+        try{
+            hhFieldSet = FsAcctMap.get('C501_Class_Registration_Site_HH_Acct_C').getFields();
+        } catch(Exception e){
+            hhFieldSet = FsAcctMap.get('C501_Class_Registration_Site_HH_Acct').getFields();
+        }
+        try{
+            parentFieldSet = FsContMap.get('C501_Class_Registration_Site_Parent_C').getFields();
+        } catch(Exception e){
+            parentFieldSet = FsContMap.get('C501_Class_Registration_Site_Parent').getFields();
+        }
+        try{
+            childFieldSet = FsContMap.get('C501_Class_Registration_Site_Child_C').getFields();
+        } catch(Exception e){
+            childFieldSet = FsContMap.get('C501_Class_Registration_Site_Child').getFields();
+        }       
     }
     
     /*public PageReference confirmLogin(){
@@ -75,7 +98,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
     }*/
     
     public Pagereference refreshSchools(){
-        
+       
         schoolList = C501_UTIL_ClassRegUtilities.getSelectOptionsActiveSchools( C501_UTIL_ClassRegUtilities.getRegionFromAddy(family.BillingCity,family.BillingState) );
         //schoolList = C501_UTIL_ClassRegUtilities.getSelectOptionsActiveSchools( C501_UTIL_ClassRegUtilities.getRegionFromAddy('Renton','WA') );
         return null;
@@ -119,6 +142,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
         insert child; 
         
         term.Student__c 	= child.Id;
+        term.Parent__c 		= parent.Id;
         term.School__c 		= schoolName;
         
         // future version, need to make this dynamic
