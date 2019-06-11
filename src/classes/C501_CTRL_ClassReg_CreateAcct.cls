@@ -5,13 +5,22 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public Account 	family   		{get; set;}
     public String  	pageStatus   	{get; set;}
     public ID		loginID			{get; set;}
-    public List<SelectOption> schoolList {get;set;}
     public String	schoolName		{get;set;}
+    public String	schoolRegion	{get;set;}
     public School_Term__c term		{get;set;}
+    private String  RegType         {get;set;}
+    
+    public List<SelectOption> schoolList {get;set;}
+    
+    public List<Schema.FieldSetMember>	hhFieldSet		{get;set;}
+    public List<Schema.FieldSetMember>	parentFieldSet	{get;set;}
+    public List<Schema.FieldSetMember>	childFieldSet	{get;set;}
     
     public C501_CTRL_ClassReg_CreateAcct(){
         Boolean loggedIn = false;
         loginID	= null;
+        RegType = null;
+        
         Cookie aId = ApexPages.currentPage().getCookies().get('LoginIdClassRegSite');
         if (aId != null){
             loginID 	= aId.getValue();
@@ -51,12 +60,34 @@ public class C501_CTRL_ClassReg_CreateAcct {
         );
         if(confirmMeth != null && confirmMeth.contains('@')){
             parent.Email 		= confirmMeth;
+            RegType             = 'byEmail';
         } else {
             parent.MobilePhone 	= confirmMeth;
+            RegType             = 'byText';
         }
         
-        schoolList = C501_UTIL_ClassRegUtilities.getSelectOptionsActiveSchools(null);
+        schoolRegion = '';
+        schoolList = getSelectOptionsActiveSchools('');
         schoolName = '';
+        
+        Map<String, Schema.FieldSet> FsAcctMap = Schema.SObjectType.Account.fieldSets.getMap();
+        Map<String, Schema.FieldSet> FsContMap = Schema.SObjectType.Contact.fieldSets.getMap();
+
+        try{
+            hhFieldSet = FsAcctMap.get('C501_ClassReg_Site_HH_Acct_Custom').getFields();
+        } catch(Exception e){
+            hhFieldSet = FsAcctMap.get('C501_Class_Registration_Site_HH_Acct').getFields();
+        }
+        try{
+            parentFieldSet = FsContMap.get('C501_ClassReg_Site_Parent_Custom').getFields();
+        } catch(Exception e){
+            parentFieldSet = FsContMap.get('C501_Class_Registration_Site_Parent').getFields();
+        }
+        try{
+            childFieldSet = FsContMap.get('C501_ClassReg_Site_Child_Custom').getFields();
+        } catch(Exception e){
+            childFieldSet = FsContMap.get('C501_Class_Registration_Site_Child').getFields();
+        }       
     }
     
     /*public PageReference confirmLogin(){
@@ -75,9 +106,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
     }*/
     
     public Pagereference refreshSchools(){
-        
-        schoolList = C501_UTIL_ClassRegUtilities.getSelectOptionsActiveSchools( C501_UTIL_ClassRegUtilities.getRegionFromAddy(family.BillingCity,family.BillingState) );
-        //schoolList = C501_UTIL_ClassRegUtilities.getSelectOptionsActiveSchools( C501_UTIL_ClassRegUtilities.getRegionFromAddy('Renton','WA') );
+        schoolList = getSelectOptionsActiveSchools( schoolRegion );
         return null;
     }
     
@@ -119,14 +148,67 @@ public class C501_CTRL_ClassReg_CreateAcct {
         insert child; 
         
         term.Student__c 	= child.Id;
+        term.Parent__c 		= parent.Id;
         term.School__c 		= schoolName;
         
         // future version, need to make this dynamic
         term.School_Year__c	= '2019-2020';
+        term.C501_Sign_Up_Source__c = RegType;
         
         insert term;
         
         return null;
+    }
+    
+    public static List<SelectOption> getRegions(){
+        List<SelectOption> regions = new List<SelectOption>();
+        
+        regions.add(new SelectOption( '', 'Select One' ) ); 
+        regions.add(new SelectOption( 'East Bay', Label.C501_ClassReg_eastBay ) ); 
+        regions.add(new SelectOption( 'South Bay', Label.C501_ClassReg_southBay ) ); 
+        regions.add(new SelectOption( 'Seattle', Label.C501_ClassReg_seattleArea ) ); 
+        regions.add(new SelectOption( 'DC', Label.C501_ClassReg_dcArea ) ); 
+        return regions;
+    }
+    
+    public static List<Account> getListOfActiveSchools(String regionFilter){
+        Id schoolRecordType = [select id from Recordtype where Name='School'].Id;
+        List<Account> schoolList = new List<Account>();
+        schoolList = [
+            SELECT	id,
+            		Name,
+            		School_District_Lookup__c,
+            		School_District_Lookup__r.Name,
+            		Region__c
+            FROM	Account
+            WHERE	RecordTypeId 	= :schoolRecordType
+            AND		Region__c 		= :regionFilter
+            ORDER BY School_District_Lookup__r.Name, Name
+        ];
+        if(schoolList.size() == 0){
+            schoolList = [
+                SELECT	id,
+                        Name,
+                        School_District_Lookup__c,
+                        School_District_Lookup__r.Name,
+                        Region__c
+                FROM	Account
+                WHERE	RecordTypeId 	= :schoolRecordType
+                ORDER BY School_District_Lookup__r.Name, Name
+            ];
+        }
+        return schoolList;
+    }
+    
+    public static List<SelectOption> getSelectOptionsActiveSchools(String regionFilter){
+        List<Account> schoolList 			= getListOfActiveSchools(regionFilter);
+        List<SelectOption> schoolOptions 	= new List<SelectOption>();
+        schoolOptions.add(new SelectOption( '', 'Select One: '+ regionFilter) ); 
+        for(Account school : schoolList ){
+            schoolOptions.add(new SelectOption( school.Id, school.School_District_Lookup__r.Name+': '+school.Name ) ); 
+        }
+        
+        return schoolOptions;
     }
 
 }

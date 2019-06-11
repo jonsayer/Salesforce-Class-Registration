@@ -61,6 +61,8 @@ public class C501_TEST_ClassReg_CreateAcct {
         Test.setCurrentPage(createAcctPage);
         System.currentPageReference().getParameters().put('a', att.id);
         System.currentPageReference().getParameters().put('r', '1');
+        
+        Test.startTest();
         C501_CTRL_ClassReg_CreateAcct controller = new C501_CTRL_ClassReg_CreateAcct();
         System.assert(controller.pageStatus == 'new');
         
@@ -71,12 +73,29 @@ public class C501_TEST_ClassReg_CreateAcct {
         controller.family.BillingState		= 'WA';
         controller.family.BillingPostalCode	= '98101';
         
+        controller.refreshSchools();
+        
         controller.child.FirstName	= 'Child';
         controller.child.LastName	= 'Name';
         controller.schoolName		= school.Id;
         
         controller.createAccount();
         
+        Test.stopTest();
+        
+        List<School_Term__c> lookupTest = [
+            SELECT	id,
+            		Parent__c,
+            		Parent__r.FirstName,
+            		Student__c,
+            		School__c,
+            		School__r.Name
+            FROM	School_Term__c
+        ];
+        
+        System.assert( lookupTest.size() == 1 );
+        System.assert( lookupTest[0].Parent__r.FirstName == 'Test' );
+        System.assert( lookupTest[0].School__r.Name == 'TestSchool' );
     }
     
     public static Class_Site_Login_Attempt__c createLoggedInTestUser(){

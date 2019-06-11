@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldSets>
-        <fullName>C501_Class_Registration_Site_Child_Con</fullName>
-        <description>Used by the class registration site to define the fields needed for the student/child of a family.</description>
-        <label>Class Registration Site Child Contact Fields</label>
+        <fullName>C501_Class_Registration_Site_Child</fullName>
+        <description>Used by the class registration site to define the fields used on the child contact.</description>
+        <label>C501_Class_Registration_Site_Child</label>
     </fieldSets>
     <fieldSets>
-        <fullName>C501_Class_Registration_Site_Parent_Con</fullName>
-        <description>Used on the class registration site to indicate the Contact fields needed for the primary logged-in parent.</description>
-        <displayedFields>
-            <field>Translation_Needed__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <label>Class Registration Site Parent Contact Fields</label>
+        <fullName>C501_Class_Registration_Site_Parent</fullName>
+        <description>Used by the class registration site to define the fields used on the parent contact.</description>
+        <label>C501_Class_Registration_Site_Parent</label>
     </fieldSets>
     <fields>
         <fullName>Emergency_Preferred_Medical_Provider__c</fullName>
