@@ -15,6 +15,13 @@
         <value>Student&apos;s School</value>
     </labels>
     <labels>
+        <fullName>C501_ClassReg_ChildSchoolRegion</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_ChildSchoolRegion</shortDescription>
+        <value>Techbridge serves girls in four different regions. Which region is your child&apos;s school in?</value>
+    </labels>
+    <labels>
         <fullName>C501_ClassReg_HHhomePhone</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -41,6 +48,34 @@
         <protected>false</protected>
         <shortDescription>C501_ClassReg_ParentWorkPhone</shortDescription>
         <value>Parent/Guardian Work Phone</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_dcArea</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_dcArea</shortDescription>
+        <value>Washington DC Area</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_eastBay</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_eastBay</shortDescription>
+        <value>East San Francisco Bay Area (eg. Oakland)</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_seattleArea</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_seattleArea</shortDescription>
+        <value>Seattle Area</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_southBay</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_southBay</shortDescription>
+        <value>South San Francisco Bay Area (eg. San Jose)</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_ChildEmail</fullName>

@@ -27,6 +27,10 @@
                 <behavior>Readonly</behavior>
                 <field>School_Region__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>C501_Sign_Up_Source__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

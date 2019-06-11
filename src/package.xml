@@ -31,6 +31,7 @@
         <members>Contact.Income__c</members>
         <members>School_Term__c.Active_Year__c</members>
         <members>School_Term__c.Authorization_to_treat_minor__c</members>
+        <members>School_Term__c.C501_Sign_Up_Source__c</members>
         <members>School_Term__c.Contract__c</members>
         <members>School_Term__c.Current_Term__c</members>
         <members>School_Term__c.Emergency_Preferred_Medical_Provider__c</members>
@@ -66,10 +67,15 @@
     <types>
         <members>C501_ClassReg_ChildMobilePhone</members>
         <members>C501_ClassReg_ChildSchoolName</members>
+        <members>C501_ClassReg_ChildSchoolRegion</members>
         <members>C501_ClassReg_HHhomePhone</members>
         <members>C501_ClassReg_ParentHomePhone</members>
         <members>C501_ClassReg_ParentMobilePhone</members>
         <members>C501_ClassReg_ParentWorkPhone</members>
+        <members>C501_ClassReg_dcArea</members>
+        <members>C501_ClassReg_eastBay</members>
+        <members>C501_ClassReg_seattleArea</members>
+        <members>C501_ClassReg_southBay</members>
         <members>C501_RegSite_ChildEmail</members>
         <members>C501_RegSite_ChildFirstName</members>
         <members>C501_RegSite_ChildLastName</members>

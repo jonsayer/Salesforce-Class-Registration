@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </apex:outputPanel>
-            <apex:outputPanel rendered="{! pageStatus = 'new'}">
+            <apex:outputPanel rendered="{! pageStatus = 'new'}" id="wholePage">
             	<apex:form >
                     <div class="row">
                         <div class="col-xs-12">
@@ -67,17 +67,32 @@
                             <small class="form-text text-muted">{! $Label.C501_RegSite_LeaveBlank }</small>
                         </div>
                     </div>
-                    <apex:outputPanel id="schoolNameList">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{! $Label.C501_ClassReg_ChildSchoolName }</label>
-                                    <apex:selectList styleClass="form-control" value="{!schoolName }" required="true" size="1" >
-                                        <apex:selectOptions value="{!schoolList}"></apex:selectOptions>
-                                    </apex:selectList>
+                    <apex:outputPanel >
+                        <apex:actionRegion >
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{! $Label.C501_ClassReg_ChildSchoolRegion }</label>
+                                        <apex:selectList styleClass="form-control" id="regionSelect" value="{! schoolRegion }" required="true" size="1" multiselect="false"><!--onchange="refreshTheSchools();"-->
+                                            <apex:selectOptions value="{!regions}"></apex:selectOptions>
+                                            <apex:actionSupport event="onchange" action="{!refreshSchools}" rerender="wholePage" status="status"/>
+                                        </apex:selectList>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        
+                        	
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{! $Label.C501_ClassReg_ChildSchoolName }</label>
+                                        <apex:selectList styleClass="form-control" value="{!schoolName }" required="true" size="1" id="schoolNameList" >
+                                            <apex:selectOptions value="{!schoolList}"></apex:selectOptions>
+                                        </apex:selectList>
+                                    </div>
+                                </div>
+                            </div>
+                        </apex:actionRegion>
                     </apex:outputPanel>
 					
                     
@@ -201,13 +216,33 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="prominent_button">
-                                <apex:commandLink action="{!createAccount}" value="Submit Application" />
+                                <apex:commandLink action="{!createAccount}" value="Submit Application" styleClass="commandLink" status="status" />
                             </div>
                             
                         </div>
                     </div>
                     
-                    <!--<apex:actionFunction name="refreshTheSchools" action="{!refreshSchools}" rerender="schoolNameList" ></apex:actionFunction>-->
+                    <apex:actionFunction name="refreshTheSchools" action="{!refreshSchools}" rerender="schoolNameList" status="status">
+                    </apex:actionFunction>
+                    
+                    
+                    
+                    <apex:actionStatus id="status">
+                        <apex:facet name="start">
+                        <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 1000; background-color: black;">
+                            &nbsp;
+                        </div>
+                        <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 15% 50%">
+                            <div style="display: inline-block; padding: 2px; background-color: #fff; width: 125px;">
+                                <img src="/img/loading.gif" style="float: left; margin: 8px;" />
+                                <span style="display: inline-block; padding: 10px 0px;">Please Wait...</span>
+                            </div>
+                        </div>
+                        </apex:facet>
+                    </apex:actionStatus>
+                    
+                    
+                    
                     
                 </apex:form>
             </apex:outputPanel>
