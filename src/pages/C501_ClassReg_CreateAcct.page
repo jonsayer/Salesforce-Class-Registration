@@ -67,41 +67,98 @@
                             <small class="form-text text-muted">{! $Label.C501_RegSite_LeaveBlank }</small>
                         </div>
                     </div>
-                    <apex:outputPanel >
-                        <apex:actionRegion >
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>{! $Label.C501_ClassReg_ChildSchoolRegion }</label>
-                                        <apex:selectList styleClass="form-control" id="regionSelect" value="{! schoolRegion }" required="true" size="1" multiselect="false"><!--onchange="refreshTheSchools();"-->
-                                            <apex:selectOptions value="{!regions}"></apex:selectOptions>
-                                            <apex:actionSupport event="onchange" action="{!refreshSchools}" rerender="wholePage" status="status"/>
-                                        </apex:selectList>
-                                    </div>
-                                </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{! $Label.C501_RegSite_StreetAddress }</label>
+                                <apex:inputText styleClass="form-control" value="{!family.BillingStreet }" required="true" />
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $Label.C501_RegSite_City }</label>
+                                <apex:inputText styleClass="form-control" value="{!family.BillingCity }" required="true" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $Label.C501_RegSite_State }</label>
+                                <apex:inputText styleClass="form-control" value="{!family.BillingState }" required="true">
+                                </apex:inputText>
+                            </div>
+                        </div>
                         
-                        	
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>{! $Label.C501_ClassReg_ChildSchoolName }</label>
-                                        <apex:selectList styleClass="form-control" value="{!schoolName }" required="true" size="1" id="schoolNameList" >
-                                            <apex:selectOptions value="{!schoolList}"></apex:selectOptions>
-                                        </apex:selectList>
-                                    </div>
-                                </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $Label.C501_RegSite_ZipCode }</label>
+                                <apex:inputText styleClass="form-control" value="{!family.BillingPostalCode }" required="true" />
                             </div>
-                        </apex:actionRegion>
-                    </apex:outputPanel>
-					
+                        </div>
+                    </div>
+                    
+                    
+                    <!--<div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{! $Label.C501_ClassReg_ChildSchoolRegion }</label>
+                                <apex:selectList styleClass="form-control" id="regionSelect" value="{! schoolRegion }" required="true" size="1" multiselect="false" onchange="changeSchoolList();">
+                                    <!--<apex:actionSupport immediate="false" event="onchange" action="{!refreshSchools}" rerender="schoolNameList" status="status"/>
+                                    <apex:selectOptions value="{!regions}"></apex:selectOptions>
+                                </apex:selectList>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{! $Label.C501_ClassReg_ChildSchoolName }</label>
+                                <apex:selectList styleClass="form-control" value="{!schoolName }" required="true" size="1" id="schoolNameList" >
+                                    <apex:selectOptions value="{!schoolList}"></apex:selectOptions>
+                                </apex:selectList>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $Label.C501_RegSite_Grade }</label>
+                                <apex:selectList styleClass="form-control" value="{! grade }" required="true" size="1" multiselect="false">
+                                    <apex:selectOptions value="{!gradeList}"></apex:selectOptions>
+                                </apex:selectList>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $Label.C501_ClassReg_Birthday }</label>
+                                <apex:inputField styleClass="form-control" value="{!child.Birthdate }" required="true" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <apex:inputCheckbox value="{!term.Free_reduced_lunch__c }" styleClass="form-check-input" />  
+                            	<label class="form-check-label"> {! $Label.C501_ClassReg_FreeLunch } </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label> {! $Label.C501_ClassReg_StudentID } </label>
+                                <apex:inputField value="{!term.Student_School_ID__c }" styleClass="form-control" /> 
+                            </div>
+                        </div>
+                    </div>
+                    		
                     
                     <apex:repeat value="{!childFieldSet}" var="field">
                  		<div class="row">
                         	<div class="col-md-6">
                             	<div class="form-group">
-                                    <apex:outputLabel value="Student {!field.Label + IF(OR(field.DBRequired, field.Required), '*', '')}" />
-                        			<apex:inputField value="{!parent[field]}" required="{!IF(OR(field.DBRequired, field.Required), 'true', 'false')}" styleClass="form-control" />
+                                    <apex:outputLabel value="{!IF($ObjectType.Contact.Fields[field].inlineHelpText != '',$ObjectType.Contact.Fields[field].inlineHelpText,'^Student '+field.Label) + IF(OR(field.DBRequired, field.Required), '*', '')}" />
+                                    <apex:inputField value="{!parent[field]}" required="{!IF(OR(field.DBRequired, field.Required), 'true', 'false')}" styleClass="{!IF(field.Type='multipicklist','','form-control')}" />
+                                    
                                 </div>
                             </div>
                         </div>
@@ -160,43 +217,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>{! $Label.C501_RegSite_StreetAddress }</label>
-                                <apex:inputText styleClass="form-control" value="{!family.BillingStreet }" required="true" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $Label.C501_RegSite_City }</label>
-                                <apex:inputText styleClass="form-control" value="{!family.BillingCity }" required="true" />
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $Label.C501_RegSite_State }</label>
-                                <apex:inputText styleClass="form-control" value="{!family.BillingState }" required="true">
-                                </apex:inputText>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $Label.C501_RegSite_ZipCode }</label>
-                                <apex:inputText styleClass="form-control" value="{!family.BillingPostalCode }" required="true" />
-                            </div>
-                        </div>
-                    </div>
+                    
                     
                     <apex:repeat value="{!hhFieldSet}" var="field">
                  		<div class="row">
                         	<div class="col-md-6">
                             	<div class="form-group">
-                                    <apex:outputLabel value="{!field.Label + IF(OR(field.DBRequired, field.Required), '*', '')}" />
-                        			<apex:inputField value="{!family[field]}" required="{!IF(OR(field.DBRequired, field.Required), 'true', 'false')}" styleClass="form-control" />
+                                    <apex:outputLabel value="{!IF($ObjectType.Account.Fields[field].inlineHelpText != '',$ObjectType.Account.Fields[field].inlineHelpText,'^Family '+field.Label) + IF(OR(field.DBRequired, field.Required), '*', '')}" />
+                        			<apex:inputField value="{!family[field]}" required="{!IF(OR(field.DBRequired, field.Required), 'true', 'false')}" styleClass="{!IF(field.Type='multipicklist','','form-control')}" />
                                 </div>
                             </div>
                         </div>
@@ -206,15 +234,132 @@
                  		<div class="row">
                         	<div class="col-md-6">
                             	<div class="form-group">
-                                    <apex:outputLabel value="Parent/Guardian {!field.Label + IF(OR(field.DBRequired, field.Required), '*', '')}" />
-                        			<apex:inputField value="{!parent[field]}" required="{!IF(OR(field.DBRequired, field.Required), 'true', 'false')}" styleClass="form-control" />
+                                    <apex:outputLabel value="{!IF($ObjectType.Contact.Fields[field].inlineHelpText != '',$ObjectType.Contact.Fields[field].inlineHelpText,'^Parent/Guardian '+field.Label) + IF(OR(field.DBRequired, field.Required), '*', '')}" />
+                        			<apex:inputField value="{!parent[field]}" required="{!IF(OR(field.DBRequired, field.Required), 'true', 'false')}" styleClass="{!IF(field.Type='multipicklist','','form-control')}" />
                                 </div>
                             </div>
                         </div>
              		</apex:repeat>
                     
                     <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="withLine" style="">
+                                {! $Label.C501_ClassReg_PARTICIPANT_WAIVER }
+                            </h2>
+                            <p>
+                                {! $Label.C501_ClassReg_PARTICIPANT_WAIVERp1 }
+                            </p>
+                            <p>
+                                {! $Label.C501_ClassReg_PARTICIPANT_WAIVERp2 }
+                            </p>
+                            <p>
+                                {! $Label.C501_ClassReg_PARTICIPANT_WAIVERp3 } 
+                            </p>
+                            <p>
+                                <apex:inputCheckbox value="{!term.Waiver__c}" required="true" styleClass="form-check-input" />  
+                                <label class="form-check-label">{! $Label.C501_ClassReg_PARTICIPANT_WAIVERlabel }</label>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="withLine" style="">
+                                {! $Label.C501_ClassReg_AuthToTreatMinor } 
+                            </h2>
+                            <p>
+                                {! $Label.C501_ClassReg_AuthToTreatMinorP1 } 
+                            </p>
+                            <p>
+                                {! $Label.C501_ClassReg_AuthToTreatMinorP2 } 
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                    	<div class="col-xs-4">
+                        	<label>{! $Label.C501_ClassReg_AuthToTreatMinorProvider }  </label>
+                        	<apex:inputText styleClass="form-control" value="{!child.Emergency_Preferred_Medical_Provider__c }" />
+                        </div>
+                    </div>
+                    <div class="row">
+                    	<div class="col-xs-12">
+                            <p>
+                                <apex:inputCheckbox value="{!term.Authorization_to_treat_minor__c}" required="true" styleClass="form-check-input" />  
+                            	<label class="form-check-label"> {! $Label.C501_ClassReg_AuthToTreatMinorLabel } </label>
+                            </p>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="withLine" style="">
+                                {! $Label.C501_ClassReg_PhotoVideo }
+                            </h2>
+                            <p>
+                                {! $Label.C501_ClassReg_PhotoVideoP1 }
+                            </p>
+                            
+                            <p>
+                                <apex:inputCheckbox value="{!term.Media_Release__c}" styleClass="form-check-input" />  
+                            	<label class="form-check-label">{! $Label.C501_ClassReg_PhotoVideoLabel }  </label>
+                            </p>
+                        </div>
+                    </div>                    
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="withLine" style="">
+                                {! $Label.C501_ClassReg_parentFamilyConsent }
+
+                            </h2>
+                            <h3>
+                                {! $Label.C501_ClassReg_EvalStudy }
+                            </h3>
+                            
+                            
+                            
+                            
+                            <h4>
+                                {! $Label.C501_ClassReg_EvalStudyH1 }
+                            </h4>
+                            <p>
+                                {! $Label.C501_ClassReg_EvalStudyH1P1 }
+                            </p>                            
+                            <p>
+                                {! $Label.C501_ClassReg_EvalStudyH1P2 }
+                            </p>                            
+                            <p>
+                            	{! $Label.C501_ClassReg_EvalStudyH1P3 }
+                            </p>                            
+                            <h4>
+                                {! $Label.C501_ClassReg_EvalStudyH2 }
+                            </h4>
+                            <ul>
+                                <apex:outPutText escape="false" value="{! $Label.C501_ClassReg_EvalStudyH2li }" ></apex:outPutText>  
+                            </ul>
+                            
+                            <h4>
+                                {! $Label.C501_ClassReg_EvalStudyH3 }
+                            </h4>
+                            <p>
+                                {! $Label.C501_ClassReg_EvalStudyH3P1 }
+                            </p>
+                            <ul>
+                                <apex:outPutText escape="false" value="{! $Label.C501_ClassReg_EvalStudyH3li }" ></apex:outPutText>  
+                            </ul>
+                            
+                            <p>
+                                <apex:inputCheckbox value="{!term.Evaluation_Consent__c}" styleClass="form-check-input" />  
+                            	<label class="form-check-label"> Yes, my child may participate in the study. (If no, leave unchecked). </label>
+                            </p>
+                            <p>
+                                <apex:inputCheckbox value="{!term.Parent_Survey__c}" styleClass="form-check-input" />  
+                            	<label class="form-check-label"> Yes, I will participate in the study. (If no, leave unchecked). </label>
+                            </p>
+                            
+                            
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-3">
+                            <h2 class="withLine" style="">   </h2>
                             <div class="prominent_button">
                                 <apex:commandLink action="{!createAccount}" value="Submit Application" styleClass="commandLink" status="status" />
                             </div>
@@ -242,7 +387,7 @@
                     </apex:actionStatus>
                     
                     
-                    
+                    <apex:actionFunction name="changeSchoolList" action="{!refreshSchools}" rerender="schoolNameList" status="status"></apex:actionFunction>
                     
                 </apex:form>
             </apex:outputPanel>

@@ -3,13 +3,262 @@
     <fieldSets>
         <fullName>C501_Class_Registration_Site_Child</fullName>
         <description>Used by the class registration site to define the fields used on the child contact.</description>
+        <displayedFields>
+            <field>Allergies__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Medication__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Race__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Student_Special_Needs__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>T_shirt_Size__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Student_Transportation__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Authorized_Pickup_1_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Authorized_Pickup_1_Phone__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Authorized_Pickup_1_Relationship__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Authorized_Pickup_2_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Authorized_Pickup_2_Phone__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Authorized_Pickup_2_Relationship__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Authorized_Pickup_3_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Authorized_Pickup_3_Phone__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Authorized_Pickup_3_Relationship__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Alternate_Contact_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Alternate_Contact_Phone__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Alternate_Contact_Relationship__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Emergency_Contact_2_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Emergency_Contact_2_Phone__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Emergency_Contact_2_Relationship__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
         <label>C501_Class_Registration_Site_Child</label>
     </fieldSets>
     <fieldSets>
         <fullName>C501_Class_Registration_Site_Parent</fullName>
         <description>Used by the class registration site to define the fields used on the parent contact.</description>
+        <displayedFields>
+            <field>Preferred_Method_of_Contact__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Translation_Needed__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Parent_Education__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Parent_Education_second_parent__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Income__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Volunteer__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
         <label>C501_Class_Registration_Site_Parent</label>
     </fieldSets>
+    <fields>
+        <fullName>Allergies__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Does your child have any food restrictions or food allergies (vegetarian, vegan, dairy, gluten, nuts, kosher, Halal, seafood, no pork products, etc.)? (If Yes, please explain. If No, please write &quot;None&quot;)</inlineHelpText>
+        <label>Allergies / Food Restrictions</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Authorized_Pickup_1_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If you selected &quot;Someone will pick up my child&quot;, What is the name of someone authorized to pick up your child?</inlineHelpText>
+        <label>Authorized Pickup 1 Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Authorized_Pickup_1_Phone__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Authorized Pickup 1&apos;s Phone #</inlineHelpText>
+        <label>Authorized Pickup 1 Phone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Authorized_Pickup_1_Relationship__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Authorized Pickup 1&apos;s Relationship to Child</inlineHelpText>
+        <label>Authorized Pickup 1 Relationship</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Authorized_Pickup_2_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of a second person authorized to pick up your child:</inlineHelpText>
+        <label>Authorized Pickup 2 Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Authorized_Pickup_2_Phone__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Authorized Pickup 2&apos;s Phone #</inlineHelpText>
+        <label>Authorized Pickup 2 Phone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Authorized_Pickup_2_Relationship__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Authorized Pickup 2&apos;s Relationship to Child</inlineHelpText>
+        <label>Authorized Pickup 2 Relationship</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Authorized_Pickup_3_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of a third person authorized to pick up your child:</inlineHelpText>
+        <label>Authorized Pickup 3 Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Authorized_Pickup_3_Phone__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Authorized Pickup 3&apos;s Phone #</inlineHelpText>
+        <label>Authorized Pickup 3 Phone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Authorized_Pickup_3_Relationship__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Authorized Pickup 3&apos;s Relationship to Child</inlineHelpText>
+        <label>Authorized Pickup 3 Relationship</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <fields>
         <fullName>Emergency_Preferred_Medical_Provider__c</fullName>
         <externalId>false</externalId>
@@ -24,6 +273,7 @@
     <fields>
         <fullName>Income__c</fullName>
         <externalId>false</externalId>
+        <inlineHelpText>Please choose your annual household income range:</inlineHelpText>
         <label>Income</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -64,5 +314,446 @@
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Medication__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please check if your child has any health condition(s) that Techbridge Girls should be aware of:</inlineHelpText>
+        <label>Medication / Health Condition</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Number_in_Household__c</fullName>
+        <description>As reported by Parent (not based on Household Account)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>How many people live in your household (2, 3, 4, 5, etc.):</inlineHelpText>
+        <label>Number in Household</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Education__c</fullName>
+        <description>What level of education did the parent finish?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>How far did you go in school? I finished…</inlineHelpText>
+        <label>Parent Education</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Elementary school</fullName>
+                    <default>false</default>
+                    <label>Elementary school</label>
+                </value>
+                <value>
+                    <fullName>Middle school</fullName>
+                    <default>false</default>
+                    <label>Middle school</label>
+                </value>
+                <value>
+                    <fullName>High school diploma or G.E.D.</fullName>
+                    <default>false</default>
+                    <label>High school diploma or G.E.D.</label>
+                </value>
+                <value>
+                    <fullName>Trade/vocational school certificate</fullName>
+                    <default>false</default>
+                    <label>Trade/vocational school certificate</label>
+                </value>
+                <value>
+                    <fullName>2-year college degree</fullName>
+                    <default>false</default>
+                    <label>2-year college degree</label>
+                </value>
+                <value>
+                    <fullName>4-year college degree</fullName>
+                    <default>false</default>
+                    <label>4-year college degree</label>
+                </value>
+                <value>
+                    <fullName>Master&apos;s degree</fullName>
+                    <default>false</default>
+                    <label>Master&apos;s degree</label>
+                </value>
+                <value>
+                    <fullName>Ph.D., M.D., J.D. or other professional degree</fullName>
+                    <default>false</default>
+                    <label>Ph.D., M.D., J.D. or other professional degree</label>
+                </value>
+                <value>
+                    <fullName>Does not apply</fullName>
+                    <default>false</default>
+                    <label>Does not apply</label>
+                </value>
+                <value>
+                    <fullName>Decline to Answer</fullName>
+                    <default>false</default>
+                    <label>Decline to Answer</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Parent_Education_second_parent__c</fullName>
+        <description>What level did of education did the second parent finish?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If applicable, please indicate how far your child’s other parent or guardian went in school? He/she finished…</inlineHelpText>
+        <label>Parent Education - second parent</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Elementary school,</fullName>
+                    <default>false</default>
+                    <label>Elementary school,</label>
+                </value>
+                <value>
+                    <fullName>Middle school</fullName>
+                    <default>false</default>
+                    <label>Middle school</label>
+                </value>
+                <value>
+                    <fullName>High school diploma or G.E.D.</fullName>
+                    <default>false</default>
+                    <label>High school diploma or G.E.D.</label>
+                </value>
+                <value>
+                    <fullName>Trade/vocational school certificate</fullName>
+                    <default>false</default>
+                    <label>Trade/vocational school certificate</label>
+                </value>
+                <value>
+                    <fullName>2-year college degree</fullName>
+                    <default>false</default>
+                    <label>2-year college degree</label>
+                </value>
+                <value>
+                    <fullName>4-year college degree</fullName>
+                    <default>false</default>
+                    <label>4-year college degree</label>
+                </value>
+                <value>
+                    <fullName>Master&apos;s degree</fullName>
+                    <default>false</default>
+                    <label>Master&apos;s degree</label>
+                </value>
+                <value>
+                    <fullName>Ph.D., M.D., J.D. or other professional degree</fullName>
+                    <default>false</default>
+                    <label>Ph.D., M.D., J.D. or other professional degree</label>
+                </value>
+                <value>
+                    <fullName>I don&apos;t know</fullName>
+                    <default>false</default>
+                    <label>I don&apos;t know</label>
+                </value>
+                <value>
+                    <fullName>Does not apply</fullName>
+                    <default>false</default>
+                    <label>Does not apply</label>
+                </value>
+                <value>
+                    <fullName>Decline to Answer</fullName>
+                    <default>false</default>
+                    <label>Decline to Answer</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Preferred_Method_of_Contact__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Which way would you prefer we contact you?</inlineHelpText>
+        <label>Preferred Method of Contact</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>Phone</fullName>
+                    <default>false</default>
+                    <label>Phone</label>
+                </value>
+                <value>
+                    <fullName>Text</fullName>
+                    <default>false</default>
+                    <label>Text</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Race__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Which best describes your child (please select all that apply):</inlineHelpText>
+        <label>Race</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>American Indian/Alaska Native</fullName>
+                    <default>false</default>
+                    <label>American Indian/Alaska Native</label>
+                </value>
+                <value>
+                    <fullName>African American/Black</fullName>
+                    <default>false</default>
+                    <label>African American/Black</label>
+                </value>
+                <value>
+                    <fullName>Asian</fullName>
+                    <default>false</default>
+                    <label>Asian</label>
+                </value>
+                <value>
+                    <fullName>Hispanic/Latina</fullName>
+                    <default>false</default>
+                    <label>Hispanic/Latina</label>
+                </value>
+                <value>
+                    <fullName>Middle Eastern</fullName>
+                    <default>false</default>
+                    <label>Middle Eastern</label>
+                </value>
+                <value>
+                    <fullName>Native Hawaiian/Other Pacific Islander</fullName>
+                    <default>false</default>
+                    <label>Native Hawaiian/Other Pacific Islander</label>
+                </value>
+                <value>
+                    <fullName>White</fullName>
+                    <default>false</default>
+                    <label>White</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Declined To Answer</fullName>
+                    <default>false</default>
+                    <label>Declined To Answer</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Student_Special_Needs__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Is there anything else you would like Techbridge Girls to know about your child? (IEP, ADHD, sensory integration needs, dyslexic, emotional needs, mobility restrictions, etc.)?</inlineHelpText>
+        <label>Student Special Needs</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Student_Transportation__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please choose one option regarding your child’s transportation home after Techbridge Girls program ends:</inlineHelpText>
+        <label>Student Transportation</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>May walk/bus home</fullName>
+                    <default>false</default>
+                    <label>May walk/bus home</label>
+                </value>
+                <value>
+                    <fullName>Will receive a ride</fullName>
+                    <default>false</default>
+                    <label>Someone will pick up my child</label>
+                </value>
+                <value>
+                    <fullName>My child can go to the after school program at the school</fullName>
+                    <default>false</default>
+                    <label>My child can go to the after school program at the school</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>T_shirt_Size__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What size T-shirt does your child wear?</inlineHelpText>
+        <label>T-shirt Size</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>X Small</fullName>
+                    <default>false</default>
+                    <label>X Small</label>
+                </value>
+                <value>
+                    <fullName>Small</fullName>
+                    <default>false</default>
+                    <label>Small</label>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>false</default>
+                    <label>Medium</label>
+                </value>
+                <value>
+                    <fullName>Large</fullName>
+                    <default>false</default>
+                    <label>Large</label>
+                </value>
+                <value>
+                    <fullName>X Large</fullName>
+                    <default>false</default>
+                    <label>X Large</label>
+                </value>
+                <value>
+                    <fullName>2X Large</fullName>
+                    <default>false</default>
+                    <label>2X Large</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Translation_Needed__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If you would like materials translated, please indicate the language:</inlineHelpText>
+        <label>Translation Needed</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Amharic</fullName>
+                    <default>false</default>
+                    <label>Amharic</label>
+                </value>
+                <value>
+                    <fullName>Arabic</fullName>
+                    <default>false</default>
+                    <label>Arabic</label>
+                </value>
+                <value>
+                    <fullName>Chinese</fullName>
+                    <default>false</default>
+                    <label>Chinese</label>
+                </value>
+                <value>
+                    <fullName>French</fullName>
+                    <default>false</default>
+                    <label>French</label>
+                </value>
+                <value>
+                    <fullName>Somali</fullName>
+                    <default>false</default>
+                    <label>Somali</label>
+                </value>
+                <value>
+                    <fullName>Spanish</fullName>
+                    <default>false</default>
+                    <label>Spanish</label>
+                </value>
+                <value>
+                    <fullName>Vietnamese</fullName>
+                    <default>false</default>
+                    <label>Vietnamese</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Volunteer__c</fullName>
+        <description>How a parent would like to volunteer with Techbridge.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If you are able to volunteer this year, please let us know how you can help: (Select all that apply)</inlineHelpText>
+        <label>Volunteer?</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Make calls</fullName>
+                    <default>false</default>
+                    <label>Make calls in English</label>
+                </value>
+                <value>
+                    <fullName>Make bilingual calls</fullName>
+                    <default>false</default>
+                    <label>Make calls in another language</label>
+                </value>
+                <value>
+                    <fullName>Chaperone on a field trip (middle and high school only)</fullName>
+                    <default>false</default>
+                    <label>Chaperone on a field trip (middle and high school only)</label>
+                </value>
+                <value>
+                    <fullName>Able to help drive children to local events</fullName>
+                    <default>false</default>
+                    <label>Able to help drive children to local events</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
     </fields>
 </CustomObject>

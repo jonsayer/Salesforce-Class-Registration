@@ -5,16 +5,32 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public Account 	family   		{get; set;}
     public String  	pageStatus   	{get; set;}
     public ID		loginID			{get; set;}
-    public String	schoolName		{get;set;}
-    public String	schoolRegion	{get;set;}
-    public School_Term__c term		{get;set;}
-    private String  RegType         {get;set;}
+    public String	schoolName		{get; set;}
+    public String	schoolRegion	{get; set;}
+    public School_Term__c term		{get; set;}
+    public String	grade			{get; set;}
+    private String  RegType         {get; set;}
     
-    public List<SelectOption> schoolList {get;set;}
+    public List<SelectOption> schoolList 	{
+        get {
+            if(schoolList == null ){
+                if(String.isBlank(schoolRegion)){
+                    schoolList = getSelectOptionsActiveSchools( '' );
+                    System.debug('List<SelectOption> schoolList run: schoolRegion is null');
+                } else {
+                    schoolList = getSelectOptionsActiveSchools(schoolRegion);
+                    System.debug('List<SelectOption> schoolList run: schoolRegion is: ' + schoolRegion);
+                }
+            } 
+            System.debug('List<SelectOption> schoolList run: ' + schoolList);
+            return schoolList;
+    	} set;
+	}
+    public List<SelectOption> gradeList 	{get; set;}
     
-    public List<Schema.FieldSetMember>	hhFieldSet		{get;set;}
-    public List<Schema.FieldSetMember>	parentFieldSet	{get;set;}
-    public List<Schema.FieldSetMember>	childFieldSet	{get;set;}
+    public List<Schema.FieldSetMember>	hhFieldSet		{get; set;}
+    public List<Schema.FieldSetMember>	parentFieldSet	{get; set;}
+    public List<Schema.FieldSetMember>	childFieldSet	{get; set;}
     
     public C501_CTRL_ClassReg_CreateAcct(){
         Boolean loggedIn = false;
@@ -66,9 +82,9 @@ public class C501_CTRL_ClassReg_CreateAcct {
             RegType             = 'byText';
         }
         
-        schoolRegion = '';
-        schoolList = getSelectOptionsActiveSchools('');
-        schoolName = '';
+        schoolRegion 	= '';
+        gradeList 		= C501_UTIL_ClassRegUtilities.listOfGrades();
+        schoolName 		= '';
         
         Map<String, Schema.FieldSet> FsAcctMap = Schema.SObjectType.Account.fieldSets.getMap();
         Map<String, Schema.FieldSet> FsContMap = Schema.SObjectType.Contact.fieldSets.getMap();
@@ -106,7 +122,8 @@ public class C501_CTRL_ClassReg_CreateAcct {
     }*/
     
     public Pagereference refreshSchools(){
-        schoolList = getSelectOptionsActiveSchools( schoolRegion );
+        schoolList = null;
+        System.debug('refreshSchools() run');
         return null;
     }
     
@@ -140,10 +157,29 @@ public class C501_CTRL_ClassReg_CreateAcct {
             return C501_UTIL_ClassRegUtilities.generatePageLink('C501_ClassReg_Home',null,null);
         }*/
         
+        Boolean passValidation = true;
+        
+        if(schoolName == null || schoolName == '' ){
+            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.WARNING,'Please Select a School')  );
+            passValidation = false;
+        }
+        if(grade == null || grade == '' ){
+            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.WARNING,'Please Select a Grade')  );
+            passValidation = false;
+        }
+        if(passValidation == false){
+            return null;
+        }
+        
         insert family;
         
+        parent.npe01__Preferred_Email__c 	= 'Personal';
+        parent.npe01__HomeEmail__c			= parent.Email;
         parent.AccountId 	= family.id;
         child.AccountId		= family.id;
+        
+        child.Graduation_Year__c = C501_UTIL_ClassRegUtilities.getGraduatingYearFromCurrentGrade( Integer.valueOf(grade) );
+        
         insert parent;
         insert child; 
         
@@ -152,8 +188,8 @@ public class C501_CTRL_ClassReg_CreateAcct {
         term.School__c 		= schoolName;
         
         // future version, need to make this dynamic
-        term.School_Year__c	= '2019-2020';
-        term.C501_Sign_Up_Source__c = RegType;
+        term.School_Year__c	= C501_UTIL_ClassRegUtilities.currentSchoolYear( Date.today() );
+        term.C501_Sign_Up_Source__c = 'Online';
         
         insert term;
         
@@ -203,7 +239,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public static List<SelectOption> getSelectOptionsActiveSchools(String regionFilter){
         List<Account> schoolList 			= getListOfActiveSchools(regionFilter);
         List<SelectOption> schoolOptions 	= new List<SelectOption>();
-        schoolOptions.add(new SelectOption( '', 'Select One: '+ regionFilter) ); 
+        schoolOptions.add(new SelectOption( '', 'Select One: ') ); 
         for(Account school : schoolList ){
             schoolOptions.add(new SelectOption( school.Id, school.School_District_Lookup__r.Name+': '+school.Name ) ); 
         }

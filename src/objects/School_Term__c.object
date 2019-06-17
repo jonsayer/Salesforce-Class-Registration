@@ -51,6 +51,11 @@
                     <default>false</default>
                     <label>byEmail</label>
                 </value>
+                <value>
+                    <fullName>Online</fullName>
+                    <default>false</default>
+                    <label>Online</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

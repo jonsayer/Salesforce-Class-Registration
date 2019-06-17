@@ -13,7 +13,38 @@ public class C501_UTIL_ClassRegUtilities {
         }
     }
     
+    public static List<SelectOption> listOfGrades(){
+        
+        List<SelectOption> gradeList 	= new List<SelectOption>();
+        gradeList.add(new SelectOption( '', 'Select One: ') );
+        
+        for(Integer i = 1;i <= 12; i++){
+            gradeList.add(new SelectOption( String.valueOf(i), String.valueOf(i) ) ); 
+        }
+        
+        return gradeList;
+    }
     
+    public static String currentSchoolYear(Date currentDate){
+        String returnYear 	= '';
+        if( currentDate.month() >= 7 ){
+            returnYear = String.valueOf( currentDate.year() ) + '-' + String.valueOf( currentDate.year() + 1 );
+        } else {
+            returnYear = String.valueOf( currentDate.year() - 1) + '-' + String.valueOf( currentDate.year() );
+        }
+        return returnYear;
+    }
+    
+    public static String getGraduatingYearFromCurrentGrade(Integer grade){
+        Integer thisYear 	= Date.today().year() ;  
+        String returnYear 	= '';
+        if( Date.today().month() >= 7 ){
+            returnYear = String.valueOf(thisYear + (13 - grade));
+        } else {
+            returnYear = String.valueOf(thisYear + (12 - grade)); 
+        }
+        return returnYear;
+    }
     
     public static PageReference confirmLogin(String confirmation,ID acctID,Boolean remember){
         String pageStatus	= C501_UTIL_ClassRegUtilities.checkVerificationCode(confirmation,acctID);
