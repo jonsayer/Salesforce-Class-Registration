@@ -77,9 +77,12 @@ public class C501_TEST_ClassReg_CreateAcct {
         
         controller.child.FirstName	= 'Child';
         controller.child.LastName	= 'Name';
+        controller.grade 			= '10';
         controller.schoolName		= school.Id;
         
         controller.createAccount();
+        
+        List<SelectOption> testListResult = controller.schoolList;
         
         Test.stopTest();
         

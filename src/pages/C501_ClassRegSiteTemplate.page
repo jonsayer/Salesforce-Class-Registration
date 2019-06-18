@@ -8,11 +8,9 @@
     <apex:includeScript value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" />
     <div class="container">
         <div id="header" layout="block" styleClass="row">
-            <div class="col-xs-12">
-                <div id="headerImage">
-                    <a href="https://www.techbridgegirls.org/" target="_new"><apex:image url="{!$Resource.techbridgeLogo}" style="max-width:350px"/> </a>
-                    
-                </div>
+            <div id="headerImage">
+                <a href="https://www.techbridgegirls.org/" target="_new"><apex:image url="{!$Resource.techbridgeLogo}" style="max-width:350px"/> </a>
+                
             </div>
         </div>
         <div id="main">

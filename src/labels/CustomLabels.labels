@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
+        <fullName>C501_ClassReg_AuthToTreatMinor</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_AuthToTreatMinor</shortDescription>
+        <value>AUTHORIZATION TO TREAT MINOR (in case of emergency)</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_AuthToTreatMinorLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_AuthToTreatMinorLabel</shortDescription>
+        <value>By checking this box, I acknowledge that I have read, understood and consent to the terms of this Authorization.</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_AuthToTreatMinorP1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_AuthToTreatMinorP1</shortDescription>
+        <value>I do hereby certify that to the best of my knowledge and belief, my child or ward is physically able to participate in the Techbridge Girls After-School program.</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_AuthToTreatMinorP2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_AuthToTreatMinorP2</shortDescription>
+        <value>In the event that I, or the other parent/guardian listed below, cannot be reached in an emergency, I hereby give permission to the Techbridge Girls staff to secure proper medical treatment for my child.  I do hereby consent to whatever medical, surgical or dental treatment is considered necessary in the best judgment of the attending health care provider. I further understand that I am fully responsible for the costs of any such care/treatment.</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_AuthToTreatMinorProvider</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_AuthToTreatMinorProvider</shortDescription>
+        <value>My preferred medical provider (if applicable):</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_Birthday</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_Birthday</shortDescription>
+        <value>Student Birthdate</value>
+    </labels>
+    <labels>
         <fullName>C501_ClassReg_ChildMobilePhone</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -22,11 +64,143 @@
         <value>Techbridge serves girls in four different regions. Which region is your child&apos;s school in?</value>
     </labels>
     <labels>
+        <fullName>C501_ClassReg_EvalStudy</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_EvalStudy</shortDescription>
+        <value>Evaluation Study Form</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_EvalStudyH1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_EvalStudyH1</shortDescription>
+        <value>What is an evaluation study?</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_EvalStudyH1P1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_EvalStudyH1P1</shortDescription>
+        <value>Evaluation studies help us learn new things about our programs at Techbridge Girls.  We can test new ideas and see how we are doing.  This helps us make the best program for your child and for youth who take part in Techbridge Girls in the future.</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_EvalStudyH1P2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_EvalStudyH1P2</shortDescription>
+        <value>We are doing this study to find out more about how youth learn and enjoy our programs. We would like to know what you and the youth in the program think about the program and what they do there.</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_EvalStudyH1P3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_EvalStudyH1P3</shortDescription>
+        <value>This paper talks about the study and the choice that you have to take part in it.  You can ask questions any time. We will also talk with the youth in the program and ask if they want to be part of the evaluation.</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_EvalStudyH2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_EvalStudyH2</shortDescription>
+        <value>Important things to know...</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_EvalStudyH2li</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_EvalStudyH2li</shortDescription>
+        <value>&lt;li&gt;We are asking if both you and your child will participate in the study. 
+&lt;/li&gt;
+ &lt;li&gt;
+You decide if you and your child want to take part.
+&lt;/li&gt;
+&lt;li&gt;
+You can say ‘No’ or you can say ‘Yes’.
+&lt;/li&gt;
+&lt;li&gt;
+No one will be upset if you say ‘No’.
+&lt;/li&gt;
+&lt;li&gt;
+If you say ‘Yes’, you can always say ‘No’ later.
+&lt;/li&gt;
+&lt;li&gt;
+Your child can participate in the study even if you do not. You can participate in the study even if your child does not. 
+&lt;/li&gt;</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_EvalStudyH3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_EvalStudyH3</shortDescription>
+        <value>What would happen if I join this evaluation study?</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_EvalStudyH3P1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_EvalStudyH3P1</shortDescription>
+        <value>If you decide to participate in the study, we would ask you and your child to do the following:</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_EvalStudyH3li</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_EvalStudyH3li</shortDescription>
+        <value>&lt;li&gt;
+Questions for you: We would ask you to read questions on a piece of paper or online.  Then you would mark your answers on the paper or online form.
+&lt;/li&gt;
+&lt;li&gt;
+Questions for your child: We would ask your child to read questions on a piece of paper or online.  Then your child would mark their answers on the paper or online form.
+&lt;/li&gt;
+&lt;li&gt;
+Talking with your child: A person on the evaluation team would talk to a group of youth and ask them questions. Then your child would answer the questions out loud.
+&lt;/li&gt;
+&lt;li&gt;
+We may also look at your child’s school information, like attendance and courses taken.
+&lt;/li&gt;</value>
+    </labels>
+    <labels>
         <fullName>C501_ClassReg_HHhomePhone</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_ClassReg_ParentHomePhone</shortDescription>
         <value>Parent/Guardian&apos;s Home Phone</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_PARTICIPANT_WAIVER</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_PARTICIPANT WAIVER</shortDescription>
+        <value>PARTICIPANT WAIVER</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_PARTICIPANT_WAIVERlabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_PARTICIPANT_WAIVERlabel</shortDescription>
+        <value>By checking this box, I acknowledge that I have read, understood and consent to the terms of this Waiver.</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_PARTICIPANT_WAIVERp1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_PARTICIPANT_WAIVERp1</shortDescription>
+        <value>My child or ward has my permission to participate in the Techbridge Girls After-School program (the “Program”).</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_PARTICIPANT_WAIVERp2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_PARTICIPANT_WAIVERp2</shortDescription>
+        <value>I recognize that Techbridge Girls has not undertaken any duty or responsibility for the safety of my child or ward, and I agree to assume the full responsibility for all risk of bodily injury, death, disability, and/or property damage as a result of my child or ward’s participation in the Program.</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_PARTICIPANT_WAIVERp3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_PARTICIPANT_WAIVERp3</shortDescription>
+        <value>By my signature, I confirm that I understand the risks involved as a result of my child or ward participating in the Program, and I willingly and voluntarily accept these risks on my child or ward’s behalf.  I hereby surrender any right to seek reimbursement from Techbridge Girls and its directors, officers, employees, volunteers and other agents (hereafter collectively “Techbridge Girls Releases”) for any injury sustained and/or any liability incurred during my child’s or ward’s participation in the program. I further release and hold harmless the Techbridge Girls Releases from any and all claims, demands, or causes of action which arise from my child’s or ward’s participation in the Program.</value>
     </labels>
     <labels>
         <fullName>C501_ClassReg_ParentHomePhone</fullName>
@@ -50,6 +224,41 @@
         <value>Parent/Guardian Work Phone</value>
     </labels>
     <labels>
+        <fullName>C501_ClassReg_PhotoVideo</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_PhotoVideo</shortDescription>
+        <value>PHOTO and VIDEO RELEASE</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_PhotoVideoLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_PhotoVideoLabel</shortDescription>
+        <value>By checking this box, I acknowledge that YES I give my permission. (Leave unchecked if you DO NOT give permission.)</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_PhotoVideoP1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_PhotoVideoP1</shortDescription>
+        <value>Occasionally, Techbridge Girls program activities may be photographed, videotaped, and/or audio taped for educational, publicity or fundraising purposes. Please indicate if you give permission for you and/or your child or ward to appear in videos, photos and/or audio recordings without compensation (e.g., as part of brochures, slide shows or program websites). Your authorization below also permits Techbridge Girls to share photos and other media depicting you and/or your child or ward with partner organizations for use in their promotions of Techbridge Girls events and programs.</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_StudentID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_StudentID</shortDescription>
+        <value>Student ID #</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_SubmitApplication</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_SubmitApplication</shortDescription>
+        <value>Submit Application</value>
+    </labels>
+    <labels>
         <fullName>C501_ClassReg_dcArea</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -62,6 +271,13 @@
         <protected>false</protected>
         <shortDescription>C501_ClassReg_eastBay</shortDescription>
         <value>East San Francisco Bay Area (eg. Oakland)</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_parentFamilyConsent</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_parentFamilyConsent</shortDescription>
+        <value>PARENT/FAMILY CONSENT FORM</value>
     </labels>
     <labels>
         <fullName>C501_ClassReg_seattleArea</fullName>
@@ -132,6 +348,13 @@
         <protected>false</protected>
         <shortDescription>C501_RegSite_ParentFirstName</shortDescription>
         <value>Parent/Guardian First Name</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_Grade</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_Grade</shortDescription>
+        <value>Grade</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_InvalidEmailPhone</fullName>

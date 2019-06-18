@@ -27,8 +27,29 @@
         <members>Class_Site_Login_Attempt__c.SMS_Timestamp__c</members>
         <members>Class_Site_Login_Attempt__c.Secret_Code__c</members>
         <members>Class_Site_Login_Attempt__c.Verified__c</members>
+        <members>Contact.Allergies__c</members>
+        <members>Contact.Authorized_Pickup_1_Name__c</members>
+        <members>Contact.Authorized_Pickup_1_Phone__c</members>
+        <members>Contact.Authorized_Pickup_1_Relationship__c</members>
+        <members>Contact.Authorized_Pickup_2_Name__c</members>
+        <members>Contact.Authorized_Pickup_2_Phone__c</members>
+        <members>Contact.Authorized_Pickup_2_Relationship__c</members>
+        <members>Contact.Authorized_Pickup_3_Name__c</members>
+        <members>Contact.Authorized_Pickup_3_Phone__c</members>
+        <members>Contact.Authorized_Pickup_3_Relationship__c</members>
         <members>Contact.Emergency_Preferred_Medical_Provider__c</members>
         <members>Contact.Income__c</members>
+        <members>Contact.Medication__c</members>
+        <members>Contact.Number_in_Household__c</members>
+        <members>Contact.Parent_Education__c</members>
+        <members>Contact.Parent_Education_second_parent__c</members>
+        <members>Contact.Preferred_Method_of_Contact__c</members>
+        <members>Contact.Race__c</members>
+        <members>Contact.Student_Special_Needs__c</members>
+        <members>Contact.Student_Transportation__c</members>
+        <members>Contact.T_shirt_Size__c</members>
+        <members>Contact.Translation_Needed__c</members>
+        <members>Contact.Volunteer__c</members>
         <members>School_Term__c.Active_Year__c</members>
         <members>School_Term__c.Authorization_to_treat_minor__c</members>
         <members>School_Term__c.C501_Sign_Up_Source__c</members>
@@ -65,15 +86,46 @@
         <name>CustomField</name>
     </types>
     <types>
+        <members>C501_ClassReg_AuthToTreatMinor</members>
+        <members>C501_ClassReg_AuthToTreatMinorLabel</members>
+        <members>C501_ClassReg_AuthToTreatMinorP1</members>
+        <members>C501_ClassReg_AuthToTreatMinorP2</members>
+        <members>C501_ClassReg_AuthToTreatMinorProvider</members>
+        <members>C501_ClassReg_Birthday</members>
         <members>C501_ClassReg_ChildMobilePhone</members>
         <members>C501_ClassReg_ChildSchoolName</members>
+        <members>C501_ClassReg_ChildSchoolName</members>
         <members>C501_ClassReg_ChildSchoolRegion</members>
+        <members>C501_ClassReg_EvalStudy</members>
+        <members>C501_ClassReg_EvalStudyH1</members>
+        <members>C501_ClassReg_EvalStudyH1P1</members>
+        <members>C501_ClassReg_EvalStudyH1P2</members>
+        <members>C501_ClassReg_EvalStudyH1P3</members>
+        <members>C501_ClassReg_EvalStudyH2</members>
+        <members>C501_ClassReg_EvalStudyH2li</members>
+        <members>C501_ClassReg_EvalStudyH3</members>
+        <members>C501_ClassReg_EvalStudyH3P1</members>
+        <members>C501_ClassReg_EvalStudyH3li</members>
         <members>C501_ClassReg_HHhomePhone</members>
+        <members>C501_ClassReg_PARTICIPANT_WAIVER</members>
+        <members>C501_ClassReg_PARTICIPANT_WAIVERlabel</members>
+        <members>C501_ClassReg_PARTICIPANT_WAIVERp1</members>
+        <members>C501_ClassReg_PARTICIPANT_WAIVERp2</members>
+        <members>C501_ClassReg_PARTICIPANT_WAIVERp3</members>
+        <members>C501_ClassReg_ParentHomePhone</members>
         <members>C501_ClassReg_ParentHomePhone</members>
         <members>C501_ClassReg_ParentMobilePhone</members>
+        <members>C501_ClassReg_ParentMobilePhone</members>
         <members>C501_ClassReg_ParentWorkPhone</members>
+        <members>C501_ClassReg_ParentWorkPhone</members>
+        <members>C501_ClassReg_PhotoVideo</members>
+        <members>C501_ClassReg_PhotoVideoLabel</members>
+        <members>C501_ClassReg_PhotoVideoP1</members>
+        <members>C501_ClassReg_StudentID</members>
+        <members>C501_ClassReg_SubmitApplication</members>
         <members>C501_ClassReg_dcArea</members>
         <members>C501_ClassReg_eastBay</members>
+        <members>C501_ClassReg_parentFamilyConsent</members>
         <members>C501_ClassReg_seattleArea</members>
         <members>C501_ClassReg_southBay</members>
         <members>C501_RegSite_ChildEmail</members>
@@ -84,6 +136,7 @@
         <members>C501_RegSite_Continue</members>
         <members>C501_RegSite_FamilyInformation</members>
         <members>C501_RegSite_FirstName</members>
+        <members>C501_RegSite_Grade</members>
         <members>C501_RegSite_InvalidEmailPhone</members>
         <members>C501_RegSite_LeaveBlank</members>
         <members>C501_RegSite_LeaveBlankEmail</members>
