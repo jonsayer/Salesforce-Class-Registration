@@ -22,3 +22,4 @@ test_results*
 /src.orig
 /debug.log
 /.vscode
+.vscode/settings.json

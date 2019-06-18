@@ -161,6 +161,13 @@ We may also look at your child’s school information, like attendance and cours
 &lt;/li&gt;</value>
     </labels>
     <labels>
+        <fullName>C501_ClassReg_FreeLunch</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_FreeLunch</shortDescription>
+        <value>Does your child qualify for free/reduced lunch?</value>
+    </labels>
+    <labels>
         <fullName>C501_ClassReg_HHhomePhone</fullName>
         <language>en_US</language>
         <protected>false</protected>
