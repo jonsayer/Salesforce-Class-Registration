@@ -11,6 +11,8 @@ How to Install
         i) C501_ClassReg_CreateAcct
         ii) C501_ClassReg_Home
         iii) C501_ClassReg_Login
+        iii) C501_ClassReg_SelectLang
     b) Set the site template to C501_ClassRegSiteTemplate
-    c) Configure the PubliC Access Settings to have access to all of the fields on the Contact, Account, and School Term objects that are needed (this will shift through the lifetime of this project)
+    c) Configure the Public Access Settings to have access to all of the fields on the Contact, Account, and School Term objects that are needed (this will shift through the lifetime of this project)
     d) Also, make sure the Public Access Settings have full access to the Class Site Login Attempt object.
+    e) If you are supporting multiple languages, go to Setup -> Translation Workbench -> Translation Settings and enable the languages you mean to support
