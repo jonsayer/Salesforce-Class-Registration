@@ -1,12 +1,23 @@
 public class C501_CTRL_ClassReg_CreateAcct {
     
+    public String 	language		{get; set;}
+    
     public Contact 	parent   		{get; set;}
     public Contact 	child   		{get; set;}
     public Account 	family   		{get; set;}
     public String  	pageStatus   	{get; set;}
     public ID		loginID			{get; set;}
     public String	schoolName		{get; set;}
-    public String	schoolRegion	{get; set;}
+    public String	schoolNameText	{get; set;}
+    public String	schoolRegion	{
+        get{
+            if(schoolRegion 	== null){
+                schoolRegion = '';
+            }
+            return schoolRegion;
+        } 
+        set;
+    }
     public School_Term__c term		{get; set;}
     public String	grade			{get; set;}
     private String  RegType         {get; set;}
@@ -14,13 +25,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public List<SelectOption> schoolList 	{
         get {
             if(schoolList == null ){
-                if(String.isBlank(schoolRegion)){
-                    schoolList = getSelectOptionsActiveSchools( '' );
-                    System.debug('List<SelectOption> schoolList run: schoolRegion is null');
-                } else {
-                    schoolList = getSelectOptionsActiveSchools(schoolRegion);
-                    System.debug('List<SelectOption> schoolList run: schoolRegion is: ' + schoolRegion);
-                }
+                schoolList = getSelectOptionsActiveSchools(schoolRegion);
             } 
             System.debug('List<SelectOption> schoolList run: ' + schoolList);
             return schoolList;
@@ -33,6 +38,10 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public List<Schema.FieldSetMember>	childFieldSet	{get; set;}
     
     public C501_CTRL_ClassReg_CreateAcct(){
+        language		= ApexPages.currentPage().getParameters().get('l');
+        if(language == null){
+            language = 'en_US';
+        }
         Boolean loggedIn = false;
         loginID	= null;
         RegType = null;
@@ -82,9 +91,9 @@ public class C501_CTRL_ClassReg_CreateAcct {
             RegType             = 'byText';
         }
         
-        schoolRegion 	= '';
         gradeList 		= C501_UTIL_ClassRegUtilities.listOfGrades();
         schoolName 		= '';
+        schoolNameText	= '';
         
         Map<String, Schema.FieldSet> FsAcctMap = Schema.SObjectType.Account.fieldSets.getMap();
         Map<String, Schema.FieldSet> FsContMap = Schema.SObjectType.Contact.fieldSets.getMap();
@@ -160,11 +169,15 @@ public class C501_CTRL_ClassReg_CreateAcct {
         Boolean passValidation = true;
         
         if(schoolName == null || schoolName == '' ){
-            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.WARNING,'Please Select a School')  );
+            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,'Please Select a School')  );
             passValidation = false;
         }
         if(grade == null || grade == '' ){
-            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.WARNING,'Please Select a Grade')  );
+            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,'Please Select a Grade')  );
+            passValidation = false;
+        }
+        if( parent.Email == null && parent.HomePhone == null && parent.MobilePhone == null && parent.OtherPhone == null ){
+            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,'Please enter a contact method (phone number or email) for the parent. We need to be able to contact you!')  );
             passValidation = false;
         }
         if(passValidation == false){
@@ -187,12 +200,16 @@ public class C501_CTRL_ClassReg_CreateAcct {
         term.Parent__c 		= parent.Id;
         term.School__c 		= schoolName;
         
+        schoolNameText 		= [Select id,Name from Account where id = :schoolName].Name;
+        
         // future version, need to make this dynamic
         term.School_Year__c	= C501_UTIL_ClassRegUtilities.currentSchoolYear( Date.today() );
         term.C501_Sign_Up_Source__c = 'Online';
         
         insert term;
         
+        
+        pageStatus = 'finished';
         return null;
     }
     
@@ -246,5 +263,10 @@ public class C501_CTRL_ClassReg_CreateAcct {
         
         return schoolOptions;
     }
-
+    
+    /*public map<string,list<SelectOption>> contactFieldName2Options(){
+        
+    }*/
+    
+    
 }

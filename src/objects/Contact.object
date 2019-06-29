@@ -139,6 +139,11 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
+            <field>Number_in_Household_Picklist__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
             <field>Volunteer__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
@@ -151,6 +156,40 @@
         <inlineHelpText>Does your child have any food restrictions or food allergies (vegetarian, vegan, dairy, gluten, nuts, kosher, Halal, seafood, no pork products, etc.)? (If Yes, please explain. If No, please write &quot;None&quot;)</inlineHelpText>
         <label>Allergies / Food Restrictions</label>
         <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alternate_Contact_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>In case the parent/guardian cannot be reached, please provide an EMERGENCY CONTACT</inlineHelpText>
+        <label>Emergency Contact Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alternate_Contact_Phone__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Emergency Contact&apos;s Phone</inlineHelpText>
+        <label>Emergency Contact Phone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Alternate_Contact_Relationship__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Emergency Contact&apos;s Relationship to Child</inlineHelpText>
+        <label>Emergency Contact Relationship</label>
+        <length>100</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -260,6 +299,40 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Emergency_Contact_2_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please provide the name of a Second Emergency Contact</inlineHelpText>
+        <label>Emergency Contact 2 Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Emergency_Contact_2_Phone__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Emergency Contact 2&apos;s Phone</inlineHelpText>
+        <label>Emergency Contact 2 Phone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Emergency_Contact_2_Relationship__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Emergency Contact 2&apos;s Relationship to Child</inlineHelpText>
+        <label>Emergency Contact 2 Relationship</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Emergency_Preferred_Medical_Provider__c</fullName>
         <externalId>false</externalId>
         <label>Emergency Preferred Medical Provider</label>
@@ -325,6 +398,72 @@
         <trackHistory>false</trackHistory>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Number_in_Household_Picklist__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>How many people live in your household:</inlineHelpText>
+        <label>Number in Household (Picklist)</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>3</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>6</fullName>
+                    <default>false</default>
+                    <label>6</label>
+                </value>
+                <value>
+                    <fullName>7</fullName>
+                    <default>false</default>
+                    <label>7</label>
+                </value>
+                <value>
+                    <fullName>8</fullName>
+                    <default>false</default>
+                    <label>8</label>
+                </value>
+                <value>
+                    <fullName>9</fullName>
+                    <default>false</default>
+                    <label>9</label>
+                </value>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                    <label>10</label>
+                </value>
+                <value>
+                    <fullName>More than 10</fullName>
+                    <default>false</default>
+                    <label>More than 10</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Number_in_Household__c</fullName>

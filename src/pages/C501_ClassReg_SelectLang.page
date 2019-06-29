@@ -1,0 +1,35 @@
+<apex:page language="{!language}" sidebar="false" showHeader="false" controller="C501_CTRL_ClassReg_SelectLang" >
+    <apex:composition template="C501_ClassRegSiteTemplate">
+        <apex:define name="body">
+            <apex:form >
+                <apex:actionFunction action="{!changeLang}" name="reRender" reRender="wholePage"  />
+                <div class="row">
+                	<div class="col-xs-12">
+                        <h1 class="withLine" style="">
+                            Select Language - Seleccione el idioma
+                        </h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+						<div class="form-group">
+                            <apex:selectList value="{!language}" size="1" styleClass="form-control">
+                                <apex:selectOptions value="{!listOfLangs}"></apex:selectOptions>
+                            </apex:selectList>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 withLine" >
+                        <div class="prominent_button">
+                            <apex:commandLink action="{!changeLang}" value="==>" styleClass="commandLink" />
+                        </div>
+                    </div>
+                </div>
+            </apex:form>
+        </apex:define>
+    </apex:composition>
+    
+    
+    
+</apex:page>

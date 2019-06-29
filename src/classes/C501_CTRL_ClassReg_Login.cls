@@ -1,5 +1,6 @@
 public class C501_CTRL_ClassReg_Login {
     
+    public 	String 	language		{get;set;}
     public 	String 	pageStatus		{get;set;}
     public 	String 	phoneNumber		{get;set;}
     public 	String 	identityInput	{get;set;}
@@ -8,6 +9,10 @@ public class C501_CTRL_ClassReg_Login {
     private ID		acctID			= null;
     
     public C501_CTRL_ClassReg_Login(){
+        language		= ApexPages.currentPage().getParameters().get('l');
+        if(language == null){
+            language = 'en_US';
+        }
         pageStatus		= 'start';
         phoneNumber		= '';
         confirmation	= '';
@@ -16,7 +21,7 @@ public class C501_CTRL_ClassReg_Login {
     }
     
     public PageReference confirmLoginBySendToAddress(){
-        PageReference nextPage = C501_UTIL_ClassRegUtilities.confirmLoginByCodeToAddress(confirmation, identityInput , remember );
+        PageReference nextPage = C501_UTIL_ClassRegUtilities.confirmLoginByCodeToAddress(confirmation, identityInput , remember , language);
         if(nextPage == null){
             pageStatus = 'confirm-fail';
             return null;
@@ -41,7 +46,7 @@ public class C501_CTRL_ClassReg_Login {
     // 
     // 
     public PageReference confirmLogin(){
-        PageReference nextPage = C501_UTIL_ClassRegUtilities.confirmLogin(confirmation,acctID,remember);
+        PageReference nextPage = C501_UTIL_ClassRegUtilities.confirmLogin(confirmation,acctID,remember,language);
         if(nextPage == null){
             pageStatus = 'confirm-fail';
             return null;

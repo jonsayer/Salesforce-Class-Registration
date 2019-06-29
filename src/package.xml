@@ -4,6 +4,7 @@
         <members>C501_CTRL_ClassReg_CreateAcct</members>
         <members>C501_CTRL_ClassReg_Home</members>
         <members>C501_CTRL_ClassReg_Login</members>
+        <members>C501_CTRL_ClassReg_SelectLang</members>
         <members>C501_TESTClassReg_Login</members>
         <members>C501_TEST_ClassReg_CreateAcct</members>
         <members>C501_UTIL_ClassRegUtilities</members>
@@ -14,6 +15,7 @@
         <members>C501_ClassReg_CreateAcct</members>
         <members>C501_ClassReg_Home</members>
         <members>C501_ClassReg_Login</members>
+        <members>C501_ClassReg_SelectLang</members>
         <name>ApexPage</name>
     </types>
     <types>
@@ -28,6 +30,9 @@
         <members>Class_Site_Login_Attempt__c.Secret_Code__c</members>
         <members>Class_Site_Login_Attempt__c.Verified__c</members>
         <members>Contact.Allergies__c</members>
+        <members>Contact.Alternate_Contact_Name__c</members>
+        <members>Contact.Alternate_Contact_Phone__c</members>
+        <members>Contact.Alternate_Contact_Relationship__c</members>
         <members>Contact.Authorized_Pickup_1_Name__c</members>
         <members>Contact.Authorized_Pickup_1_Phone__c</members>
         <members>Contact.Authorized_Pickup_1_Relationship__c</members>
@@ -37,12 +42,19 @@
         <members>Contact.Authorized_Pickup_3_Name__c</members>
         <members>Contact.Authorized_Pickup_3_Phone__c</members>
         <members>Contact.Authorized_Pickup_3_Relationship__c</members>
+        <members>Contact.Emergency_Contact_2_Name__c</members>
+        <members>Contact.Emergency_Contact_2_Phone__c</members>
+        <members>Contact.Emergency_Contact_2_Relationship__c</members>
         <members>Contact.Emergency_Preferred_Medical_Provider__c</members>
         <members>Contact.Income__c</members>
         <members>Contact.Medication__c</members>
+        <members>Contact.Number_in_Household_Picklist__c</members>
         <members>Contact.Number_in_Household__c</members>
         <members>Contact.Parent_Education__c</members>
+        <members>Contact.Parent_Education__c</members>
         <members>Contact.Parent_Education_second_parent__c</members>
+        <members>Contact.Parent_Education_second_parent__c</members>
+        <members>Contact.Preferred_Method_of_Contact__c</members>
         <members>Contact.Preferred_Method_of_Contact__c</members>
         <members>Contact.Race__c</members>
         <members>Contact.Student_Special_Needs__c</members>
@@ -122,6 +134,8 @@
         <members>C501_ClassReg_PhotoVideoLabel</members>
         <members>C501_ClassReg_PhotoVideoP1</members>
         <members>C501_ClassReg_StudentID</members>
+        <members>C501_ClassReg_StudentID</members>
+        <members>C501_ClassReg_SubmitApplication</members>
         <members>C501_ClassReg_SubmitApplication</members>
         <members>C501_ClassReg_dcArea</members>
         <members>C501_ClassReg_eastBay</members>
@@ -133,14 +147,17 @@
         <members>C501_RegSite_ChildLastName</members>
         <members>C501_RegSite_City</members>
         <members>C501_RegSite_CodeMismatch</members>
+        <members>C501_RegSite_ConfirmMessageSite</members>
         <members>C501_RegSite_Continue</members>
         <members>C501_RegSite_FamilyInformation</members>
+        <members>C501_RegSite_FinishedApp</members>
         <members>C501_RegSite_FirstName</members>
         <members>C501_RegSite_Grade</members>
         <members>C501_RegSite_InvalidEmailPhone</members>
         <members>C501_RegSite_LeaveBlank</members>
         <members>C501_RegSite_LeaveBlankEmail</members>
         <members>C501_RegSite_Login</members>
+        <members>C501_RegSite_NotProvided</members>
         <members>C501_RegSite_ParentEmail</members>
         <members>C501_RegSite_ParentFirstName</members>
         <members>C501_RegSite_ParentLastName</members>

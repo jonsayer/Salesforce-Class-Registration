@@ -46,7 +46,7 @@ public class C501_UTIL_ClassRegUtilities {
         return returnYear;
     }
     
-    public static PageReference confirmLogin(String confirmation,ID acctID,Boolean remember){
+    public static PageReference confirmLogin(String confirmation,ID acctID,Boolean remember,String language){
         String pageStatus	= C501_UTIL_ClassRegUtilities.checkVerificationCode(confirmation,acctID);
         
         if(pageStatus == 'success'){
@@ -57,11 +57,12 @@ public class C501_UTIL_ClassRegUtilities {
             } else {
                 remString = '0';
             }
-            return C501_UTIL_ClassRegUtilities.generatePageLink('C501_ClassReg_Home','a,s,r',acctID+','+confirmation.replaceAll('[^0-9]', '')+','+remString);
+            return C501_UTIL_ClassRegUtilities.generatePageLink('C501_ClassReg_Home','a,s,r,l',acctID+','+confirmation.replaceAll('[^0-9]', '')+','+remString+','+language);
         } else {
             return null;
         }
     }
+    
     
     public static Boolean confirmLoggedIn(String loginID, Boolean timeCare){
         Integer timeModify = 0;
@@ -81,6 +82,22 @@ public class C501_UTIL_ClassRegUtilities {
             LIMIT 	1
         ];
         return attList.size() > 0;
+    }
+    
+    public static PageReference confirmLoginByCodeToAddress(String confirmation,String codeToAddress,Boolean remember,String language){
+        String pageStatus	= checkVerificationCodeByCodeToAddress(confirmation,codeToAddress);
+        if(pageStatus != 'confirm-fail'){
+            // redirect to the account manager page
+            String remString = '';
+            if(remember){
+                remString = '1';
+            } else {
+                remString = '0';
+            }
+            return C501_UTIL_ClassRegUtilities.generatePageLink('C501_ClassReg_CreateAcct','a,r,c,l',pageStatus+','+remString+','+codeToAddress+','+language);
+        } else {
+            return null;
+        }
     }
     
     public static PageReference confirmLoginByCodeToAddress(String confirmation,String codeToAddress,Boolean remember){
