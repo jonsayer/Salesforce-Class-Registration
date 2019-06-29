@@ -100,22 +100,6 @@ public class C501_UTIL_ClassRegUtilities {
         }
     }
     
-    public static PageReference confirmLoginByCodeToAddress(String confirmation,String codeToAddress,Boolean remember){
-        String pageStatus	= checkVerificationCodeByCodeToAddress(confirmation,codeToAddress);
-        if(pageStatus != 'confirm-fail'){
-            // redirect to the account manager page
-            String remString = '';
-            if(remember){
-                remString = '1';
-            } else {
-                remString = '0';
-            }
-            return C501_UTIL_ClassRegUtilities.generatePageLink('C501_ClassReg_CreateAcct','a,r,c',pageStatus+','+remString+','+codeToAddress);
-        } else {
-            return null;
-        }
-    }
-    
     public static String checkVerificationCodeByCodeToAddress(String input, String codeToAddress){
         String 		cleanedConfirm 		= input.replaceAll('[^0-9]', '');
         Datetime 	thirtyMinutesAgo	= Datetime.now().addMinutes(-30);
