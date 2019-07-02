@@ -336,6 +336,13 @@ We may also look at your child’s school information, like attendance and cours
         <value>That doesn&apos;t seem to match the code we sent you. Try again?</value>
     </labels>
     <labels>
+        <fullName>C501_RegSite_ConfirmMessageSite</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_ConfirmMessageSite</shortDescription>
+        <value>We have received your application. We have sent a confirmation message to the Email Address or Phone Number you provided. A copy of your application is below. Feel free to save or print this for your records.</value>
+    </labels>
+    <labels>
         <fullName>C501_RegSite_Continue</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -348,6 +355,13 @@ We may also look at your child’s school information, like attendance and cours
         <protected>false</protected>
         <shortDescription>C501_RegSite_FamilyInformation</shortDescription>
         <value>Family Information</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_FinishedApp</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_FinishedApp</shortDescription>
+        <value>Your Application is Complete</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_FirstName</fullName>
@@ -390,6 +404,13 @@ We may also look at your child’s school information, like attendance and cours
         <protected>false</protected>
         <shortDescription>C501_RegSite_Login</shortDescription>
         <value>Log in</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_NotProvided</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_NotProvided</shortDescription>
+        <value>Not provided</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_ParentEmail</fullName>

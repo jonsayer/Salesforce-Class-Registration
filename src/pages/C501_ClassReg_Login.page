@@ -1,4 +1,4 @@
-<apex:page sidebar="false" showHeader="false" controller="C501_CTRL_ClassReg_Login">
+<apex:page language="{!language}" sidebar="false" showHeader="false" controller="C501_CTRL_ClassReg_Login">
     
     <apex:composition template="C501_ClassRegSiteTemplate">
         <apex:define name="body">
@@ -6,7 +6,8 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h1 class="withLine" style="">
-                        {! $Label.C501_RegSite_Login }
+                        <apex:outputLabel value="{! $Label.C501_RegSite_Login }">
+                        </apex:outputLabel>
                     </h1>
                 </div>
             </div>
