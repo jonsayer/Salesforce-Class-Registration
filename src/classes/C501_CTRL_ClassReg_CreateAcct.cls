@@ -8,7 +8,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public String  	pageStatus   	{get; set;}
     public ID		loginID			{get; set;}
     public String	schoolName		{get; set;}
-    public String	schoolNameText	{get; set;}
+    public Account	schoolNameText	{get; set;}
     public String	schoolRegion	{
         get{
             if(schoolRegion 	== null){
@@ -18,8 +18,13 @@ public class C501_CTRL_ClassReg_CreateAcct {
         } 
         set;
     }
+    
     public School_Term__c term		{get; set;}
     public String	grade			{get; set;}
+    public Boolean 	noState			{get; set;}
+    public Boolean 	noSchool		{get; set;}
+    public Boolean 	noGrade			{get; set;}
+    public Boolean  noWaiver		{get; set;}
     private String  RegType         {get; set;}
     
     public List<SelectOption> schoolList 	{
@@ -93,7 +98,11 @@ public class C501_CTRL_ClassReg_CreateAcct {
         
         gradeList 		= C501_UTIL_ClassRegUtilities.listOfGrades();
         schoolName 		= '';
-        schoolNameText	= '';
+        schoolNameText	= null;
+        noState 		= false;
+        noSchool 		= false;
+        noGrade			= false;
+        noWaiver		= false;
         
         Map<String, Schema.FieldSet> FsAcctMap = Schema.SObjectType.Account.fieldSets.getMap();
         Map<String, Schema.FieldSet> FsContMap = Schema.SObjectType.Contact.fieldSets.getMap();
@@ -169,17 +178,38 @@ public class C501_CTRL_ClassReg_CreateAcct {
         Boolean passValidation = true;
         
         if(schoolName == null || schoolName == '' ){
-            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,'Please Select a School')  );
+            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,Label.C501_RegSite_SelectSchool)  );
+            noSchool = true;
             passValidation = false;
+        } else {
+            noSchool = false;
         }
-        if(grade == null || grade == '' ){
-            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,'Please Select a Grade')  );
+        /*if(family.BillingState == null || family.BillingState == '' ){
+            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,Label.C501_RegSite_SelectState)  );
+            noState = true;
             passValidation = false;
+        } else {
+            noState = false;
+        }*/
+        if(grade == null || grade == '' ){
+            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,Label.C501_RegSite_SelectGrade)  );
+            noGrade = true;
+            passValidation = false;
+        } else {
+            noGrade = false;
         }
         if( parent.Email == null && parent.HomePhone == null && parent.MobilePhone == null && parent.OtherPhone == null ){
-            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,'Please enter a contact method (phone number or email) for the parent. We need to be able to contact you!')  );
+            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,Label.C501_RegSite_ParentContactRequired)  );
             passValidation = false;
         }
+        if(term.Waiver__c == false){
+            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,Label.C501_ClassReg_WaiverRequired)  );
+            noWaiver = true;
+            passValidation = false;
+        } else {
+            noWaiver = false;
+        }
+        
         if(passValidation == false){
             return null;
         }
@@ -200,15 +230,37 @@ public class C501_CTRL_ClassReg_CreateAcct {
         term.Parent__c 		= parent.Id;
         term.School__c 		= schoolName;
         
-        schoolNameText 		= [Select id,Name from Account where id = :schoolName].Name;
+        schoolNameText 		= [Select 	id,
+                               			Name,
+                               			Teachers_at_Site__c,
+                               			Primary_Teacher__r.FirstName ,
+                               			Primary_Teacher__r.LastName ,
+                               			Secondary_Teacher__r.FirstName ,
+                               			Secondary_Teacher__r.LastName 
+                               from 	Account 
+                               where 	id = :schoolName];
         
-        // future version, need to make this dynamic
         term.School_Year__c	= C501_UTIL_ClassRegUtilities.currentSchoolYear( Date.today() );
         term.C501_Sign_Up_Source__c = 'Online';
         
         insert term;
-        
-        
+        if(parent.MobilePhone != null && parent.MobilePhone != '' ){
+            String SMSmessage = Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name;
+            C501_UTIL_ClassRegUtilities.logActivityToContact(parent.Id,SMSmessage, SMSmessage,'Call');
+            C501_UTIL_ClassRegUtilities.sendSMSGenericFuture(parent.MobilePhone,Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name );
+        }
+        if(parent.Email != null && parent.Email != '' ){
+            String teacherName = schoolNameText.Primary_Teacher__r.FirstName + ' ' + schoolNameText.Primary_Teacher__r.LastName;
+            
+            if(schoolNameText.Secondary_Teacher__r.LastName != null){
+                 teacherName = teacherName + ' ' + Label.C501_ClassReg_AND + ' ' + schoolNameText.Secondary_Teacher__r.FirstName + ' ' + schoolNameText.Secondary_Teacher__r.LastName;
+            }
+            
+            String emailMessage = Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name +Label.C501_RegSite_EmailConfirmP2+' '+Label.C501_RegSite_EmailConfirmP3+' '+teacherName+Label.C501_RegSite_EmailConfirmP4;
+            C501_UTIL_ClassRegUtilities.SendEmailGeneric('jon-c@501commons.org',parent.Email,Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name,emailMessage);
+            
+            C501_UTIL_ClassRegUtilities.logActivityToContact(parent.Id,Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name, emailMessage,'Email');
+        }
         pageStatus = 'finished';
         return null;
     }
@@ -263,10 +315,5 @@ public class C501_CTRL_ClassReg_CreateAcct {
         
         return schoolOptions;
     }
-    
-    /*public map<string,list<SelectOption>> contactFieldName2Options(){
-        
-    }*/
-    
     
 }

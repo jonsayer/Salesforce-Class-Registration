@@ -21,7 +21,10 @@
     <types>
         <members>Account.C501_Class_Site_Mobile_Number_Lookup__c</members>
         <members>Account.C501_Class_Site_Mobile_Number__c</members>
+        <members>Account.Primary_Teacher__c</members>
         <members>Account.Region__c</members>
+        <members>Account.Secondary_Teacher__c</members>
+        <members>Account.Teachers_at_Site__c</members>
         <members>Class_Site_Login_Attempt__c.Account__c</members>
         <members>Class_Site_Login_Attempt__c.Code_Sent_To__c</members>
         <members>Class_Site_Login_Attempt__c.Login_Attempts__c</members>
@@ -98,6 +101,8 @@
         <name>CustomField</name>
     </types>
     <types>
+        <members>C501_ClassReg_AND</members>
+        <members>C501_ClassReg_AddtlStudentInfo</members>
         <members>C501_ClassReg_AuthToTreatMinor</members>
         <members>C501_ClassReg_AuthToTreatMinorLabel</members>
         <members>C501_ClassReg_AuthToTreatMinorP1</members>
@@ -108,6 +113,8 @@
         <members>C501_ClassReg_ChildSchoolName</members>
         <members>C501_ClassReg_ChildSchoolName</members>
         <members>C501_ClassReg_ChildSchoolRegion</members>
+        <members>C501_ClassReg_CodeMessageDisclaim</members>
+        <members>C501_ClassReg_ConfirmCodeSubject</members>
         <members>C501_ClassReg_EvalStudy</members>
         <members>C501_ClassReg_EvalStudyH1</members>
         <members>C501_ClassReg_EvalStudyH1P1</members>
@@ -133,10 +140,12 @@
         <members>C501_ClassReg_PhotoVideo</members>
         <members>C501_ClassReg_PhotoVideoLabel</members>
         <members>C501_ClassReg_PhotoVideoP1</members>
+        <members>C501_ClassReg_PlzSelectOne</members>
         <members>C501_ClassReg_StudentID</members>
         <members>C501_ClassReg_StudentID</members>
         <members>C501_ClassReg_SubmitApplication</members>
         <members>C501_ClassReg_SubmitApplication</members>
+        <members>C501_ClassReg_WaiverRequired</members>
         <members>C501_ClassReg_dcArea</members>
         <members>C501_ClassReg_eastBay</members>
         <members>C501_ClassReg_parentFamilyConsent</members>
@@ -148,7 +157,11 @@
         <members>C501_RegSite_City</members>
         <members>C501_RegSite_CodeMismatch</members>
         <members>C501_RegSite_ConfirmMessageSite</members>
+        <members>C501_RegSite_ConfirmSMS</members>
         <members>C501_RegSite_Continue</members>
+        <members>C501_RegSite_EmailConfirmP2</members>
+        <members>C501_RegSite_EmailConfirmP3</members>
+        <members>C501_RegSite_EmailConfirmP4</members>
         <members>C501_RegSite_FamilyInformation</members>
         <members>C501_RegSite_FinishedApp</members>
         <members>C501_RegSite_FirstName</members>
@@ -158,11 +171,15 @@
         <members>C501_RegSite_LeaveBlankEmail</members>
         <members>C501_RegSite_Login</members>
         <members>C501_RegSite_NotProvided</members>
+        <members>C501_RegSite_ParentContactRequired</members>
         <members>C501_RegSite_ParentEmail</members>
         <members>C501_RegSite_ParentFirstName</members>
         <members>C501_RegSite_ParentLastName</members>
         <members>C501_RegSite_ProvidePhoneEmail</members>
         <members>C501_RegSite_RememberMeDevice</members>
+        <members>C501_RegSite_SelectGrade</members>
+        <members>C501_RegSite_SelectSchool</members>
+        <members>C501_RegSite_SelectState</members>
         <members>C501_RegSite_SiteRegFormTitle</members>
         <members>C501_RegSite_State</members>
         <members>C501_RegSite_StreetAddress</members>

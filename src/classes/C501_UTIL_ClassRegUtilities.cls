@@ -190,8 +190,8 @@ public class C501_UTIL_ClassRegUtilities {
     
     public static void sendEmailConfirmation(ID AcctID, String emailAddress){
         Class_Site_Login_Attempt__c att 	= generateLoginCode(AcctID, emailAddress);
-        String message 		= 'Hello there! Your code is: '+att.Secret_Code__c;
-        SendEmailGeneric('jon-c@501commons.org',emailAddress,'Your Techbridge Girls Confirmation Code',message);
+        String message 		= Label.C501_ClassReg_CodeMessage + ' '+att.Secret_Code__c + ' ' +Label.C501_ClassReg_CodeMessageDisclaim;
+        SendEmailGeneric('jon-c@501commons.org',emailAddress,Label.C501_ClassReg_ConfirmCodeSubject,message);
         insert att;
     }
     
@@ -256,6 +256,12 @@ public class C501_UTIL_ClassRegUtilities {
         return att;
     }
     
+    @future(callout=true)
+    public static void sendSMSGenericFuture(String phoneNumber, String message){
+        sendSMSGeneric(phoneNumber,message);
+    }
+    
+    
     public static void sendSMSGeneric(String phoneNumber, String message){
         TwilioConfig__c tcon = [SELECT id, AccountSid__c, AuthToken__c,	Default_Send_Number__c FROM TwilioConfig__c WHERE Name = 'default' LIMIT 1];
         
@@ -272,7 +278,7 @@ public class C501_UTIL_ClassRegUtilities {
     
     public static void sendSMS(ID AcctID,String phoneNumber){
         Class_Site_Login_Attempt__c att = generateLoginCode(AcctId, phoneNumber);
-        sendSMSGeneric(phoneNumber,'Hello there! Your code is: '+att.Secret_Code__c);
+        sendSMSGeneric(phoneNumber,Label.C501_ClassReg_CodeMessage + ' '+att.Secret_Code__c + ' ' + Label.C501_ClassReg_CodeMessageDisclaim);
         insert att;
     }
 
@@ -346,6 +352,21 @@ public class C501_UTIL_ClassRegUtilities {
         }
         return page;
     }   
+    
+    public static void logActivityToContact(Id contactId,String subject, String message,String messageType){
+        Task log = new Task(
+        	Description = message,
+            WhoId		= contactId,
+            Priority 	= 'Normal', 
+            Subject		= subject,
+            Status		= 'Completed',
+            CallType 	= 'Outbound',
+            Type		= messageType,
+            Activity_Report_Type__c = 'Programs',
+            ReminderDateTime = System.now()+1
+        );
+        insert log;
+    }
     
     /*public void ObjectsFieldMerge(Account masterObject, List<Account> duplicateObjects){ 
         Set<Id> mergeCandidates = new Set<Id> { 

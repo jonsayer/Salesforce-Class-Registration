@@ -52,6 +52,8 @@ public class C501_TEST_ClassReg_CreateAcct {
     }
     
     @isTest static void testSuccessfulInsert(){
+        insert new TwilioConfig__c(Name = 'default', AuthToken__c = 'xxx', Default_Send_Number__c = '206222222', AccountSid__c = 'xxx');
+        
         Class_Site_Login_Attempt__c att = createLoggedInTestUser();
         
         Account	school = new Account(Name='TestSchool',Region__c = 'Seattle');
@@ -61,13 +63,17 @@ public class C501_TEST_ClassReg_CreateAcct {
         Test.setCurrentPage(createAcctPage);
         System.currentPageReference().getParameters().put('a', att.id);
         System.currentPageReference().getParameters().put('r', '1');
+        System.currentPageReference().getParameters().put('c', 'test@test.com');
         
         Test.startTest();
         C501_CTRL_ClassReg_CreateAcct controller = new C501_CTRL_ClassReg_CreateAcct();
         System.assert(controller.pageStatus == 'new');
         
-        controller.parent.FirstName	= 'Test';
-        controller.parent.LastName	= 'LastName';
+        //System.assert(controller.getRegions().size() == 5);
+        
+        controller.parent.FirstName			= 'Test';
+        controller.parent.LastName			= 'LastName';
+        controller.parent.MobilePhone		= '1234567890';
         controller.family.BillingStreet		= '123 Main St';
         controller.family.BillingCity		= 'Seattle';
         controller.family.BillingState		= 'WA';

@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
+        <fullName>C501_ClassReg_AND</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_AND</shortDescription>
+        <value>and</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_AddtlStudentInfo</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_AddtlStudentInfo</shortDescription>
+        <value>Additional Student Information</value>
+    </labels>
+    <labels>
         <fullName>C501_ClassReg_AuthToTreatMinor</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -62,6 +76,20 @@
         <protected>false</protected>
         <shortDescription>C501_ClassReg_ChildSchoolRegion</shortDescription>
         <value>Techbridge serves girls in four different regions. Which region is your child&apos;s school in?</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_CodeMessageDisclaim</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_CodeMessageDisclaim</shortDescription>
+        <value>This is an unmonitored account so please don’t reply.</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_ConfirmCodeSubject</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_ConfirmCodeSubject</shortDescription>
+        <value>Your Techbridge Girls Confirmation Code</value>
     </labels>
     <labels>
         <fullName>C501_ClassReg_EvalStudy</fullName>
@@ -245,6 +273,13 @@ We may also look at your child’s school information, like attendance and cours
         <value>Occasionally, Techbridge Girls program activities may be photographed, videotaped, and/or audio taped for educational, publicity or fundraising purposes. Please indicate if you give permission for you and/or your child or ward to appear in videos, photos and/or audio recordings without compensation (e.g., as part of brochures, slide shows or program websites). Your authorization below also permits Techbridge Girls to share photos and other media depicting you and/or your child or ward with partner organizations for use in their promotions of Techbridge Girls events and programs.</value>
     </labels>
     <labels>
+        <fullName>C501_ClassReg_PlzSelectOne</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_PlzSelectOne</shortDescription>
+        <value>Please Select One</value>
+    </labels>
+    <labels>
         <fullName>C501_ClassReg_StudentID</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -257,6 +292,13 @@ We may also look at your child’s school information, like attendance and cours
         <protected>false</protected>
         <shortDescription>C501_ClassReg_SubmitApplication</shortDescription>
         <value>Submit Application</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_WaiverRequired</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_WaiverRequired</shortDescription>
+        <value>You must check the box to sign the Participant Waiver. This is not optional.</value>
     </labels>
     <labels>
         <fullName>C501_ClassReg_dcArea</fullName>
@@ -336,11 +378,39 @@ We may also look at your child’s school information, like attendance and cours
         <value>We have received your application. We have sent a confirmation message to the Email Address or Phone Number you provided. A copy of your application is below. Feel free to save or print this for your records.</value>
     </labels>
     <labels>
+        <fullName>C501_RegSite_ConfirmSMS</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_ConfirmSMS</shortDescription>
+        <value>Thanks for registering for Techbridge Girls @</value>
+    </labels>
+    <labels>
         <fullName>C501_RegSite_Continue</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_RegSite_Continue</shortDescription>
         <value>Continue</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_EmailConfirmP2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_EmailConfirmP2</shortDescription>
+        <value>! The programs begins on</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_EmailConfirmP3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_EmailConfirmP3</shortDescription>
+        <value>with</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_EmailConfirmP4</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_EmailConfirmP4</shortDescription>
+        <value>. Please contact the Techbridge Teacher at your school or community site for any questions.</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_FamilyInformation</fullName>
@@ -406,6 +476,13 @@ We may also look at your child’s school information, like attendance and cours
         <value>Not provided</value>
     </labels>
     <labels>
+        <fullName>C501_RegSite_ParentContactRequired</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_ParentContactRequired</shortDescription>
+        <value>Please enter a contact method (phone number or email) for the parent. We need to be able to contact you!</value>
+    </labels>
+    <labels>
         <fullName>C501_RegSite_ParentEmail</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -439,6 +516,27 @@ We may also look at your child’s school information, like attendance and cours
         <protected>false</protected>
         <shortDescription>C501_RegSite_RememberMeDevice</shortDescription>
         <value>Remember me on this device.</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_SelectGrade</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_SelectGrade</shortDescription>
+        <value>Please Select a Grade</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_SelectSchool</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_SelectSchool</shortDescription>
+        <value>Please Select a School</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_SelectState</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_SelectState</shortDescription>
+        <value>Please Select a State</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_SiteRegFormTitle</fullName>
