@@ -71,23 +71,23 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{! $Label.C501_RegSite_StreetAddress } <span class="red">*</span></label>
-                                <apex:inputField styleClass="form-control" value="{!family.BillingStreet }" required="true" />
+                                <label>{! $Label.C501_RegSite_StreetAddress } </label>
+                                <apex:inputField styleClass="form-control" value="{!family.BillingStreet }" />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>{! $Label.C501_RegSite_City } <span class="red">*</span></label>
-                                <apex:inputField styleClass="form-control" value="{!family.BillingCity }" required="true" />
+                                <label>{! $Label.C501_RegSite_City }</label>
+                                <apex:inputField styleClass="form-control" value="{!family.BillingCity }" />
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>{! $Label.C501_RegSite_State } <span class="red">*</span></label>
-                                <apex:inputHidden value="{! family.BillingState }" required="true" id="theState"  />
-                                <select id="stateSelect" class="form-control" required="true">
+                                <label>{! $Label.C501_RegSite_State } </label>
+                                <apex:inputHidden value="{! family.BillingState }" id="theState"  />
+                                <select id="stateSelect" class="form-control" >
                                     <option value="">--</option>
                                     <option value="AL">Alabama</option>
                                     <option value="AK">Alaska</option>
@@ -147,13 +147,19 @@
                                     <option value="WY">Wyoming</option>
 
                                 </select>
+                                
+                                <apex:outputPanel rendered="{!noState}">
+                                    <div class="errorMsg">
+                                        <strong>Error:</strong> {! $Label.C501_ClassReg_PlzSelectOne }
+                                    </div>
+                                </apex:outputPanel>
                             </div>
                         </div>
                         
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>{! $Label.C501_RegSite_ZipCode } <span class="red">*</span></label>
-                                <apex:inputField html-maxlength="5" styleClass="form-control" value="{!family.BillingPostalCode }" required="true" />
+                                <label>{! $Label.C501_RegSite_ZipCode } </label>
+                                <apex:inputField html-maxlength="5" styleClass="form-control" value="{!family.BillingPostalCode }" />
                             </div>
                         </div>
                     </div>
@@ -180,6 +186,11 @@
                                     <apex:selectList styleClass="form-control" value="{!schoolName }" size="1"  html-name="School Name">
                                         <apex:selectOptions value="{!schoolList}"></apex:selectOptions>
                                     </apex:selectList>
+                                    <apex:outputPanel rendered="{!noSchool}">
+                                    	<div class="errorMsg">
+                                            <strong>Error:</strong> {! $Label.C501_ClassReg_PlzSelectOne }
+                                        </div>
+                                    </apex:outputPanel>
                                 </div>
                             </div>
                         </div>
@@ -195,7 +206,20 @@
                                 <apex:selectList styleClass="form-control" value="{! grade }" size="1" multiselect="false">
                                     <apex:selectOptions value="{!gradeList}"></apex:selectOptions>
                                 </apex:selectList>
+                                <apex:outputPanel rendered="{!noGrade}">
+                                    <div class="errorMsg">
+                                        <strong>Error:</strong> {! $Label.C501_ClassReg_PlzSelectOne }
+                                    </div>
+                                </apex:outputPanel>
                             </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="withLine" style="">
+                                {! $Label.C501_ClassReg_AddtlStudentInfo }
+                            </h2>
                         </div>
                     </div>
 
@@ -337,6 +361,14 @@
                             <p>
                                 <apex:inputCheckbox value="{!term.Waiver__c}" required="true" styleClass="form-check-input" />  
                                 <label class="form-check-label">{! $Label.C501_ClassReg_PARTICIPANT_WAIVERlabel } <span class="red">*</span></label>
+                                <apex:outputPanel rendered="{!noWaiver}">
+                                    <div class="errorMsg">
+                                        <strong>Error:</strong> {! $Label.C501_ClassReg_WaiverRequired }
+                                    </div>
+                                </apex:outputPanel>
+                                
+                                
+                                
                             </p>
                         </div>
                     </div>
