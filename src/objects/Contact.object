@@ -4,11 +4,6 @@
         <fullName>C501_Class_Registration_Site_Child</fullName>
         <description>Used by the class registration site to define the fields used on the child contact.</description>
         <displayedFields>
-            <field>Allergies__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
             <field>Medication__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
@@ -25,86 +20,6 @@
         </displayedFields>
         <displayedFields>
             <field>T_shirt_Size__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Student_Transportation__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Authorized_Pickup_1_Name__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Authorized_Pickup_1_Phone__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Authorized_Pickup_1_Relationship__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Authorized_Pickup_2_Name__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Authorized_Pickup_2_Phone__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Authorized_Pickup_2_Relationship__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Authorized_Pickup_3_Name__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Authorized_Pickup_3_Phone__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Authorized_Pickup_3_Relationship__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Alternate_Contact_Name__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Alternate_Contact_Phone__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Alternate_Contact_Relationship__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Emergency_Contact_2_Name__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Emergency_Contact_2_Phone__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Emergency_Contact_2_Relationship__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -153,7 +68,7 @@
     <fields>
         <fullName>Allergies__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>Does your child have any food restrictions or food allergies (vegetarian, vegan, dairy, gluten, nuts, kosher, Halal, seafood, no pork products, etc.)? (If Yes, please explain. If No, please write &quot;None&quot;)</inlineHelpText>
+        <inlineHelpText>Does your child have any food restrictions or food allergies (vegetarian, vegan, dairy, gluten, nuts, kosher, Halal, seafood, no pork products, etc.)? (If Yes, please explain. If No, please check the box below.)</inlineHelpText>
         <label>Allergies / Food Restrictions</label>
         <length>255</length>
         <required>false</required>
@@ -165,7 +80,7 @@
     <fields>
         <fullName>Alternate_Contact_Name__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>In case the parent/guardian cannot be reached, please provide an EMERGENCY CONTACT</inlineHelpText>
+        <inlineHelpText>Emergency Contact Name</inlineHelpText>
         <label>Emergency Contact Name</label>
         <length>100</length>
         <required>false</required>
@@ -199,7 +114,7 @@
     <fields>
         <fullName>Authorized_Pickup_1_Name__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>If you selected &quot;Someone will pick up my child&quot;, What is the name of someone authorized to pick up your child?</inlineHelpText>
+        <inlineHelpText>Authorized Pickup 1 Name</inlineHelpText>
         <label>Authorized Pickup 1 Name</label>
         <length>100</length>
         <required>false</required>
@@ -233,7 +148,7 @@
     <fields>
         <fullName>Authorized_Pickup_2_Name__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>Name of a second person authorized to pick up your child:</inlineHelpText>
+        <inlineHelpText>Authorized Pickup 2 Name</inlineHelpText>
         <label>Authorized Pickup 2 Name</label>
         <length>100</length>
         <required>false</required>
@@ -267,7 +182,7 @@
     <fields>
         <fullName>Authorized_Pickup_3_Name__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>Name of a third person authorized to pick up your child:</inlineHelpText>
+        <inlineHelpText>Authorized Pickup 3 Name</inlineHelpText>
         <label>Authorized Pickup 3 Name</label>
         <length>100</length>
         <required>false</required>
@@ -301,7 +216,7 @@
     <fields>
         <fullName>Emergency_Contact_2_Name__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>Please provide the name of a Second Emergency Contact</inlineHelpText>
+        <inlineHelpText>Second Emergency Contact&apos;s Name</inlineHelpText>
         <label>Emergency Contact 2 Name</label>
         <length>100</length>
         <required>false</required>
@@ -811,6 +726,11 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
+                    <fullName>Do not need translation</fullName>
+                    <default>false</default>
+                    <label>Do not need translation</label>
+                </value>
+                <value>
                     <fullName>Amharic</fullName>
                     <default>false</default>
                     <label>Amharic</label>
@@ -866,6 +786,11 @@
         <valueSet>
             <valueSetDefinition>
                 <sorted>false</sorted>
+                <value>
+                    <fullName>Not able to volunteer</fullName>
+                    <default>false</default>
+                    <label>Not able to volunteer</label>
+                </value>
                 <value>
                     <fullName>Make calls</fullName>
                     <default>false</default>

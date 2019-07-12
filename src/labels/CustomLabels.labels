@@ -15,6 +15,13 @@
         <value>Additional Student Information</value>
     </labels>
     <labels>
+        <fullName>C501_ClassReg_AuthPickup</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_AuthPickup</shortDescription>
+        <value>If you selected &quot;Someone will pick up my child&quot;, What is the name of someone authorized to pick up your child?</value>
+    </labels>
+    <labels>
         <fullName>C501_ClassReg_AuthToTreatMinor</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -78,6 +85,13 @@
         <value>Techbridge serves girls in four different regions. Which region is your child&apos;s school in?</value>
     </labels>
     <labels>
+        <fullName>C501_ClassReg_CodeMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_CodeMessage</shortDescription>
+        <value>Hello There! Your code for the Techbridge Girls registration system is:</value>
+    </labels>
+    <labels>
         <fullName>C501_ClassReg_CodeMessageDisclaim</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -85,11 +99,25 @@
         <value>This is an unmonitored account so please don’t reply.</value>
     </labels>
     <labels>
+        <fullName>C501_ClassReg_CodeMessageExpire</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_CodeMessageExpire</shortDescription>
+        <value>Code expires in 30 min.</value>
+    </labels>
+    <labels>
         <fullName>C501_ClassReg_ConfirmCodeSubject</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_ClassReg_ConfirmCodeSubject</shortDescription>
         <value>Your Techbridge Girls Confirmation Code</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_EmergencySubtext</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_EmergencySubtext</shortDescription>
+        <value>In case the parent/guardian cannot be reached, please provide an EMERGENCY CONTACT.</value>
     </labels>
     <labels>
         <fullName>C501_ClassReg_EvalStudy</fullName>
@@ -273,6 +301,13 @@ We may also look at your child’s school information, like attendance and cours
         <value>Occasionally, Techbridge Girls program activities may be photographed, videotaped, and/or audio taped for educational, publicity or fundraising purposes. Please indicate if you give permission for you and/or your child or ward to appear in videos, photos and/or audio recordings without compensation (e.g., as part of brochures, slide shows or program websites). Your authorization below also permits Techbridge Girls to share photos and other media depicting you and/or your child or ward with partner organizations for use in their promotions of Techbridge Girls events and programs.</value>
     </labels>
     <labels>
+        <fullName>C501_ClassReg_PickUpChild</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_PickUpChild</shortDescription>
+        <value>Persons allowed to pick up my child:</value>
+    </labels>
+    <labels>
         <fullName>C501_ClassReg_PlzSelectOne</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -392,6 +427,13 @@ We may also look at your child’s school information, like attendance and cours
         <value>Continue</value>
     </labels>
     <labels>
+        <fullName>C501_RegSite_DontKnowID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_DontKnowID</shortDescription>
+        <value>Check here if you don&apos;t know and authorize Techbridge Girls to get this from your child&apos;s school.</value>
+    </labels>
+    <labels>
         <fullName>C501_RegSite_EmailConfirmP2</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -411,6 +453,13 @@ We may also look at your child’s school information, like attendance and cours
         <protected>false</protected>
         <shortDescription>C501_RegSite_EmailConfirmP4</shortDescription>
         <value>. Please contact the Techbridge Teacher at your school or community site for any questions.</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_EmergencyContacts</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_EmergencyContacts</shortDescription>
+        <value>Emergency Contacts</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_FamilyInformation</fullName>
@@ -469,6 +518,20 @@ We may also look at your child’s school information, like attendance and cours
         <value>Log in</value>
     </labels>
     <labels>
+        <fullName>C501_RegSite_NoAllergies</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_NoAllergies</shortDescription>
+        <value>No Food Restrictions or Allergies</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_NoAllergiesError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_NoAllergiesError</shortDescription>
+        <value>Please indicate if your child has any food allergies or restrictions.</value>
+    </labels>
+    <labels>
         <fullName>C501_RegSite_NotProvided</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -504,11 +567,25 @@ We may also look at your child’s school information, like attendance and cours
         <value>Parent/Guardian Last Name</value>
     </labels>
     <labels>
+        <fullName>C501_RegSite_PickUpChildError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_PickUpChildError</shortDescription>
+        <value>Please identify someone who can pick up your child from the program.</value>
+    </labels>
+    <labels>
         <fullName>C501_RegSite_ProvidePhoneEmail</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_RegSite_ProvidePhoneEmail</shortDescription>
         <value>Please provide your phone number or email address to log in.</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_ProvideStudentId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_ProvideStudentId</shortDescription>
+        <value>Please provide a Student ID Number, or give us permission to get it from your child&apos;s school.</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_RememberMeDevice</fullName>
@@ -565,6 +642,13 @@ We may also look at your child’s school information, like attendance and cours
         <protected>false</protected>
         <shortDescription>C501_RegSite_StudentInformation</shortDescription>
         <value>Student Information</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_Transport</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_Transport</shortDescription>
+        <value>Transportation and Authorized Pickup</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_WeSentYouCode</fullName>

@@ -29,6 +29,16 @@ SUBSTITUTE(C501_Class_Site_Mobile_Number__c, &quot;(&quot;, &quot;&quot;), &quot
         <type>Phone</type>
     </fields>
     <fields>
+        <fullName>C501_Next_program_start_date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the date that the next class begins at this school.</inlineHelpText>
+        <label>Next program start date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>Primary_Teacher__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
