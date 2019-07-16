@@ -280,6 +280,20 @@ We may also look at your child’s school information, like attendance and cours
         <value>Parent/Guardian Work Phone</value>
     </labels>
     <labels>
+        <fullName>C501_ClassReg_PhoneFail</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_PhoneFail</shortDescription>
+        <value>Please check the phone numbers you provided.</value>
+    </labels>
+    <labels>
+        <fullName>C501_ClassReg_PhoneFailSpecific</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_PhoneFailSpecific</shortDescription>
+        <value>This not a valid phone number.</value>
+    </labels>
+    <labels>
         <fullName>C501_ClassReg_PhotoVideo</fullName>
         <language>en_US</language>
         <protected>false</protected>

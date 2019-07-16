@@ -142,6 +142,8 @@
         <members>C501_ClassReg_ParentMobilePhone</members>
         <members>C501_ClassReg_ParentWorkPhone</members>
         <members>C501_ClassReg_ParentWorkPhone</members>
+        <members>C501_ClassReg_PhoneFail</members>
+        <members>C501_ClassReg_PhoneFailSpecific</members>
         <members>C501_ClassReg_PhotoVideo</members>
         <members>C501_ClassReg_PhotoVideoLabel</members>
         <members>C501_ClassReg_PhotoVideoP1</members>
@@ -208,6 +210,10 @@
         <name>CustomObject</name>
     </types>
     <types>
+        <members>Class_Registration_data</members>
+        <name>Dashboard</name>
+    </types>
+    <types>
         <members>Account.C501_Class_Registration_Site_HH_Acct</members>
         <members>Contact.C501_Class_Registration_Site_Child</members>
         <members>Contact.C501_Class_Registration_Site_Parent</members>
@@ -222,6 +228,10 @@
         <members>Class_Site_Login_Attempt__c.All</members>
         <members>School_Term__c.X2016_17_School_Terms</members>
         <name>ListView</name>
+    </types>
+    <types>
+        <members>Class_Reg_s_by_Signup_Method_This_Year</members>
+        <name>Report</name>
     </types>
     <types>
         <members>techbridgeLogo</members>

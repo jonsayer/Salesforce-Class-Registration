@@ -305,7 +305,22 @@ public class C501_UTIL_ClassRegUtilities {
     public static string cleanInputPhone(String input){
         // to do: clean the string to make sure first number is not '1' and that there are 10 digits.
         String output = input.replaceAll('[^0-9]', '');
+        if(output.left(1) == '1'){
+            output = output.right( output.length()-1 );
+        }
+        if(output.length() != 10){
+            return null;
+        }
         return output;
+    }
+    
+    public static string NAformatPhone(String input){
+        String output = cleanInputPhone(input);
+        if(output == null){
+            return null;
+        } else {
+            return '('+output.left(3)+') '+output.left(6).right(3)+'-'+output.right(4);
+        }
     }
     
     public static String generateRandomString(Integer len, Boolean includeNumbers,Boolean includeUppers,Boolean includeLowers) {

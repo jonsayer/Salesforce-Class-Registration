@@ -237,6 +237,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
             ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,Label.C501_RegSite_ParentContactRequired)  );
             passValidation = false;
         }
+        
         if(term.Waiver__c == false){
             ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,Label.C501_ClassReg_WaiverRequired)  );
             noWaiver = true;
@@ -245,6 +246,96 @@ public class C501_CTRL_ClassReg_CreateAcct {
             noWaiver = false;
         }
         
+        Boolean phoneFail = false;
+        
+        // Phone number validation
+        if(parent.MobilePhone != null){
+            String NAformat = C501_UTIL_ClassRegUtilities.NAformatPhone(parent.MobilePhone);
+            if(NAformat != null){
+                parent.MobilePhone = NAformat;
+            } else {
+                phoneFail = true;
+                parent.MobilePhone.addError(Label.C501_ClassReg_PhoneFailSpecific);
+            }
+        }
+        if(parent.HomePhone != null){
+            String NAformat = C501_UTIL_ClassRegUtilities.NAformatPhone(parent.HomePhone);
+            if(NAformat != null){
+                parent.HomePhone = NAformat;
+            } else {
+                phoneFail = true;
+                parent.HomePhone.addError(Label.C501_ClassReg_PhoneFailSpecific);
+            }
+        }
+        if(parent.OtherPhone != null){
+            String NAformat = C501_UTIL_ClassRegUtilities.NAformatPhone(parent.OtherPhone);
+            if(NAformat != null){
+                parent.OtherPhone = NAformat;
+            } else {
+                phoneFail = true;
+                parent.OtherPhone.addError(Label.C501_ClassReg_PhoneFailSpecific);
+            }
+        }
+        if(child.MobilePhone != null){
+            String NAformat = C501_UTIL_ClassRegUtilities.NAformatPhone(child.MobilePhone);
+            if(NAformat != null){
+                child.MobilePhone = NAformat;
+            } else {
+                phoneFail = true;
+                child.MobilePhone.addError(Label.C501_ClassReg_PhoneFailSpecific);
+            }
+        }
+        if(child.Alternate_Contact_Phone__c != null){
+            String NAformat = C501_UTIL_ClassRegUtilities.NAformatPhone(child.Alternate_Contact_Phone__c);
+            if(NAformat != null){
+                child.Alternate_Contact_Phone__c = NAformat;
+            } else {
+                phoneFail = true;
+                child.Alternate_Contact_Phone__c.addError(Label.C501_ClassReg_PhoneFailSpecific);
+            }
+        }
+        if(child.Emergency_Contact_2_Phone__c != null){
+            String NAformat = C501_UTIL_ClassRegUtilities.NAformatPhone(child.Emergency_Contact_2_Phone__c);
+            if(NAformat != null){
+                child.Emergency_Contact_2_Phone__c = NAformat;
+            } else {
+                phoneFail = true;
+                child.Emergency_Contact_2_Phone__c.addError(Label.C501_ClassReg_PhoneFailSpecific);
+            }
+        }
+        if(child.Authorized_Pickup_1_Phone__c != null){
+            String NAformat = C501_UTIL_ClassRegUtilities.NAformatPhone(child.Authorized_Pickup_1_Phone__c);
+            if(NAformat != null){
+                child.Authorized_Pickup_1_Phone__c = NAformat;
+            } else {
+                phoneFail = true;
+                child.Authorized_Pickup_1_Phone__c.addError(Label.C501_ClassReg_PhoneFailSpecific);
+            }
+        }
+        if(child.Authorized_Pickup_2_Phone__c != null){
+            String NAformat = C501_UTIL_ClassRegUtilities.NAformatPhone(child.Authorized_Pickup_2_Phone__c);
+            if(NAformat != null){
+                child.Authorized_Pickup_2_Phone__c = NAformat;
+            } else {
+                phoneFail = true;
+                child.Authorized_Pickup_2_Phone__c.addError(Label.C501_ClassReg_PhoneFailSpecific);
+            }
+        }
+        if(child.Authorized_Pickup_3_Phone__c != null){
+            String NAformat = C501_UTIL_ClassRegUtilities.NAformatPhone(child.Authorized_Pickup_3_Phone__c);
+            if(NAformat != null){
+                child.Authorized_Pickup_3_Phone__c = NAformat;
+            } else {
+                phoneFail = true;
+                child.Authorized_Pickup_3_Phone__c.addError(Label.C501_ClassReg_PhoneFailSpecific);
+            }
+        }
+        
+        if(phoneFail){
+            passValidation = false;
+            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,Label.C501_ClassReg_PhoneFail)  );
+        }
+            
         if(passValidation == false){
             return null;
         }
@@ -264,6 +355,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
         term.Student__c 	= child.Id;
         term.Parent__c 		= parent.Id;
         term.School__c 		= schoolName;
+        term.C501_Sign_Up_Source__c	= 'Online';
         
         schoolNameText 		= [Select 	id,
                                			Name,
@@ -275,6 +367,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
                                             		npe5__Contact__r.LastName
                                             FROM	npe5__Affiliations__r
                                             WHERE	npe5__Status__c = 'Current'
+                                             AND 	npe5__Role__c 	= 'Teacher'
                                         )
                                from 	Account 
                                where 	id = :schoolName];
