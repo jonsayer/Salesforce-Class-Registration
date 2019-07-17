@@ -42,16 +42,6 @@
                     <label>Paper</label>
                 </value>
                 <value>
-                    <fullName>byText</fullName>
-                    <default>false</default>
-                    <label>byText</label>
-                </value>
-                <value>
-                    <fullName>byEmail</fullName>
-                    <default>false</default>
-                    <label>byEmail</label>
-                </value>
-                <value>
                     <fullName>Online</fullName>
                     <default>false</default>
                     <label>Online</label>

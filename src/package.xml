@@ -21,6 +21,7 @@
     <types>
         <members>Account.C501_Class_Site_Mobile_Number_Lookup__c</members>
         <members>Account.C501_Class_Site_Mobile_Number__c</members>
+        <members>Account.C501_Next_program_start_date__c</members>
         <members>Account.Primary_Teacher__c</members>
         <members>Account.Region__c</members>
         <members>Account.Secondary_Teacher__c</members>
@@ -103,6 +104,7 @@
     <types>
         <members>C501_ClassReg_AND</members>
         <members>C501_ClassReg_AddtlStudentInfo</members>
+        <members>C501_ClassReg_AuthPickup</members>
         <members>C501_ClassReg_AuthToTreatMinor</members>
         <members>C501_ClassReg_AuthToTreatMinorLabel</members>
         <members>C501_ClassReg_AuthToTreatMinorP1</members>
@@ -113,8 +115,11 @@
         <members>C501_ClassReg_ChildSchoolName</members>
         <members>C501_ClassReg_ChildSchoolName</members>
         <members>C501_ClassReg_ChildSchoolRegion</members>
+        <members>C501_ClassReg_CodeMessage</members>
         <members>C501_ClassReg_CodeMessageDisclaim</members>
+        <members>C501_ClassReg_CodeMessageExpire</members>
         <members>C501_ClassReg_ConfirmCodeSubject</members>
+        <members>C501_ClassReg_EmergencySubtext</members>
         <members>C501_ClassReg_EvalStudy</members>
         <members>C501_ClassReg_EvalStudyH1</members>
         <members>C501_ClassReg_EvalStudyH1P1</members>
@@ -138,9 +143,12 @@
         <members>C501_ClassReg_ParentMobilePhone</members>
         <members>C501_ClassReg_ParentWorkPhone</members>
         <members>C501_ClassReg_ParentWorkPhone</members>
+        <members>C501_ClassReg_PhoneFail</members>
+        <members>C501_ClassReg_PhoneFailSpecific</members>
         <members>C501_ClassReg_PhotoVideo</members>
         <members>C501_ClassReg_PhotoVideoLabel</members>
         <members>C501_ClassReg_PhotoVideoP1</members>
+        <members>C501_ClassReg_PickUpChild</members>
         <members>C501_ClassReg_PlzSelectOne</members>
         <members>C501_ClassReg_StudentID</members>
         <members>C501_ClassReg_StudentID</members>
@@ -160,9 +168,11 @@
         <members>C501_RegSite_ConfirmMessageSite</members>
         <members>C501_RegSite_ConfirmSMS</members>
         <members>C501_RegSite_Continue</members>
+        <members>C501_RegSite_DontKnowID</members>
         <members>C501_RegSite_EmailConfirmP2</members>
         <members>C501_RegSite_EmailConfirmP3</members>
         <members>C501_RegSite_EmailConfirmP4</members>
+        <members>C501_RegSite_EmergencyContacts</members>
         <members>C501_RegSite_FamilyInformation</members>
         <members>C501_RegSite_FinishedApp</members>
         <members>C501_RegSite_FirstName</members>
@@ -171,12 +181,16 @@
         <members>C501_RegSite_LeaveBlank</members>
         <members>C501_RegSite_LeaveBlankEmail</members>
         <members>C501_RegSite_Login</members>
+        <members>C501_RegSite_NoAllergies</members>
+        <members>C501_RegSite_NoAllergiesError</members>
         <members>C501_RegSite_NotProvided</members>
         <members>C501_RegSite_ParentContactRequired</members>
         <members>C501_RegSite_ParentEmail</members>
         <members>C501_RegSite_ParentFirstName</members>
         <members>C501_RegSite_ParentLastName</members>
+        <members>C501_RegSite_PickUpChildError</members>
         <members>C501_RegSite_ProvidePhoneEmail</members>
+        <members>C501_RegSite_ProvideStudentId</members>
         <members>C501_RegSite_RememberMeDevice</members>
         <members>C501_RegSite_SelectGrade</members>
         <members>C501_RegSite_SelectSchool</members>
@@ -185,6 +199,7 @@
         <members>C501_RegSite_State</members>
         <members>C501_RegSite_StreetAddress</members>
         <members>C501_RegSite_StudentInformation</members>
+        <members>C501_RegSite_Transport</members>
         <members>C501_RegSite_WeSentYouCode</members>
         <members>C501_RegSite_Youarenotauthenticated</members>
         <members>C501_RegSite_ZipCode</members>
@@ -194,6 +209,10 @@
         <members>Class_Site_Login_Attempt__c</members>
         <members>TwilioConfig__c</members>
         <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Class_Registration_data</members>
+        <name>Dashboard</name>
     </types>
     <types>
         <members>Account.C501_Class_Registration_Site_HH_Acct</members>
@@ -210,6 +229,10 @@
         <members>Class_Site_Login_Attempt__c.All</members>
         <members>School_Term__c.X2016_17_School_Terms</members>
         <name>ListView</name>
+    </types>
+    <types>
+        <members>Class_Reg_s_by_Signup_Method_This_Year</members>
+        <name>Report</name>
     </types>
     <types>
         <members>techbridgeLogo</members>

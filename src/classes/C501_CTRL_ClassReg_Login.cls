@@ -17,7 +17,7 @@ public class C501_CTRL_ClassReg_Login {
         phoneNumber		= '';
         confirmation	= '';
         identityInput	= null;
-        remember        = true;
+        remember        = false;
     }
     
     public PageReference confirmLoginBySendToAddress(){

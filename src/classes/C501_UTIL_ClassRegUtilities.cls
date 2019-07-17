@@ -190,8 +190,8 @@ public class C501_UTIL_ClassRegUtilities {
     
     public static void sendEmailConfirmation(ID AcctID, String emailAddress){
         Class_Site_Login_Attempt__c att 	= generateLoginCode(AcctID, emailAddress);
-        String message 		= Label.C501_ClassReg_CodeMessage + ' '+att.Secret_Code__c + ' ' +Label.C501_ClassReg_CodeMessageDisclaim;
-        SendEmailGeneric('jon-c@501commons.org',emailAddress,Label.C501_ClassReg_ConfirmCodeSubject,message);
+        String message 		= Label.C501_ClassReg_CodeMessage + ' '+att.Secret_Code__c + ' ' +Label.C501_ClassReg_CodeMessageDisclaim+' '+Label.C501_ClassReg_CodeMessageExpire;
+        SendEmailGeneric('salesforce@techbridgegirls.org',emailAddress,Label.C501_ClassReg_ConfirmCodeSubject,message);
         insert att;
     }
     
@@ -278,7 +278,7 @@ public class C501_UTIL_ClassRegUtilities {
     
     public static void sendSMS(ID AcctID,String phoneNumber){
         Class_Site_Login_Attempt__c att = generateLoginCode(AcctId, phoneNumber);
-        sendSMSGeneric(phoneNumber,Label.C501_ClassReg_CodeMessage + ' '+att.Secret_Code__c + ' ' + Label.C501_ClassReg_CodeMessageDisclaim);
+        sendSMSGeneric(phoneNumber,Label.C501_ClassReg_CodeMessage + ' '+att.Secret_Code__c + ' ' + Label.C501_ClassReg_CodeMessageDisclaim+' '+Label.C501_ClassReg_CodeMessageExpire);
         insert att;
     }
 
@@ -305,7 +305,22 @@ public class C501_UTIL_ClassRegUtilities {
     public static string cleanInputPhone(String input){
         // to do: clean the string to make sure first number is not '1' and that there are 10 digits.
         String output = input.replaceAll('[^0-9]', '');
+        if(output.left(1) == '1'){
+            output = output.right( output.length()-1 );
+        }
+        if(output.length() != 10){
+            return null;
+        }
         return output;
+    }
+    
+    public static string NAformatPhone(String input){
+        String output = cleanInputPhone(input);
+        if(output == null){
+            return null;
+        } else {
+            return '('+output.left(3)+') '+output.left(6).right(3)+'-'+output.right(4);
+        }
     }
     
     public static String generateRandomString(Integer len, Boolean includeNumbers,Boolean includeUppers,Boolean includeLowers) {

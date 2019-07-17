@@ -55,10 +55,10 @@
                             <p>
                                 <apex:inputText styleClass="form-control" value="{!confirmation }" required="true" />
                             </p>
-                            <p>
+                            <!--<p>
                                 <apex:inputCheckbox styleClass="form-check-input" value="{!remember}" required="true" />
     							<label class="form-check-label" >{! $Label.C501_RegSite_RememberMeDevice }</label>
-                            </p>
+                            </p>-->
                             <div class="prominent_button">
                                 <apex:commandLink action="{!confirmLoginBySendToAddress}" value="Go" />
                                 <!--<apex:commandLink action="{!confirmLogin}" value="Go" />-->
