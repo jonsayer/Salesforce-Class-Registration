@@ -171,21 +171,22 @@
                                 <div class="form-group">
                                     <label>{! $Label.C501_ClassReg_ChildSchoolRegion }</label>
                                     <apex:selectList styleClass="form-control" id="regionSelect" value="{! schoolRegion }" size="1" multiselect="false" >
-                                        <apex:actionSupport event="onchange" action="{!refreshSchools}" rerender="schoolNameList" status="status"/>
+                                        <apex:actionSupport event="onchange" action="{!refreshSchools}" rerender="schoolNameList" status="status" oncomplete="saveSchool()"/>
                                         <apex:selectOptions value="{!regions}"></apex:selectOptions>
                                     </apex:selectList>
                                 </div>
                             </div>
                         </div>
                     </apex:actionRegion>
-                    <apex:outputPanel id="schoolNameList">
+                    <apex:outputPanel id="schoolNameList" >
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{! $Label.C501_ClassReg_ChildSchoolName } <span class="red">*</span></label>
-                                    <apex:selectList styleClass="form-control" value="{!schoolName }" size="1"  html-name="School Name">
+                                    <apex:selectList id="schoolNameSelectList" styleClass="form-control schoolNameSelectList" size="1" html-name="School Name" >
                                         <apex:selectOptions value="{!schoolList}"></apex:selectOptions>
                                     </apex:selectList>
+                                    
                                     <apex:outputPanel rendered="{!noSchool}">
                                     	<div class="errorMsg">
                                             <strong>Error:</strong> {! $Label.C501_ClassReg_PlzSelectOne }
@@ -195,7 +196,7 @@
                             </div>
                         </div>
                     </apex:outputPanel>
-                        
+                    <apex:inputHidden value="{!schoolName }" id="schoolNameInput" />
                     
                     
                     
@@ -660,8 +661,8 @@
                         </div>
                     </div>
                     
-                    <apex:actionFunction name="refreshTheSchools" action="{!refreshSchools}" rerender="schoolNameList" status="status">
-                    </apex:actionFunction>
+                    <!--<apex:actionFunction name="refreshTheSchools" action="{!refreshSchools}" rerender="schoolNameList" status="status" oncomplete="">
+                    </apex:actionFunction>-->
                     
                     
                     
@@ -680,8 +681,8 @@
                     </apex:actionStatus>
                     
                     
-                    <apex:actionFunction name="changeSchoolList" action="{!refreshSchools}" rerender="schoolNameList" status="status"></apex:actionFunction>
-                    
+                    <!--<apex:actionFunction name="changeSchoolList" action="{!refreshSchools}" rerender="schoolNameList" status="status"></apex:actionFunction>
+                    -->
                 </apex:form>
             </apex:outputPanel>
             
@@ -1109,9 +1110,26 @@
             </apex:outputPanel>-->
             
             <script>
+            
+            	$(document).ready(function(){
+                    if('{!schoolName}' != ''){
+                    	$('.schoolNameSelectList').val( '{!schoolName}' );
+                    }
+                    
+                    
+                    saveSchool();
+                });
+            
             	$('#stateSelect').change(function() {
                 	$('[id$=theState]').val( $('#stateSelect').val() );
                 });
+            
+            	function saveSchool(){
+                    $('.schoolNameSelectList').change(function() {
+                        $('[id$=schoolNameInput]').val( $(this).val() );
+                    });
+                }
+            	
             </script>
             
 
