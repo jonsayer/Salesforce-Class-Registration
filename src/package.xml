@@ -209,7 +209,7 @@
         <name>CustomObject</name>
     </types>
     <types>
-        <members>Class_Registration_data</members>
+        <members>*</members>
         <name>Dashboard</name>
     </types>
     <types>
@@ -233,7 +233,7 @@
         <name>PermissionSet</name>
     </types>
     <types>
-        <members>Class_Reg_s_by_Signup_Method_This_Year</members>
+        <members>*</members>
         <name>Report</name>
     </types>
     <types>
