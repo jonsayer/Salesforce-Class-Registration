@@ -7,16 +7,30 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public Account 	family   		{get; set;}
     public String  	pageStatus   	{get; set;}
     public ID		loginID			{get; set;}
-    public String	schoolName		{get; set;}
     public Account	schoolNameText	{get; set;}
     public Boolean  dontKnowId		{get; set;}
     public Boolean 	noAllergies		{get; set;}
 
+    
+    public String	schoolName		{
+        get{
+            if(schoolName 	== null){
+                system.debug('rerunning schoolName get line 18');
+                schoolName = '';
+            }
+            system.debug('returning school name');
+            return schoolName;
+        } 
+        set;
+    }
+    
     public String	schoolRegion	{
         get{
             if(schoolRegion 	== null){
+                system.debug('rerunning schoolRegion get line 18');
                 schoolRegion = '';
             }
+            system.debug('returning school region');
             return schoolRegion;
         } 
         set;
@@ -36,9 +50,11 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public List<SelectOption> schoolList 	{
         get {
             if(schoolList == null ){
+                system.debug('rerunning schoolList get line 41');
                 schoolList = getSelectOptionsActiveSchools(schoolRegion);
             } 
             System.debug('List<SelectOption> schoolList run: ' + schoolList);
+            system.debug('returning schoolList');
             return schoolList;
     	} set;
 	}
@@ -49,6 +65,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public List<Schema.FieldSetMember>	childFieldSet	{get; set;}
     
     public C501_CTRL_ClassReg_CreateAcct(){
+        
         language		= ApexPages.currentPage().getParameters().get('l');
         if(language == null){
             language = 'en_US';
@@ -113,6 +130,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
         noStuID			= false;
         noAllergyResp	= false;
         needPickup		= false;
+        schoolregion 	= '';
         
         Map<String, Schema.FieldSet> FsAcctMap = Schema.SObjectType.Account.fieldSets.getMap();
         Map<String, Schema.FieldSet> FsContMap = Schema.SObjectType.Contact.fieldSets.getMap();
@@ -335,7 +353,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
             passValidation = false;
             ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,Label.C501_ClassReg_PhoneFail)  );
         }
-            
+        system.debug( 'SchoolName after validation attempts: ' + schoolName   );
         if(passValidation == false){
             return null;
         }
@@ -392,8 +410,10 @@ public class C501_CTRL_ClassReg_CreateAcct {
                 teacherName = teacherName + schoolNameText.npe5__Affiliations__r[i].npe5__Contact__r.FirstName + ' ' +schoolNameText.npe5__Affiliations__r[i].npe5__Contact__r.LastName;
             }
             
-            
-            String nextStartDate = Datetime.newInstance(schoolNameText.C501_Next_Program_Start_Date__c, Time.newInstance(0,0,0,0)).format('MMMMM d, yyyy');
+            String nextStartDate = '';
+            if(schoolNameText.C501_Next_Program_Start_Date__c != null){
+            	nextStartDate = Datetime.newInstance(schoolNameText.C501_Next_Program_Start_Date__c, Time.newInstance(0,0,0,0)).format('MMMMM d, yyyy');
+            }
             
             String emailMessage = Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name +Label.C501_RegSite_EmailConfirmP2+' '+nextStartDate+' '+Label.C501_RegSite_EmailConfirmP3+' '+teacherName+Label.C501_RegSite_EmailConfirmP4;
             C501_UTIL_ClassRegUtilities.SendEmailGeneric('salesforce@techbridgegirls.org',parent.Email,Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name,emailMessage);
@@ -416,6 +436,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
     }
     
     public static List<Account> getListOfActiveSchools(String regionFilter){
+        system.debug('rerunning getListOfActiveSchools line 424');
         Id schoolRecordType = [select id from Recordtype where Name='School'].Id;
         List<Account> schoolList = new List<Account>();
         schoolList = [
@@ -430,6 +451,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
             ORDER BY School_District_Lookup__r.Name, Name
         ];
         if(schoolList.size() == 0){
+            system.debug('first query returned null, pulling whole list');
             schoolList = [
                 SELECT	id,
                         Name,

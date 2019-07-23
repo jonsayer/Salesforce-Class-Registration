@@ -59,7 +59,6 @@
         <members>Contact.Parent_Education_second_parent__c</members>
         <members>Contact.Parent_Education_second_parent__c</members>
         <members>Contact.Preferred_Method_of_Contact__c</members>
-        <members>Contact.Preferred_Method_of_Contact__c</members>
         <members>Contact.Race__c</members>
         <members>Contact.Student_Special_Needs__c</members>
         <members>Contact.Student_Transportation__c</members>
@@ -211,7 +210,7 @@
         <name>CustomObject</name>
     </types>
     <types>
-        <members>Class_Registration_data</members>
+        <members>*</members>
         <name>Dashboard</name>
     </types>
     <types>
@@ -231,7 +230,11 @@
         <name>ListView</name>
     </types>
     <types>
-        <members>Class_Reg_s_by_Signup_Method_This_Year</members>
+        <members>C501_Registration_Site_User</members>
+        <name>PermissionSet</name>
+    </types>
+    <types>
+        <members>*</members>
         <name>Report</name>
     </types>
     <types>
