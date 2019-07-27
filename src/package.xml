@@ -50,6 +50,7 @@
         <members>Contact.Emergency_Contact_2_Phone__c</members>
         <members>Contact.Emergency_Contact_2_Relationship__c</members>
         <members>Contact.Emergency_Preferred_Medical_Provider__c</members>
+        <members>School_Term__c.C501_Free_Reduced_Lunch_Picklist__c</members>
         <members>Contact.Income__c</members>
         <members>Contact.Medication__c</members>
         <members>Contact.Number_in_Household_Picklist__c</members>
@@ -64,6 +65,7 @@
         <members>Contact.Student_Transportation__c</members>
         <members>Contact.T_shirt_Size__c</members>
         <members>Contact.Translation_Needed__c</members>
+        <members>Contact.Translation_Needed_Other</members>
         <members>Contact.Volunteer__c</members>
         <members>School_Term__c.Active_Year__c</members>
         <members>School_Term__c.Authorization_to_treat_minor__c</members>

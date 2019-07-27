@@ -226,6 +226,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>School_Term__c.C501_Free_Reduced_Lunch_Picklist__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>School_Term__c.Active_Year__c</field>
         <readable>true</readable>
