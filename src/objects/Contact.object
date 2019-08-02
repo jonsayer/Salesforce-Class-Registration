@@ -34,11 +34,6 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Translation_Needed__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
             <field>Parent_Education__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
@@ -68,7 +63,7 @@
     <fields>
         <fullName>Allergies__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>Does your child have any food restrictions or food allergies (vegetarian, vegan, dairy, gluten, nuts, kosher, Halal, seafood, no pork products, etc.)? (If Yes, please explain. If No, please check the box below.)</inlineHelpText>
+        <inlineHelpText>Does your child have any dietary restrictions or food allergies (vegetarian, vegan, dairy, gluten, nuts, kosher, Halal, seafood, no pork products, etc.)? If Yes, please explain. If No, please check the box below.</inlineHelpText>
         <label>Allergies / Food Restrictions</label>
         <length>255</length>
         <required>false</required>
@@ -711,6 +706,18 @@
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Translation_Needed_Other__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Other Language:</inlineHelpText>
+        <label>Translation Needed: Other</label>
+        <length>55</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Translation_Needed__c</fullName>

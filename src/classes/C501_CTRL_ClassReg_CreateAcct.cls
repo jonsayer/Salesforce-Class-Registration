@@ -396,9 +396,13 @@ public class C501_CTRL_ClassReg_CreateAcct {
         insert term;
         if(parent.MobilePhone != null && parent.MobilePhone != '' ){
             String SMSmessage = Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name;
+            if(parent.Email != null && parent.Email != ''){
+                SMSmessage = SMSmessage + Label.C501_RegSite_SMSweSentAnEmail + ' ' + parent.Email;
+            }
             C501_UTIL_ClassRegUtilities.logActivityToContact(parent.Id,SMSmessage, SMSmessage,'Call');
             C501_UTIL_ClassRegUtilities.sendSMSGenericFuture(parent.MobilePhone,Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name );
         }
+        
         if(parent.Email != null && parent.Email != '' ){
             String teacherName = '';
             for(Integer i = 0; i < schoolNameText.npe5__Affiliations__r.size(); i++){
@@ -415,10 +419,13 @@ public class C501_CTRL_ClassReg_CreateAcct {
             	nextStartDate = Datetime.newInstance(schoolNameText.C501_Next_Program_Start_Date__c, Time.newInstance(0,0,0,0)).format('MMMMM d, yyyy');
             }
             
-            String emailMessage = Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name +Label.C501_RegSite_EmailConfirmP2+' '+nextStartDate+' '+Label.C501_RegSite_EmailConfirmP3+' '+teacherName+Label.C501_RegSite_EmailConfirmP4;
-            C501_UTIL_ClassRegUtilities.SendEmailGeneric('salesforce@techbridgegirls.org',parent.Email,Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name,emailMessage);
+            Id templateId = [Select id from EmailTemplate where DeveloperName = 'C501_RegSite_Class_Registration_Confirmation_Message'].Id;
             
-            C501_UTIL_ClassRegUtilities.logActivityToContact(parent.Id,Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name, emailMessage,'Email');
+            //String emailMessage = Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name +Label.C501_RegSite_EmailConfirmP2+' '+nextStartDate+' '+Label.C501_RegSite_EmailConfirmP3+' '+teacherName+Label.C501_RegSite_EmailConfirmP4;
+            //C501_UTIL_ClassRegUtilities.SendEmailGeneric('salesforce@techbridgegirls.org',parent.Email,Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name,emailMessage);
+			C501_UTIL_ClassRegUtilities.SendEmailGeneric('salesforce@techbridgegirls.org',null,null,null,term.Id,templateId,parent.Id);
+            
+            //C501_UTIL_ClassRegUtilities.logActivityToContact(parent.Id,Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name, emailMessage,'Email');
         }
         pageStatus = 'finished';
         return null;

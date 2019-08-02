@@ -1,4 +1,4 @@
-<apex:page language="{!language}" sidebar="false" showHeader="false" controller="C501_CTRL_ClassReg_CreateAcct" >
+<apex:page language="{!language}" sidebar="false" showHeader="false" controller="C501_CTRL_ClassReg_CreateAcct" docType="html-5.0" >
     <apex:composition template="C501_ClassRegSiteTemplate">
         <apex:define name="body">
             <div class="row">
@@ -63,8 +63,9 @@
                         </div>
                         <div class="col-md-3">                               
                             <label>{! $Label.C501_ClassReg_ChildMobilePhone }</label>
-                            <apex:inputField styleClass="form-control" value="{!child.MobilePhone }" />
-                            <small class="form-text text-muted">{! $Label.C501_RegSite_LeaveBlank }</small>
+                            <apex:inputField styleClass="form-control" value="{!child.MobilePhone }"  html-pattern="[0-9]{10}" />
+                            <small class="form-text text-muted">{! $Label.C501_RegSite_LeaveBlank }</small><br />
+                            <small class="form-text text-muted">{! $Label.C501_RegSite_PlzAreaCode }</small>
                         </div>
                     </div>
                     
@@ -87,7 +88,7 @@
                             <div class="form-group">
                                 <label>{! $Label.C501_RegSite_State } </label>
                                 <apex:inputHidden value="{! family.BillingState }" id="theState"  />
-                                <select id="stateSelect" class="form-control" >
+                                <select id="stateSelect" class="form-control {! if(noState,'error','')}" >
                                     <option value="">--</option>
                                     <option value="AL">Alabama</option>
                                     <option value="AK">Alaska</option>
@@ -183,7 +184,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{! $Label.C501_ClassReg_ChildSchoolName } <span class="red">*</span></label>
-                                    <apex:selectList id="schoolNameSelectList" styleClass="form-control schoolNameSelectList" size="1" html-name="School Name" >
+                                    <apex:selectList id="schoolNameSelectList" styleClass="form-control schoolNameSelectList {! if(noSchool,'error','')}" size="1" html-name="School Name" >
                                         <apex:selectOptions value="{!schoolList}"></apex:selectOptions>
                                     </apex:selectList>
                                     
@@ -204,7 +205,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>{! $Label.C501_RegSite_Grade } <span class="red">*</span></label>
-                                <apex:selectList styleClass="form-control" value="{! grade }" size="1" multiselect="false">
+                                <apex:selectList styleClass="form-control {! if(noGrade,'error','')}" value="{! grade }" size="1" multiselect="false">
                                     <apex:selectOptions value="{!gradeList}"></apex:selectOptions>
                                 </apex:selectList>
                                 <apex:outputPanel rendered="{!noGrade}">
@@ -217,56 +218,7 @@
                     </div>
                     
                     
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h2 class="withLine" style="">
-                                {! $Label.C501_RegSite_EmergencyContacts }
-                            </h2>
-                            <p>
-                                {! $Label.C501_ClassReg_EmergencySubtext }
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $ObjectType.Contact.Fields['Alternate_Contact_Name__c'].inlineHelpText } <span class="red">*</span></label>
-                                <apex:inputField styleClass="form-control" value="{!child.Alternate_Contact_Name__c }" required="true" />
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $ObjectType.Contact.Fields['Alternate_Contact_Phone__c'].inlineHelpText } <span class="red">*</span></label>
-                                <apex:inputField styleClass="form-control" value="{!child.Alternate_Contact_Phone__c }" required="true" />
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>{! $ObjectType.Contact.Fields['Alternate_Contact_Relationship__c'	].inlineHelpText } <span class="red">*</span></label>
-                                <apex:inputField styleClass="form-control" value="{!child.Alternate_Contact_Relationship__c	 }" required="true" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $ObjectType.Contact.Fields['Emergency_Contact_2_Name__c'].inlineHelpText } </label>
-                                <apex:inputField styleClass="form-control" value="{!child.Emergency_Contact_2_Name__c }" />
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $ObjectType.Contact.Fields['Emergency_Contact_2_Phone__c'].inlineHelpText } </label>
-                                <apex:inputField styleClass="form-control" value="{!child.Emergency_Contact_2_Phone__c }" />
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>{! $ObjectType.Contact.Fields['Emergency_Contact_2_Relationship__c'	].inlineHelpText } </label>
-                                <apex:inputField styleClass="form-control" value="{!child.Emergency_Contact_2_Relationship__c	 }" />
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="row">
                         <div class="col-xs-12">
                             <h2 class="withLine" style="">
@@ -300,19 +252,20 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>{! $ObjectType.Contact.Fields['Authorized_Pickup_1_Name__c'].inlineHelpText } </label>
-                                <apex:inputField styleClass="form-control" value="{!child.Authorized_Pickup_1_Name__c }" />
+                                <apex:inputField styleClass="form-control {! if(needPickup,'error','')}" value="{!child.Authorized_Pickup_1_Name__c }" />
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>{! $ObjectType.Contact.Fields['Authorized_Pickup_1_Phone__c'].inlineHelpText } </label>
-                                <apex:inputField styleClass="form-control" value="{!child.Authorized_Pickup_1_Phone__c }" />
+                                <apex:inputField styleClass="form-control {! if(needPickup,'error','')}" value="{!child.Authorized_Pickup_1_Phone__c }" />
+                                <small class="form-text text-muted">{! $Label.C501_RegSite_PlzAreaCode }</small>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>{! $ObjectType.Contact.Fields['Authorized_Pickup_1_Relationship__c'].inlineHelpText } </label>
-                                <apex:inputField styleClass="form-control" value="{!child.Authorized_Pickup_1_Relationship__c	 }" />
+                                <apex:inputField styleClass="form-control {! if(needPickup,'error','')}" value="{!child.Authorized_Pickup_1_Relationship__c	 }" />
                             </div>
                         </div>
                     </div>
@@ -327,6 +280,7 @@
                             <div class="form-group">
                                 <label>{! $ObjectType.Contact.Fields['Authorized_Pickup_2_Phone__c'].inlineHelpText } </label>
                                 <apex:inputField styleClass="form-control" value="{!child.Authorized_Pickup_2_Phone__c }" />
+                                <small class="form-text text-muted">{! $Label.C501_RegSite_PlzAreaCode }</small>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -347,12 +301,66 @@
                             <div class="form-group">
                                 <label>{! $ObjectType.Contact.Fields['Authorized_Pickup_3_Phone__c'].inlineHelpText } </label>
                                 <apex:inputField styleClass="form-control" value="{!child.Authorized_Pickup_3_Phone__c }" />
+                                <small class="form-text text-muted">{! $Label.C501_RegSite_PlzAreaCode }</small>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>{! $ObjectType.Contact.Fields['Authorized_Pickup_3_Relationship__c'	].inlineHelpText } </label>
                                 <apex:inputField styleClass="form-control" value="{!child.Authorized_Pickup_3_Relationship__c	 }" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="withLine" style="">
+                                {! $Label.C501_RegSite_EmergencyContacts }
+                            </h2>
+                            <p>
+                                {! $Label.C501_ClassReg_EmergencySubtext }
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $ObjectType.Contact.Fields['Alternate_Contact_Name__c'].inlineHelpText } <span class="red">*</span></label>
+                                <apex:inputField styleClass="form-control" value="{!child.Alternate_Contact_Name__c }" required="true" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $ObjectType.Contact.Fields['Alternate_Contact_Phone__c'].inlineHelpText } <span class="red">*</span></label>
+                                <apex:inputField styleClass="form-control" value="{!child.Alternate_Contact_Phone__c }" required="true" />
+                                <small class="form-text text-muted">{! $Label.C501_RegSite_PlzAreaCode }</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{! $ObjectType.Contact.Fields['Alternate_Contact_Relationship__c'	].inlineHelpText } <span class="red">*</span></label>
+                                <apex:inputField styleClass="form-control" value="{!child.Alternate_Contact_Relationship__c	 }" required="true" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $ObjectType.Contact.Fields['Emergency_Contact_2_Name__c'].inlineHelpText } </label>
+                                <apex:inputField styleClass="form-control" value="{!child.Emergency_Contact_2_Name__c }" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $ObjectType.Contact.Fields['Emergency_Contact_2_Phone__c'].inlineHelpText } </label>
+                                <apex:inputField styleClass="form-control" value="{!child.Emergency_Contact_2_Phone__c }" />
+                                <small class="form-text text-muted">{! $Label.C501_RegSite_PlzAreaCode }</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{! $ObjectType.Contact.Fields['Emergency_Contact_2_Relationship__c'	].inlineHelpText } </label>
+                                <apex:inputField styleClass="form-control" value="{!child.Emergency_Contact_2_Relationship__c	 }" />
                             </div>
                         </div>
                     </div>
@@ -376,16 +384,16 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-check-label"> {! $Label.C501_ClassReg_FreeLunch } </label><br />
-                                <apex:inputCheckbox value="{!term.Free_reduced_lunch__c }" styleClass="form-check-input" />  
+                                <label class="form-check-label"> {! $Label.C501_ClassReg_FreeLunch } <span class="red">*</span></label><br />
+                                <apex:inputField value="{!term.C501_Free_Reduced_Lunch_Picklist__c }" required="true" styleClass="form-control" />  
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label> {! $Label.C501_ClassReg_StudentID } </label>
-                                <apex:inputField value="{!term.Student_School_ID__c }" styleClass="form-control" /> 
+                                <label> {! $Label.C501_ClassReg_StudentID }  <span class="red">*</span></label>
+                                <apex:inputField value="{!term.Student_School_ID__c }" styleClass="form-control {! if(noStuId,'error','')}" /> 
                                 <small class="form-text text-muted">  <apex:inputCheckbox value="{!dontKnowId }" styleClass="form-check-input" />   {! $Label.C501_RegSite_DontKnowID }</small>
                                 
                                 <apex:outputPanel rendered="{!noStuId}">
@@ -400,8 +408,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label> {! $ObjectType.Contact.Fields['Allergies__c'].inlineHelpText } </label><br />
-                                <apex:inputField value="{!child.Allergies__c }" styleClass="form-control" />  
+                                <label> {! $ObjectType.Contact.Fields['Allergies__c'].inlineHelpText }  <span class="red">*</span></label><br />
+                                <apex:inputField value="{!child.Allergies__c }" styleClass="form-control {! if(noAllergyResp,'error','')}" />  
                                 <small class="form-text text-muted">  <apex:inputCheckbox value="{!noAllergies }" styleClass="form-check-input" />   {! $Label.C501_RegSite_NoAllergies }</small>
                                 
                                 <apex:outputPanel rendered="{!noAllergyResp}">
@@ -480,25 +488,44 @@
                             <div class="form-group">
                                 <label>{! $Label.C501_ClassReg_ParentHomePhone }</label>
                                 <apex:inputField styleClass="form-control" value="{!parent.HomePhone }" />
-                                <small class="form-text text-muted">{! $Label.C501_RegSite_LeaveBlank }</small>
+                                <small class="form-text text-muted">{! $Label.C501_RegSite_LeaveBlank }</small><br />
+                                <small class="form-text text-muted"> {! $Label.C501_RegSite_PlzAreaCode }</small>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>{! $Label.C501_ClassReg_ParentMobilePhone }</label>
                                 <apex:inputField styleClass="form-control" value="{!parent.MobilePhone }" />
-                                <small class="form-text text-muted">{! $Label.C501_RegSite_LeaveBlank }</small>
+                                <small class="form-text text-muted">{! $Label.C501_RegSite_LeaveBlank }</small><br />
+                                <small class="form-text text-muted">{! $Label.C501_RegSite_PlzAreaCode }</small>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>{! $Label.C501_ClassReg_ParentWorkPhone }</label>
                                 <apex:inputField styleClass="form-control" value="{!parent.OtherPhone }" />
+                                <small class="form-text text-muted">{! $Label.C501_RegSite_LeaveBlank }</small><br />
+                                <small class="form-text text-muted">{! $Label.C501_RegSite_PlzAreaCode }</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{! $ObjectType.Contact.Fields['Translation_Needed__c'].inlineHelpText } </label>
+                                <apex:inputField styleClass="form-control" value="{!parent.Translation_Needed__c }" />
                                 <small class="form-text text-muted">{! $Label.C501_RegSite_LeaveBlank }</small>
                             </div>
                         </div>
                     </div>
-                    
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{! $ObjectType.Contact.Fields['Translation_Needed_Other__c'].inlineHelpText } </label>
+                                <apex:inputField styleClass="form-control" value="{!parent.Translation_Needed_Other__c }" />
+                            </div>
+                        </div>
+                    </div>
                     
                     <apex:repeat value="{!hhFieldSet}" var="field">
                         <div class="row">
@@ -542,7 +569,7 @@
                                 {! $Label.C501_ClassReg_PARTICIPANT_WAIVERp3 } 
                             </p>
                             <p>
-                                <apex:inputCheckbox value="{!term.Waiver__c}" required="true" styleClass="form-check-input" />  
+                                <apex:inputCheckbox value="{!term.Waiver__c}" required="true" styleClass="form-check-input {! if(noWaiver,'error','')}" />  
                                 <label class="form-check-label">{! $Label.C501_ClassReg_PARTICIPANT_WAIVERlabel } <span class="red">*</span></label>
                                 <apex:outputPanel rendered="{!noWaiver}">
                                     <div class="errorMsg">
@@ -691,393 +718,540 @@
                 
                 
                 <div class="row">
-                        <div class="col-xs-12">
-                            <h1 class="withLine" style="">
-                                {! $Label.C501_RegSite_FinishedApp }
-                            </h1>
+                    <div class="col-xs-12">
+                        <h1 class="withLine" style="">
+                            {! $Label.C501_RegSite_FinishedApp }
+                        </h1>
+                        <p>
+                            {! $Label.C501_RegSite_ConfirmMessageSite }
+                        </p>
+                        <apex:outputText escape="false" value="{! $Label.C501_RegSite_ConfirmContact }"></apex:outputText>  
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="withLine" style="">
+                            {! $Label.C501_RegSite_StudentInformation }
+                        </h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>{! $Label.C501_RegSite_ChildFirstName }</label>
                             <p>
-                                {! $Label.C501_RegSite_ConfirmMessageSite }
+                                <apex:outputText value="{!child.FirstName }"  />
                             </p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h2 class="withLine" style="">
-                                {! $Label.C501_RegSite_StudentInformation }
-                            </h2>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>{! $Label.C501_RegSite_ChildLastName } </label>
+                            <p>
+                                <apex:outputText value="{!child.LastName }"  />
+                            </p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $Label.C501_RegSite_ChildFirstName }</label>
-                                <p>
-                                    <apex:outputText value="{!child.FirstName }"  />
-                                </p>
-                            </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>{! $Label.C501_RegSite_ChildEmail }</label>
+                            
+                            <p>
+                                <apex:outputText value="{!IF(child.Email=='',	$Label.C501_RegSite_NotProvided,child.Email)}" />
+                            </p>
+                            
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $Label.C501_RegSite_ChildLastName } </label>
-                                <p>
-                                    <apex:outputText value="{!child.LastName }"  />
-                                </p>
-                            </div>
+                    </div>
+                    <div class="col-md-3">    
+                        <div class="form-group">
+                            <label>{! $Label.C501_ClassReg_ChildMobilePhone }</label>
+                            
+                            <p>
+                                <apex:outputText value="{!IF(child.MobilePhone=='',	$Label.C501_RegSite_NotProvided,child.MobilePhone)}" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{! $Label.C501_RegSite_StreetAddress }</label>
+                            <p>
+                                <apex:outputText value="{!family.BillingStreet }"  />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>{! $Label.C501_RegSite_City }</label>
+                            <p>
+                                <apex:outputText value="{!family.BillingCity }"  />
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>{! $Label.C501_RegSite_State }</label>
+                            <p>
+                                <apex:outputText value="{!family.BillingState }" >
+                                </apex:outputText>
+                            </p>
                         </div>
                     </div>
                     
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $Label.C501_RegSite_ChildEmail }</label>
-                                
-                                <p>
-                                   <apex:outputText value="{!IF(child.Email=='',	$Label.C501_RegSite_NotProvided,child.Email)}" />
-                                </p>
-                                                              
-                            </div>
-                        </div>
-                        <div class="col-md-3">    
-                            <div class="form-group">
-                                <label>{! $Label.C501_ClassReg_ChildMobilePhone }</label>
-                                
-                                <p>
-                                    <apex:outputText value="{!IF(child.MobilePhone=='',	$Label.C501_RegSite_NotProvided,child.MobilePhone)}" />
-                                </p>
-                            </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>{! $Label.C501_RegSite_ZipCode }</label>
+                            <p>
+                                <apex:outputText value="{!family.BillingPostalCode }"  />
+                            </p>
                         </div>
                     </div>
-                    
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>{! $Label.C501_RegSite_StreetAddress }</label>
-                                <p>
-                                    <apex:outputText value="{!family.BillingStreet }"  />
-                                </p>
-                            </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{! $Label.C501_ClassReg_ChildSchoolName }</label>
+                            <p>
+                                <apex:outputText value="{!schoolNameText.Name }" />
+                            </p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $Label.C501_RegSite_City }</label>
-                                <p>
-                                    <apex:outputText value="{!family.BillingCity }"  />
-                                </p>
-                            </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>{! $Label.C501_RegSite_Grade }</label>
+                            <p>
+                                <apex:outputText value="{!grade }" />
+                            </p>
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $Label.C501_RegSite_State }</label>
-                                <p>
-                                    <apex:outputText value="{!family.BillingState }" >
-                                    </apex:outputText>
-                                </p>
-                            </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="withLine" style="">
+                            {! $Label.C501_RegSite_Transport }  
+                        </h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{! $ObjectType.Contact.Fields['Student_Transportation__c'].inlineHelpText } </label>
+                            <apex:outputText value="{!child.Student_Transportation__c }" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            {! $Label.C501_ClassReg_PickUpChild }  
+                        </p>
+                    </div>
+                </div>
+                
+                
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <apex:outputText value="{!child.Authorized_Pickup_1_Name__c }" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <apex:outputText value="{!child.Authorized_Pickup_1_Phone__c }" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <apex:outputText value="{!child.Authorized_Pickup_1_Relationship__c	 }" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <apex:outputText value="{!child.Authorized_Pickup_2_Name__c }" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <apex:outputText value="{!child.Authorized_Pickup_2_Phone__c }" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <apex:outputText value="{!child.Authorized_Pickup_2_Relationship__c	 }" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <apex:outputText value="{!child.Authorized_Pickup_3_Name__c }" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <apex:outputText value="{!child.Authorized_Pickup_3_Phone__c }" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <apex:outputText value="{!child.Authorized_Pickup_3_Relationship__c	 }" />
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="withLine" style="">
+                            {! $Label.C501_RegSite_EmergencyContacts }
+                        </h2>
+                        <p>
+                            {! $Label.C501_ClassReg_EmergencySubtext }
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <apex:outputText value="{!child.Alternate_Contact_Name__c }" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <apex:outputText value="{!child.Alternate_Contact_Phone__c }" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <apex:outputText value="{!child.Alternate_Contact_Relationship__c	 }" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <apex:outputText value="{!child.Emergency_Contact_2_Name__c }" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <apex:outputText value="{!child.Emergency_Contact_2_Phone__c }" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <apex:outputText value="{!child.Emergency_Contact_2_Relationship__c	 }" />
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="withLine" style="">
+                            {! $Label.C501_ClassReg_AddtlStudentInfo }
+                        </h2>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{! $Label.C501_ClassReg_Birthday }  </label>
+                            <apex:outputText value="{!child.Birthdate }"  />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-check-label"> {! $Label.C501_ClassReg_FreeLunch }  </label><br />
+                            <apex:outputText value="{!term.C501_Free_Reduced_Lunch_Picklist__c }"  />  
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label> {! $Label.C501_ClassReg_StudentID }   </label>
+                            <apex:outputPanel rendered="{!dontKnowId }">
+                                {! $Label.C501_RegSite_DontKnowID }
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!dontKnowId == false }">
+                                <apex:outputText value="{!term.Student_School_ID__c }"  /> 
+                            </apex:outputPanel>
+                            
                         </div>
                         
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $Label.C501_RegSite_ZipCode }</label>
-                                <p>
-                                    <apex:outputText value="{!family.BillingPostalCode }"  />
-                                </p>
-                            </div>
-                        </div>
                     </div>
-                    
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>{! $Label.C501_ClassReg_ChildSchoolName }</label>
-                                <p>
-                                    <apex:outputText value="{!schoolNameText }" />
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $Label.C501_RegSite_Grade }</label>
-                                <p>
-                                    <apex:outputText value="{!grade }" />
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $Label.C501_ClassReg_Birthday }</label>
-                                <p>
-                                    <apex:outputText value="{0, date, MMMM d','  yyyy}">
-                                        <apex:param value="{!child.Birthdate}" /> 
-                                    </apex:outputText>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label> {! $Label.C501_ClassReg_FreeLunch } </label>
-                                <p>
-                                    <apex:outputText value="{!IF(term.Free_reduced_lunch__c,'Yes','No') }" />
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label> {! $Label.C501_ClassReg_StudentID } </label>
-                                
-                                <p>
-                                    <apex:outputText value="{!IF(term.Student_School_ID__c=='',	$Label.C501_RegSite_NotProvided,term.Student_School_ID__c)}" />
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label> {! $ObjectType.Contact.Fields['Allergies__c'].inlineHelpText }   </label>
+                            <apex:outputPanel rendered="{!noAllergies }">
+                                {! $Label.C501_RegSite_NoAllergies }
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!noAllergies == false }">
+                                <apex:outputText value="{!child.Allergies__c }"  /> 
+                            </apex:outputPanel>
                             
-                    
-                    <apex:repeat value="{!childFieldSet}" var="field">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <apex:outputLabel value="{!IF($ObjectType.Contact.Fields[field].inlineHelpText != '',$ObjectType.Contact.Fields[field].inlineHelpText,field.Label)}" />
-                                    <p>
-                                        <apex:outputText value="{!IF(child[field]=='',	$Label.C501_RegSite_NotProvided,child[field])}" />
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </apex:repeat>
-                    
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h2 class="withLine" style="">
-                                {! $Label.C501_RegSite_FamilyInformation }
-                            </h2>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $Label.C501_RegSite_ParentFirstName }</label>
-                                <p>
-                                    <apex:outputText value="{!parent.FirstName }"  />
-                                </p>
-                                
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $Label.C501_RegSite_ParentLastName } </label>
-                                
-                                <p>
-                                    <apex:outputText value="{!parent.LastName }"  />
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+                
+                
+                <apex:repeat value="{!childFieldSet}" var="field">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{! $Label.C501_RegSite_ParentEmail }</label>
-                                
+                                <apex:outputLabel value="{!IF($ObjectType.Contact.Fields[field].inlineHelpText != '',$ObjectType.Contact.Fields[field].inlineHelpText,field.Label)}" />
                                 <p>
-                                    <apex:outputText value="{!IF(parent.Email=='',	$Label.C501_RegSite_NotProvided,parent.Email)}" />
+                                    <apex:outputText value="{!IF(child[field]=='',	$Label.C501_RegSite_NotProvided,child[field])}" />
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $Label.C501_ClassReg_ParentHomePhone }</label>
-                                
-                                <p>
-                                    <apex:outputText value="{!IF(parent.HomePhone=='',	$Label.C501_RegSite_NotProvided,parent.HomePhone)}" />
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $Label.C501_ClassReg_ParentMobilePhone }</label>
-                                
-                                <p>
-                                    <apex:outputText value="{!IF(parent.MobilePhone =='',	$Label.C501_RegSite_NotProvided,parent.MobilePhone )}" />
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{! $Label.C501_ClassReg_ParentWorkPhone }</label>
-                                
-                                <p>
-                                    <apex:outputText value="{!IF(parent.OtherPhone=='',	$Label.C501_RegSite_NotProvided,parent.OtherPhone)}" />
-                                </p>
-                            </div>
-                        </div>
+                </apex:repeat>
+                
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="withLine" style="">
+                            {! $Label.C501_RegSite_FamilyInformation }
+                        </h2>
                     </div>
-                    
-                    
-                    <apex:repeat value="{!hhFieldSet}" var="field">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <apex:outputLabel value="{!IF($ObjectType.Account.Fields[field].inlineHelpText != '',$ObjectType.Account.Fields[field].inlineHelpText,'^Family '+field.Label)}" />
-                                    
-                                    <p>
-                                        <apex:outputText value="{!IF(family[field]=='',	$Label.C501_RegSite_NotProvided,family[field])}" />
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </apex:repeat>
-                    
-                    <apex:repeat value="{!parentFieldSet}" var="field">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <apex:outputLabel value="{!IF($ObjectType.Contact.Fields[field].inlineHelpText != '',$ObjectType.Contact.Fields[field].inlineHelpText,'^Parent/Guardian '+field.Label) + IF(OR(field.DBRequired, field.Required), '*', '')}" />
-                                    
-                                    <p>
-                                        <apex:outputText value="{!IF(parent[field]=='',	$Label.C501_RegSite_NotProvided,parent[field])}" />
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </apex:repeat>
-                    
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h2 class="withLine" style="">
-                                {! $Label.C501_ClassReg_PARTICIPANT_WAIVER }
-                            </h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>{! $Label.C501_RegSite_ParentFirstName }</label>
                             <p>
-                                {! $Label.C501_ClassReg_PARTICIPANT_WAIVERp1 }
-                            </p>
-                            <p>
-                                {! $Label.C501_ClassReg_PARTICIPANT_WAIVERp2 }
-                            </p>
-                            <p>
-                                {! $Label.C501_ClassReg_PARTICIPANT_WAIVERp3 } 
-                            </p>
-                            <p>
-                                <label class="form-check-label">{! $Label.C501_ClassReg_PARTICIPANT_WAIVERlabel }</label>
-                                
-                                
-                            </p>
-                            <p>
-                                <apex:outputText value="{!IF(term.Waiver__c,'Waiver Accepted','Waiver Declined')}" />
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h2 class="withLine" style="">
-                                {! $Label.C501_ClassReg_AuthToTreatMinor } 
-                            </h2>
-                            <p>
-                                {! $Label.C501_ClassReg_AuthToTreatMinorP1 } 
-                            </p>
-                            <p>
-                                {! $Label.C501_ClassReg_AuthToTreatMinorP2 } 
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <label>{! $Label.C501_ClassReg_AuthToTreatMinorProvider }  </label>
-                            <p>
-                                <apex:outputText value="{!child.Emergency_Preferred_Medical_Provider__c }" />
+                                <apex:outputText value="{!parent.FirstName }"  />
                             </p>
                             
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-12">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>{! $Label.C501_RegSite_ParentLastName } </label>
+                            
                             <p>
-                                <label class="form-check-label"> {! $Label.C501_ClassReg_AuthToTreatMinorLabel } </label>
-                            </p>
-                            <p>
-                                <apex:outputText value="{!IF(term.Authorization_to_treat_minor__c,'Techbridge is allowed to seek treatment','Techbridge is *not* allowed to seek treatment')}" />
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h2 class="withLine" style="">
-                                {! $Label.C501_ClassReg_PhotoVideo }
-                            </h2>
-                            <p>
-                                {! $Label.C501_ClassReg_PhotoVideoP1 }
-                            </p>
-                            <p>
-                                <label class="form-check-label">{! $Label.C501_ClassReg_PhotoVideoLabel }  </label>
-                            </p>
-                            <p>
-                                <apex:outputText value="{!IF(term.Media_Release__c,'Photos Allowed','Photos *not* allowed')}" />
-                            </p>
-                        </div>
-                    </div>                    
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h2 class="withLine" style="">
-                                {! $Label.C501_ClassReg_parentFamilyConsent }
-
-                            </h2>
-                            <h3>
-                                {! $Label.C501_ClassReg_EvalStudy }
-                            </h3>
-                            <h4>
-                                {! $Label.C501_ClassReg_EvalStudyH1 }
-                            </h4>
-                            <p>
-                                {! $Label.C501_ClassReg_EvalStudyH1P1 }
-                            </p>                            
-                            <p>
-                                {! $Label.C501_ClassReg_EvalStudyH1P2 }
-                            </p>                            
-                            <p>
-                                {! $Label.C501_ClassReg_EvalStudyH1P3 }
-                            </p>                            
-                            <h4>
-                                {! $Label.C501_ClassReg_EvalStudyH2 }
-                            </h4>
-                            <ul>
-                                <apex:outPutText escape="false" value="{! $Label.C501_ClassReg_EvalStudyH2li }" ></apex:outPutText>  
-                            </ul>
-                            <h4>
-                                {! $Label.C501_ClassReg_EvalStudyH3 }
-                            </h4>
-                            <p>
-                                {! $Label.C501_ClassReg_EvalStudyH3P1 }
-                            </p>
-                            <ul>
-                                <apex:outPutText escape="false" value="{! $Label.C501_ClassReg_EvalStudyH3li }" ></apex:outPutText>  
-                            </ul>
-                            <p>
-                                <label class="form-check-label"> Yes, my child may participate in the study. (If no, leave unchecked). </label>
-                            </p>
-                            <p>
-                                <apex:outputText value="{!IF(term.Evaluation_Consent__c,'Your child may participate in the study','Your child may *not* participate in the study')}" />
-                            </p>
-                            <p>
-                                <label class="form-check-label"> Yes, I will participate in the study. (If no, leave unchecked). </label>
-                            </p>
-                            <p>
-                                <apex:outputText value="{!IF(term.Parent_Survey__c,'You will participate in the study','Your will *not* participate in the study')}" />
+                                <apex:outputText value="{!parent.LastName }"  />
                             </p>
                         </div>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{! $Label.C501_RegSite_ParentEmail }</label>
+                            
+                            <p>
+                                <apex:outputText value="{!IF(parent.Email=='',	$Label.C501_RegSite_NotProvided,parent.Email)}" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>{! $Label.C501_ClassReg_ParentHomePhone }</label>
+                            
+                            <p>
+                                <apex:outputText value="{!IF(parent.HomePhone=='',	$Label.C501_RegSite_NotProvided,parent.HomePhone)}" />
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>{! $Label.C501_ClassReg_ParentMobilePhone }</label>
+                            
+                            <p>
+                                <apex:outputText value="{!IF(parent.MobilePhone =='',	$Label.C501_RegSite_NotProvided,parent.MobilePhone )}" />
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>{! $Label.C501_ClassReg_ParentWorkPhone }</label>
+                            
+                            <p>
+                                <apex:outputText value="{!IF(parent.OtherPhone=='',	$Label.C501_RegSite_NotProvided,parent.OtherPhone)}" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                    
                 
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{! $ObjectType.Contact.Fields['Translation_Needed__c'].inlineHelpText } </label>
+                            <apex:outputText styleClass="form-control" value="{!parent.Translation_Needed__c }" /><br />
+                            <apex:outputText styleClass="form-control" value="{!parent.Translation_Needed_Other__c }" />
+                        </div>
+                    </div>
+                </div>
+                    
+                <apex:repeat value="{!hhFieldSet}" var="field">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <apex:outputLabel value="{!IF($ObjectType.Account.Fields[field].inlineHelpText != '',$ObjectType.Account.Fields[field].inlineHelpText,'^Family '+field.Label)}" />
+                                
+                                <p>
+                                    <apex:outputText value="{!IF(family[field]=='',	$Label.C501_RegSite_NotProvided,family[field])}" />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </apex:repeat>
                 
-                
-                
-                
-                
-                
-                
-                
+                <apex:repeat value="{!parentFieldSet}" var="field">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <apex:outputLabel value="{!IF($ObjectType.Contact.Fields[field].inlineHelpText != '',$ObjectType.Contact.Fields[field].inlineHelpText,'^Parent/Guardian '+field.Label) + IF(OR(field.DBRequired, field.Required), '*', '')}" />
+                                
+                                <p>
+                                    <apex:outputText value="{!IF(parent[field]=='',	$Label.C501_RegSite_NotProvided,parent[field])}" />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </apex:repeat>
+                    
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="withLine" style="">
+                            {! $Label.C501_ClassReg_PARTICIPANT_WAIVER }
+                        </h2>
+                        <p>
+                            {! $Label.C501_ClassReg_PARTICIPANT_WAIVERp1 }
+                        </p>
+                        <p>
+                            {! $Label.C501_ClassReg_PARTICIPANT_WAIVERp2 }
+                        </p>
+                        <p>
+                            {! $Label.C501_ClassReg_PARTICIPANT_WAIVERp3 } 
+                        </p>
+                        <p>
+                            <label class="form-check-label">{! $Label.C501_ClassReg_PARTICIPANT_WAIVERlabel }</label>
+                            
+                            
+                        </p>
+                        <p>
+                            <apex:outputText value="{!IF(term.Waiver__c,'Waiver Accepted','Waiver Declined')}" />
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="withLine" style="">
+                            {! $Label.C501_ClassReg_AuthToTreatMinor } 
+                        </h2>
+                        <p>
+                            {! $Label.C501_ClassReg_AuthToTreatMinorP1 } 
+                        </p>
+                        <p>
+                            {! $Label.C501_ClassReg_AuthToTreatMinorP2 } 
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <label>{! $Label.C501_ClassReg_AuthToTreatMinorProvider }  </label>
+                        <p>
+                            <apex:outputText value="{!child.Emergency_Preferred_Medical_Provider__c }" />
+                        </p>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p>
+                            <label class="form-check-label"> {! $Label.C501_ClassReg_AuthToTreatMinorLabel } </label>
+                        </p>
+                        <p>
+                            <apex:outputText value="{!IF(term.Authorization_to_treat_minor__c,'Techbridge is allowed to seek treatment','Techbridge is *not* allowed to seek treatment')}" />
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="withLine" style="">
+                            {! $Label.C501_ClassReg_PhotoVideo }
+                        </h2>
+                        <p>
+                            {! $Label.C501_ClassReg_PhotoVideoP1 }
+                        </p>
+                        <p>
+                            <label class="form-check-label">{! $Label.C501_ClassReg_PhotoVideoLabel }  </label>
+                        </p>
+                        <p>
+                            <apex:outputText value="{!IF(term.Media_Release__c,'Photos Allowed','Photos *not* allowed')}" />
+                        </p>
+                    </div>
+                </div>                    
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="withLine" style="">
+                            {! $Label.C501_ClassReg_parentFamilyConsent }
+                            
+                        </h2>
+                        <h3>
+                            {! $Label.C501_ClassReg_EvalStudy }
+                        </h3>
+                        <h4>
+                            {! $Label.C501_ClassReg_EvalStudyH1 }
+                        </h4>
+                        <p>
+                            {! $Label.C501_ClassReg_EvalStudyH1P1 }
+                        </p>                            
+                        <p>
+                            {! $Label.C501_ClassReg_EvalStudyH1P2 }
+                        </p>                            
+                        <p>
+                            {! $Label.C501_ClassReg_EvalStudyH1P3 }
+                        </p>                            
+                        <h4>
+                            {! $Label.C501_ClassReg_EvalStudyH2 }
+                        </h4>
+                        <ul>
+                            <apex:outPutText escape="false" value="{! $Label.C501_ClassReg_EvalStudyH2li }" ></apex:outPutText>  
+                        </ul>
+                        <h4>
+                            {! $Label.C501_ClassReg_EvalStudyH3 }
+                        </h4>
+                        <p>
+                            {! $Label.C501_ClassReg_EvalStudyH3P1 }
+                        </p>
+                        <ul>
+                            <apex:outPutText escape="false" value="{! $Label.C501_ClassReg_EvalStudyH3li }" ></apex:outPutText>  
+                        </ul>
+                        <p>
+                            <label class="form-check-label"> Yes, my child may participate in the study. (If no, leave unchecked). </label>
+                        </p>
+                        <p>
+                            <apex:outputText value="{!IF(term.Evaluation_Consent__c,'Your child may participate in the study','Your child may *not* participate in the study')}" />
+                        </p>
+                        <p>
+                            <label class="form-check-label"> Yes, I will participate in the study. (If no, leave unchecked). </label>
+                        </p>
+                        <p>
+                            <apex:outputText value="{!IF(term.Parent_Survey__c,'You will participate in the study','Your will *not* participate in the study')}" />
+                        </p>
+                    </div>
+                </div>
             </apex:outputPanel>
             <!--<apex:outputPanel rendered="{! pageStatus == 'confirm' || pageStatus == 'confirm-fail'}">
                 <div class="col-xs-12">

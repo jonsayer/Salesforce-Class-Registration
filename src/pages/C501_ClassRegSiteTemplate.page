@@ -158,6 +158,14 @@
             color:red;
         }
         
+        .errorMsg {
+        	font-size:125%
+        }
+        
+        input.error,select.error, textarea.error {
+        	background-color:#fdd;
+        }
+        
         #oldBrowserAlert {
         	display: none;
         	width:100%;
