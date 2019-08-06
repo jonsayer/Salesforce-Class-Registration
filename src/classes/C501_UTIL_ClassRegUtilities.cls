@@ -191,12 +191,12 @@ public class C501_UTIL_ClassRegUtilities {
     public static void sendEmailConfirmation(ID AcctID, String emailAddress){
         Class_Site_Login_Attempt__c att 	= generateLoginCode(AcctID, emailAddress);
         String message 		= Label.C501_ClassReg_CodeMessage + ' '+att.Secret_Code__c + ' ' +Label.C501_ClassReg_CodeMessageDisclaim+' '+Label.C501_ClassReg_CodeMessageExpire;
-        SendEmailGeneric('salesforce@techbridgegirls.org',emailAddress,Label.C501_ClassReg_ConfirmCodeSubject,message);
+        SendEmailGeneric('salesforce@techbridgegirls.org',emailAddress,Label.C501_ClassReg_ConfirmCodeSubject,message,null,null,null);
         insert att;
     }
     
-    public static void SendEmailGeneric(String fromAddress,String toAddress,String subject,String message){
-        // Blatantly stolen from here: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_forcecom_email_outbound.htm
+    public static void SendEmailGeneric(String fromAddress,String toAddress,String subject,String message,ID associatedRecord,ID templateId,ID targetRecord){
+        // Blatantly stolen from here and modified: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_forcecom_email_outbound.htm
         
         // First, reserve email capacity for the current Apex transaction to ensure
         // that we won't exceed our daily email limits when sending email after
@@ -210,33 +210,50 @@ public class C501_UTIL_ClassRegUtilities {
         // that will send out a single email to the addresses in the To, CC & BCC list.
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         
+        OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = :fromAddress and IsAllowAllProfiles = true];
+        if(owea.size() > 0){
+            mail.setOrgWideEmailAddressId(owea.get(0).Id);
+        }
+            
+        
         // Strings to hold the email addresses to which you are sending the email.
         List<String> toAddresses = new List<String>();
         toAddresses.add(toAddress);
+                
+        if(owea.size() == 0){
+            // Specify the address used when the recipients reply to the email. 
+            mail.setReplyTo(fromAddress);
+            
+            // Specify the name used as the display name.
+            mail.setSenderDisplayName('Techbridge Girls');
+        }
         
-        // Assign the addresses for the To and CC lists to the mail object.
-        mail.setToAddresses(toAddresses);
-        
-        // Specify the address used when the recipients reply to the email. 
-        mail.setReplyTo(fromAddress);
-        
-        // Specify the name used as the display name.
-        mail.setSenderDisplayName('Techbridge Girls');
-        
-        // Specify the subject line for your email address.
-        mail.setSubject(subject);
-        
-        // Set to True if you want to BCC yourself on the email.
-        mail.setBccSender(false);
-        
-        // Optionally append the salesforce.com email signature to the email.
-        // The email address of the user executing the Apex Code will be used.
-        mail.setUseSignature(false);
-        
-        // Specify the text content of the email.
-        mail.setPlainTextBody(message);
-        
-        mail.setHtmlBody('<p>'+message+'</p>');
+        // if we are using a template, set that. If not, send with supplied variables.
+        if(templateId != null && associatedRecord != null){
+            mail.setTemplateID(templateId); 
+            mail.setTargetObjectId(targetRecord);
+            mail.setWhatId(associatedRecord);
+            // save a copy of this as an activity to the supplied contact ie target record
+        	mail.setSaveAsActivity(true);
+        } else {
+            // Specify the subject line for your email address.
+            mail.setSubject(subject);
+            
+            // Assign the addresses for the To and CC lists to the mail object.
+        	mail.setToAddresses(toAddresses);
+            
+            // Set to True if you want to BCC yourself on the email.
+            mail.setBccSender(false);
+            
+            // Optionally append the salesforce.com email signature to the email.
+            // The email address of the user executing the Apex Code will be used.
+            mail.setUseSignature(false);
+            
+            // Specify the text content of the email.
+            mail.setPlainTextBody(message);
+            
+            mail.setHtmlBody('<p>'+message+'</p>');
+        }
         
         // Send the email you have created.
         Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });

@@ -89,14 +89,14 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_ClassReg_CodeMessage</shortDescription>
-        <value>Hello There! Your code for the Techbridge Girls registration system is:</value>
+        <value>Your Techbridge Girls verification code is</value>
     </labels>
     <labels>
         <fullName>C501_ClassReg_CodeMessageDisclaim</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_ClassReg_CodeMessageDisclaim</shortDescription>
-        <value>This is an unmonitored account so please don’t reply.</value>
+        <value>. This phone number is unmonitored.</value>
     </labels>
     <labels>
         <fullName>C501_ClassReg_CodeMessageExpire</fullName>
@@ -117,7 +117,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_ClassReg_EmergencySubtext</shortDescription>
-        <value>In case the parent/guardian cannot be reached, please provide an EMERGENCY CONTACT.</value>
+        <value>In case the parent/guardian cannot be reached, please provide an EMERGENCY CONTACT (other than yourself).</value>
     </labels>
     <labels>
         <fullName>C501_ClassReg_EvalStudy</fullName>
@@ -427,6 +427,17 @@ We may also look at your child’s school information, like attendance and cours
         <value>That doesn&apos;t seem to match the code we sent you. Try again?</value>
     </labels>
     <labels>
+        <fullName>C501_RegSite_ConfirmContact</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_ConfirmContact</shortDescription>
+        <value>&lt;p&gt;If you have any questions or notice a mistake in your responses below, please contact the following regional coordinators based on where your student attends school:&lt;/p&gt;
+
+&lt;p&gt;California or Pacific Northwest (WA, ID, OR, MT, AK) - &lt;a href=&quot;mailto:lkraushaar@techbridgegirls.org&quot;&gt;lkraushaar@techbridgegirls.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Washington DC Metro - &lt;a href=&quot;mailto:cjames@techbridgegirls.org&quot;&gt;cjames@techbridgegirls.org&lt;/a&gt;&lt;/p&gt;</value>
+    </labels>
+    <labels>
         <fullName>C501_RegSite_ConfirmMessageSite</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -508,7 +519,7 @@ We may also look at your child’s school information, like attendance and cours
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_RegSite_Grade</shortDescription>
-        <value>Grade</value>
+        <value>Grade (for 2018-19 school year)</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_InvalidEmailPhone</fullName>
@@ -595,11 +606,18 @@ We may also look at your child’s school information, like attendance and cours
         <value>Please identify someone who can pick up your child from the program.</value>
     </labels>
     <labels>
+        <fullName>C501_RegSite_PlzAreaCode</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_PlzAreaCode</shortDescription>
+        <value>Please include area code: (###) ###-####</value>
+    </labels>
+    <labels>
         <fullName>C501_RegSite_ProvidePhoneEmail</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_RegSite_ProvidePhoneEmail</shortDescription>
-        <value>Please provide your phone number or email address to log in.</value>
+        <value>Please provide your phone number or email address to access the student registration system.</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_ProvideStudentId</fullName>
@@ -614,6 +632,13 @@ We may also look at your child’s school information, like attendance and cours
         <protected>false</protected>
         <shortDescription>C501_RegSite_RememberMeDevice</shortDescription>
         <value>Remember me on this device.</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_SMSweSentAnEmail</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_SMSweSentAnEmail</shortDescription>
+        <value>An email with registration info has been sent to</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_SelectGrade</fullName>
@@ -641,7 +666,7 @@ We may also look at your child’s school information, like attendance and cours
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_RegSite_SiteRegFormTitle</shortDescription>
-        <value>Techbridge Girls Class Registration Form</value>
+        <value>Techbridge Girls Student Registration Form</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_State</fullName>

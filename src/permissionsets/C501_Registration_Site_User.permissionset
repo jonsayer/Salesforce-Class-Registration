@@ -211,6 +211,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Translation_Needed_Other__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Contact.Translation_Needed__c</field>
         <readable>true</readable>
@@ -226,11 +231,6 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>School_Term__c.C501_Free_Reduced_Lunch_Picklist__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>School_Term__c.Active_Year__c</field>
         <readable>true</readable>
@@ -238,6 +238,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>School_Term__c.Authorization_to_treat_minor__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>School_Term__c.C501_Free_Reduced_Lunch_Picklist__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

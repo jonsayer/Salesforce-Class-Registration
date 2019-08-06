@@ -50,7 +50,6 @@
         <members>Contact.Emergency_Contact_2_Phone__c</members>
         <members>Contact.Emergency_Contact_2_Relationship__c</members>
         <members>Contact.Emergency_Preferred_Medical_Provider__c</members>
-        <members>School_Term__c.C501_Free_Reduced_Lunch_Picklist__c</members>
         <members>Contact.Income__c</members>
         <members>Contact.Medication__c</members>
         <members>Contact.Number_in_Household_Picklist__c</members>
@@ -64,11 +63,12 @@
         <members>Contact.Student_Special_Needs__c</members>
         <members>Contact.Student_Transportation__c</members>
         <members>Contact.T_shirt_Size__c</members>
+        <members>Contact.Translation_Needed_Other__c</members>
         <members>Contact.Translation_Needed__c</members>
-        <members>Contact.Translation_Needed_Other</members>
         <members>Contact.Volunteer__c</members>
         <members>School_Term__c.Active_Year__c</members>
         <members>School_Term__c.Authorization_to_treat_minor__c</members>
+        <members>School_Term__c.C501_Free_Reduced_Lunch_Picklist__c</members>
         <members>School_Term__c.C501_Sign_Up_Source__c</members>
         <members>School_Term__c.Contract__c</members>
         <members>School_Term__c.Current_Term__c</members>
@@ -166,6 +166,7 @@
         <members>C501_RegSite_ChildLastName</members>
         <members>C501_RegSite_City</members>
         <members>C501_RegSite_CodeMismatch</members>
+        <members>C501_RegSite_ConfirmContact</members>
         <members>C501_RegSite_ConfirmMessageSite</members>
         <members>C501_RegSite_ConfirmSMS</members>
         <members>C501_RegSite_Continue</members>
@@ -190,9 +191,11 @@
         <members>C501_RegSite_ParentFirstName</members>
         <members>C501_RegSite_ParentLastName</members>
         <members>C501_RegSite_PickUpChildError</members>
+        <members>C501_RegSite_PlzAreaCode</members>
         <members>C501_RegSite_ProvidePhoneEmail</members>
         <members>C501_RegSite_ProvideStudentId</members>
         <members>C501_RegSite_RememberMeDevice</members>
+        <members>C501_RegSite_SMSweSentAnEmail</members>
         <members>C501_RegSite_SelectGrade</members>
         <members>C501_RegSite_SelectSchool</members>
         <members>C501_RegSite_SelectState</members>
@@ -212,8 +215,13 @@
         <name>CustomObject</name>
     </types>
     <types>
-        <members>*</members>
+        <members>unfiled$public/Class_registration_datax</members>
         <name>Dashboard</name>
+    </types>
+    <types>
+        <members>unfiled$public/C501_Class_Registration_Confirmation_VF</members>
+        <members>unfiled$public/C501_RegSite_Class_Registration_Confirmation_Message</members>
+        <name>EmailTemplate</name>
     </types>
     <types>
         <members>Account.C501_Class_Registration_Site_HH_Acct</members>
@@ -236,12 +244,12 @@
         <name>PermissionSet</name>
     </types>
     <types>
-        <members>*</members>
+        <members>unfiled$public/Class_Regs_by_Signup_Method_This_Year</members>
         <name>Report</name>
     </types>
     <types>
         <members>techbridgeLogo</members>
         <name>StaticResource</name>
     </types>
-    <version>45.0</version>
+    <version>46.0</version>
 </Package>

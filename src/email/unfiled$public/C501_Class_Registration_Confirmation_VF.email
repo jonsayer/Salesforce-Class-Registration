@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="Confirmation for your class registration" recipientType="Contact" relatedToType="School_Term__c">
+<messaging:plainTextEmailBody >
+Congratulations!
+This is your new Visualforce Email Template.
+</messaging:plainTextEmailBody>
+</messaging:emailTemplate>

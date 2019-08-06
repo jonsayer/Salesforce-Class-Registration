@@ -31,6 +31,10 @@
                 <behavior>Edit</behavior>
                 <field>C501_Sign_Up_Source__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>C501_Free_Reduced_Lunch_Picklist__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
