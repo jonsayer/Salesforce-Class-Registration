@@ -39,6 +39,11 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
+            <field>Parent_Workplace__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
             <field>Parent_Education_second_parent__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
@@ -252,6 +257,42 @@
         <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Family_Status__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please select any terms that apply to your family.</inlineHelpText>
+        <label>Family Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Refugee</fullName>
+                    <default>false</default>
+                    <label>Refugee</label>
+                </value>
+                <value>
+                    <fullName>Immigrant</fullName>
+                    <default>false</default>
+                    <label>Immigrant</label>
+                </value>
+                <value>
+                    <fullName>Prefer not to answer</fullName>
+                    <default>false</default>
+                    <label>Prefer not to answer</label>
+                </value>
+                <value>
+                    <fullName>Does not apply</fullName>
+                    <default>false</default>
+                    <label>Does not apply</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
     </fields>
     <fields>
         <fullName>Income__c</fullName>
@@ -525,6 +566,19 @@
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Parent_Workplace__c</fullName>
+        <description>From the Form Assembly parent packet only. Add Parent&apos;s primary affiliation by hand.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Parent Workplace/Occupation</inlineHelpText>
+        <label>Parent Workplace / Occupation</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Preferred_Method_of_Contact__c</fullName>
