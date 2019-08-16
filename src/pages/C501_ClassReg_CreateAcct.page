@@ -1106,8 +1106,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>{! $ObjectType.Contact.Fields['Translation_Needed__c'].inlineHelpText } </label>
-                            <apex:outputText value="{!parent.Translation_Needed__c }" /><br />
-                            <apex:outputText value="{!parent.Translation_Needed_Other__c }" />
+                            <p><apex:outputText value="{!parent.Translation_Needed__c }" /><br />
+                            <apex:outputText value="{!parent.Translation_Needed_Other__c }" /></p>
                         </div>
                     </div>
                 </div>
@@ -1115,7 +1115,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>{! $ObjectType.Contact.Fields['Family_Status__c'].inlineHelpText } </label>
-                            <apex:outputText value="{!parent.Family_Status__c }" />
+                            <p><apex:outputText value="{!parent.Family_Status__c }" /></p>
                         </div>
                     </div>
                 </div>
