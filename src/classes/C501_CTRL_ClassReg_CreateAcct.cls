@@ -419,7 +419,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
             	nextStartDate = Datetime.newInstance(schoolNameText.C501_Next_Program_Start_Date__c, Time.newInstance(0,0,0,0)).format('MMMMM d, yyyy');
             }
             
-            Id templateId = [Select id from EmailTemplate where DeveloperName = 'C501_RegSite_Class_Registration_Confirmation_Message'].Id;
+            Id templateId = [Select id from EmailTemplate where DeveloperName = 'C501_Class_Registration_Confirmation_VF'].Id;
             
             //String emailMessage = Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name +Label.C501_RegSite_EmailConfirmP2+' '+nextStartDate+' '+Label.C501_RegSite_EmailConfirmP3+' '+teacherName+Label.C501_RegSite_EmailConfirmP4;
             //C501_UTIL_ClassRegUtilities.SendEmailGeneric('salesforce@techbridgegirls.org',parent.Email,Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name,emailMessage);

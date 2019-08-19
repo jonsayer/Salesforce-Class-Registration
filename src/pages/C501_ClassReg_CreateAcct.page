@@ -519,10 +519,18 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>{! $ObjectType.Contact.Fields['Translation_Needed_Other__c'].inlineHelpText } </label>
                                 <apex:inputField styleClass="form-control" value="{!parent.Translation_Needed_Other__c }" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{! $ObjectType.Contact.Fields['Family_Status__c'].inlineHelpText } </label>
+                                <apex:inputField value="{!parent.Family_Status__c }" />
                             </div>
                         </div>
                     </div>
@@ -966,8 +974,10 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>{! $Label.C501_ClassReg_Birthday }  </label>
-                            <apex:outputText value="{!child.Birthdate }"  />
+                            <label>{! $Label.C501_ClassReg_Birthday }  </label><br />
+                            <apex:outputText value="{0, date, MMMM d','  yyyy}">
+                            	<apex:param value="{!child.Birthdate }"/>
+                            </apex:outputText>
                         </div>
                     </div>
                 </div>
@@ -1096,12 +1106,19 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>{! $ObjectType.Contact.Fields['Translation_Needed__c'].inlineHelpText } </label>
-                            <apex:outputText styleClass="form-control" value="{!parent.Translation_Needed__c }" /><br />
-                            <apex:outputText styleClass="form-control" value="{!parent.Translation_Needed_Other__c }" />
+                            <p><apex:outputText value="{!parent.Translation_Needed__c }" /><br />
+                            <apex:outputText value="{!parent.Translation_Needed_Other__c }" /></p>
                         </div>
                     </div>
                 </div>
-                    
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{! $ObjectType.Contact.Fields['Family_Status__c'].inlineHelpText } </label>
+                            <p><apex:outputText value="{!parent.Family_Status__c }" /></p>
+                        </div>
+                    </div>
+                </div>
                 <apex:repeat value="{!hhFieldSet}" var="field">
                     <div class="row">
                         <div class="col-md-6">

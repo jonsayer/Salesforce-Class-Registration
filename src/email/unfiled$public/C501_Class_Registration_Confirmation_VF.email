@@ -1,6 +1,509 @@
 <messaging:emailTemplate subject="Confirmation for your class registration" recipientType="Contact" relatedToType="School_Term__c">
+
+<messaging:htmlEmailBody >
+    <h1>
+        {! $Label.C501_RegSite_FinishedApp }
+    </h1>
+    <p>
+        {! $Label.C501_RegSite_ConfirmSMS }&nbsp;{!relatedTo.School__r.Name}
+    </p>
+    <apex:outputText escape="false" value="{! $Label.C501_RegSite_ConfirmContact }"></apex:outputText>  
+
+    <h2>
+        {! $Label.C501_RegSite_StudentInformation }
+    </h2>
+    <h3>
+        Student Name
+    </h3>
+    <p>
+        <apex:outputText value="{!relatedTo.Student__r.FirstName }"  />&nbsp;<apex:outputText value="{!relatedTo.Student__r.LastName }"  />
+    </p>
+    <h3>
+        {! $Label.C501_RegSite_ChildEmail }
+    </h3>
+    <p>
+        <apex:outputText value="{!IF(relatedTo.Student__r.Email=='',   $Label.C501_RegSite_NotProvided,relatedTo.Student__r.Email)}" />
+    </p>
+    <h3>
+        {! $Label.C501_ClassReg_ChildMobilePhone } 
+    </h3>
+    <p>
+        <apex:outputText value="{!IF(relatedTo.Student__r.MobilePhone=='', $Label.C501_RegSite_NotProvided,relatedTo.Student__r.MobilePhone)}" />
+    </p>
+    <h3>{! $Label.C501_RegSite_StreetAddress }</h3>
+    <p>
+        <apex:outputText value="{!relatedTo.Student__r.Account.BillingStreet }"  />
+    </p>
+    <h3>{! $Label.C501_RegSite_City }</h3>
+    <p>
+        <apex:outputText value="{!relatedTo.Student__r.Account.BillingCity }"  />
+    </p>
+    <h3>{! $Label.C501_RegSite_State }</h3>
+    <p>
+        <apex:outputText value="{!relatedTo.Student__r.Account.BillingState }"  />
+    </p>
+    <h3>{! $Label.C501_RegSite_ZipCode }</h3>
+    <p>
+        <apex:outputText value="{!relatedTo.Student__r.Account.BillingPostalCode }"  />
+    </p>
+    <h3>{! $Label.C501_ClassReg_ChildSchoolName }</h3>
+    <p>
+        <apex:outputText value="{!relatedTo.School__r.Name }"  />
+    </p>
+    <h3>{! $Label.C501_RegSite_Grade }</h3>
+    <p>
+        <apex:outputText value="{!relatedTo.Student__r.Grade2__c }" />
+    </p>
+    <hr />
+    <h2>
+        {! $Label.C501_RegSite_Transport }  
+    </h2>
+    <h3>{! $ObjectType.Contact.Fields['Student_Transportation__c'].inlineHelpText }</h3>
+    <p>
+        <apex:outputText value="{!relatedTo.Student__r.Student_Transportation__c }"  />
+    </p>
+
+
+    <h3>{! $Label.C501_ClassReg_PickUpChild }</h3>
+    <apex:outputPanel rendered="{!relatedTo.Student__r.Authorized_Pickup_1_Name__c != '' }">
+        <p>
+            <apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_1_Name__c }"  />,&nbsp;<apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_1_Relationship__c }"  />. &nbsp;<apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_1_Phone__c }"  />
+        </p>
+    </apex:outputPanel>
+    <apex:outputPanel rendered="{!relatedTo.Student__r.Authorized_Pickup_2_Name__c != '' }">
+        <p>
+            <apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_2_Name__c }"  />,&nbsp;<apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_2_Relationship__c }"  />. &nbsp;<apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_2_Phone__c }"  />
+        </p>
+    </apex:outputPanel>
+    <apex:outputPanel rendered="{!relatedTo.Student__r.Authorized_Pickup_3_Name__c != '' }">
+        <p>
+            <apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_3_Name__c }"  />,&nbsp;<apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_3_Relationship__c }"  />. &nbsp;<apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_3_Phone__c }"  />
+        </p>  
+    </apex:outputPanel>
+    
+    <hr />
+    <h2>
+        {! $Label.C501_RegSite_EmergencyContacts }
+    </h2>
+    <apex:outputPanel rendered="{!relatedTo.Student__r.Alternate_Contact_Name__c != '' }">
+        <p>
+            <apex:outputText value="{!relatedTo.Student__r.Alternate_Contact_Name__c }"  />,&nbsp;<apex:outputText value="{!relatedTo.Student__r.Alternate_Contact_Relationship__c }"  />. <apex:outputText value="{!relatedTo.Student__r.Alternate_Contact_Phone__c }"  />
+        </p>
+    </apex:outputPanel>
+    <apex:outputPanel rendered="{!relatedTo.Student__r.Emergency_Contact_2_Name__c != '' }">
+        <p>
+            <apex:outputText value="{!relatedTo.Student__r.Emergency_Contact_2_Name__c }"  />,&nbsp;<apex:outputText value="{!relatedTo.Student__r.Emergency_Contact_2_Relationship__c }"  />. <apex:outputText value="{!relatedTo.Student__r.Emergency_Contact_2_Phone__c }"  />
+        </p>
+    </apex:outputPanel>
+    <hr />
+    <h2>
+        {! $Label.C501_ClassReg_AddtlStudentInfo }
+    </h2>
+    <h3>{! $Label.C501_ClassReg_Birthday }  </h3>
+    <p><apex:outputText value="{0, date, MMMM d','  yyyy}">
+        <apex:param value="{!relatedTo.Student__r.Birthdate }"/>
+    </apex:outputText></p>
+    <h3> {! $Label.C501_ClassReg_FreeLunch }  </h3>
+    <p><apex:outputText value="{!relatedTo.C501_Free_Reduced_Lunch_Picklist__c }"  /></p>
+    <h3> {! $Label.C501_ClassReg_StudentID }   </h3>
+    <p>
+        <apex:outputPanel rendered="{!relatedTo.Student_School_ID__c == ''}">
+            {! $Label.C501_RegSite_DontKnowID }
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!relatedTo.Student_School_ID__c != ''}">
+            <apex:outputText value="{!relatedTo.Student_School_ID__c }"  /> 
+        </apex:outputPanel>
+    </p>
+    <h3> {! $ObjectType.Contact.Fields['Allergies__c'].inlineHelpText }   </h3>
+    <p>
+        <apex:outputPanel rendered="{!relatedTo.Student__r.Allergies__c == '' }">
+            {! $Label.C501_RegSite_NoAllergies }
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!relatedTo.Student__r.Allergies__c != '' }">
+            <apex:outputText value="{!relatedTo.Student__r.Allergies__c }"  /> 
+        </apex:outputPanel>
+    </p>
+    <h3>
+        {! $ObjectType.Contact.Fields['Medication__c'].inlineHelpText }
+    </h3>
+    <p>
+        <apex:outputText value="{!IF(relatedTo.Student__r.Medication__c =='',   $Label.C501_RegSite_NotProvided,relatedTo.Student__r.Medication__c)}" />
+    </p>
+    <h3>
+        {! $ObjectType.Contact.Fields['Race__c'].inlineHelpText }
+    </h3>
+    <p>
+        <apex:outputText value="{!IF(relatedTo.Student__r.Race__c =='', $Label.C501_RegSite_NotProvided,relatedTo.Student__r.Race__c)}" />
+    </p>
+    <h3>
+        {! $ObjectType.Contact.Fields['Student_Special_Needs__c'].inlineHelpText }
+    </h3>
+    <p>
+        <apex:outputText value="{!IF(relatedTo.Student__r.Student_Special_Needs__c =='',    $Label.C501_RegSite_NotProvided,relatedTo.Student__r.Student_Special_Needs__c)}" />
+    </p>
+    <h3>
+        {! $ObjectType.Contact.Fields['T_shirt_Size__c'].inlineHelpText }
+    </h3>
+    <p>
+        <apex:outputText value="{!IF(relatedTo.Student__r.T_shirt_Size__c =='', $Label.C501_RegSite_NotProvided,relatedTo.Student__r.T_shirt_Size__c)}" />
+    </p>
+
+    <hr />
+    <h2>
+        {! $Label.C501_RegSite_FamilyInformation }
+    </h2>
+    <h3>Parent Name</h3>
+    <p>
+        <apex:outputText value="{!relatedTo.Parent__r.FirstName }"  />&nbsp;<apex:outputText value="{!relatedTo.Parent__r.lastName }"  />
+    </p>
+    <h3>{! $Label.C501_RegSite_ParentEmail }</h3>
+    <p>
+        <apex:outputText value="{!IF(relatedTo.Parent__r.Email=='', $Label.C501_RegSite_NotProvided,relatedTo.Parent__r.Email)}" />
+    </p>
+    <h3>{! $Label.C501_ClassReg_ParentHomePhone }</h3>
+    <p>
+        <apex:outputText value="{!IF(relatedTo.Parent__r.HomePhone=='', $Label.C501_RegSite_NotProvided,relatedTo.Parent__r.HomePhone)}" />
+    </p>
+    <h3>{! $Label.C501_ClassReg_ParentMobilePhone }</h3>
+    <p>
+        <apex:outputText value="{!IF(relatedTo.Parent__r.MobilePhone =='',  $Label.C501_RegSite_NotProvided,relatedTo.Parent__r.MobilePhone )}" />
+    </p>
+    <h3>{! $Label.C501_ClassReg_ParentWorkPhone }</h3> 
+    <p>
+        <apex:outputText value="{!IF(relatedTo.Parent__r.OtherPhone=='',    $Label.C501_RegSite_NotProvided,relatedTo.Parent__r.OtherPhone)}" />
+    </p>
+    <h3>{! $ObjectType.Contact.Fields['Translation_Needed__c'].inlineHelpText } </h3>
+    <p>
+        <apex:outputText value="{!relatedTo.Parent__r.Translation_Needed__c }" /><br />
+        <apex:outputText value="{!relatedTo.Parent__r.Translation_Needed_Other__c }" />
+    </p>
+    <h3>{! $ObjectType.Contact.Fields['Family_Status__c'].inlineHelpText } </h3>
+    <p>
+        <apex:outputText value="{!relatedTo.Parent__r.Family_Status__c }" />
+    </p>
+    <h3>{! $ObjectType.Contact.Fields['Preferred_Method_of_Contact__c'].inlineHelpText } </h3>
+    <p>
+        <apex:outputText value="{!relatedTo.Parent__r.Preferred_Method_of_Contact__c }" />
+    </p>
+    <h3>{! $ObjectType.Contact.Fields['Parent_Education__c'].inlineHelpText } </h3>
+    <p>
+        <apex:outputText value="{!relatedTo.Parent__r.Parent_Education__c }" />
+    </p>
+    <h3>{! $ObjectType.Contact.Fields['Parent_Workplace__c'].inlineHelpText } </h3>
+    <p>
+        <apex:outputText value="{!relatedTo.Parent__r.Parent_Workplace__c }" />
+    </p>
+    <h3>{! $ObjectType.Contact.Fields['Parent_Education_second_parent__c'].inlineHelpText } </h3>
+    <p>
+        <apex:outputText value="{!relatedTo.Parent__r.Parent_Education_second_parent__c  }" />
+    </p>
+    <h3>{! $ObjectType.Contact.Fields['Income__c'].inlineHelpText } </h3>
+    <p>
+        <apex:outputText value="{!relatedTo.Parent__r.Income__c }" />
+    </p>
+    <h3>{! $ObjectType.Contact.Fields['Number_in_Household_Picklist__c'].inlineHelpText } </h3>
+    <p>
+        <apex:outputText value="{!relatedTo.Parent__r.Number_in_Household_Picklist__c }" />
+    </p>
+    <h3>{! $ObjectType.Contact.Fields['Volunteer__c'].inlineHelpText } </h3>
+    <p>
+        <apex:outputText value="{!relatedTo.Parent__r.Volunteer__c }" />
+    </p>
+    <hr/>
+    <h2>
+        {! $Label.C501_ClassReg_PARTICIPANT_WAIVER }
+    </h2>
+    <p>
+        {! $Label.C501_ClassReg_PARTICIPANT_WAIVERp1 }
+    </p>
+    <p>
+        {! $Label.C501_ClassReg_PARTICIPANT_WAIVERp2 }
+    </p>
+    <p>
+        {! $Label.C501_ClassReg_PARTICIPANT_WAIVERp3 } 
+    </p>
+    <p>
+        <b>{! $Label.C501_ClassReg_PARTICIPANT_WAIVERlabel }</b>
+    </p>
+    <p>
+        <apex:outputText value="{!IF(relatedTo.Waiver__c,'Waiver Accepted','Waiver Declined')}" />
+    </p>
+
+    <hr />
+
+    <h2>
+        {! $Label.C501_ClassReg_AuthToTreatMinor } 
+    </h2>
+    <p>
+        {! $Label.C501_ClassReg_AuthToTreatMinorP1 } 
+    </p>
+    <p>
+        {! $Label.C501_ClassReg_AuthToTreatMinorP2 } 
+    </p>
+    <p>
+        <b>{! $Label.C501_ClassReg_AuthToTreatMinorProvider }</b>
+        <apex:outputText value="{!relatedTo.Student__r.Emergency_Preferred_Medical_Provider__c }" />
+    </p>
+    <p>
+        <b>{! $Label.C501_ClassReg_AuthToTreatMinorLabel } </B>
+    </p>
+    <p>
+        <apex:outputText value="{!IF(relatedTo.Authorization_to_treat_minor__c,'Techbridge is allowed to seek treatment','Techbridge is *not* allowed to seek treatment')}" />
+    </p>
+    <h2>
+        {! $Label.C501_ClassReg_PhotoVideo }
+    </h2>
+    <p>
+        {! $Label.C501_ClassReg_PhotoVideoP1 }
+    </p>
+    <p>
+        {! $Label.C501_ClassReg_PhotoVideoLabel }
+    </p>
+    <p>
+        <apex:outputText value="{!IF(relatedTo.Media_Release__c,'Photos Allowed','Photos *not* allowed')}" />
+    </p>
+    
+    <hr />
+    <h2>
+        {! $Label.C501_ClassReg_parentFamilyConsent }
+        
+    </h2>
+    <h3>
+        {! $Label.C501_ClassReg_EvalStudy }
+    </h3>
+    <h4>
+        {! $Label.C501_ClassReg_EvalStudyH1 }
+    </h4>
+    <p>
+        {! $Label.C501_ClassReg_EvalStudyH1P1 }
+    </p>                            
+    <p>
+        {! $Label.C501_ClassReg_EvalStudyH1P2 }
+    </p>                            
+    <p>
+        {! $Label.C501_ClassReg_EvalStudyH1P3 }
+    </p>                            
+    <h4>
+        {! $Label.C501_ClassReg_EvalStudyH2 }
+    </h4>
+    <ul>
+        <apex:outPutText escape="false" value="{! $Label.C501_ClassReg_EvalStudyH2li }" ></apex:outPutText>  
+    </ul>
+    <h4>
+        {! $Label.C501_ClassReg_EvalStudyH3 }
+    </h4>
+    <p>
+        {! $Label.C501_ClassReg_EvalStudyH3P1 }
+    </p>
+    <ul>
+        <apex:outPutText escape="false" value="{! $Label.C501_ClassReg_EvalStudyH3li }" ></apex:outPutText>  
+    </ul>
+    <p>
+        <b> 
+            Yes, my child may participate in the study. (If no, leave unchecked). 
+        </b>
+    </p>
+    <p>
+        <apex:outputText value="{!IF(relatedTo.Evaluation_Consent__c,'Your child may participate in the study','Your child may *not* participate in the study')}" />
+    </p>
+    <p>
+        <b> 
+            Yes, I will participate in the study. (If no, leave unchecked). 
+        </b>
+    </p>
+    <p>
+        <apex:outputText value="{!IF(relatedTo.Parent_Survey__c,'You will participate in the study','Your will *not* participate in the study')}" />
+    </p>
+
+
+</messaging:htmlEmailBody>
+
+
+
+
 <messaging:plainTextEmailBody >
-Congratulations!
-This is your new Visualforce Email Template.
+
+**** {! $Label.C501_RegSite_FinishedApp }****
+
+*** {! $Label.C501_RegSite_StudentInformation }***
+
+** Student Name**
+<apex:outputText value="{!relatedTo.Student__r.FirstName }" /> <apex:outputText value="{!relatedTo.Student__r.LastName }" />
+
+** {! $Label.C501_RegSite_ChildEmail }**
+<apex:outputText value="{!IF(relatedTo.Student__r.Email=='', $Label.C501_RegSite_NotProvided,relatedTo.Student__r.Email)}" />
+
+** {! $Label.C501_ClassReg_ChildMobilePhone } **
+<apex:outputText value="{!IF(relatedTo.Student__r.MobilePhone=='', $Label.C501_RegSite_NotProvided,relatedTo.Student__r.MobilePhone)}" />
+
+**{! $Label.C501_RegSite_StreetAddress }**
+<apex:outputText value="{!relatedTo.Student__r.Account.BillingStreet }" />
+
+**{! $Label.C501_RegSite_City }**
+<apex:outputText value="{!relatedTo.Student__r.Account.BillingCity }" />
+
+**{! $Label.C501_RegSite_State }**
+<apex:outputText value="{!relatedTo.Student__r.Account.BillingState }" />
+
+**{! $Label.C501_RegSite_ZipCode }**
+<apex:outputText value="{!relatedTo.Student__r.Account.BillingPostalCode }" />
+
+**{! $Label.C501_ClassReg_ChildSchoolName }**
+<apex:outputText value="{!relatedTo.School__r.Name }" />
+
+**{! $Label.C501_RegSite_Grade }**
+To do: field to calculate the grade...
+
+
+*** {! $Label.C501_RegSite_Transport } ***
+**{! $ObjectType.Contact.Fields['Student_Transportation__c'].inlineHelpText }**
+
+<apex:outputText value="{!relatedTo.Student__r.Student_Transportation__c }" />
+
+**{! $Label.C501_ClassReg_PickUpChild }**
+
+<apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_1_Name__c }" />, <apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_1_Relationship__c }" />. <apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_1_Phone__c }" />
+<apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_2_Name__c }" />, <apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_2_Relationship__c }" />. <apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_2_Phone__c }" />
+<apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_3_Name__c }" />, <apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_3_Relationship__c }" />. <apex:outputText value="{!relatedTo.Student__r.Authorized_Pickup_3_Phone__c }" />
+
+*** {! $Label.C501_RegSite_EmergencyContacts }***
+<apex:outputText value="{!relatedTo.Student__r.Alternate_Contact_Name__c }" />, <apex:outputText value="{!relatedTo.Student__r.Alternate_Contact_Relationship__c }" />. <apex:outputText value="{!relatedTo.Student__r.Alternate_Contact_Phone__c }" />
+<apex:outputText value="{!relatedTo.Student__r.Emergency_Contact_2_Name__c }" />, <apex:outputText value="{!relatedTo.Student__r.Emergency_Contact_2_Relationship__c }" />. <apex:outputText value="{!relatedTo.Student__r.Emergency_Contact_2_Phone__c }" />
+
+***{! $Label.C501_ClassReg_AddtlStudentInfo }***
+
+**{! $Label.C501_ClassReg_Birthday } **
+<apex:outputText value="{0, date, MMMM d',' yyyy}">
+<apex:param value="{!relatedTo.Student__r.Birthdate }"/>
+</apex:outputText>
+
+** {! $Label.C501_ClassReg_FreeLunch } **
+<apex:outputText value="{!relatedTo.C501_Free_Reduced_Lunch_Picklist__c }" />
+
+** {! $Label.C501_ClassReg_StudentID } **
+<apex:outputText value="{!relatedTo.Student_School_ID__c }" /> 
+
+** {! $ObjectType.Contact.Fields['Allergies__c'].inlineHelpText } **
+<apex:outputText value="{!relatedTo.Student__r.Allergies__c }" /> 
+
+**{! $ObjectType.Contact.Fields['Race__c'].inlineHelpText }**
+<apex:outputText value="{!IF(relatedTo.Student__r.Race__c =='', $Label.C501_RegSite_NotProvided,relatedTo.Student__r.Race__c)}" />
+
+**{! $ObjectType.Contact.Fields['Student_Special_Needs__c'].inlineHelpText }**
+<apex:outputText value="{!IF(relatedTo.Student__r.Student_Special_Needs__c =='',    $Label.C501_RegSite_NotProvided,relatedTo.Student__r.Student_Special_Needs__c)}" />
+
+**{! $ObjectType.Contact.Fields['T_shirt_Size__c'].inlineHelpText }**
+<apex:outputText value="{!IF(relatedTo.Student__r.T_shirt_Size__c =='', $Label.C501_RegSite_NotProvided,relatedTo.Student__r.T_shirt_Size__c)}" />
+
+
+*** {! $Label.C501_RegSite_FamilyInformation }***
+
+**Parent Name**
+<apex:outputText value="{!relatedTo.Parent__r.FirstName }" /> <apex:outputText value="{!relatedTo.Parent__r.lastName }" />
+
+**{! $Label.C501_RegSite_ParentEmail }**
+<apex:outputText value="{!IF(relatedTo.Parent__r.Email=='',$Label.C501_RegSite_NotProvided,relatedTo.Parent__r.Email)}" />
+
+**{! $Label.C501_ClassReg_ParentHomePhone }**
+<apex:outputText value="{!IF(relatedTo.Parent__r.HomePhone=='',$Label.C501_RegSite_NotProvided,relatedTo.Parent__r.HomePhone)}" />
+
+**{! $Label.C501_ClassReg_ParentMobilePhone }**
+<apex:outputText value="{!IF(relatedTo.Parent__r.MobilePhone =='',$Label.C501_RegSite_NotProvided,relatedTo.Parent__r.MobilePhone )}" />
+
+**{! $Label.C501_ClassReg_ParentWorkPhone }** 
+<apex:outputText value="{!IF(relatedTo.Parent__r.OtherPhone=='',$Label.C501_RegSite_NotProvided,relatedTo.Parent__r.OtherPhone)}" />
+
+**{! $ObjectType.Contact.Fields['Translation_Needed__c'].inlineHelpText } **
+<apex:outputText value="{!relatedTo.Parent__r.Translation_Needed__c }" /><br />
+<apex:outputText value="{!relatedTo.Parent__r.Translation_Needed_Other__c }" />
+
+**{! $ObjectType.Contact.Fields['Preferred_Method_of_Contact__c'].inlineHelpText }**
+<apex:outputText value="{!relatedTo.Parent__r.Preferred_Method_of_Contact__c }" />
+
+**{! $ObjectType.Contact.Fields['Family_Status__c'].inlineHelpText } **
+<apex:outputText value="{!relatedTo.Parent__r.Family_Status__c }" />
+
+**{! $ObjectType.Contact.Fields['Parent_Education__c'].inlineHelpText } **
+<apex:outputText value="{!relatedTo.Parent__r.Parent_Education__c }" />
+
+**{! $ObjectType.Contact.Fields['Parent_Workplace__c'].inlineHelpText } **
+<apex:outputText value="{!relatedTo.Parent__r.Parent_Workplace__c }" />
+
+**{! $ObjectType.Contact.Fields['Parent_Education_second_parent__c'].inlineHelpText } **
+<apex:outputText value="{!relatedTo.Parent__r.Parent_Education_second_parent__c  }" />
+
+**{! $ObjectType.Contact.Fields['Income__c'].inlineHelpText } **
+<apex:outputText value="{!relatedTo.Parent__r.Income__c }" />
+
+**{! $ObjectType.Contact.Fields['Number_in_Household_Picklist__c'].inlineHelpText } **
+<apex:outputText value="{!relatedTo.Parent__r.Number_in_Household_Picklist__c }" />
+
+**{! $ObjectType.Contact.Fields['Volunteer__c'].inlineHelpText } **
+<apex:outputText value="{!relatedTo.Parent__r.Volunteer__c }" />
+
+
+*** {! $Label.C501_ClassReg_PARTICIPANT_WAIVER }***
+
+{! $Label.C501_ClassReg_PARTICIPANT_WAIVERp1 }
+
+{! $Label.C501_ClassReg_PARTICIPANT_WAIVERp2 }
+
+{! $Label.C501_ClassReg_PARTICIPANT_WAIVERp3 } 
+
+{! $Label.C501_ClassReg_PARTICIPANT_WAIVERlabel }
+
+<apex:outputText value="{!IF(relatedTo.Waiver__c,'Waiver Accepted','Waiver Declined')}" />
+
+
+*** {! $Label.C501_ClassReg_AuthToTreatMinor } ***
+
+{! $Label.C501_ClassReg_AuthToTreatMinorP1 } 
+
+{! $Label.C501_ClassReg_AuthToTreatMinorP2 } 
+
+
+{! $Label.C501_ClassReg_AuthToTreatMinorProvider }
+<apex:outputText value="{!relatedTo.Student__r.Emergency_Preferred_Medical_Provider__c }" />
+
+{! $Label.C501_ClassReg_AuthToTreatMinorLabel }
+
+<apex:outputText value="{!IF(relatedTo.Authorization_to_treat_minor__c,'Techbridge is allowed to seek treatment','Techbridge is *not* allowed to seek treatment')}" />
+
+*** {! $Label.C501_ClassReg_PhotoVideo }***
+
+{! $Label.C501_ClassReg_PhotoVideoP1 }
+
+{! $Label.C501_ClassReg_PhotoVideoLabel }
+
+<apex:outputText value="{!IF(relatedTo.Media_Release__c,'Photos Allowed','Photos *not* allowed')}" />
+
+*** {! $Label.C501_ClassReg_parentFamilyConsent }***
+
+** {! $Label.C501_ClassReg_EvalStudy }**
+
+* {! $Label.C501_ClassReg_EvalStudyH1 }*
+
+{! $Label.C501_ClassReg_EvalStudyH1P1 }
+
+{! $Label.C501_ClassReg_EvalStudyH1P2 }
+
+{! $Label.C501_ClassReg_EvalStudyH1P3 }
+ 
+* {! $Label.C501_ClassReg_EvalStudyH2 }*
+
+<apex:outPutText escape="false" value="{! $Label.C501_ClassReg_EvalStudyH2li }" ></apex:outPutText> 
+
+* {! $Label.C501_ClassReg_EvalStudyH3 }*
+
+{! $Label.C501_ClassReg_EvalStudyH3P1 }
+
+<apex:outPutText escape="false" value="{! $Label.C501_ClassReg_EvalStudyH3li }" ></apex:outPutText> 
+
+<apex:outputText value="{!IF(relatedTo.Evaluation_Consent__c,'Your child may participate in the study','Your child may *not* participate in the study')}" />
+
+<apex:outputText value="{!IF(relatedTo.Parent_Survey__c,'You will participate in the study','Your will *not* participate in the study')}" />
+ 
+
+
 </messaging:plainTextEmailBody>
 </messaging:emailTemplate>

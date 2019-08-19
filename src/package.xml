@@ -50,6 +50,7 @@
         <members>Contact.Emergency_Contact_2_Phone__c</members>
         <members>Contact.Emergency_Contact_2_Relationship__c</members>
         <members>Contact.Emergency_Preferred_Medical_Provider__c</members>
+        <members>Contact.Family_Status__c</members>
         <members>Contact.Income__c</members>
         <members>Contact.Medication__c</members>
         <members>Contact.Number_in_Household_Picklist__c</members>
@@ -58,6 +59,7 @@
         <members>Contact.Parent_Education__c</members>
         <members>Contact.Parent_Education_second_parent__c</members>
         <members>Contact.Parent_Education_second_parent__c</members>
+        <members>Contact.Parent_Workplace__c</members>
         <members>Contact.Preferred_Method_of_Contact__c</members>
         <members>Contact.Race__c</members>
         <members>Contact.Student_Special_Needs__c</members>
@@ -213,10 +215,6 @@
         <members>Class_Site_Login_Attempt__c</members>
         <members>TwilioConfig__c</members>
         <name>CustomObject</name>
-    </types>
-    <types>
-        <members>unfiled$public/Class_registration_datax</members>
-        <name>Dashboard</name>
     </types>
     <types>
         <members>unfiled$public/C501_Class_Registration_Confirmation_VF</members>
