@@ -162,6 +162,11 @@ public class C501_TEST_ClassReg_CreateAcct {
         controller.child.Alternate_Contact_Phone__c 			= '(206) 234-5678';
         controller.child.Emergency_Contact_2_Phone__c 			= '(206) 234-5678';
         
+        controller.siteMultiPicklistReturnValues.put('Race__c',new List<String>{'White'});
+        controller.siteMultiPicklistReturnValues.put('Family_Status__c',new List<String>{'Immigrant'});
+        controller.siteMultiPicklistReturnValues.put('Preferred_Method_of_Contact__c',new List<String>{'Email'});
+        controller.siteMultiPicklistReturnValues.put('Volunteer__c',new List<String>{'Other'});
+        
         controller.createAccount();
         
         List<SelectOption> testListResult = controller.schoolList;
