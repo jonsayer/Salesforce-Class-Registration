@@ -1,5 +1,6 @@
 @isTest
 public class C501_TESTClassReg_Login {
+    
     @testSetup static void setupAccount(){
         
         ID HHacctID	= [select id from Recordtype where Name='Household Account'].Id;
@@ -16,6 +17,17 @@ public class C501_TESTClassReg_Login {
     }
     
     /// Below this line, these tests are for testing the verification without confirmation to existing record
+    @isTest static void selectLanguage(){
+        C501_CTRL_ClassReg_SelectLang controller = new C501_CTRL_ClassReg_SelectLang();
+        
+        controller.language = 'es_MX';
+        
+        List<SelectOption> langs = controller.getListOfLangs();
+        
+        controller.changeLang();
+        
+    }
+    
     @isTest static void NoAccountVerify_testSimpleEmailVerify(){
         PageReference loginPage = Page.C501_ClassReg_Login;
         Test.setCurrentPage(loginPage);

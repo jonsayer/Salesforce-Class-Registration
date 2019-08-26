@@ -42,12 +42,12 @@
         	font-family: 'Open Sans', sans-serif;
         }
         a, a:visited, a.link {
-            color:#c03d27;
+            color:#F68523;
             text-decoration:underline;
         	cursor: pointer;
         }
         a:hover, a:active {
-            color:#c03d27;
+            color:#F68523;
             text-decoration:none;
         }
         h1,h2,h3,h4,h5,h6 {
@@ -55,7 +55,7 @@
         	font-weight:700 !important;
         }
         .withLine {
-        border-top:1px dotted #b2382a;
+        border-top:1px dotted #F68523;
         width: 100%;
         padding-top:0.83em;
         }
@@ -74,7 +74,7 @@
             overflow: hidden;
             margin-bottom:1.5em;
             text-align: center;
-            background-color:#b2382a;
+            background-color:#F68523;
             border: 0;
             border-radius: 5px;
             font-size:1.5em;
@@ -93,7 +93,7 @@
         .prominent_button a:active,
         input.prominent_button:hover,
         input.prominent_button:active {
-            background-color: #b94b3f;
+            background-color: #F68523;
             color: #fff;
             text-decoration:none;
         }
@@ -169,13 +169,27 @@
         #oldBrowserAlert {
         	display: none;
         	width:100%;
-        	background-color:#b2382a;
+        	background-color:#F68523;
         	color:#ffffff;
         	padding:3em;
         }
         #oldBrowserAlert a, #oldBrowserAlert a:hover, #oldBrowserAlert a:active, #oldBrowserAlert a:visited {
         	color: #ffffff;
         }
+        
+        .tbgChecklistBox input[type=checkbox] {
+        	float:left;
+        	clear:left;
+        	margin:0.25em 0.5em 0 1em;
+        }
+        
+        .tbgChecklistBox label {
+        	float:left;
+        	color:#333;
+        	font-weight: 500;
+        	font-family: 'Open Sans', sans-serif;
+        }
+        
         @media only screen and (max-width: 550px) {
             .customstyle {
                 margin:0;

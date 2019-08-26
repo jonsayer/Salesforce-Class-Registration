@@ -29,6 +29,17 @@ SUBSTITUTE(C501_Class_Site_Mobile_Number__c, &quot;(&quot;, &quot;&quot;), &quot
         <type>Phone</type>
     </fields>
     <fields>
+        <fullName>C501_Is_Active_School__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Created by 501 Commons in August 2019</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is an active school that is listed on the registration form</inlineHelpText>
+        <label>Is Active School</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>C501_Next_program_start_date__c</fullName>
         <externalId>false</externalId>
         <inlineHelpText>This is the date that the next class begins at this school.</inlineHelpText>

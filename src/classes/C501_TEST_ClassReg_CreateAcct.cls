@@ -51,6 +51,65 @@ public class C501_TEST_ClassReg_CreateAcct {
         
     }
     
+    @isTest static void testValidationFail(){
+        insert new TwilioConfig__c(Name = 'default', AuthToken__c = 'xxx', Default_Send_Number__c = '206222222', AccountSid__c = 'xxx');
+        
+        Class_Site_Login_Attempt__c att = createLoggedInTestUser();
+        
+        Account	school = new Account(Name='TestSchool',Region__c = 'Seattle');
+        insert school;
+        
+        PageReference createAcctPage = Page.C501_ClassReg_CreateAcct;
+        Test.setCurrentPage(createAcctPage);
+        System.currentPageReference().getParameters().put('a', att.id);
+        System.currentPageReference().getParameters().put('r', '1');
+        System.currentPageReference().getParameters().put('c', 'test@test.com');
+        
+        Test.startTest();
+        C501_CTRL_ClassReg_CreateAcct controller = new C501_CTRL_ClassReg_CreateAcct();
+        System.assert(controller.pageStatus == 'new');
+        
+        //System.assert(controller.getRegions().size() == 5);
+        
+        controller.schoolRegion				= 'Seattle';
+        controller.refreshSchools();
+        
+        controller.parent.FirstName			= 'Test';
+        controller.parent.LastName			= 'LastName';
+        controller.parent.MobilePhone		= '9000';
+        controller.parent.Email				= 'test@example.com';
+        controller.parent.HomePhone			= 'bar';
+        controller.parent.OtherPhone		= 'foo';
+        controller.family.BillingStreet		= '123 Main St';
+        controller.family.BillingCity		= 'Seattle';
+        controller.family.BillingState		= 'WA';
+        controller.family.BillingPostalCode	= '98101';
+        
+        controller.child.FirstName	= 'Child';
+        controller.child.LastName	= 'Name';
+        controller.child.MobilePhone = '123';
+        controller.grade 			= null;
+        controller.schoolName		= null;
+        controller.term.Waiver__c	= false;
+        
+        controller.term.Student_School_ID__c 					= null;
+        controller.noAllergies									= false;
+        controller.child.Student_Transportation__c 				= 'Will receive a ride';
+        controller.child.Authorized_Pickup_1_Name__c 			= 'Test friend';
+        controller.child.Authorized_Pickup_1_Phone__c 			= 'derp';
+        controller.child.Authorized_Pickup_1_Relationship__c 	= null;
+        controller.child.Authorized_Pickup_2_Phone__c 			= 'huh';
+        controller.child.Authorized_Pickup_3_Phone__c 			= 'NCC-1701';
+        controller.child.Alternate_Contact_Phone__c 			= 'AAAH';
+        controller.child.Emergency_Contact_2_Phone__c 			= '9';
+        
+        controller.createAccount();
+                
+        Test.stopTest();
+        
+        
+    }
+    
     @isTest static void testSuccessfulInsert(){
         insert new TwilioConfig__c(Name = 'default', AuthToken__c = 'xxx', Default_Send_Number__c = '206222222', AccountSid__c = 'xxx');
         
@@ -71,24 +130,43 @@ public class C501_TEST_ClassReg_CreateAcct {
         
         //System.assert(controller.getRegions().size() == 5);
         
+        controller.schoolRegion				= 'Seattle';
+        controller.refreshSchools();
+        
         controller.parent.FirstName			= 'Test';
         controller.parent.LastName			= 'LastName';
-        controller.parent.MobilePhone		= '1234567890';
+        controller.parent.MobilePhone		= '(623) 456-7890';
+        controller.parent.Email				= 'test@example.com';
+        controller.parent.HomePhone			= '(222) 287-1824';
+        controller.parent.OtherPhone		= '(222) 287-1824';
         controller.family.BillingStreet		= '123 Main St';
         controller.family.BillingCity		= 'Seattle';
         controller.family.BillingState		= 'WA';
         controller.family.BillingPostalCode	= '98101';
         
-        controller.refreshSchools();
-        
         controller.child.FirstName	= 'Child';
         controller.child.LastName	= 'Name';
+        controller.child.MobilePhone = '(222) 628-1928';
         controller.grade 			= '10';
         controller.schoolName		= school.Id;
+        controller.term.Waiver__c	= true;
+        
+        controller.term.Student_School_ID__c 					= 'abc123';
+        controller.noAllergies									= true;
+        controller.child.Student_Transportation__c 				= 'Will receive a ride';
+        controller.child.Authorized_Pickup_1_Name__c 			= 'Test friend';
+        controller.child.Authorized_Pickup_1_Phone__c 			= '(206) 234-5678';
+        controller.child.Authorized_Pickup_1_Relationship__c 	= 'BFF';
+        controller.child.Authorized_Pickup_2_Phone__c 			= '(206) 234-5678';
+        controller.child.Authorized_Pickup_3_Phone__c 			= '(206) 234-5678';
+        controller.child.Alternate_Contact_Phone__c 			= '(206) 234-5678';
+        controller.child.Emergency_Contact_2_Phone__c 			= '(206) 234-5678';
         
         controller.createAccount();
         
         List<SelectOption> testListResult = controller.schoolList;
+        
+        List<SelectOption> regionList = C501_CTRL_ClassReg_CreateAcct.getRegions();
         
         Test.stopTest();
         

@@ -202,6 +202,18 @@ TRUE, FALSE )</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Parent_Initials__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please initial below to officially sign this document.</inlineHelpText>
+        <label>Parent Initials</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Parent_Packet_URL_Unsigned__c</fullName>
         <externalId>false</externalId>
         <inlineHelpText>Form Assembly record of the electronic parent packet, waiver, etc. This is the unsigned data.</inlineHelpText>
