@@ -217,6 +217,7 @@
     </types>
     <types>
         <members>Class_Site_Login_Attempt__c</members>
+        <members>RegistrationSiteSettings__c</members>
         <members>TwilioConfig__c</members>
         <name>CustomObject</name>
     </types>

@@ -191,10 +191,6 @@ public class C501_CTRL_ClassReg_CreateAcct {
             }
         }
         
-        // Manually add family status to these lists, as it is not in the field sets
-        /*Schema.SObjectField famStatus = Schema.getGlobalDescribe().get('Contact').getDescribe().fields.getMap().get('Family_Status__c');
-        fieldSetPicklistOptions.put('Family_Status__c',getFieldsPicklistOptions(famStatus ,'Contact') );
-        siteMultiPicklistReturnValues.put('Family_Status__c',new String[]{});*/
     }
     
     /*public PageReference confirmLogin(){
@@ -224,30 +220,6 @@ public class C501_CTRL_ClassReg_CreateAcct {
     
     public Pagereference createAccount(){
         
-        /*family.C501_Class_Site_Mobile_Number__c = C501_UTIL_ClassRegUtilities.cleanInputPhone(family.C501_Class_Site_Mobile_Number__c);
-        
-        // next, we need to check if there is already an account with that phone number. If it is them, send a confirmation text and pair them with that account
-        acctID = C501_UTIL_ClassRegUtilities.lookupAccountByPhone(family.C501_Class_Site_Mobile_Number__c);
-        
-        if(acctID != null ){
-            // send the sms
-            C501_UTIL_ClassRegUtilities.sendSMS(acctID,family.C501_Class_Site_Mobile_Number__c);
-            //family.Id = acctID;
-            parent.AccountId = acctID;
-        	// present user with a code screen
-        	pageStatus	= 'confirm';
-        	return null;
-        } else {
-            insert family;
-            parent.AccountId 	= family.id;
-            insert parent;
-            
-            Cookie aId 			= new cookie('AccountIdClassRegSite', family.id, null, 86400, false);
-            ApexPages.currentPage().setCookies(new Cookie[] {aId});
-            
-            return C501_UTIL_ClassRegUtilities.generatePageLink('C501_ClassReg_Home',null,null);
-        }*/
-        
         Boolean passValidation = true;
         
         if(schoolName == null || schoolName == '' ){
@@ -257,13 +229,6 @@ public class C501_CTRL_ClassReg_CreateAcct {
         } else {
             noSchool = false;
         }
-        /*if(family.BillingState == null || family.BillingState == '' ){
-            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,Label.C501_RegSite_SelectState)  );
-            noState = true;
-            passValidation = false;
-        } else {
-            noState = false;
-        }*/
         if(grade == null || grade == '' ){
             ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,Label.C501_RegSite_SelectGrade)  );
             noGrade = true;
@@ -440,19 +405,6 @@ public class C501_CTRL_ClassReg_CreateAcct {
             return null;
         }
         
-        
-        
-        // manually pass the family status from the checklist value set, as it is not in the field sets
-        /*Boolean first = true;
-        for(String s : siteMultiPicklistReturnValues.get('Family_Status__c') ){
-            if(first){
-                parent.Family_Status__c = s;
-                first = false;
-            } else {
-                parent.Family_Status__c = parent.Family_Status__c + ';' + s;
-            }
-        }*/
-        
         insert family;
         
         parent.npe01__Preferred_Email__c 	= 'Personal';
@@ -516,13 +468,12 @@ public class C501_CTRL_ClassReg_CreateAcct {
             	nextStartDate = Datetime.newInstance(schoolNameText.C501_Next_Program_Start_Date__c, Time.newInstance(0,0,0,0)).format('MMMMM d, yyyy');
             }*/
             
+            RegistrationSiteSettings__c siteSettings = [SELECT id, Default_From_Email__c FROM RegistrationSiteSettings__c LIMIT 1];
+            
             Id templateId = [Select id from EmailTemplate where DeveloperName = 'C501_Class_Registration_Confirmation_VF'].Id;
             
-            //String emailMessage = Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name +Label.C501_RegSite_EmailConfirmP2+' '+nextStartDate+' '+Label.C501_RegSite_EmailConfirmP3+' '+teacherName+Label.C501_RegSite_EmailConfirmP4;
-            //C501_UTIL_ClassRegUtilities.SendEmailGeneric('salesforce@techbridgegirls.org',parent.Email,Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name,emailMessage);
-			C501_UTIL_ClassRegUtilities.SendEmailGeneric('salesforce@techbridgegirls.org',null,null,null,term.Id,templateId,parent.Id);
+            C501_UTIL_ClassRegUtilities.SendEmailGeneric(siteSettings.Default_From_Email__c,null,null,null,term.Id,templateId,parent.Id);
             
-            //C501_UTIL_ClassRegUtilities.logActivityToContact(parent.Id,Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name, emailMessage,'Email');
         }
         pageStatus = 'finished';
         return null;
@@ -559,25 +510,27 @@ public class C501_CTRL_ClassReg_CreateAcct {
     }
     
     public static List<SelectOption> getRegions(){
+        Schema.SObjectField regionField = Schema.getGlobalDescribe().get('Account').getDescribe().fields.getMap().get('Region__c');
+        Schema.DescribeFieldResult regionFieldDescribe = regionField.getDescribe();
+        list<schema.picklistentry> values = regionFieldDescribe.getPickListValues();    
+        
         List<SelectOption> regions = new List<SelectOption>();
         
-        regions.add(new SelectOption( '', 'Select One' ) ); 
+        // include these nice regions automatically
+        regions.add(new SelectOption( '', Label.C501_ClassReg_PlzSelectOne ) ); 
         regions.add(new SelectOption( 'East Bay', Label.C501_ClassReg_eastBay ) ); 
         regions.add(new SelectOption( 'South Bay', Label.C501_ClassReg_southBay ) ); 
         regions.add(new SelectOption( 'Seattle', Label.C501_ClassReg_seattleArea ) ); 
-        regions.add(new SelectOption( 'DC', Label.C501_ClassReg_dcArea ) ); 
+        regions.add(new SelectOption( 'DC', Label.C501_ClassReg_dcArea ) );
+        
+        /*for (Schema.PicklistEntry p : values){
+        	regions.add(new SelectOption(p.getLabel(), p.getValue()));
+        }*/
+        
         return regions;
     }
     
     public static List<SelectOption> getFieldsPicklistOptions(Schema.SObjectField field,String objectName){
-        /*Map<String, Schema.SobjectType> allObjects = schema.getGlobalDescribe();
-        Map<String, Schema.SObjectField> objectField = allObjects.get(objectName).getDescribe().fields.getMap();
-        
-        /*for(Schema.SObjectType obj : gd.values() ){
-            if(){
-                
-            }
-        }*/
         
         List<SelectOption> picklistOptions = new List<SelectOption>();
         Schema.DescribeFieldResult fieldResult = field.getDescribe();
@@ -627,7 +580,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public static List<SelectOption> getSelectOptionsActiveSchools(String regionFilter){
         List<Account> schoolList 			= getListOfActiveSchools(regionFilter);
         List<SelectOption> schoolOptions 	= new List<SelectOption>();
-        schoolOptions.add(new SelectOption( '', 'Select One: ') ); 
+        schoolOptions.add(new SelectOption( '', Label.C501_ClassReg_PlzSelectOne ) ); 
         for(Account school : schoolList ){
             schoolOptions.add(new SelectOption( school.Id, school.School_District_Lookup__r.Name+': '+school.Name ) ); 
         }
