@@ -53,6 +53,7 @@ public class C501_TEST_ClassReg_CreateAcct {
     
     @isTest static void testValidationFail(){
         insert new TwilioConfig__c(Name = 'default', AuthToken__c = 'xxx', Default_Send_Number__c = '206222222', AccountSid__c = 'xxx');
+        insert new RegistrationSiteSettings__c(Name = 'default', Default_From_Email__c = 'salesforce@techbridgegirls.org');
         
         Class_Site_Login_Attempt__c att = createLoggedInTestUser();
         
@@ -112,6 +113,7 @@ public class C501_TEST_ClassReg_CreateAcct {
     
     @isTest static void testSuccessfulInsert(){
         insert new TwilioConfig__c(Name = 'default', AuthToken__c = 'xxx', Default_Send_Number__c = '206222222', AccountSid__c = 'xxx');
+        insert new RegistrationSiteSettings__c(Name = 'default', Default_From_Email__c = 'salesforce@techbridgegirls.org');
         
         Class_Site_Login_Attempt__c att = createLoggedInTestUser();
         

@@ -189,7 +189,7 @@ public class C501_UTIL_ClassRegUtilities {
     }
     
     public static void sendEmailConfirmation(ID AcctID, String emailAddress){
-        RegistrationSiteSettings__c siteSettings = [SELECT id, Default_From_Email__c FROM RegistrationSiteSettings__c LIMIT 1];
+        RegistrationSiteSettings__c siteSettings = RegistrationSiteSettings__c.getInstance('default');
         Class_Site_Login_Attempt__c att 	= generateLoginCode(AcctID, emailAddress);
         String message 		= Label.C501_ClassReg_CodeMessage + ' '+att.Secret_Code__c + ' ' +Label.C501_ClassReg_CodeMessageDisclaim+' '+Label.C501_ClassReg_CodeMessageExpire;
         SendEmailGeneric(siteSettings.Default_From_Email__c,emailAddress,Label.C501_ClassReg_ConfirmCodeSubject,message,null,null,null);

@@ -468,7 +468,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
             	nextStartDate = Datetime.newInstance(schoolNameText.C501_Next_Program_Start_Date__c, Time.newInstance(0,0,0,0)).format('MMMMM d, yyyy');
             }*/
             
-            RegistrationSiteSettings__c siteSettings = [SELECT id, Default_From_Email__c FROM RegistrationSiteSettings__c LIMIT 1];
+            RegistrationSiteSettings__c siteSettings = RegistrationSiteSettings__c.getInstance('default');
             
             Id templateId = [Select id from EmailTemplate where DeveloperName = 'C501_Class_Registration_Confirmation_VF'].Id;
             
