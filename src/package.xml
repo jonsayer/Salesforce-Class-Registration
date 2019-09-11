@@ -21,6 +21,7 @@
     <types>
         <members>Account.C501_Class_Site_Mobile_Number_Lookup__c</members>
         <members>Account.C501_Class_Site_Mobile_Number__c</members>
+        <members>Account.C501_Is_Active_School__c</members>
         <members>Account.C501_Next_program_start_date__c</members>
         <members>Account.Primary_Teacher__c</members>
         <members>Account.Region__c</members>
@@ -83,6 +84,7 @@
         <members>School_Term__c.Media_Release__c</members>
         <members>School_Term__c.Notes__c</members>
         <members>School_Term__c.Parent_Email__c</members>
+        <members>School_Term__c.Parent_Initials__c</members>
         <members>School_Term__c.Parent_Packet_URL_Unsigned__c</members>
         <members>School_Term__c.Parent_Packet_URL__c</members>
         <members>School_Term__c.Parent_Packet__c</members>
@@ -135,6 +137,7 @@
         <members>C501_ClassReg_EvalStudyH3li</members>
         <members>C501_ClassReg_FreeLunch</members>
         <members>C501_ClassReg_HHhomePhone</members>
+        <members>C501_ClassReg_OneOrMore</members>
         <members>C501_ClassReg_PARTICIPANT_WAIVER</members>
         <members>C501_ClassReg_PARTICIPANT_WAIVERlabel</members>
         <members>C501_ClassReg_PARTICIPANT_WAIVERp1</members>
@@ -163,6 +166,7 @@
         <members>C501_ClassReg_parentFamilyConsent</members>
         <members>C501_ClassReg_seattleArea</members>
         <members>C501_ClassReg_southBay</members>
+        <members>C501_Classreg_CheckBoxes</members>
         <members>C501_RegSite_ChildEmail</members>
         <members>C501_RegSite_ChildFirstName</members>
         <members>C501_RegSite_ChildLastName</members>
@@ -213,6 +217,7 @@
     </types>
     <types>
         <members>Class_Site_Login_Attempt__c</members>
+        <members>RegistrationSiteSettings__c</members>
         <members>TwilioConfig__c</members>
         <name>CustomObject</name>
     </types>

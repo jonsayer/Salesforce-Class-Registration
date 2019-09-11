@@ -231,6 +231,13 @@ We may also look at your child’s school information, like attendance and cours
         <value>Parent/Guardian&apos;s Home Phone</value>
     </labels>
     <labels>
+        <fullName>C501_ClassReg_OneOrMore</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_ClassReg_OneOrMore</shortDescription>
+        <value>Please select at least one</value>
+    </labels>
+    <labels>
         <fullName>C501_ClassReg_PARTICIPANT_WAIVER</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -390,6 +397,13 @@ We may also look at your child’s school information, like attendance and cours
         <protected>false</protected>
         <shortDescription>C501_ClassReg_southBay</shortDescription>
         <value>South San Francisco Bay Area (eg. San Jose)</value>
+    </labels>
+    <labels>
+        <fullName>C501_Classreg_CheckBoxes</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_Classreg_CheckBoxes</shortDescription>
+        <value>Please complete all required multiple-choice questions.</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_ChildEmail</fullName>

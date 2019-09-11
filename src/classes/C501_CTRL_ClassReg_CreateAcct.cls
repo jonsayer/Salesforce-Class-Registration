@@ -10,15 +10,19 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public Account	schoolNameText	{get; set;}
     public Boolean  dontKnowId		{get; set;}
     public Boolean 	noAllergies		{get; set;}
-
+    
+    public Map<String,List<SelectOption> > 	fieldSetPicklistOptions			{get; set;}
+    public Map<String,String[]> 			siteMultiPicklistReturnValues 	{get; set;}
+    public Map<String,Boolean> 				siteMultiPicklistErrorStatus 	{get; set;}
+	public String 							errorClassesForPicklists		{get; set;}
     
     public String	schoolName		{
         get{
             if(schoolName 	== null){
-                system.debug('rerunning schoolName get line 18');
+                //system.debug('rerunning schoolName get line 18');
                 schoolName = '';
             }
-            system.debug('returning school name');
+            //system.debug('returning school name');
             return schoolName;
         } 
         set;
@@ -27,10 +31,10 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public String	schoolRegion	{
         get{
             if(schoolRegion 	== null){
-                system.debug('rerunning schoolRegion get line 18');
+                //system.debug('rerunning schoolRegion get line 30');
                 schoolRegion = '';
             }
-            system.debug('returning school region');
+            //system.debug('returning school region');
             return schoolRegion;
         } 
         set;
@@ -50,11 +54,11 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public List<SelectOption> schoolList 	{
         get {
             if(schoolList == null ){
-                system.debug('rerunning schoolList get line 41');
+                //system.debug('rerunning schoolList get line 53');
                 schoolList = getSelectOptionsActiveSchools(schoolRegion);
             } 
-            System.debug('List<SelectOption> schoolList run: ' + schoolList);
-            system.debug('returning schoolList');
+            //System.debug('List<SelectOption> schoolList run: ' + schoolList);
+            //system.debug('returning schoolList');
             return schoolList;
     	} set;
 	}
@@ -131,6 +135,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
         noAllergyResp	= false;
         needPickup		= false;
         schoolregion 	= '';
+        errorClassesForPicklists = '';
         
         Map<String, Schema.FieldSet> FsAcctMap = Schema.SObjectType.Account.fieldSets.getMap();
         Map<String, Schema.FieldSet> FsContMap = Schema.SObjectType.Contact.fieldSets.getMap();
@@ -149,7 +154,43 @@ public class C501_CTRL_ClassReg_CreateAcct {
             childFieldSet = FsContMap.get('C501_ClassReg_Site_Child_Custom').getFields();
         } catch(Exception e){
             childFieldSet = FsContMap.get('C501_Class_Registration_Site_Child').getFields();
-        }       
+        }
+        
+        fieldSetPicklistOptions = new Map<String, List<SelectOption> >();
+        siteMultiPicklistReturnValues = new Map<String, String[] >();
+        siteMultiPicklistErrorStatus = new Map<String, Boolean >();
+        // loop through each field in the fieldsets. If they are multi-select picklists, get their picklist values and save them to a map
+        for(FieldSetMember fsm : hhFieldSet){
+            Schema.SObjectField f = fsm.getSObjectField();
+            Schema.DescribeFieldResult dfr = f.getDescribe();
+            if(dfr.getType() == Schema.DisplayType.MultiPicklist ){
+                List<SelectOption> picklistOptionsForField = getFieldsPicklistOptions(f,'Account');
+                fieldSetPicklistOptions.put( dfr.getName(), picklistOptionsForField );
+                siteMultiPicklistReturnValues.put( dfr.getName(), new String[]{} );
+                siteMultiPicklistErrorStatus.put( dfr.getName(), false);
+            }
+        }
+        for(FieldSetMember fsm : parentFieldSet){
+            Schema.SObjectField f = fsm.getSObjectField();
+            Schema.DescribeFieldResult dfr = f.getDescribe();
+            if(dfr.getType() == Schema.DisplayType.MultiPicklist ){
+                List<SelectOption> picklistOptionsForField = getFieldsPicklistOptions(f,'Contact');
+                fieldSetPicklistOptions.put( dfr.getName(), picklistOptionsForField );
+                siteMultiPicklistReturnValues.put( dfr.getName(), new String[]{} );
+                siteMultiPicklistErrorStatus.put( dfr.getName(), false);
+            }
+        }
+        for(FieldSetMember fsm : childFieldSet){
+            Schema.SObjectField f = fsm.getSObjectField();
+            Schema.DescribeFieldResult dfr = f.getDescribe();
+            if(dfr.getType() == Schema.DisplayType.MultiPicklist ){
+                List<SelectOption> picklistOptionsForField = getFieldsPicklistOptions(f,'Contact');
+                fieldSetPicklistOptions.put( dfr.getName(), picklistOptionsForField );
+                siteMultiPicklistReturnValues.put( dfr.getName(), new String[]{} );
+                siteMultiPicklistErrorStatus.put( dfr.getName(), false);
+            }
+        }
+        
     }
     
     /*public PageReference confirmLogin(){
@@ -179,30 +220,6 @@ public class C501_CTRL_ClassReg_CreateAcct {
     
     public Pagereference createAccount(){
         
-        /*family.C501_Class_Site_Mobile_Number__c = C501_UTIL_ClassRegUtilities.cleanInputPhone(family.C501_Class_Site_Mobile_Number__c);
-        
-        // next, we need to check if there is already an account with that phone number. If it is them, send a confirmation text and pair them with that account
-        acctID = C501_UTIL_ClassRegUtilities.lookupAccountByPhone(family.C501_Class_Site_Mobile_Number__c);
-        
-        if(acctID != null ){
-            // send the sms
-            C501_UTIL_ClassRegUtilities.sendSMS(acctID,family.C501_Class_Site_Mobile_Number__c);
-            //family.Id = acctID;
-            parent.AccountId = acctID;
-        	// present user with a code screen
-        	pageStatus	= 'confirm';
-        	return null;
-        } else {
-            insert family;
-            parent.AccountId 	= family.id;
-            insert parent;
-            
-            Cookie aId 			= new cookie('AccountIdClassRegSite', family.id, null, 86400, false);
-            ApexPages.currentPage().setCookies(new Cookie[] {aId});
-            
-            return C501_UTIL_ClassRegUtilities.generatePageLink('C501_ClassReg_Home',null,null);
-        }*/
-        
         Boolean passValidation = true;
         
         if(schoolName == null || schoolName == '' ){
@@ -212,13 +229,6 @@ public class C501_CTRL_ClassReg_CreateAcct {
         } else {
             noSchool = false;
         }
-        /*if(family.BillingState == null || family.BillingState == '' ){
-            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,Label.C501_RegSite_SelectState)  );
-            noState = true;
-            passValidation = false;
-        } else {
-            noState = false;
-        }*/
         if(grade == null || grade == '' ){
             ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,Label.C501_RegSite_SelectGrade)  );
             noGrade = true;
@@ -272,6 +282,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
             if(NAformat != null){
                 parent.MobilePhone = NAformat;
             } else {
+                system.debug('Failed Validation due to phoneFail parent mobile :( ');
                 phoneFail = true;
                 parent.MobilePhone.addError(Label.C501_ClassReg_PhoneFailSpecific);
             }
@@ -281,6 +292,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
             if(NAformat != null){
                 parent.HomePhone = NAformat;
             } else {
+                system.debug('Failed Validation due to phoneFail parent home :( ');
                 phoneFail = true;
                 parent.HomePhone.addError(Label.C501_ClassReg_PhoneFailSpecific);
             }
@@ -290,6 +302,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
             if(NAformat != null){
                 parent.OtherPhone = NAformat;
             } else {
+                system.debug('Failed Validation due to phoneFail parent other :( ');
                 phoneFail = true;
                 parent.OtherPhone.addError(Label.C501_ClassReg_PhoneFailSpecific);
             }
@@ -299,6 +312,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
             if(NAformat != null){
                 child.MobilePhone = NAformat;
             } else {
+                system.debug('Failed Validation due to phoneFail child mobile :( ');
                 phoneFail = true;
                 child.MobilePhone.addError(Label.C501_ClassReg_PhoneFailSpecific);
             }
@@ -308,6 +322,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
             if(NAformat != null){
                 child.Alternate_Contact_Phone__c = NAformat;
             } else {
+                system.debug('Failed Validation due to phoneFail emergency contact 1 :( ');
                 phoneFail = true;
                 child.Alternate_Contact_Phone__c.addError(Label.C501_ClassReg_PhoneFailSpecific);
             }
@@ -317,6 +332,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
             if(NAformat != null){
                 child.Emergency_Contact_2_Phone__c = NAformat;
             } else {
+                system.debug('Failed Validation due to phoneFail emergency contact 2 :( ');
                 phoneFail = true;
                 child.Emergency_Contact_2_Phone__c.addError(Label.C501_ClassReg_PhoneFailSpecific);
             }
@@ -326,6 +342,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
             if(NAformat != null){
                 child.Authorized_Pickup_1_Phone__c = NAformat;
             } else {
+                system.debug('Failed Validation due to phoneFail Auth pickup 1 :( ');
                 phoneFail = true;
                 child.Authorized_Pickup_1_Phone__c.addError(Label.C501_ClassReg_PhoneFailSpecific);
             }
@@ -335,6 +352,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
             if(NAformat != null){
                 child.Authorized_Pickup_2_Phone__c = NAformat;
             } else {
+                system.debug('Failed Validation due to phoneFail Auth pickup 2 :( ');
                 phoneFail = true;
                 child.Authorized_Pickup_2_Phone__c.addError(Label.C501_ClassReg_PhoneFailSpecific);
             }
@@ -344,17 +362,46 @@ public class C501_CTRL_ClassReg_CreateAcct {
             if(NAformat != null){
                 child.Authorized_Pickup_3_Phone__c = NAformat;
             } else {
+                system.debug('Failed Validation due to phoneFail Auth pickup 3:( ');
                 phoneFail = true;
                 child.Authorized_Pickup_3_Phone__c.addError(Label.C501_ClassReg_PhoneFailSpecific);
             }
         }
         
         if(phoneFail){
+            system.debug('Failed Validation due to phoneFail :( ');
             passValidation = false;
             ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,Label.C501_ClassReg_PhoneFail)  );
         }
         system.debug( 'SchoolName after validation attempts: ' + schoolName   );
+        
+        if(passValidation == true){
+            errorClassesForPicklists = '';
+            // make sure they checked something in each of the required picklists
+            for(String key : siteMultiPicklistReturnValues.keySet() ){
+                if(/*key != 'Family_Status__c' && */siteMultiPicklistReturnValues.get(key).size() == 0 ){
+                    passValidation = false;
+                    if(String.isEmpty(errorClassesForPicklists)){
+                        errorClassesForPicklists = ' .picklist' + key;
+                    } else {
+                        errorClassesForPicklists = errorClassesForPicklists + ', .picklist' + key;
+                    }
+                    siteMultiPicklistErrorStatus.put( key, true);
+                    ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR, Label.C501_Classreg_CheckBoxes	 )  );
+                } else {
+                    siteMultiPicklistErrorStatus.put( key, false);
+                }
+            }
+        }
+        
+        
+        // Convert all of the values in the Checklist value sets to the correct picklist values on the correct record
+        loopThroughFieldsetAndSetValues(child,childFieldSet);
+        loopThroughFieldsetAndSetValues(parent,parentFieldSet);
+        loopThroughFieldsetAndSetValues(family,hhFieldSet);
+        
         if(passValidation == false){
+            system.debug('Failed Validation :( ');
             return null;
         }
         
@@ -404,7 +451,9 @@ public class C501_CTRL_ClassReg_CreateAcct {
         }
         
         if(parent.Email != null && parent.Email != '' ){
-            String teacherName = '';
+            /* Commented out 8/22/2019, as the client no longer wishes to include the teacher names and contact info in the confirmation email, AFAIK (jon)
+             * 
+             * String teacherName = '';
             for(Integer i = 0; i < schoolNameText.npe5__Affiliations__r.size(); i++){
                 if(i != 0 && i + 1 == schoolNameText.npe5__Affiliations__r.size() && schoolNameText.npe5__Affiliations__r.size() > 1){
                     teacherName = teacherName + ' ' + Label.C501_ClassReg_AND + ' ';
@@ -417,29 +466,82 @@ public class C501_CTRL_ClassReg_CreateAcct {
             String nextStartDate = '';
             if(schoolNameText.C501_Next_Program_Start_Date__c != null){
             	nextStartDate = Datetime.newInstance(schoolNameText.C501_Next_Program_Start_Date__c, Time.newInstance(0,0,0,0)).format('MMMMM d, yyyy');
-            }
+            }*/
+            
+            RegistrationSiteSettings__c siteSettings = RegistrationSiteSettings__c.getInstance('default');
             
             Id templateId = [Select id from EmailTemplate where DeveloperName = 'C501_Class_Registration_Confirmation_VF'].Id;
             
-            //String emailMessage = Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name +Label.C501_RegSite_EmailConfirmP2+' '+nextStartDate+' '+Label.C501_RegSite_EmailConfirmP3+' '+teacherName+Label.C501_RegSite_EmailConfirmP4;
-            //C501_UTIL_ClassRegUtilities.SendEmailGeneric('salesforce@techbridgegirls.org',parent.Email,Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name,emailMessage);
-			C501_UTIL_ClassRegUtilities.SendEmailGeneric('salesforce@techbridgegirls.org',null,null,null,term.Id,templateId,parent.Id);
+            C501_UTIL_ClassRegUtilities.SendEmailGeneric(siteSettings.Default_From_Email__c,null,null,null,term.Id,templateId,parent.Id);
             
-            //C501_UTIL_ClassRegUtilities.logActivityToContact(parent.Id,Label.C501_RegSite_ConfirmSMS+' '+schoolNameText.Name, emailMessage,'Email');
         }
         pageStatus = 'finished';
         return null;
     }
     
+    private void loopThroughFieldsetAndSetValues(SObject record, List<Schema.FieldSetMember> fsmList ){
+        // loop through child fieldset again
+        for(FieldSetMember fsm : fsmList){
+            Schema.SObjectField f = fsm.getSObjectField();
+            Schema.DescribeFieldResult dfr = f.getDescribe();
+            // check if each field is a picklist
+            if(dfr.getType() == Schema.DisplayType.MultiPicklist ){
+                // if it is, look through the returned values for that field's returned value
+                String returnString = '';
+                String[] selectedCheckboxes = siteMultiPicklistReturnValues.get(dfr.getName());
+                // if we get a value, concatenate and save it!
+                if(selectedCheckboxes.size() == 1){
+                    returnString = selectedCheckboxes[0];
+                } else {
+                    Boolean first = true;
+                    for(String s : selectedCheckboxes ){
+                        if(first){
+                            returnString = s;
+                            first = false;
+                        } else {
+                            returnString = returnString + ';' +s;
+                        }
+                    }
+                }
+                // set value to the field on that record
+                record.put(dfr.getName(),returnString);
+            }
+        }
+    }
+    
     public static List<SelectOption> getRegions(){
+        Schema.SObjectField regionField = Schema.getGlobalDescribe().get('Account').getDescribe().fields.getMap().get('Region__c');
+        Schema.DescribeFieldResult regionFieldDescribe = regionField.getDescribe();
+        list<schema.picklistentry> values = regionFieldDescribe.getPickListValues();    
+        
         List<SelectOption> regions = new List<SelectOption>();
         
-        regions.add(new SelectOption( '', 'Select One' ) ); 
+        // include these nice regions automatically
+        regions.add(new SelectOption( '', Label.C501_ClassReg_PlzSelectOne ) ); 
         regions.add(new SelectOption( 'East Bay', Label.C501_ClassReg_eastBay ) ); 
         regions.add(new SelectOption( 'South Bay', Label.C501_ClassReg_southBay ) ); 
         regions.add(new SelectOption( 'Seattle', Label.C501_ClassReg_seattleArea ) ); 
-        regions.add(new SelectOption( 'DC', Label.C501_ClassReg_dcArea ) ); 
+        regions.add(new SelectOption( 'DC', Label.C501_ClassReg_dcArea ) );
+        
+        /*for (Schema.PicklistEntry p : values){
+        	regions.add(new SelectOption(p.getLabel(), p.getValue()));
+        }*/
+        
         return regions;
+    }
+    
+    public static List<SelectOption> getFieldsPicklistOptions(Schema.SObjectField field,String objectName){
+        
+        List<SelectOption> picklistOptions = new List<SelectOption>();
+        Schema.DescribeFieldResult fieldResult = field.getDescribe();
+        
+        list<schema.picklistentry> values = fieldResult.getPickListValues();               
+        for (Schema.PicklistEntry p : values){                  
+        	picklistOptions.add(new SelectOption(p.getLabel(), p.getValue()));
+        }
+        
+        
+        return picklistOptions;
     }
     
     public static List<Account> getListOfActiveSchools(String regionFilter){
@@ -455,6 +557,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
             FROM	Account
             WHERE	RecordTypeId 	= :schoolRecordType
             AND		Region__c 		= :regionFilter
+            AND		C501_Is_Active_School__c	= true
             ORDER BY School_District_Lookup__r.Name, Name
         ];
         if(schoolList.size() == 0){
@@ -467,6 +570,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
                         Region__c
                 FROM	Account
                 WHERE	RecordTypeId 	= :schoolRecordType
+                AND		C501_Is_Active_School__c	= true
                 ORDER BY School_District_Lookup__r.Name, Name
             ];
         }
@@ -476,7 +580,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public static List<SelectOption> getSelectOptionsActiveSchools(String regionFilter){
         List<Account> schoolList 			= getListOfActiveSchools(regionFilter);
         List<SelectOption> schoolOptions 	= new List<SelectOption>();
-        schoolOptions.add(new SelectOption( '', 'Select One: ') ); 
+        schoolOptions.add(new SelectOption( '', Label.C501_ClassReg_PlzSelectOne ) ); 
         for(Account school : schoolList ){
             schoolOptions.add(new SelectOption( school.Id, school.School_District_Lookup__r.Name+': '+school.Name ) ); 
         }

@@ -12,6 +12,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Account.C501_Is_Active_School__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Account.C501_Next_program_start_date__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -313,6 +318,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>School_Term__c.Parent_Email__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>School_Term__c.Parent_Initials__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

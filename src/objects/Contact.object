@@ -29,6 +29,11 @@
         <fullName>C501_Class_Registration_Site_Parent</fullName>
         <description>Used by the class registration site to define the fields used on the parent contact.</description>
         <displayedFields>
+            <field>Family_Status__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
             <field>Preferred_Method_of_Contact__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>

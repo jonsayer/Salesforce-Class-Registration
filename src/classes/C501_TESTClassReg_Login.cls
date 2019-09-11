@@ -1,5 +1,6 @@
 @isTest
 public class C501_TESTClassReg_Login {
+    
     @testSetup static void setupAccount(){
         
         ID HHacctID	= [select id from Recordtype where Name='Household Account'].Id;
@@ -12,10 +13,22 @@ public class C501_TESTClassReg_Login {
         insert testFamily;
         
         insert new TwilioConfig__c(Name = 'default', AuthToken__c = 'xxx', Default_Send_Number__c = '206222222', AccountSid__c = 'xxx');
+        insert new RegistrationSiteSettings__c(Name = 'default', Default_From_Email__c = 'salesforce@techbridgegirls.org');
         
     }
     
     /// Below this line, these tests are for testing the verification without confirmation to existing record
+    @isTest static void selectLanguage(){
+        C501_CTRL_ClassReg_SelectLang controller = new C501_CTRL_ClassReg_SelectLang();
+        
+        controller.language = 'es_MX';
+        
+        List<SelectOption> langs = controller.getListOfLangs();
+        
+        controller.changeLang();
+        
+    }
+    
     @isTest static void NoAccountVerify_testSimpleEmailVerify(){
         PageReference loginPage = Page.C501_ClassReg_Login;
         Test.setCurrentPage(loginPage);
