@@ -15,9 +15,7 @@
                 <div class="col-md-6">
                     <apex:outputPanel rendered="{! pageStatus == 'start' || pageStatus == 'lookup-fail'}">
                         <apex:outputPanel rendered="{! pageStatus == 'start' }">
-                            <p>
-                                {! $Label.C501_RegSite_ProvidePhoneEmail }
-                            </p>
+                        	<apex:outputText escape="false" value="{! $Label.C501_RegSite_LoginIntro }"></apex:outputText>
                         </apex:outputPanel>
                         <apex:outputPanel rendered="{! pageStatus == 'lookup-fail' }">
                             <p>

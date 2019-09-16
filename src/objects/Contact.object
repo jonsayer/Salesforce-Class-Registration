@@ -4,11 +4,6 @@
         <fullName>C501_Class_Registration_Site_Child</fullName>
         <description>Used by the class registration site to define the fields used on the child contact.</description>
         <displayedFields>
-            <field>Medication__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
             <field>Race__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
@@ -347,7 +342,7 @@
     <fields>
         <fullName>Medication__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>Please check if your child has any health condition(s) that Techbridge Girls should be aware of:</inlineHelpText>
+        <inlineHelpText>Does your child have any health condition(s) that Techbridge Girls should be aware of? If Yes, please explain. If No, please check the box below.</inlineHelpText>
         <label>Medication / Health Condition</label>
         <length>32768</length>
         <trackFeedHistory>false</trackFeedHistory>

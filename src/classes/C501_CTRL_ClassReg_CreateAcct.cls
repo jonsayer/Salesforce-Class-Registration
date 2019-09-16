@@ -10,6 +10,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public Account	schoolNameText	{get; set;}
     public Boolean  dontKnowId		{get; set;}
     public Boolean 	noAllergies		{get; set;}
+    public Boolean  noMedication 	{get; set;}
     
     public Map<String,List<SelectOption> > 	fieldSetPicklistOptions			{get; set;}
     public Map<String,String[]> 			siteMultiPicklistReturnValues 	{get; set;}
@@ -50,6 +51,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public Boolean  noStuID			{get; set;}
     public Boolean  noAllergyResp 	{get; set;}
     private String  RegType         {get; set;}
+    public Boolean  noMedResp	 	{get; set;}
     
     public List<SelectOption> schoolList 	{
         get {
@@ -133,6 +135,8 @@ public class C501_CTRL_ClassReg_CreateAcct {
         dontKnowId		= false;
         noStuID			= false;
         noAllergyResp	= false;
+        noMedication	= false;
+        noMedResp		= false;
         needPickup		= false;
         schoolregion 	= '';
         errorClassesForPicklists = '';
@@ -243,6 +247,12 @@ public class C501_CTRL_ClassReg_CreateAcct {
             passValidation = false;
         } else {
             noStuId = false;
+            // populate the checkbox that tells TBG they can get permission to ask the school for the ID
+            if(dontKnowId && term.Student_School_ID__c == null){
+                term.Permission_to_get_student_ID__c = true;
+            } else if(!dontKnowId && term.Student_School_ID__c != null){
+                term.Permission_to_get_student_ID__c = false;
+            }
         }
         
         if(child.Allergies__c == null && noAllergies == false){
@@ -251,6 +261,14 @@ public class C501_CTRL_ClassReg_CreateAcct {
             passValidation = false;
         } else {
             noAllergyResp = false;
+        }
+        
+        if(child.Medication__c == null && noMedication == false){
+            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,Label.C501_RegSite_NoMedsError    )  );
+            noMedResp = true;
+            passValidation = false;
+        } else {
+            noMedResp = false;
         }
         
         if(child.Student_Transportation__c == 'Will receive a ride' && (child.Authorized_Pickup_1_Name__c == null || child.Authorized_Pickup_1_Phone__c == null || child.Authorized_Pickup_1_Relationship__c == null ) ){
@@ -375,35 +393,34 @@ public class C501_CTRL_ClassReg_CreateAcct {
         }
         system.debug( 'SchoolName after validation attempts: ' + schoolName   );
         
-        if(passValidation == true){
-            errorClassesForPicklists = '';
-            // make sure they checked something in each of the required picklists
-            for(String key : siteMultiPicklistReturnValues.keySet() ){
-                if(/*key != 'Family_Status__c' && */siteMultiPicklistReturnValues.get(key).size() == 0 ){
-                    passValidation = false;
-                    if(String.isEmpty(errorClassesForPicklists)){
-                        errorClassesForPicklists = ' .picklist' + key;
-                    } else {
-                        errorClassesForPicklists = errorClassesForPicklists + ', .picklist' + key;
-                    }
-                    siteMultiPicklistErrorStatus.put( key, true);
-                    ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR, Label.C501_Classreg_CheckBoxes	 )  );
+        //if(passValidation == true){
+        errorClassesForPicklists = '';
+        // make sure they checked something in each of the required picklists
+        for(String key : siteMultiPicklistReturnValues.keySet() ){
+            if(/*key != 'Family_Status__c' && */siteMultiPicklistReturnValues.get(key).size() == 0 ){
+                passValidation = false;
+                if(String.isEmpty(errorClassesForPicklists)){
+                    errorClassesForPicklists = ' .picklist' + key;
                 } else {
-                    siteMultiPicklistErrorStatus.put( key, false);
+                    errorClassesForPicklists = errorClassesForPicklists + ', .picklist' + key;
                 }
+                siteMultiPicklistErrorStatus.put( key, true);
+                ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR, Label.C501_Classreg_CheckBoxes	 )  );
+            } else {
+                siteMultiPicklistErrorStatus.put( key, false);
             }
         }
-        
-        
-        // Convert all of the values in the Checklist value sets to the correct picklist values on the correct record
-        loopThroughFieldsetAndSetValues(child,childFieldSet);
-        loopThroughFieldsetAndSetValues(parent,parentFieldSet);
-        loopThroughFieldsetAndSetValues(family,hhFieldSet);
+        //}
         
         if(passValidation == false){
             system.debug('Failed Validation :( ');
             return null;
         }
+        
+        // Convert all of the values in the Checklist value sets to the correct picklist values on the correct record
+        loopThroughFieldsetAndSetValues(child,childFieldSet);
+        loopThroughFieldsetAndSetValues(parent,parentFieldSet);
+        loopThroughFieldsetAndSetValues(family,hhFieldSet);
         
         insert family;
         

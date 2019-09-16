@@ -406,6 +406,27 @@ We may also look at your child’s school information, like attendance and cours
         <value>Please complete all required multiple-choice questions.</value>
     </labels>
     <labels>
+        <fullName>C501_RegSite_ChildCanDoSurvey</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_ChildCanDoSurvey</shortDescription>
+        <value>Yes, my child may participate in the study. (If no, leave unchecked).</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_ChildCanDoSurveyFalse</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_ChildCanDoSurveyFalse</shortDescription>
+        <value>Your child may *not* participate in the study</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_ChildCanDoSurveyTrue</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_ChildCanDoSurveyTrue</shortDescription>
+        <value>Your child may participate in the study</value>
+    </labels>
+    <labels>
         <fullName>C501_RegSite_ChildEmail</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -561,7 +582,27 @@ We may also look at your child’s school information, like attendance and cours
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_RegSite_Login</shortDescription>
-        <value>Log in</value>
+        <value>Register your child for Techbridge Girls!</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_LoginIntro</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_LoginIntro</shortDescription>
+        <value>&lt;p&gt;Dear Parents and Guardians,&lt;/p&gt;
+
+&lt;p&gt;We are pleased to offer your child the opportunity to join Techbridge Girls, an after-school science, engineering, and technology program for girls. Techbridge Girls programs are free and meet every week for 1.5 - 2 hours at your child’s school.&lt;/p&gt;
+
+&lt;p&gt;In this program, your child will:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Learn science, engineering, and technology concepts &lt;/li&gt;
+&lt;li&gt;Do hands-on projects that build confidence, teamwork, perseverance, and problem-solving skills&lt;/li&gt;
+&lt;li&gt;Explore science, engineering, and technology careers&lt;/li&gt;
+&lt;li&gt;For more information on our programs, visit www.techbridgegirls.org&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Please provide a cell phone number or email address to continue.&lt;/strong&gt;&lt;/p&gt;</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_NoAllergies</fullName>
@@ -576,6 +617,20 @@ We may also look at your child’s school information, like attendance and cours
         <protected>false</protected>
         <shortDescription>C501_RegSite_NoAllergiesError</shortDescription>
         <value>Please indicate if your child has any food allergies or restrictions.</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_NoMedication</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_NoMedication</shortDescription>
+        <value>No Health Conditions</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_NoMedsError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_NoMedsError</shortDescription>
+        <value>Please indicate if your child has any medical conditions we should be aware of.</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_NotProvided</fullName>
@@ -625,6 +680,13 @@ We may also look at your child’s school information, like attendance and cours
         <protected>false</protected>
         <shortDescription>C501_RegSite_PlzAreaCode</shortDescription>
         <value>Please include area code: (###) ###-####</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_PlzFillItAllOut</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_PlzFillItAllOut</shortDescription>
+        <value>Please fill out all of (or as much as possible) the following information for the child you wish to register for a Techbridge Girls program. The demographic information in this form is used anonymously. We collect it to show our partners the populations of students in our programs.</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_ProvidePhoneEmail</fullName>

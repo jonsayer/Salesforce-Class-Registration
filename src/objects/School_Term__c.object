@@ -277,6 +277,16 @@ TRUE, FALSE )</formula>
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Permission_to_get_student_ID__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>The parent does not know the student&apos;s school ID, but gives us permission to get it.</inlineHelpText>
+        <label>Permission to get student ID</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Post_Survey__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>

@@ -1,11 +1,6 @@
 <apex:page language="{!language}" sidebar="false" showHeader="false" controller="C501_CTRL_ClassReg_CreateAcct" docType="html-5.0" >
     <apex:composition template="C501_ClassRegSiteTemplate">
         <apex:define name="body">
-            <div class="row">
-                <div class="col-xs-8">
-                    <apex:pageMessages />
-                </div>
-            </div>
             <apex:outputPanel rendered="{! pageStatus = 'fail'}">
                 <div class="row">
                     <div class="col-xs-12">
@@ -36,6 +31,18 @@
                             <h2 class="withLine" style="">
                                 {! $Label.C501_RegSite_StudentInformation }
                             </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <apex:pageMessages />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p>
+                                {! $Label.C501_RegSite_PlzFillItAllOut }
+                            </p>
                         </div>
                     </div>
                     <div class="row">
@@ -420,6 +427,21 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label> {! $ObjectType.Contact.Fields['Medication__c'].inlineHelpText }  <span class="red">*</span></label><br />
+                                <apex:inputField value="{!child.Medication__c }" styleClass="form-control {! if(noMedResp,'error','')}" />  
+                                <small class="form-text text-muted">  <apex:inputCheckbox value="{!noMedication }" styleClass="form-check-input" />   {! $Label.C501_RegSite_NoMedication }</small>
+                                
+                                <apex:outputPanel rendered="{!noMedResp}">
+                                    <div class="errorMsg">
+                                        <strong>Error:</strong> {! $Label.C501_ClassReg_PlzSelectOne }
+                                    </div>
+                                </apex:outputPanel>
+                            </div>
+                        </div>
+                    </div>
                     <!--<div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -724,12 +746,12 @@
                             
                             <p>
                                 <apex:inputCheckbox value="{!term.Evaluation_Consent__c}" styleClass="form-check-input" />  
-                                <label class="form-check-label"> Yes, my child may participate in the study. (If no, leave unchecked). </label>
+                                <label class="form-check-label"> {! $Label.C501_RegSite_ChildCanDoSurvey }</label>
                             </p>
-                            <p>
+                            <!--<p>
                                 <apex:inputCheckbox value="{!term.Parent_Survey__c}" styleClass="form-check-input" />  
                                 <label class="form-check-label"> Yes, I will participate in the study. (If no, leave unchecked). </label>
-                            </p>
+                            </p>-->
                         </div>
                     </div>
                     <div class="row">
@@ -1073,6 +1095,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label> {! $ObjectType.Contact.Fields['Medication__c'].inlineHelpText }   </label>
+                            <apex:outputPanel rendered="{!noMedication }">
+                                {! $Label.C501_RegSite_NoMedication }
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!noMedication == false }">
+                                <apex:outputText value="{!child.Medication__c }"  /> 
+                            </apex:outputPanel>
+                            
+                        </div>
+                    </div>
+                </div>
                 
                 
                 <apex:repeat value="{!childFieldSet}" var="field">
@@ -1311,17 +1347,17 @@
                             <apex:outPutText escape="false" value="{! $Label.C501_ClassReg_EvalStudyH3li }" ></apex:outPutText>  
                         </ul>
                         <p>
-                            <label class="form-check-label"> Yes, my child may participate in the study. (If no, leave unchecked). </label>
+                            <label class="form-check-label"> {! $Label.C501_RegSite_ChildCanDoSurvey } </label>
                         </p>
                         <p>
-                            <apex:outputText value="{!IF(term.Evaluation_Consent__c,'Your child may participate in the study','Your child may *not* participate in the study')}" />
+                            <apex:outputText value="{!IF(term.Evaluation_Consent__c, $Label.C501_RegSite_ChildCanDoSurveyTrue ,  $Label.C501_RegSite_ChildCanDoSurveyFalse )}" />
                         </p>
-                        <p>
+                        <!--<p>
                             <label class="form-check-label"> Yes, I will participate in the study. (If no, leave unchecked). </label>
                         </p>
                         <p>
                             <apex:outputText value="{!IF(term.Parent_Survey__c,'You will participate in the study','Your will *not* participate in the study')}" />
-                        </p>
+                        </p>-->
                     </div>
                 </div>
                 <div class="row">

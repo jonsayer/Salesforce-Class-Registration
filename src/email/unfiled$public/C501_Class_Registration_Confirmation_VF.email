@@ -386,6 +386,9 @@ To do: field to calculate the grade...
 ** {! $ObjectType.Contact.Fields['Allergies__c'].inlineHelpText } **
 <apex:outputText value="{!relatedTo.Student__r.Allergies__c }" /> 
 
+** {! $ObjectType.Contact.Fields['Medication__c'].inlineHelpText } **
+<apex:outputText value="{!relatedTo.Student__r.Medication__c }" /> 
+
 **{! $ObjectType.Contact.Fields['Race__c'].inlineHelpText }**
 <apex:outputText value="{!IF(relatedTo.Student__r.Race__c =='', $Label.C501_RegSite_NotProvided,relatedTo.Student__r.Race__c)}" />
 

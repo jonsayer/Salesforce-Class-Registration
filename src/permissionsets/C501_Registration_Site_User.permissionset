@@ -351,6 +351,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>School_Term__c.Permission_to_get_student_ID__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>School_Term__c.Post_Survey__c</field>
         <readable>true</readable>

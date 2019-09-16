@@ -39,6 +39,10 @@
                 <behavior>Edit</behavior>
                 <field>Parent_Initials__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Permission_to_get_student_ID__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

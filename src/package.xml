@@ -90,6 +90,7 @@
         <members>School_Term__c.Parent_Packet__c</members>
         <members>School_Term__c.Parent_Survey__c</members>
         <members>School_Term__c.Parent__c</members>
+        <members>School_Term__c.Permission_to_get_student_ID__c</members>
         <members>School_Term__c.Post_Survey__c</members>
         <members>School_Term__c.Pre_Survey__c</members>
         <members>School_Term__c.Program_Day__c</members>
@@ -167,6 +168,9 @@
         <members>C501_ClassReg_seattleArea</members>
         <members>C501_ClassReg_southBay</members>
         <members>C501_Classreg_CheckBoxes</members>
+        <members>C501_RegSite_ChildCanDoSurvey</members>
+        <members>C501_RegSite_ChildCanDoSurveyFalse</members>
+        <members>C501_RegSite_ChildCanDoSurveyTrue</members>
         <members>C501_RegSite_ChildEmail</members>
         <members>C501_RegSite_ChildFirstName</members>
         <members>C501_RegSite_ChildLastName</members>
@@ -189,8 +193,11 @@
         <members>C501_RegSite_LeaveBlank</members>
         <members>C501_RegSite_LeaveBlankEmail</members>
         <members>C501_RegSite_Login</members>
+        <members>C501_RegSite_LoginIntro</members>
         <members>C501_RegSite_NoAllergies</members>
         <members>C501_RegSite_NoAllergiesError</members>
+        <members>C501_RegSite_NoMedication</members>
+        <members>C501_RegSite_NoMedsError</members>
         <members>C501_RegSite_NotProvided</members>
         <members>C501_RegSite_ParentContactRequired</members>
         <members>C501_RegSite_ParentEmail</members>
@@ -198,6 +205,7 @@
         <members>C501_RegSite_ParentLastName</members>
         <members>C501_RegSite_PickUpChildError</members>
         <members>C501_RegSite_PlzAreaCode</members>
+        <members>C501_RegSite_PlzFillItAllOut</members>
         <members>C501_RegSite_ProvidePhoneEmail</members>
         <members>C501_RegSite_ProvideStudentId</members>
         <members>C501_RegSite_RememberMeDevice</members>
