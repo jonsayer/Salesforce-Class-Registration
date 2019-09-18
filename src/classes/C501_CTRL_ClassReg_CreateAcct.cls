@@ -11,6 +11,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public Boolean  dontKnowId		{get; set;}
     public Boolean 	noAllergies		{get; set;}
     public Boolean  noMedication 	{get; set;}
+    public Boolean  noSpecialNeeds 	{get; set;}
     
     public Map<String,List<SelectOption> > 	fieldSetPicklistOptions			{get; set;}
     public Map<String,String[]> 			siteMultiPicklistReturnValues 	{get; set;}
@@ -52,6 +53,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public Boolean  noAllergyResp 	{get; set;}
     private String  RegType         {get; set;}
     public Boolean  noMedResp	 	{get; set;}
+    public Boolean  noSpecialResp 	{get; set;}
     
     public List<SelectOption> schoolList 	{
         get {
@@ -138,6 +140,8 @@ public class C501_CTRL_ClassReg_CreateAcct {
         noMedication	= false;
         noMedResp		= false;
         needPickup		= false;
+        noSpecialResp	= false;
+        noSpecialNeeds	= false;
         schoolregion 	= '';
         errorClassesForPicklists = '';
         
@@ -269,6 +273,14 @@ public class C501_CTRL_ClassReg_CreateAcct {
             passValidation = false;
         } else {
             noMedResp = false;
+        }
+        
+        if(child.Student_Special_Needs__c == null && noSpecialNeeds == false){
+            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,Label.C501_RegSite_NoSpecialNeedsError )  );
+            noSpecialResp = true;
+            passValidation = false;
+        } else {
+            noSpecialResp = false;
         }
         
         if(child.Student_Transportation__c == 'Will receive a ride' && (child.Authorized_Pickup_1_Name__c == null || child.Authorized_Pickup_1_Phone__c == null || child.Authorized_Pickup_1_Relationship__c == null ) ){

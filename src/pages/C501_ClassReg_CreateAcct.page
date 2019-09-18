@@ -491,6 +491,22 @@
                     </apex:repeat>
                     
                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label> {! $ObjectType.Contact.Fields['Student_Special_Needs__c'].inlineHelpText }  <span class="red">*</span></label><br />
+                                <apex:inputField value="{!child.Student_Special_Needs__c }" styleClass="form-control {! if(noSpecialResp,'error','')}" />  
+                                <small class="form-text text-muted">  <apex:inputCheckbox value="{!noSpecialNeeds }" styleClass="form-check-input" />   {! $Label.C501_RegSite_NoNeeds }</small>
+                                
+                                <apex:outputPanel rendered="{!noSpecialResp}">
+                                    <div class="errorMsg">
+                                        <strong>Error:</strong> {! $Label.C501_RegSite_NoSpecialNeedsError }
+                                    </div>
+                                </apex:outputPanel>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
                         <div class="col-xs-12">
                             <h2 class="withLine" style="">
                                 {! $Label.C501_RegSite_FamilyInformation }
@@ -1123,6 +1139,22 @@
                         </div>
                     </div>
                 </apex:repeat>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label> {! $ObjectType.Contact.Fields['Student_Special_Needs__c'].inlineHelpText }   </label>
+                            <apex:outputPanel rendered="{!noSpecialNeeds }">
+                                {! $Label.C501_RegSite_NoNeeds }
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!noSpecialNeeds == false }">
+                                <apex:outputText value="{!child.Student_Special_Needs__c }"  /> 
+                            </apex:outputPanel>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                
                 
                 <div class="row">
                     <div class="col-xs-12">

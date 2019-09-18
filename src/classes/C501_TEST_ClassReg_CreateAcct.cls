@@ -155,6 +155,8 @@ public class C501_TEST_ClassReg_CreateAcct {
         
         controller.term.Student_School_ID__c 					= 'abc123';
         controller.noAllergies									= true;
+        controller.noSpecialNeeds								= true;
+        controller.noMedication									= true;
         controller.child.Student_Transportation__c 				= 'Will receive a ride';
         controller.child.Authorized_Pickup_1_Name__c 			= 'Test friend';
         controller.child.Authorized_Pickup_1_Phone__c 			= '(206) 234-5678';

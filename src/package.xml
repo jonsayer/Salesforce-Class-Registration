@@ -198,6 +198,8 @@
         <members>C501_RegSite_NoAllergiesError</members>
         <members>C501_RegSite_NoMedication</members>
         <members>C501_RegSite_NoMedsError</members>
+        <members>C501_RegSite_NoNeeds</members>
+        <members>C501_RegSite_NoSpecialNeedsError</members>
         <members>C501_RegSite_NotProvided</members>
         <members>C501_RegSite_ParentContactRequired</members>
         <members>C501_RegSite_ParentEmail</members>

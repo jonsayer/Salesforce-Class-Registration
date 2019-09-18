@@ -633,6 +633,20 @@ We may also look at your child’s school information, like attendance and cours
         <value>Please indicate if your child has any medical conditions we should be aware of.</value>
     </labels>
     <labels>
+        <fullName>C501_RegSite_NoNeeds</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_NoNeeds</shortDescription>
+        <value>My child has no special needs.</value>
+    </labels>
+    <labels>
+        <fullName>C501_RegSite_NoSpecialNeedsError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C501_RegSite_NoSpecialNeedsError</shortDescription>
+        <value>Please indicate if your child has any special needs, or check the box if there are none.</value>
+    </labels>
+    <labels>
         <fullName>C501_RegSite_NotProvided</fullName>
         <language>en_US</language>
         <protected>false</protected>
