@@ -2,6 +2,9 @@ project:
     name: Salesforce-Class-Registration
     package:
         name:  Salesforce-Class-Registration
-        api_version: '45.0'
+        api_version: '46.0'
+    dependencies:
+        - github: https://github.com/SalesforceFoundation/Cumulus
+        - github: https://github.com/SalesforceFoundation/Volunteers-for-Salesforce
 
 

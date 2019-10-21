@@ -152,6 +152,7 @@ public class C501_TEST_ClassReg_CreateAcct {
         controller.grade 			= '10';
         controller.schoolName		= school.Id;
         controller.term.Waiver__c	= true;
+        controller.term.Authorization_to_treat_minor__c	= true;
         
         controller.term.Student_School_ID__c 					= 'abc123';
         controller.noAllergies									= true;

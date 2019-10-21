@@ -75,14 +75,14 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_ClassReg_ChildSchoolName</shortDescription>
-        <value>Student&apos;s School / Program Location</value>
+        <value>Student&apos;s School</value>
     </labels>
     <labels>
         <fullName>C501_ClassReg_ChildSchoolRegion</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_ClassReg_ChildSchoolRegion</shortDescription>
-        <value>Techbridge serves girls in three different regions. Which region is your child&apos;s school in?</value>
+        <value>Techbridge serves girls in four different regions. Which region is your child&apos;s school in?</value>
     </labels>
     <labels>
         <fullName>C501_ClassReg_CodeMessage</fullName>
@@ -96,7 +96,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_ClassReg_CodeMessageDisclaim</shortDescription>
-        <value>. This account is unmonitored.</value>
+        <value>. This phone number is unmonitored.</value>
     </labels>
     <labels>
         <fullName>C501_ClassReg_CodeMessageExpire</fullName>
@@ -117,7 +117,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_ClassReg_EmergencySubtext</shortDescription>
-        <value>In case the parent/guardian cannot be reached, please provide two EMERGENCY CONTACTS (other than yourself).</value>
+        <value>In case the parent/guardian cannot be reached, please provide an EMERGENCY CONTACT (other than yourself).</value>
     </labels>
     <labels>
         <fullName>C501_ClassReg_EvalStudy</fullName>
@@ -152,7 +152,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_ClassReg_EvalStudyH1P3</shortDescription>
-        <value>This paper talks about the study and the choice that you have to let your child take part in it.  You can ask questions any time.</value>
+        <value>This paper talks about the study and the choice that you have to take part in it.  You can ask questions any time. We will also talk with the youth in the program and ask if they want to be part of the evaluation.</value>
     </labels>
     <labels>
         <fullName>C501_ClassReg_EvalStudyH2</fullName>
@@ -166,7 +166,10 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_ClassReg_EvalStudyH2li</shortDescription>
-        <value>&lt;li&gt;You decide if you want your child to take part.
+        <value>&lt;li&gt;We are asking if both you and your child will participate in the study. 
+&lt;/li&gt;
+ &lt;li&gt;
+You decide if you and your child want to take part.
 &lt;/li&gt;
 &lt;li&gt;
 You can say ‘No’ or you can say ‘Yes’.
@@ -178,7 +181,7 @@ No one will be upset if you say ‘No’.
 If you say ‘Yes’, you can always say ‘No’ later.
 &lt;/li&gt;
 &lt;li&gt;
-Saying &apos;No&apos; or &apos;Yes&apos; will not affect your child&apos;s participation in Techbridge Girls in any way. 
+Your child can participate in the study even if you do not. You can participate in the study even if your child does not. 
 &lt;/li&gt;</value>
     </labels>
     <labels>
@@ -186,14 +189,14 @@ Saying &apos;No&apos; or &apos;Yes&apos; will not affect your child&apos;s parti
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_ClassReg_EvalStudyH3</shortDescription>
-        <value>What would happen if my child joins this evaluation study?</value>
+        <value>What would happen if I join this evaluation study?</value>
     </labels>
     <labels>
         <fullName>C501_ClassReg_EvalStudyH3P1</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_ClassReg_EvalStudyH3P1</shortDescription>
-        <value>If you decide to participate in the study, we would ask your child to do the following:</value>
+        <value>If you decide to participate in the study, we would ask you and your child to do the following:</value>
     </labels>
     <labels>
         <fullName>C501_ClassReg_EvalStudyH3li</fullName>
@@ -201,13 +204,16 @@ Saying &apos;No&apos; or &apos;Yes&apos; will not affect your child&apos;s parti
         <protected>false</protected>
         <shortDescription>C501_ClassReg_EvalStudyH3li</shortDescription>
         <value>&lt;li&gt;
-Talking with your child: A person on the evaluation team would talk your child, either individually or as part of a group of youth and ask them questions. Then your child would answer the questions out loud.
+Questions for you: We would ask you to read questions on a piece of paper or online.  Then you would mark your answers on the paper or online form.
 &lt;/li&gt;
 &lt;li&gt;
-Type answers to our questions on a computer. 
+Questions for your child: We would ask your child to read questions on a piece of paper or online.  Then your child would mark their answers on the paper or online form.
 &lt;/li&gt;
 &lt;li&gt;
-We will also look at your child’s school information, like attendance, grades, and courses taken.
+Talking with your child: A person on the evaluation team would talk to a group of youth and ask them questions. Then your child would answer the questions out loud.
+&lt;/li&gt;
+&lt;li&gt;
+We may also look at your child’s school information, like attendance and courses taken.
 &lt;/li&gt;</value>
     </labels>
     <labels>
@@ -400,13 +406,6 @@ We will also look at your child’s school information, like attendance, grades,
         <value>Please complete all required multiple-choice questions.</value>
     </labels>
     <labels>
-        <fullName>C501_RegSite_California</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>C501_RegSite_California</shortDescription>
-        <value>California</value>
-    </labels>
-    <labels>
         <fullName>C501_RegSite_ChildCanDoSurvey</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -469,11 +468,9 @@ We will also look at your child’s school information, like attendance, grades,
         <shortDescription>C501_RegSite_ConfirmContact</shortDescription>
         <value>&lt;p&gt;If you have any questions or notice a mistake in your responses below, please contact the following regional coordinators based on where your student attends school:&lt;/p&gt;
 
-&lt;p&gt;California - Tonesha Russell &lt;a href=&quot;mailto:trussell@techbridgegirls.org&quot;&gt;trussell@techbridgegirls.org&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;California or Pacific Northwest (WA, ID, OR, MT, AK) - &lt;a href=&quot;mailto:lkraushaar@techbridgegirls.org&quot;&gt;lkraushaar@techbridgegirls.org&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Pacific Northwest (WA, ID, OR, MT, AK) - Lauren Kraushaar &lt;a href=&quot;mailto:lkraushaar@techbridgegirls.org&quot;&gt;lkraushaar@techbridgegirls.org&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Washington DC Metro - Nuri Rashied &lt;a href=&quot;mailto:nrashied@techbridgegirls.org&quot;&gt;nrashied@techbridgegirls.org&lt;/a&gt;&lt;/p&gt;</value>
+&lt;p&gt;Washington DC Metro - &lt;a href=&quot;mailto:cjames@techbridgegirls.org&quot;&gt;cjames@techbridgegirls.org&lt;/a&gt;&lt;/p&gt;</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_ConfirmMessageSite</fullName>
@@ -539,13 +536,6 @@ We will also look at your child’s school information, like attendance, grades,
         <value>Family Information</value>
     </labels>
     <labels>
-        <fullName>C501_RegSite_Family_Status_c</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>C501_RegSite_Family_Status_c</shortDescription>
-        <value>&amp;nbsp;</value>
-    </labels>
-    <labels>
         <fullName>C501_RegSite_FinishedApp</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -564,7 +554,7 @@ We will also look at your child’s school information, like attendance, grades,
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_RegSite_Grade</shortDescription>
-        <value>Grade (for 2019-20 school year)</value>
+        <value>Grade (for 2018-19 school year)</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_InvalidEmailPhone</fullName>
@@ -713,18 +703,11 @@ We will also look at your child’s school information, like attendance, grades,
         <value>Please fill out all of (or as much as possible) the following information for the child you wish to register for a Techbridge Girls program. The demographic information in this form is used anonymously. We collect it to show our partners the populations of students in our programs.</value>
     </labels>
     <labels>
-        <fullName>C501_RegSite_Preferred_Method_of_Contact_c</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>C501_RegSite_Preferred_Method_of_Contact_c</shortDescription>
-        <value>&amp;nbsp;</value>
-    </labels>
-    <labels>
         <fullName>C501_RegSite_ProvidePhoneEmail</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_RegSite_ProvidePhoneEmail</shortDescription>
-        <value>Please provide your phone number or email address to access the student registration system. Your phone number or email address will be used to receive an access code.</value>
+        <value>Please provide your phone number or email address to access the student registration system.</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_ProvideStudentId</fullName>
@@ -732,13 +715,6 @@ We will also look at your child’s school information, like attendance, grades,
         <protected>false</protected>
         <shortDescription>C501_RegSite_ProvideStudentId</shortDescription>
         <value>Please provide a Student ID Number, or give us permission to get it from your child&apos;s school.</value>
-    </labels>
-    <labels>
-        <fullName>C501_RegSite_Race_c</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>C501_RegSite_Race_c</shortDescription>
-        <value>&amp;nbsp;</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_RememberMeDevice</fullName>
@@ -811,25 +787,11 @@ We will also look at your child’s school information, like attendance, grades,
         <value>Transportation and Authorized Pickup</value>
     </labels>
     <labels>
-        <fullName>C501_RegSite_TreatRequired</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>C501_RegSite_TreatRequired</shortDescription>
-        <value>You must check the box authorizing us to seek medical treatment for your child in an emergency. This is not optional.</value>
-    </labels>
-    <labels>
-        <fullName>C501_RegSite_Volunteer_c</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>C501_RegSite_Volunteer_c</shortDescription>
-        <value>&amp;nbsp;</value>
-    </labels>
-    <labels>
         <fullName>C501_RegSite_WeSentYouCode</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>C501_RegSite_WeSentYouCode</shortDescription>
-        <value>We just sent you a code to the phone number or email address you provided. What is the code?</value>
+        <value>We just sent you code to the phone number or email address you provided. What is the code?</value>
     </labels>
     <labels>
         <fullName>C501_RegSite_Youarenotauthenticated</fullName>

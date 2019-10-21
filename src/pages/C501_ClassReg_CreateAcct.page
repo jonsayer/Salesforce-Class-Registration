@@ -482,6 +482,12 @@
                                             <apex:selectoptions value="{! fieldSetPicklistOptions[field]  }"  />
                                         </apex:selectcheckboxes> 
                                         <!--form-check-label-->
+                                        <!-- display a custom label to translate multi-select picklist fields -->
+                                        <apex:outputPanel rendered="{!field = 'Race__c' && language != 'en_US'}">
+                                            <p>
+                                                <apex:outputText value="{! $Label.C501_RegSite_Race_c }" escape="false" />
+                                            </p>
+                                        </apex:outputPanel>
                                     </apex:outputPanel>
                                     
                                     
@@ -642,6 +648,23 @@
                                             <apex:selectoptions html-class="form-check-input"  value="{! fieldSetPicklistOptions[field]  }"  />     
                                         </apex:selectcheckboxes> 
                                         <!--form-check-label-->
+                                        
+                                        <!-- display a custom label to translate multi-select picklist fields -->
+                                        <apex:outputPanel rendered="{!field = 'Family_Status__c' && language != 'en_US' }">
+                                            <p>
+                                                <apex:outputText value="{! $Label.C501_RegSite_Family_Status_c }" escape="false" />
+                                            </p>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!field = 'Preferred_Method_of_Contact__c' && language != 'en_US'}">
+                                            <p>
+                                                <apex:outputText value="{! $Label.C501_RegSite_Preferred_Method_of_Contact_c }" escape="false" />
+                                            </p>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!field = 'Volunteer__c' && language != 'en_US'}">
+                                            <p>
+                                                <apex:outputText value="{! $Label.C501_RegSite_Volunteer_c }" escape="false" />
+                                            </p>
+                                        </apex:outputPanel>
                                     </apex:outputPanel>
                                 </div>
                             </div>
@@ -693,14 +716,21 @@
                         <div class="col-md-4">
                             <label>{! $Label.C501_ClassReg_AuthToTreatMinorProvider }  </label>
                             <apex:inputField styleClass="form-control" value="{!child.Emergency_Preferred_Medical_Provider__c }" />
+                            
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <p>
-                                <apex:inputCheckbox value="{!term.Authorization_to_treat_minor__c}" required="true" styleClass="form-check-input" />  
-                                <label class="form-check-label"> {! $Label.C501_ClassReg_AuthToTreatMinorLabel } </label>
+                                <apex:inputCheckbox value="{!term.Authorization_to_treat_minor__c}" required="true" styleClass="form-check-input {! if(noMedAuth,'error','')}" />  
+                                <label class="form-check-label"> {! $Label.C501_ClassReg_AuthToTreatMinorLabel } <span class="red">*</span> </label>
+                                <apex:outputPanel rendered="{!noMedAuth}">
+                                    <div class="errorMsg">
+                                        <strong>Error:</strong> {! $Label.C501_RegSite_TreatRequired }
+                                    </div>
+                                </apex:outputPanel>
                             </p>
+                            
                         </div>
                     </div>
                     <div class="row">

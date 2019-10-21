@@ -49,6 +49,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
     public Boolean 	noSchool		{get; set;}
     public Boolean 	noGrade			{get; set;}
     public Boolean  noWaiver		{get; set;}
+    public Boolean  noMedAuth		{get; set;}
     public Boolean  noStuID			{get; set;}
     public Boolean  noAllergyResp 	{get; set;}
     private String  RegType         {get; set;}
@@ -134,6 +135,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
         noSchool 		= false;
         noGrade			= false;
         noWaiver		= false;
+        noMedAuth		= false;
         dontKnowId		= false;
         noStuID			= false;
         noAllergyResp	= false;
@@ -172,7 +174,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
             Schema.SObjectField f = fsm.getSObjectField();
             Schema.DescribeFieldResult dfr = f.getDescribe();
             if(dfr.getType() == Schema.DisplayType.MultiPicklist ){
-                List<SelectOption> picklistOptionsForField = getFieldsPicklistOptions(f,'Account');
+                List<SelectOption> picklistOptionsForField = getFieldsPicklistOptions(f,'Account',language);
                 fieldSetPicklistOptions.put( dfr.getName(), picklistOptionsForField );
                 siteMultiPicklistReturnValues.put( dfr.getName(), new String[]{} );
                 siteMultiPicklistErrorStatus.put( dfr.getName(), false);
@@ -182,7 +184,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
             Schema.SObjectField f = fsm.getSObjectField();
             Schema.DescribeFieldResult dfr = f.getDescribe();
             if(dfr.getType() == Schema.DisplayType.MultiPicklist ){
-                List<SelectOption> picklistOptionsForField = getFieldsPicklistOptions(f,'Contact');
+                List<SelectOption> picklistOptionsForField = getFieldsPicklistOptions(f,'Contact',language);
                 fieldSetPicklistOptions.put( dfr.getName(), picklistOptionsForField );
                 siteMultiPicklistReturnValues.put( dfr.getName(), new String[]{} );
                 siteMultiPicklistErrorStatus.put( dfr.getName(), false);
@@ -192,7 +194,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
             Schema.SObjectField f = fsm.getSObjectField();
             Schema.DescribeFieldResult dfr = f.getDescribe();
             if(dfr.getType() == Schema.DisplayType.MultiPicklist ){
-                List<SelectOption> picklistOptionsForField = getFieldsPicklistOptions(f,'Contact');
+                List<SelectOption> picklistOptionsForField = getFieldsPicklistOptions(f,'Contact',language);
                 fieldSetPicklistOptions.put( dfr.getName(), picklistOptionsForField );
                 siteMultiPicklistReturnValues.put( dfr.getName(), new String[]{} );
                 siteMultiPicklistErrorStatus.put( dfr.getName(), false);
@@ -303,6 +305,16 @@ public class C501_CTRL_ClassReg_CreateAcct {
         } else {
             noWaiver = false;
         }
+        
+        if(term.Authorization_to_treat_minor__c == false){
+            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.ERROR,Label.C501_RegSite_TreatRequired)  );
+            noMedAuth = true;
+            passValidation = false;
+        } else {
+            noMedAuth = false;
+        }
+        
+        
         
         Boolean phoneFail = false;
         
@@ -468,6 +480,7 @@ public class C501_CTRL_ClassReg_CreateAcct {
         
         term.School_Year__c	= C501_UTIL_ClassRegUtilities.currentSchoolYear( Date.today() );
         term.C501_Sign_Up_Source__c = 'Online';
+        term.C501_Form_Completion_Language__c	= language;
         
         insert term;
         if(parent.MobilePhone != null && parent.MobilePhone != '' ){
@@ -546,9 +559,8 @@ public class C501_CTRL_ClassReg_CreateAcct {
         List<SelectOption> regions = new List<SelectOption>();
         
         // include these nice regions automatically
-        regions.add(new SelectOption( '', Label.C501_ClassReg_PlzSelectOne ) ); 
-        regions.add(new SelectOption( 'East Bay', Label.C501_ClassReg_eastBay ) ); 
-        regions.add(new SelectOption( 'South Bay', Label.C501_ClassReg_southBay ) ); 
+        regions.add(new SelectOption( '', Label.C501_ClassReg_PlzSelectOne ) );
+        regions.add(new SelectOption( 'California', Label.C501_RegSite_California ) ); 
         regions.add(new SelectOption( 'Seattle', Label.C501_ClassReg_seattleArea ) ); 
         regions.add(new SelectOption( 'DC', Label.C501_ClassReg_dcArea ) );
         
@@ -559,14 +571,26 @@ public class C501_CTRL_ClassReg_CreateAcct {
         return regions;
     }
     
-    public static List<SelectOption> getFieldsPicklistOptions(Schema.SObjectField field,String objectName){
+    public static List<SelectOption> getFieldsPicklistOptions(Schema.SObjectField field,String objectName, String language){
         
         List<SelectOption> picklistOptions = new List<SelectOption>();
         Schema.DescribeFieldResult fieldResult = field.getDescribe();
         
-        list<schema.picklistentry> values = fieldResult.getPickListValues();               
+        list<schema.picklistentry> values = fieldResult.getPickListValues();     
+        
+        /*if(!String.isEmpty(language) && language != 'en_US' ){
+            // is not english
+            //Schema.
+        } else {
+            // return English picklist
+            for (Schema.PicklistEntry p : values){                  
+                picklistOptions.add(new SelectOption(p.getLabel(), p.getValue()));
+            }
+        }*/
+        
+        // return English picklist values
         for (Schema.PicklistEntry p : values){                  
-        	picklistOptions.add(new SelectOption(p.getLabel(), p.getValue()));
+            picklistOptions.add(new SelectOption(p.getLabel(), p.getValue()));
         }
         
         

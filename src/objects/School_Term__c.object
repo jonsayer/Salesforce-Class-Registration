@@ -25,6 +25,18 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>C501_Form_Completion_Language__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The language the form was completed in.</inlineHelpText>
+        <label>Form Completion Language</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>C501_Free_Reduced_Lunch_Picklist__c</fullName>
         <externalId>false</externalId>
         <inlineHelpText>Does your child qualify for free/reduced lunch?</inlineHelpText>
@@ -187,6 +199,49 @@ TRUE, FALSE )</formula>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Number_of_Weeks_Attended__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Week_1_Attendance__c = TRUE, 1, 0) +
+IF (Week_2_Attendance__c = TRUE, 1, 0) +
+IF (Week_3_Attendance__c = TRUE, 1, 0) +
+IF (Week_4_Attendance__c = TRUE, 1, 0) +
+IF (Week_5_Attendance__c = TRUE, 1, 0) +
+IF (Week_6_Attendance__c = TRUE, 1, 0) +
+IF (Week_7_Attendance__c = TRUE, 1, 0) +
+IF (Week_8_Attendance__c = TRUE, 1, 0) +
+IF (Week_9_Attendance__c = TRUE, 1, 0) +
+IF (Week_10_Attendance__c = TRUE, 1, 0) +
+IF (Week_11_Attendance__c = TRUE, 1, 0) +
+IF (Week_12_Attendance__c = TRUE, 1, 0) +
+IF (Week_13_Attendance__c = TRUE, 1, 0) +
+IF (Week_14_Attendance__c = TRUE, 1, 0) +
+IF (Week_15_Attendance__c = TRUE, 1, 0) +
+IF (Week_16_Attendance__c = TRUE, 1, 0) +
+IF (Week_17_Attendance__c = TRUE, 1, 0) +
+IF (Week_18_Attendance__c = TRUE, 1, 0) + 
+IF (Week_19_Attendance__c = TRUE, 1, 0) +
+IF (Week_20_Attendance__c = TRUE, 1, 0) +
+IF (Week_21_Attendance__c = TRUE, 1, 0) +
+IF (Week_22_Attendance__c = TRUE, 1, 0) +
+IF (Week_23_Attendance__c = TRUE, 1, 0) +
+IF (Week_24_Attendance__c = TRUE, 1, 0) +
+IF (Week_25_Attendance__c = TRUE, 1, 0) +
+IF (Week_26_Attendance__c = TRUE, 1, 0) +
+IF (Week_27_Attendance__c = TRUE, 1, 0) +
+IF (Week_28_Attendance__c = TRUE, 1, 0) +
+IF (Week_29_Attendance__c = TRUE, 1, 0) +
+IF (Week_30_Attendance__c = TRUE, 1, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Number of Weeks Attended</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Parent_Email__c</fullName>
@@ -540,19 +595,304 @@ TRUE, FALSE )</formula>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
-    <listViews>
-        <fullName>X2016_17_School_Terms</fullName>
-        <columns>NAME</columns>
-        <columns>School__c</columns>
-        <columns>Student__c</columns>
-        <columns>CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>School_Year__c</field>
-            <operation>equals</operation>
-            <value>2017-2018</value>
-        </filters>
-        <label>2017-2018 School Terms</label>
-        <language>en_US</language>
-    </listViews>
+    <fields>
+        <fullName>Week_10_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 10</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_11_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 11</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_12_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 12</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_13_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 13</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_14_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 14</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_15_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 15</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_16_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 16</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_17_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 17</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_18_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 18</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_19_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 19</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_1_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 1</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_20_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 20</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_21_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 21</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_22_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 22</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_23_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 23</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_24_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 24</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_25_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 25</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_26_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 26</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_27_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 27</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_28_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 28</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_29_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 29</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_2_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 2</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_30_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 30</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_3_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checked = attended, unchecked = did not attend</description>
+        <externalId>false</externalId>
+        <label>Week 3</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_4_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 4</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_5_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 5</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_6_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 6</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_7_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 7</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_8_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 8</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Week_9_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked = attended, unchecked = did not attend</inlineHelpText>
+        <label>Week 9</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
 </CustomObject>

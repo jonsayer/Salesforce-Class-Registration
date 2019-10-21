@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RegSite_redux</fullName>
     <types>
         <members>C501_CTRL_ClassReg_CreateAcct</members>
         <members>C501_CTRL_ClassReg_Home</members>
@@ -23,10 +24,11 @@
         <members>Account.C501_Class_Site_Mobile_Number__c</members>
         <members>Account.C501_Is_Active_School__c</members>
         <members>Account.C501_Next_program_start_date__c</members>
-        <members>Account.Primary_Teacher__c</members>
         <members>Account.Region__c</members>
-        <members>Account.Secondary_Teacher__c</members>
-        <members>Account.Teachers_at_Site__c</members>
+        <members>Account.School_District_Lookup__c</members>
+        <members>Activity.Action__c</members>
+        <members>Activity.Activity_Report_Type__c</members>
+        <members>Activity.Point_Person__c</members>
         <members>Class_Site_Login_Attempt__c.Account__c</members>
         <members>Class_Site_Login_Attempt__c.Code_Sent_To__c</members>
         <members>Class_Site_Login_Attempt__c.Login_Attempts__c</members>
@@ -52,25 +54,17 @@
         <members>Contact.Emergency_Contact_2_Relationship__c</members>
         <members>Contact.Emergency_Preferred_Medical_Provider__c</members>
         <members>Contact.Family_Status__c</members>
+        <members>Contact.Graduation_Year__c</members>
         <members>Contact.Income__c</members>
         <members>Contact.Medication__c</members>
-        <members>Contact.Number_in_Household_Picklist__c</members>
-        <members>Contact.Number_in_Household__c</members>
-        <members>Contact.Parent_Education__c</members>
-        <members>Contact.Parent_Education__c</members>
-        <members>Contact.Parent_Education_second_parent__c</members>
-        <members>Contact.Parent_Education_second_parent__c</members>
-        <members>Contact.Parent_Workplace__c</members>
-        <members>Contact.Preferred_Method_of_Contact__c</members>
-        <members>Contact.Race__c</members>
         <members>Contact.Student_Special_Needs__c</members>
         <members>Contact.Student_Transportation__c</members>
-        <members>Contact.T_shirt_Size__c</members>
         <members>Contact.Translation_Needed_Other__c</members>
         <members>Contact.Translation_Needed__c</members>
-        <members>Contact.Volunteer__c</members>
+        <members>RegistrationSiteSettings__c.Default_From_Email__c</members>
         <members>School_Term__c.Active_Year__c</members>
         <members>School_Term__c.Authorization_to_treat_minor__c</members>
+        <members>School_Term__c.C501_Form_Completion_Language__c</members>
         <members>School_Term__c.C501_Free_Reduced_Lunch_Picklist__c</members>
         <members>School_Term__c.C501_Sign_Up_Source__c</members>
         <members>School_Term__c.Contract__c</members>
@@ -83,6 +77,7 @@
         <members>School_Term__c.Left_Program_Early__c</members>
         <members>School_Term__c.Media_Release__c</members>
         <members>School_Term__c.Notes__c</members>
+        <members>School_Term__c.Number_of_Weeks_Attended__c</members>
         <members>School_Term__c.Parent_Email__c</members>
         <members>School_Term__c.Parent_Initials__c</members>
         <members>School_Term__c.Parent_Packet_URL_Unsigned__c</members>
@@ -101,10 +96,36 @@
         <members>School_Term__c.Student_School_ID__c</members>
         <members>School_Term__c.Student__c</members>
         <members>School_Term__c.Waiver__c</members>
-        <members>TwilioConfig__c.AccountSid__c</members>
-        <members>TwilioConfig__c.ApplicationSid__c</members>
-        <members>TwilioConfig__c.AuthToken__c</members>
-        <members>TwilioConfig__c.Default_Send_Number__c</members>
+        <members>School_Term__c.Week_10_Attendance__c</members>
+        <members>School_Term__c.Week_11_Attendance__c</members>
+        <members>School_Term__c.Week_12_Attendance__c</members>
+        <members>School_Term__c.Week_13_Attendance__c</members>
+        <members>School_Term__c.Week_14_Attendance__c</members>
+        <members>School_Term__c.Week_15_Attendance__c</members>
+        <members>School_Term__c.Week_16_Attendance__c</members>
+        <members>School_Term__c.Week_17_Attendance__c</members>
+        <members>School_Term__c.Week_18_Attendance__c</members>
+        <members>School_Term__c.Week_19_Attendance__c</members>
+        <members>School_Term__c.Week_1_Attendance__c</members>
+        <members>School_Term__c.Week_20_Attendance__c</members>
+        <members>School_Term__c.Week_21_Attendance__c</members>
+        <members>School_Term__c.Week_22_Attendance__c</members>
+        <members>School_Term__c.Week_23_Attendance__c</members>
+        <members>School_Term__c.Week_24_Attendance__c</members>
+        <members>School_Term__c.Week_25_Attendance__c</members>
+        <members>School_Term__c.Week_26_Attendance__c</members>
+        <members>School_Term__c.Week_27_Attendance__c</members>
+        <members>School_Term__c.Week_28_Attendance__c</members>
+        <members>School_Term__c.Week_29_Attendance__c</members>
+        <members>School_Term__c.Week_2_Attendance__c</members>
+        <members>School_Term__c.Week_30_Attendance__c</members>
+        <members>School_Term__c.Week_3_Attendance__c</members>
+        <members>School_Term__c.Week_4_Attendance__c</members>
+        <members>School_Term__c.Week_5_Attendance__c</members>
+        <members>School_Term__c.Week_6_Attendance__c</members>
+        <members>School_Term__c.Week_7_Attendance__c</members>
+        <members>School_Term__c.Week_8_Attendance__c</members>
+        <members>School_Term__c.Week_9_Attendance__c</members>
         <name>CustomField</name>
     </types>
     <types>
@@ -118,7 +139,6 @@
         <members>C501_ClassReg_AuthToTreatMinorProvider</members>
         <members>C501_ClassReg_Birthday</members>
         <members>C501_ClassReg_ChildMobilePhone</members>
-        <members>C501_ClassReg_ChildSchoolName</members>
         <members>C501_ClassReg_ChildSchoolName</members>
         <members>C501_ClassReg_ChildSchoolRegion</members>
         <members>C501_ClassReg_CodeMessage</members>
@@ -145,10 +165,7 @@
         <members>C501_ClassReg_PARTICIPANT_WAIVERp2</members>
         <members>C501_ClassReg_PARTICIPANT_WAIVERp3</members>
         <members>C501_ClassReg_ParentHomePhone</members>
-        <members>C501_ClassReg_ParentHomePhone</members>
         <members>C501_ClassReg_ParentMobilePhone</members>
-        <members>C501_ClassReg_ParentMobilePhone</members>
-        <members>C501_ClassReg_ParentWorkPhone</members>
         <members>C501_ClassReg_ParentWorkPhone</members>
         <members>C501_ClassReg_PhoneFail</members>
         <members>C501_ClassReg_PhoneFailSpecific</members>
@@ -158,8 +175,6 @@
         <members>C501_ClassReg_PickUpChild</members>
         <members>C501_ClassReg_PlzSelectOne</members>
         <members>C501_ClassReg_StudentID</members>
-        <members>C501_ClassReg_StudentID</members>
-        <members>C501_ClassReg_SubmitApplication</members>
         <members>C501_ClassReg_SubmitApplication</members>
         <members>C501_ClassReg_WaiverRequired</members>
         <members>C501_ClassReg_dcArea</members>
@@ -168,6 +183,7 @@
         <members>C501_ClassReg_seattleArea</members>
         <members>C501_ClassReg_southBay</members>
         <members>C501_Classreg_CheckBoxes</members>
+        <members>C501_RegSite_California</members>
         <members>C501_RegSite_ChildCanDoSurvey</members>
         <members>C501_RegSite_ChildCanDoSurveyFalse</members>
         <members>C501_RegSite_ChildCanDoSurveyTrue</members>
@@ -186,6 +202,7 @@
         <members>C501_RegSite_EmailConfirmP4</members>
         <members>C501_RegSite_EmergencyContacts</members>
         <members>C501_RegSite_FamilyInformation</members>
+        <members>C501_RegSite_Family_Status_c</members>
         <members>C501_RegSite_FinishedApp</members>
         <members>C501_RegSite_FirstName</members>
         <members>C501_RegSite_Grade</members>
@@ -208,8 +225,10 @@
         <members>C501_RegSite_PickUpChildError</members>
         <members>C501_RegSite_PlzAreaCode</members>
         <members>C501_RegSite_PlzFillItAllOut</members>
+        <members>C501_RegSite_Preferred_Method_of_Contact_c</members>
         <members>C501_RegSite_ProvidePhoneEmail</members>
         <members>C501_RegSite_ProvideStudentId</members>
+        <members>C501_RegSite_Race_c</members>
         <members>C501_RegSite_RememberMeDevice</members>
         <members>C501_RegSite_SMSweSentAnEmail</members>
         <members>C501_RegSite_SelectGrade</members>
@@ -220,15 +239,20 @@
         <members>C501_RegSite_StreetAddress</members>
         <members>C501_RegSite_StudentInformation</members>
         <members>C501_RegSite_Transport</members>
+        <members>C501_RegSite_TreatRequired</members>
+        <members>C501_RegSite_Volunteer_c</members>
         <members>C501_RegSite_WeSentYouCode</members>
         <members>C501_RegSite_Youarenotauthenticated</members>
         <members>C501_RegSite_ZipCode</members>
         <name>CustomLabel</name>
     </types>
     <types>
+        <members>CustomLabels</members>
+        <name>CustomLabels</name>
+    </types>
+    <types>
         <members>Class_Site_Login_Attempt__c</members>
         <members>RegistrationSiteSettings__c</members>
-        <members>TwilioConfig__c</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -243,13 +267,7 @@
         <name>FieldSet</name>
     </types>
     <types>
-        <members>Class_Site_Login_Attempt__c-Class Site Login Attempt Layout</members>
-        <members>School_Term__c-School Term Layout</members>
-        <name>Layout</name>
-    </types>
-    <types>
         <members>Class_Site_Login_Attempt__c.All</members>
-        <members>School_Term__c.X2016_17_School_Terms</members>
         <name>ListView</name>
     </types>
     <types>

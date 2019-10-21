@@ -50,19 +50,6 @@ SUBSTITUTE(C501_Class_Site_Mobile_Number__c, &quot;(&quot;, &quot;&quot;), &quot
         <type>Date</type>
     </fields>
     <fields>
-        <fullName>Primary_Teacher__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <externalId>false</externalId>
-        <label>Primary Teacher</label>
-        <referenceTo>Contact</referenceTo>
-        <relationshipLabel>Accounts (Primary Teacher)</relationshipLabel>
-        <relationshipName>Schools</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>Region__c</fullName>
         <externalId>false</externalId>
         <label>Region</label>
@@ -93,31 +80,25 @@ SUBSTITUTE(C501_Class_Site_Mobile_Number__c, &quot;(&quot;, &quot;&quot;), &quot
                     <default>false</default>
                     <label>DC</label>
                 </value>
+                <value>
+                    <fullName>California</fullName>
+                    <default>false</default>
+                    <label>California</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
-        <fullName>Secondary_Teacher__c</fullName>
+        <fullName>School_District_Lookup__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
-        <label>Secondary Teacher</label>
-        <referenceTo>Contact</referenceTo>
-        <relationshipLabel>Accounts (Secondary Teacher)</relationshipLabel>
-        <relationshipName>Accounts</relationshipName>
+        <label>School District</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Schools in District</relationshipLabel>
+        <relationshipName>DistrictSchools</relationshipName>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Teachers_at_Site__c</fullName>
-        <externalId>false</externalId>
-        <formula>Primary_Teacher__r.FirstName &amp; &apos; &apos; &amp; Primary_Teacher__r.LastName</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Teachers at Site</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
 </CustomObject>
