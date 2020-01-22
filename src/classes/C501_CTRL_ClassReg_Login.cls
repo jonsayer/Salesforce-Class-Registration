@@ -31,7 +31,7 @@ public class C501_CTRL_ClassReg_Login {
     }
     
     public PageReference sendCodeWOacct(){
-        String identityInput = C501_UTIL_ClassRegUtilities.cleanInputGeneric(identityInput);
+        identityInput = C501_UTIL_ClassRegUtilities.cleanInputGeneric(identityInput);
         if(identityInput == null){
             pageStatus	= 'lookup-fail';
             return null;
